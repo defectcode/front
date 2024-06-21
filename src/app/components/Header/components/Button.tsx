@@ -5,7 +5,7 @@ import React from 'react';
 
 const Button = () => {
     return (
-        <button className="px-12 py-2 bg-white text-black rounded-lg flex gap-2 font-bold text-xl max-lg:px-">
+        <button className="px-28 py-4 bg-white text-black rounded-lg flex gap-2 font-bold text-xl">
            <FaRegHeart className="mt-1" />Support
         </button>
     );

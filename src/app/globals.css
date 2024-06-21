@@ -3,3 +3,9 @@
 @tailwind utilities;
 
 
+/* styles/globals.css */
+iframe {
+  width: 100%;
+  height: 100%;
+}
+  
