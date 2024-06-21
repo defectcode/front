@@ -5,7 +5,7 @@ import FundraisingProgress from './Components/Progres';
 import Title from './Components/Title';
 import PrevButton from './Components/PrevButton';
 import NextButton from './Components/NextButton';
-import Dots from './Components/Dots';
+// import Dots from './Components/Dots';
 
 const images = [
   '/imgs/carousel.svg',
@@ -61,7 +61,7 @@ const Carousel = () => {
         </div>
         <NextButton onClick={nextSlide} />
       </div>
-      <Dots total={images.length} current={currentIndex} />
+      {/* <Dots total={images.length} current={currentIndex} /> */}
     </div>
   );
 };
