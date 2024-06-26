@@ -2,18 +2,25 @@
 import React, { useEffect, useState, useRef } from 'react';
 import Image from 'next/image';
 import Navbar from './components/Navbar';
-import Button from './components/Button';
+import Support from './components/Support';
 import Icons from './components/Icons';
+import Modal from './components/Modal';
+import SupportForm from './components/Payment/SupportForm';
+import { loadStripe } from '@stripe/stripe-js';
+import { Elements } from '@stripe/react-stripe-js';
+
+const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
 
 export default function Header() {
   const [showVideo, setShowVideo] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const videoRef = useRef(null);
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowVideo(true);
-    }, 1500); // 1.5 seconds
+    }, 3000); // 3 seconds
 
     return () => clearTimeout(timer);
   }, []);
@@ -41,10 +48,18 @@ export default function Header() {
     return "";
   };
 
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <div className="relative h-screen text-white">
       {showVideo ? (
-        <div className="absolute inset-0 w-full h-full">
+        <div className={`absolute inset-0 w-full h-full ${isModalOpen ? 'bg-opacity-50 blur-sm' : ''}`}>
           <video ref={videoRef} autoPlay muted={isMuted} loop playsInline className="w-full h-full object-cover">
             <source src={getVideoSource()} type="video/mp4" />
             Your browser does not support the video tag.
@@ -52,18 +67,18 @@ export default function Header() {
         </div>
       ) : (
         <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          className={`absolute inset-0 bg-cover bg-center bg-no-repeat ${isModalOpen ? 'bg-opacity-50 blur-sm' : ''}`}
           style={{ backgroundImage: `url('/imgs/background.svg')` }}
         ></div>
       )}
-      <div className="absolute bottom-0 w-full h-1/4 bg-gradient-to-t from-black to-transparent"></div>
+      <div className={`absolute bottom-0 w-full h-1/4 bg-gradient-to-t from-black to-transparent ${isModalOpen ? 'bg-opacity-50 blur-sm' : ''}`}></div>
       <div className="relative z-10 h-full">
         <Navbar />
         <div className="max-w-screen-2xl mx-auto h-full flex flex-col text-white max-2xl:p-4">
           <div className="flex-grow flex flex-col justify-end max-2xl:p-2">
             <div className="flex justify-between mb-10 max-lg:flex-col max-lg:justify-center">
               <div className="flex gap-3 items-center max-lg:flex-col max-lg:justify-center">
-                <Button />
+                <Support onClick={openModal} />
                 <div className="space-y-2">
                   <p className="text-xl max-lg:text-lg max-md:text-sm max-lg:text-center">
                     In an ideal city without money, people fight real human problems. Your support makes the series possible.
@@ -82,6 +97,11 @@ export default function Header() {
           </div>
         </div>
       </div>
+      <Modal isOpen={isModalOpen} onClose={closeModal}>
+        <Elements stripe={stripePromise}>
+          <SupportForm />
+        </Elements>
+      </Modal>
     </div>
   );
 }

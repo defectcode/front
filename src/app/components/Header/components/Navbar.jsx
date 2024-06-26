@@ -14,7 +14,7 @@ export default function Navbar() {
         <nav className="bg-gray-900 bg-opacity-40 fixed top-0 w-full z-50">
             <div className="max-w-screen-2xl mx-auto flex justify-between items-center px-4 py-4 max-md:mx-5">
                 <div>
-                    <Image src="/imgs/logo.svg" alt='logo' className='w-24 h-auto' width={96} height={1} />
+                    <Link href="/"><Image src="/imgs/logo.svg" alt='logo' className='w-24 h-auto' width={110} height={1} /></Link>
                 </div>
                 <div className="md:hidden">
                     <button onClick={() => setIsOpen(!isOpen)} className={`transition-opacity ${isOpen ? 'opacity-0' : 'opacity-100'}`}>
