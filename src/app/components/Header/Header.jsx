@@ -20,8 +20,8 @@ export default function Header() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowVideo(true);
-    }, 3000); // 3 seconds
-
+    }, 3000); 
+    
     return () => clearTimeout(timer);
   }, []);
 
@@ -38,10 +38,8 @@ export default function Header() {
   const getVideoSource = () => {
     if (typeof window !== 'undefined') {
       if (window.matchMedia("(max-width: 768px)").matches) {
-        // Sursa video pentru telefoane
         return "/video/mobile.MP4";
       } else {
-        // Sursa video pentru laptopuri și tablete
         return "/video/video.MP4";
       }
     }
@@ -67,8 +65,7 @@ export default function Header() {
         </div>
       ) : (
         <div
-          className={`absolute inset-0 bg-cover bg-center bg-no-repeat ${isModalOpen ? 'bg-opacity-50 blur-sm' : ''}`}
-          style={{ backgroundImage: `url('/imgs/background.svg')` }}
+          className={`absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat ${isModalOpen ? 'bg-opacity-50 blur-sm' : ''} md:bg-[url('/imgs/background.svg')] bg-[url('/imgs/mobile.svg')]`}
         ></div>
       )}
       <div className={`absolute bottom-0 w-full h-1/4 bg-gradient-to-t from-black to-transparent ${isModalOpen ? 'bg-opacity-50 blur-sm' : ''}`}></div>
@@ -81,7 +78,7 @@ export default function Header() {
                 <Support onClick={openModal} />
                 <div className="space-y-2">
                   <p className="text-xl max-lg:text-lg max-md:text-sm max-lg:text-center">
-                    In an ideal city without money, people fight real human problems. Your support makes the series possible.
+                    Într-un oraș ideal fără bani, oamenii luptă cu probleme reale umane. Sprijinul tău face posibilă seria.
                   </p>
                   <div className="flex items-center gap-4 text-[#979797] max-lg:flex-col max-lg:space-y-[-10px]">
                     <h3 className="text-lg max-md:text-base">Drama Sci-Fi 2024</h3>

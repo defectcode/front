@@ -3,7 +3,7 @@ import { PayPalScriptProvider, PayPalButtons } from '@paypal/react-paypal-js';
 
 const PayPalButton = ({ amount, onSuccess }) => {
   return (
-    <PayPalScriptProvider options={{ "client-id": "ASOxDBySChHRQPQC0EICF5vMRWfVp-73bRtt8wVOjApc-7OggX1GtvgRas0BwM6thvDslDte3OrezYQ1" }}>
+    <PayPalScriptProvider options={{ "client-id": "AfEnL4qp83rEaCb7asE6vWs6LnXEyUvf5z7hGvzEui7faHLUyz3WIEsCbC4qpsV9SrSY2GivGQpL0eSK" }}>
       <div>
         <div className="w-full">
           <PayPalButtons
@@ -16,39 +16,30 @@ const PayPalButton = ({ amount, onSuccess }) => {
                   },
                 }],
               }).then((orderID) => {
-                // Return the order ID to capture later
+                console.log('Order created with ID:', orderID);
                 return orderID;
+              }).catch(error => {
+                console.error('Error creating order:', error);
+                alert('Error creating order. Please try again.');
               });
             }}
             onApprove={(data, actions) => {
               return actions.order.capture().then(details => {
-                const orderID = data.orderID; // Obține orderID-ul din detalii
+                const orderID = data.orderID;
+                console.log('Order approved with ID:', orderID);
                 alert("Transaction completed by " + details.payer.name.given_name);
-                onSuccess(); // notificăm componenta părinte despre succes
+                onSuccess();
 
-                // Trimite orderID-ul către backend pentru procesare
-                return fetch("http://127.0.0.1:8000/api/process-payment", {
-                  method: "POST",
-                  headers: {
-                    'Content-Type': 'application/json',
-                  },
-                  body: JSON.stringify({
-                    orderID: orderID
-                  })
-                })
-                .then(response => response.json())
-                .then(data => {
-                  console.log(data);
-                  if (data.error) {
-                    alert("Payment failed: " + data.error);
-                  } else {
-                    alert("Payment successful!");
-                  }
-                })
-                .catch(error => {
-                  console.error("Error:", error);
-                });
+                // Only log here as you're focusing on frontend
+                console.log("Order ID to be sent to backend:", orderID);
+              }).catch(error => {
+                console.error('Error capturing order:', error);
+                alert('Error capturing order. Please try again.');
               });
+            }}
+            onError={(err) => {
+              console.error('Error in PayPal button:', err);
+              alert('Error with PayPal transaction. Please try again.');
             }}
           />
         </div>

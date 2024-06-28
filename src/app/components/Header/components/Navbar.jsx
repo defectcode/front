@@ -11,7 +11,7 @@ export default function Navbar() {
     };
 
     return (
-        <nav className="bg-gray-900 bg-opacity-40 fixed top-0 w-full z-50">
+        <nav className="bg-black bg-opacity-50 fixed top-0 w-full z-50">
             <div className="max-w-screen-2xl mx-auto flex justify-between items-center px-4 py-4 max-md:mx-5">
                 <div>
                     <Link href="/"><Image src="/imgs/logo.svg" alt='logo' className='w-24 h-auto' width={110} height={1} /></Link>
@@ -29,7 +29,7 @@ export default function Navbar() {
                     <li className="mt-4 md:mt-0 md:ml-0 ml-4"><Link legacyBehavior href="/about"><a onClick={closeMenu} className="hover:text-gray-300">About</a></Link></li>
                     <li className="mt-4 md:mt-0 md:ml-0 ml-4"><Link legacyBehavior href="/crowdfunding"><a onClick={closeMenu} className="hover:text-gray-300">Crowdfunding</a></Link></li>
                     <li className="mt-4 md:mt-0 md:ml-0 ml-4"><Link legacyBehavior href="/contact"><a onClick={closeMenu} className="hover:text-gray-300">Contact Us</a></Link></li>
-                    <li className="mt-4 md:mt-0 md:ml-0 ml-4"><Link legacyBehavior href="/contact"><a onClick={closeMenu} className="hover:text-gray-300">Contact Us</a></Link></li>
+                    <li className="mt-4 md:mt-0 md:ml-0 ml-4"><Link legacyBehavior href="/careers"><a onClick={closeMenu} className="hover:text-gray-300">Careers</a></Link></li>
                 </ul>
                 <div className='hidden md:flex gap-5'>
                     <Link href="/"><AiOutlineUser className='flex w-8' /></Link>

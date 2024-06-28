@@ -50,7 +50,7 @@ const Carousel = () => {
               <div key={index} className="relative w-full h-screen max-md:h-[550px] flex-shrink-0 flex items-center">
                 <Image src={image} alt={`Slide ${index}`} layout="fill" objectFit="cover" className="w-full h-full max-lg:w-[200px] max-lg:mt-52 max-lg:px-3" />
                 {index === currentIndex && (
-                  <div className="absolute flex flex-col justify-around max-lg:items-center top-0 left-0 w-2/5 max-2xl:w-3/5 max-lg:w-full h-screen bg-gradient-to-r from-black to-transparent opacity-80 text-white p-14 max-lg:p-5">
+                  <div className="absolute flex flex-col justify-around max-lg:items-center top-0 left-0 w-2/5 max-2xl:w-3/5 max-lg:w-full h-screen bg-gradient-to-r from-black to-transparent opacity-90 text-white p-14 max-lg:p-5">
                     <Title />
                     <FundraisingProgress raisedAmount={raisedAmount} goalAmount={goalAmount} />
                   </div>
