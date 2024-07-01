@@ -36,7 +36,7 @@ const SupportForm = () => {
 
       pr.on('paymentmethod', async (event) => {
         const { error } = await stripe.confirmCardPayment(
-          '{CLIENT_SECRET}', // Înlocuiește cu client secretul real
+          '{CLIENT_SECRET}', // Replace with actual client secret
           {
             payment_method: event.paymentMethod.id,
           },
@@ -81,8 +81,13 @@ const SupportForm = () => {
       const height = 800;
       const left = (window.screen.width / 2) - (width / 2);
       const top = (window.screen.height / 2) - (height / 2);
+  
+      // Construiește URL-ul pentru donație Stripe folosind suma curentă
+      const stripeDonateUrl = `https://donate.stripe.com/14kaFlb407Nu76weUV?amount=${amount}`;
+  
+      // Deschide fereastra popup cu URL-ul construit
       window.open(
-        'https://donate.stripe.com/14kaFlb407Nu76weUV',
+        stripeDonateUrl,
         'Stripe Donation',
         `width=${width},height=${height},top=${top},left=${left}`,
       );
@@ -90,6 +95,7 @@ const SupportForm = () => {
       document.querySelector('.paypal-button-container button').click();
     }
   };
+  
 
   return (
     <div className="flex flex-col justify-center min-h-[500px] h-auto w-[400px] max-lg:w-[350px] max-sm:w-[300px]">
@@ -98,8 +104,8 @@ const SupportForm = () => {
           <div className="flex items-center justify-center bg-white rounded-full h-16 w-16 mb-4">
             <span className="text-2xl text-green-500">❤️</span>
           </div>
-          <h2 className="text-2xl font-bold mb-2">Mulțumim, Nume!</h2>
-          <p className="mb-4 text-[#B7B7B7]">Plata dumneavoastră a fost procesată cu succes. Veți primi în curând o chitanță prin email.</p>
+          <h2 className="text-2xl font-bold mb-2">Thank You, Name!</h2>
+          <p className="mb-4 text-[#B7B7B7]">Your payment has been successfully processed. You will soon receive a receipt via email.</p>
           <button className="px-4 py-2 bg-black text-white rounded-lg font-bold flex items-center">
             Share
             <span className="ml-2">🔗</span>
@@ -107,8 +113,8 @@ const SupportForm = () => {
         </div>
       ) : (
         <div className=''>
-          <h2 className="text-2xl font-bold mb-10 flex items-center justify-center">Susțineți seria dvs.</h2>
-          <p className="mb-4 text-[#B7B7B7]">Selectați suma de susținere:</p>
+          <h2 className="text-2xl font-bold mb-10 flex items-center justify-center">Support Your Series</h2>
+          <p className="mb-4 text-[#B7B7B7]">Select the support amount:</p>
           <div className="flex justify-between gap-5 mb-5 max-lg:gap-2 max-sm:gap-1">
             {[1, 10, 500].map((amt) => (
               <button
@@ -133,15 +139,15 @@ const SupportForm = () => {
             <div className="flex-grow border-t border-dotted border-gray-600 mx-2"></div>
             <p className="text-white">${amount}</p>
           </div>
-          <p className="mt-6 mb-4 text-[#B7B7B7]">Selectați o metodă de plată:</p>
+          <p className="mt-6 mb-4 text-[#B7B7B7]">Select a payment method:</p>
           <div className="flex justify-between mb-4">
             {['stripe', 'paypal'].map((method) => (
               <button
                 key={method}
                 onClick={() => setPaymentMethod(method)}
-                className={`px-9 py-1 rounded-xl font-bold flex items-center justify-center mb-5 ${paymentMethod === method ? 'bg-black text-white mr-2' : 'bg-[#252525] border-2 border-[#3e3d3d]'}`}
+                className={`px-10 py-0 rounded-xl font-bold flex items-center justify-center mb-5 ${paymentMethod === method ? 'bg-black text-white mr-2' : 'bg-[#252525] border-2 border-[#3e3d3d]'}`}
               >
-                {method === 'paypal' ? <Image src="/icons/paypal.svg" alt='paypal' width={100} height={50} /> : <div className="flex items-center gap-2 px-5"><CiCreditCard1 size={70} /></div>}
+                {method === 'paypal' ? <div className='flex items-center px-5 max-md:px-2'>PayPal</div> : <div className="flex items-center gap-2 px-5 max-md:px-3 "><CiCreditCard1 size={50} /></div>}
               </button>
             ))}
           </div>
@@ -162,7 +168,7 @@ const SupportForm = () => {
                 onClick={handleSupportClick}
                 className="mt-4 px-40 max-lg:px-32 py-4 bg-white text-black text-xl rounded-lg font-bold"
               >
-                Susțineți
+                Support
               </button>
             </div>
           )}

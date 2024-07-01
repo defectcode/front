@@ -3,7 +3,7 @@ import React from "react";
 
 const Dots = ({ total, current }) => {
     return (
-      <div className="flex justify-center space-x-2 absolute bottom-0 max-md:bottom-20">
+      <div className="flex justify-center space-x-4 absolute bottom-0">
         {Array.from({ length: total }).map((_, index) => (
           <span
             key={index}

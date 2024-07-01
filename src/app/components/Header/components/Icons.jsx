@@ -18,13 +18,13 @@ const Icons = ({ isMuted, toggleMute }) => {
   };
 
   return (
-    <div className='max-lg:absolute max-lg:top-10 max-lg:right-5 mt-20 lg:mt-0 flex justify-end lg:justify-start gap-3'>
-      <button onClick={toggleMute} className='w-auto h-10 items-center relative'>
-        <Image src={isMuted ? "/imgs/muted.svg" : "/imgs/sound.svg"} width={30} height={30} alt='volume' className='w-auto h-10 items-center' />
+    <div className='max-lg:absolute max-lg:top-10 max-lg:right-5 max-md:mt-8 max-md:mr-3 lg:mt-0 flex justify-end lg:justify-start gap-5 max-md:gap-2'>
+      <button onClick={toggleMute} className='w-auto h-5 items-center relative'>
+        <Image src={isMuted ? "/imgs/muted.svg" : "/imgs/sound.svg"} width={20} height={20} alt='volume' className='w-auto h-10 items-center max-md:h-6' />
         {isMuted}
       </button>
-      <button onClick={handleScreenClick} className='w-auto h-10 items-center'>
-        <Image src="/imgs/screen.svg" width={30} height={30} alt='screenSize' className='w-auto h-10 items-center' />
+      <button onClick={handleScreenClick} className='w-auto h-5 items-center'>
+        <Image src="/imgs/screen.svg" width={30} height={30} alt='screenSize' className='w-auto h-10 items-center max-md:h-6' />
       </button>
       {isVideoVisible && (
         <DynamicVideoPlayer
