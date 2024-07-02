@@ -15,6 +15,7 @@ const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY)
 export default function Header() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const backgroundRef = useRef(null);
+  const [isClient, setIsClient] = useState(false);
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -26,7 +27,7 @@ export default function Header() {
 
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth <= 1024) { // lg size or smaller
+      if (typeof window !== "undefined" && window.innerWidth <= 1024) { // lg size or smaller
         const viewportHeight = window.innerHeight;
         document.documentElement.style.setProperty('--viewport-height', `${viewportHeight}px`);
       } else {
@@ -40,8 +41,12 @@ export default function Header() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
   return (
-    <div className={`relative ${window.innerWidth <= 1024 ? 'h-[var(--viewport-height)]' : 'h-screen'} w-auto text-white font-ekMukta overflow-hidden`}>
+    <div className={`relative ${isClient && window.innerWidth <= 1024 ? 'h-[var(--viewport-height)]' : 'h-screen'} w-auto text-white font-ekMukta overflow-hidden`}>
       <div
         ref={backgroundRef}
         className={`absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat max-md:w-auto ${isModalOpen ? 'bg-opacity-50 blur-sm' : ''} md:bg-[url('/imgs/background.svg')] bg-[url('/imgs/mobile.svg')]`}
