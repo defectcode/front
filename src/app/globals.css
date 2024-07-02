@@ -9,3 +9,24 @@ iframe {
   height: 100%;
 }
   
+
+@font-face {
+  font-family: 'Avenir';
+  src: url('/fonts/Avenir-Roman.woff2') format('woff2'),
+       url('/fonts/Avenir-Roman.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Avenir';
+  src: url('/fonts/Avenir-Heavy.woff2') format('woff2'),
+       url('/fonts/Avenir-Heavy.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+}
+
+body {
+  font-family: var(--font-family-mukta);
+}
+

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import Image from 'next/image';
 import { useStripe, useElements, PaymentRequestButtonElement } from '@stripe/react-stripe-js';
 import PayPalButton from './PayPal/PayPalButton';
 import { CiCreditCard1 } from "react-icons/ci";
@@ -95,10 +94,9 @@ const SupportForm = () => {
       document.querySelector('.paypal-button-container button').click();
     }
   };
-  
 
   return (
-    <div className="flex flex-col justify-center min-h-[500px] h-auto w-[400px] max-lg:w-[350px] max-sm:w-[300px]">
+    <div className="flex flex-col justify-center items-center min-h-[439px] h-auto w-[400px] max-lg:w-[350px] max-sm:w-[300px]">
       {isPaymentSuccessful ? (
         <div className="flex flex-col items-center justify-center h-full">
           <div className="flex items-center justify-center bg-white rounded-full h-16 w-16 mb-4">
@@ -113,39 +111,42 @@ const SupportForm = () => {
         </div>
       ) : (
         <div className=''>
-          <h2 className="text-2xl font-bold mb-10 flex items-center justify-center">Support Your Series</h2>
-          <p className="mb-4 text-[#B7B7B7]">Select the support amount:</p>
-          <div className="flex justify-between gap-5 mb-5 max-lg:gap-2 max-sm:gap-1">
+          <h2 className="text-[20px] font-extrabold mt-[2px] mb-10 flex items-center justify-center">Support Your Series</h2>
+          <p className="mb-5 text-[#B7B7B7] text-[12px]">Select the support amount:</p>
+          <div className="flex justify-between gap-5 mb-5 max-lg:gap-2 max-sm:gap-1 text-sm">
             {[1, 10, 500].map((amt) => (
               <button
                 key={amt}
                 onClick={() => handleAmountChange(amt)}
-                className={`px-6 py-3 rounded-xl font-bold max-sm:px-3 ${amount === amt && !isCustomAmount ? 'bg-white text-black' : 'bg-[#252525] border-2 border-[#3e3d3d]'}`}
+                className={`px-6 max-md:px-5 max-md:mx-1 py-3 rounded-xl ${amount === amt && !isCustomAmount ? 'bg-white text-black font-bold' : 'bg-[#252525] border-2  border-[#3e3d3d]'}`}
               >
                 ${amt}
               </button>
             ))}
-            <input
-              type="number"
-              value={isCustomAmount ? customAmount : ''}
-              onChange={handleCustomAmountChange}
-              className={`px-6 py-3 rounded-xl font-bold max-sm:px-3 ${isCustomAmount ? 'bg-white text-black' : 'bg-[#252525] border-2 border-[#3e3d3d]'}`}
-              placeholder="$Other"
-              style={{ appearance: 'textfield', width: '150px', height: 'auto', scrollbarWidth:'none', overflow: 'hidden' }}
-            />
+            <div className="relative flex items-center">
+              <span className={`absolute left-3 ${isCustomAmount ? 'text-black' : 'text-white'}`}>$</span>
+              <input
+                type="number"
+                value={isCustomAmount ? customAmount : ''}
+                onChange={handleCustomAmountChange}
+                className={`pl-5 pr-2 py-3 rounded-xl font-normal max-md:w-20 ${isCustomAmount ? 'bg-white text-black font-bold' : 'bg-[#252525] border-2 border-[#3e3d3d]'}`}
+                placeholder="Other"
+                style={{ appearance: 'textfield', width: '80px', height: 'auto', scrollbarWidth:'none', overflow: 'hidden' }}
+              />
+            </div>
           </div>
-          <div className="my-5 flex justify-between items-center w-full max-w-md mx-auto">
+          <div className="my-5 mt-10 flex justify-between items-center w-full max-w-md mx-auto">
             <p className="text-white">Total:</p>
             <div className="flex-grow border-t border-dotted border-gray-600 mx-2"></div>
             <p className="text-white">${amount}</p>
           </div>
-          <p className="mt-6 mb-4 text-[#B7B7B7]">Select a payment method:</p>
+          <p className="mt-10 mb-4 text-[#B7B7B7] text-[12px]">Select a payment method:</p>
           <div className="flex justify-between mb-4">
             {['stripe', 'paypal'].map((method) => (
               <button
                 key={method}
                 onClick={() => setPaymentMethod(method)}
-                className={`px-10 py-0 rounded-xl font-bold flex items-center justify-center mb-5 ${paymentMethod === method ? 'bg-black text-white mr-2' : 'bg-[#252525] border-2 border-[#3e3d3d]'}`}
+                className={`px-10 py-1 rounded-xl font-bold flex items-center justify-center mb-5 ${paymentMethod === method ? 'bg-black text-white mr-2' : 'bg-[#252525] border-2 border-[#3e3d3d]'}`}
               >
                 {method === 'paypal' ? <div className='flex items-center px-5 max-md:px-2'>PayPal</div> : <div className="flex items-center gap-2 px-5 max-md:px-3 "><CiCreditCard1 size={50} /></div>}
               </button>
@@ -163,10 +164,10 @@ const SupportForm = () => {
             />
           )}
           {paymentMethod !== 'paypal' && (
-            <div className="flex justify-center items-center">
+            <div className="flex justify-center items-end">
               <button
                 onClick={handleSupportClick}
-                className="mt-4 px-40 max-lg:px-32 py-4 bg-white text-black text-xl rounded-lg font-bold"
+                className="flex justify-center mt-3 px-40 max-lg:px-32 py-3 bg-white text-black text-lg rounded-lg font-semibold max-md:w-80 "
               >
                 Support
               </button>
