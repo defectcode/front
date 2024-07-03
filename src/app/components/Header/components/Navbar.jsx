@@ -3,7 +3,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React, { useState } from 'react';
 import { AiOutlineUser, AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
-import Support from './Support';
 
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
@@ -23,7 +22,7 @@ export default function Navbar() {
                         {isOpen ? <AiOutlineClose className="text-white w-8 h-8 max-md:w-5 max-md:h-5" /> : <Image src="/imgs/burgher.svg" alt='burgher' width={40} height={1} className="text-white w-8 h-8 max-md:w-[20px] max-md:h-[12px]" />}
                     </button>
                 </div>
-                <ul className={`flex-col md:flex md:flex-row gap-10 text-lg md:text-white fixed md:static top-0 right-0 h-screen md:h-auto transition-transform transform ${isOpen ? 'translate-x-0 max-md:bg-gradient-to-r from-black to-dark-gray max-md:bg-opacity-100 text-white' : 'translate-x-full bg-opacity-50'} md:translate-x-0 md:w-auto w-2/3 pt-20 md:pt-0`}>
+                <ul className={`flex-col md:flex md:flex-row gap-10 text-lg md:text-[#D9D9D9] fixed md:static top-0 right-0 h-screen md:h-auto transition-transform transform ${isOpen ? 'translate-x-0 max-md:bg-gradient-to-r from-black to-dark-gray max-md:bg-opacity-100 text-white' : 'translate-x-full bg-opacity-50'} md:translate-x-0 md:w-auto w-2/3 pt-20 md:pt-0`}>
                     <button className="absolute top-6 right-4 md:hidden" onClick={closeMenu}>
                         <AiOutlineClose className="text-white w-6 h-6 mt-2" />
                     </button>
@@ -36,7 +35,7 @@ export default function Navbar() {
                         <Link href="/"><Image src="/imgs/logo.svg" alt='logo' className='w-[118px] h-auto mb-10' width={200} height={50} /></Link>
                     </div>
                 </ul>
-                <div className='hidden md:flex gap-5 text-white'>
+                <div className='hidden md:flex gap-5 text-[#D9D9D9]'>
                     <Link href="/"><AiOutlineUser className='flex w-auto h-6' /></Link>
                 </div>
             </div>

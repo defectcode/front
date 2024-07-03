@@ -46,18 +46,18 @@ export default function Header() {
   }, []);
 
   return (
-    <div className={`relative ${isClient && window.innerWidth <= 1024 ? 'h-[var(--viewport-height)]' : 'h-screen'} w-auto text-white font-ekMukta overflow-hidden`}>
+    <div className={`relative ${isClient && window.innerWidth <= 1024 ? 'h-[var(--viewport-height)]' : 'h-screen'} w-auto text-white font-ekMukta`}>
       <div
         ref={backgroundRef}
-        className={`absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat max-md:w-auto ${isModalOpen ? 'bg-opacity-50 blur-sm' : ''} md:bg-[url('/imgs/background.svg')] bg-[url('/imgs/mobile.svg')]`}
-        style={{
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat',
-        }}
+        className={`absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat ${isModalOpen ? 'bg-opacity-50 blur-sm' : ''} md:bg-[url('/imgs/background.svg')] bg-[url('/imgs/mobile.svg')]`}
+        // style={{
+        //   backgroundSize: 'cover',
+        //   backgroundPosition: 'center',
+        //   backgroundRepeat: 'no-repeat',
+        // }}
       ></div>
       <div className={`absolute bottom-0 w-full h-4/6 bg-gradient-to-t from-black/75 via-black/75 to-transparent ${isModalOpen ? 'bg-opacity-50 blur-sm' : ''}`}></div>
-      <div className="relative z-10 h-full overflow-auto">
+      <div className="relative z-10 h-full w-full">
         <Navbar />
         <div className="max-w-screen-2xl mx-auto h-full flex flex-col text-white max-2xl:p-4">
           <div className="flex-grow flex flex-col justify-end max-2xl:p-2">
@@ -67,12 +67,12 @@ export default function Header() {
                   <Image src="/imgs/logo.svg" alt='logo' className='w-48 h-auto max-md:mb-5' width={128} height={128} loading="lazy" />
                   <h3 className="text-lg max-md:text-sm text-[#C1C1C1] max-md:mb-4 font-avenirRoman">Drama Sci-Fi</h3>
                 </div>
-                <div className="md:flex md:items-center md:px-2 max-md:mb-4 mb-11 font-avenirHeavy">  {/* Added lg:mb-11 for larger screens */}
+                <div className="md:flex md:items-center md:px-2 max-md:mb-4 mb-11 font-avenirHeavy">
                   <Support onClick={openModal} />
                 </div>
                 <div className="space-y-2 md:flex md:flex-col md:items-start mb-10 max-md:mb-0">
-                  <p className="text-xl max-lg:text-lg max-md:text-[14px] max-sm:text-- max-md:leading-5 max-lg:text-center max-md:mb-4 text-[#CDCDCD] mx-2 font-ekMukta tracking-neg-3percent">
-                    Într-un oraș ideal fără bani, oamenii se confruntă cu probleme umane reale. Sprijinul tău face posibilă seria.
+                  <p className="text-xl max-lg:text-lg max-md:text-[12px] max-md:leading-5 max-lg:text-center max-md:mb-4 text-[#CDCDCD] mx-2 font-ekMukta tracking-neg-3percent">
+                    In an ideal city without money, people fight real human problems. Your support makes the series possible.
                   </p>
                   <div className="flex items-center gap-5 text-[#979797] max-lg:flex-col max-lg:space-y-[-10px]">
                     <h3 className="text-lg max-md:text-base hidden md:block ml-2 max-md:ml-0 font-avenirRoman">Drama Sci-Fi 2024</h3>

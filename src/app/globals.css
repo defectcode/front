@@ -10,7 +10,7 @@ iframe {
 }
   
 
-@font-face {
+/* @font-face {
   font-family: 'Avenir';
   src: url('/fonts/Avenir-Roman.woff2') format('woff2'),
        url('/fonts/Avenir-Roman.woff') format('woff');
@@ -24,7 +24,7 @@ iframe {
        url('/fonts/Avenir-Heavy.woff') format('woff');
   font-weight: 700;
   font-style: normal;
-}
+} */
 
 body {
   font-family: var(--font-family-mukta);
