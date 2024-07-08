@@ -6,7 +6,7 @@ import Navbar from "./components/Header/components/Navbar";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "fineProduction",
+  title: "Paradise Problems",
   description: "Movie: City of Love",
 };
 
@@ -17,8 +17,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/icons/faviconpng.png" />
+      </head>
       <body className={inter.className}>
-        <Navbar/>
+        <Navbar />
         {children}
       </body>
     </html>

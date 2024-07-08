@@ -5,11 +5,10 @@ import { MdKeyboardArrowRight } from "react-icons/md";
 const NextButton = ({ onClick }) => {
     return (
         <button
-            className="absolute right-0 p-2 bg-gray-800 text-transparent rounded-full m-5 z-10 bg-transparent"
-            onClick={onClick}
+        onClick={onClick}
+        className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-transparent text-white rounded-full shadow-md p-2"
         >
-            <MdKeyboardArrowRight className='w-20 h-auto max-lg:w-10'/>
-
+            <MdKeyboardArrowRight className='w-16 h-auto max-lg:w-10'/>
         </button>
     );
 };

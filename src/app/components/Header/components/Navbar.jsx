@@ -3,8 +3,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React, { useState } from 'react';
 import { AiOutlineUser, AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
+import Support from './Support'; // Import the Support component
 
-export default function Navbar() {
+// export default function Navbar({ showSupportInNavbar, openModal }) {
+    export default function Navbar() {
+
     const [isOpen, setIsOpen] = useState(false);
 
     const closeMenu = () => {
@@ -12,12 +15,17 @@ export default function Navbar() {
     };
 
     return (
-        <nav className="bg-black bg-opacity-25 fixed top-0 w-full max-md:h-10 z-50 font-avenirRoman backdrop-blur-sm">
-            <div className="max-w-screen-2xl mx-auto flex justify-between items-center px-2 py-2 max-md:mx-6">
+        <nav className="bg-black bg-opacity-25 fixed top-0 w-full h-11 max-md:h-10 z-50 font-avenirRoman backdrop-blur-lg">
+            <div className="max-w-screen-2xl mx-auto flex justify-between items-center px-2 py-2 max-md:mx-5">
                 <div>
                     <Link href="/"><Image src="/imgs/logo.svg" alt='logo' className='w-20 h-auto' width={110} height={1} /></Link>
                 </div>
-                <div className="md:hidden">
+                <div className="md:hidden flex items-center">
+                    {/* {showSupportInNavbar && (
+                        <div className="mr-4">
+                            <Support onClick={openModal} />
+                        </div>
+                    )} */}
                     <button onClick={() => setIsOpen(!isOpen)} className="transition-opacity">
                         {isOpen ? <AiOutlineClose className="text-white w-8 h-8 max-md:w-5 max-md:h-5" /> : <Image src="/imgs/burgher.svg" alt='burgher' width={40} height={1} className="text-white w-8 h-8 max-md:w-[20px] max-md:h-[12px]" />}
                     </button>

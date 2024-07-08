@@ -5,12 +5,13 @@ import { MdKeyboardArrowLeft } from "react-icons/md";
 const PrevButton = ({ onClick }) => {
     return (
         <button
-            className="absolute left-0 p-2 bg-gray-800 text-transparent rounded-full m-5 z-10 bg-transparent "
-            onClick={onClick}
+        onClick={onClick}
+        className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-transparent text-white rounded-full shadow-md p-2"
         >
-            <MdKeyboardArrowLeft className='w-20 h-auto max-lg:w-10' />
-        </button>
+        <MdKeyboardArrowLeft className='w-16 h-auto max-lg:w-10' />
+      </button>
     );
 };
 
 export default PrevButton;
+
