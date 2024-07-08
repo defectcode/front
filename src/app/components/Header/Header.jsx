@@ -81,11 +81,11 @@ export default function Header() {
                   <p className="text-lg max-lg:text-lg max-md:text-[14px] max-md:leading-5 max-lg:text-center max-md:mb-4 text-[#CDCDCD] mx-0 font-ekMukta tracking-neg-3percent">
                     In an ideal city without money, people face real human problems. Your support makes the series possible.
                   </p>
-                  {!showSupportInNavbar && (
+                  {/* {!showSupportInNavbar && (
                     <div className="md:hidden flex justify-center">
                       <Support onClick={openModal} />
                     </div>
-                  )}
+                  )} */}
                   <div className="flex items-center gap-5 text-[#979797] max-lg:flex-col max-lg:space-y-[12px]">
                     <h3 className="text-lg max-md:text-base hidden md:block font-avenirRoman">Drama • Sci-Fi • 2024</h3>
                     <div className="flex gap-5 max-md:gap-2">
