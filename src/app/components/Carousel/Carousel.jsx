@@ -117,7 +117,7 @@ const Carousel = () => {
               className={`${isMobile ? 'w-[268px] h-[453px] rounded-lg' : isTablet ? 'w-[600px] h-[400px] rounded-lg' : 'w-[1317px] h-[656px]'} object-cover`}
             />
             {index === currentIndex - 1 && (
-              <div className={`absolute inset-0 ${isMobile ? 'w-full h-full bg-gradient-to-t from-black/60 to-transparent p-3' : isTablet ? 'w-full h-full bg-gradient-to-r from-black/60 to-transparent p-3' : 'w-3/5 h-full bg-gradient-to-r from-black/85 to-transparent pl-10'} flex flex-col justify-around text-white`}>
+              <div className={`absolute inset-0 ${isMobile ? 'w-full h-full bg-gradient-to-t from-black/60 to-transparent p-2' : isTablet ? 'w-full h-full bg-gradient-to-r from-black/60 to-transparent p-3' : 'w-3/5 h-full bg-gradient-to-r from-black/85 to-transparent pl-10'} flex flex-col justify-around text-white`}>
                 {!isMobile && !isTablet && <Title contentIndex={index} isMobile={isMobile} />}
                 <FundraisingProgress raisedAmount={image.raisedAmount} goalAmount={image.goalAmount} contentIndex={index} />
               </div>

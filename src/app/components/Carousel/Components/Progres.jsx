@@ -28,7 +28,7 @@ const FundraisingProgress = ({ raisedAmount, goalAmount, contentIndex = 0 }) => 
         </div>
       </div>
       {content.status === 'Process' ? (
-        <p className='flex flex-wrap items-end text-xl lg:text-md mb-3 md:mb-0 gap-1 whitespace-nowrap max-md:-space-y-2' style={{ fontFamily: 'Ek Mukta, sans-serif' }}>
+        <p className='flex flex-wrap items-end text-xl lg:text-md mb-3 md:mb-0 max-lg:gap-[2px] gap-3 whitespace-nowrap max-md:-space-y-2' style={{ fontFamily: 'Ek Mukta, sans-serif' }}>
           <span className="font-semibold max-md:font-semibold max-md:text-[12px]">${raisedAmount}</span>
           <span className="text-[#C1C1C1] text-[15px] max-md:text-[12px] -mb-[1px]">raised of</span>
           <span className="text-[#C1C1C1] text-[15px] max-md:text-[12px]">${goalAmount}</span>
