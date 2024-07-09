@@ -6,13 +6,12 @@ const NextButton = ({ onClick }) => {
     return (
         <button
         onClick={onClick}
-        className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-transparent text-white rounded-full shadow-md p-2"
+        className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-none text-white rounded-full p-2"
         >
-            <MdKeyboardArrowRight className='w-16 h-auto max-lg:w-10'/>
+            <MdKeyboardArrowRight className='w-44 h-auto max-lg:w-10 text-transparent'/>
         </button>
     );
 };
 
 export default NextButton;
-
 

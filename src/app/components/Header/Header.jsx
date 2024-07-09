@@ -35,21 +35,12 @@ export default function Header() {
     updateHeight();
     window.addEventListener('resize', updateHeight);
 
-    const handleScroll = () => {
-      if (window.scrollY > 100) { // Adjust the scroll position as needed
-        setShowSupportInNavbar(true);
-      } else {
-        setShowSupportInNavbar(false);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
 
     effectRan.current = true;
 
     return () => {
       window.removeEventListener('resize', updateHeight);
-      window.removeEventListener('scroll', handleScroll);
+      // window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
@@ -73,24 +64,19 @@ export default function Header() {
                   </h3>
                 </div>
                 {!showSupportInNavbar && (
-                  <div className="md:flex md:items-center md:px-2 max-md:mb-4 font-avenirHeavy max-md:hidden">
+                  <div className="md:flex md:items-center md:px-2 max-md:mb-4 font-avenirHeavy">
                     <Support onClick={openModal} />
                   </div>
                 )}
-                <div className="space-y-2 md:flex md:flex-col md:items-start">
-                  <p className="text-lg max-lg:text-lg max-md:text-[14px] max-md:leading-5 max-lg:text-center max-md:mb-4 text-[#CDCDCD] mx-0 font-ekMukta tracking-neg-3percent">
+                <div className="space-y-1 md:flex md:flex-col md:items-start">
+                  <p className="text-[16px] max-lg:text-lg max-md:text-[14px] max-md:leading-5 max-lg:text-center max-md:mb-4 text-[#CDCDCD] mx-0 font-ekMukta tracking-neg-3percent">
                     In an ideal city without money, people face real human problems. Your support makes the series possible.
                   </p>
-                  {/* {!showSupportInNavbar && (
-                    <div className="md:hidden flex justify-center">
-                      <Support onClick={openModal} />
-                    </div>
-                  )} */}
                   <div className="flex items-center gap-5 text-[#979797] max-lg:flex-col max-lg:space-y-[12px]">
-                    <h3 className="text-lg max-md:text-base hidden md:block font-avenirRoman">Drama • Sci-Fi • 2024</h3>
+                    <h3 className="text-[16px] max-md:text-base hidden md:block font-avenirRoman">Drama • Sci-Fi • 2024</h3>
                     <div className="flex gap-5 max-md:gap-2">
-                      <Image src="/imgs/sony.svg" width={64} height={1} alt="sony" className="max-lg:w-12 max-md:w-10 max-sm:w-9" />
-                      <Image src="/imgs/netflix.svg" width={64} height={1} alt="netflix" className="max-lg:w-12 max-md:w-10 max-sm:w-9" />
+                      <Image src="/imgs/sony.svg" width={64} height={1} alt="sony" className="w-[46px] max-md:w-10 max-sm:w-9" />
+                      <Image src="/imgs/netflix.svg" width={64} height={1} alt="netflix" className="w-[46px] max-md:w-10 max-sm:w-9" />
                     </div>
                   </div>
                 </div>
