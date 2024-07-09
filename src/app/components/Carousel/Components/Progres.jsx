@@ -13,8 +13,8 @@ const FundraisingProgress = ({ raisedAmount, goalAmount, contentIndex = 0 }) => 
         {content.titleConcept}
       </h1>
       <div className="flex justify-between text-xl" style={{ fontFamily: 'Avenir Roman, sans-serif', fontWeight: 400 }}>
-        <p className="text-xl max-lg:text-xl mb-1 max-md:text-[16px] text-[#FFFFFF] max-md:mt-2">{content.subtitle}</p>
-        <div className="flex gap-2 text-lg max-sm:text-md mt-1 mr-[205px] max-md:mr-0 max-md:text-[16px]" style={{ fontFamily: 'Avenir, sans-serif' }}>
+        <p className="text-xl max-lg:text-xl mb-1 max-md:text-[16px] text-[#FFFFFF] max-md:mt-1">{content.subtitle}</p>
+        <div className="flex gap-2 text-lg max-sm:text-md mt-1 mr-[205px] max-md:mr-0 max-md:text-[16px] max-md:mb-2" style={{ fontFamily: 'Avenir, sans-serif' }}>
           <p className="text-[#C1C1C1] text-[16px]">{content.stageLabel}</p>
           <p className='font-bold text-[16px]' style={{ fontFamily: 'Avenir Heavy, sans-serif' }}>{content.stageNumber}</p>
         </div>

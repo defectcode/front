@@ -93,7 +93,7 @@ const Carousel = () => {
   return (
     <div className="relative w-full mx-auto overflow-hidden bg-black" style={{ height: isMobile ? '731px' : isTablet ? '800px' : '800px' }}>
       {(isMobile || isTablet) && (
-        <div className="absolute w-full top-0 left-0 z-10 ">
+        <div className="absolute w-full top-0 left-0 z-10 max-md:mt-[120px]">
           <Title contentIndex={currentIndex - 1} isMobile={isMobile} isTablet={isTablet} />
         </div>
       )}
