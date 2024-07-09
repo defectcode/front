@@ -8,7 +8,7 @@ const Information = () => {
       <Description />
       <div className="flex flex-col gap-3 mb-10 lg:mb-0 text-start max-lg:text-center max-md:gap-6">
         <h1 className="text-[18px] text-[#FFFFFF] font-semibold" style={{ fontFamily: "'Ek Mukta', sans-serif" }}>Support And Donations</h1>
-        <div className="flex flex-col text-[#949494] gap-4 text-sm md:text-base max-md:gap-3">
+        <div className="flex flex-col text-[#949494] gap-4 text-sm md:text-base max-md:gap-3" style={{ fontFamily: "'Ek Mukta', sans-serif", fontWeight: 400 }}>
           <Link className="text-[14px]" href="/">Donation Link</Link>
           <Link className="text-[14px]" href="/">How Your Contributions Help</Link>
           <Link className="text-[14px]" href="/">FAQ</Link>
@@ -17,7 +17,7 @@ const Information = () => {
       </div>
       <div className="flex flex-col gap-3 mb-10 lg:mb-0 text-start max-lg:text-center max-md:gap-6">
         <h1 className="text-[18px] text-[#FFFFFF] font-semibold" style={{ fontFamily: "'Ek Mukta', sans-serif" }}>Legal Information</h1>
-        <div className="flex flex-col text-[#949494] gap-4 text-sm md:text-base max-md:gap-3">
+        <div className="flex flex-col text-[#949494] gap-4 text-sm md:text-base max-md:gap-3" style={{ fontFamily: "'Ek Mukta', sans-serif", fontWeight: 400 }}>
           <Link className="text-[14px]" href="/">Privacy Policy</Link>
           <Link className="text-[14px]" href="/">Cookie Policy</Link>
           <Link className="text-[14px]" href="/">Terms of Use</Link>

@@ -11,7 +11,7 @@ const Networking = () => {
                 <Image src='/imgs/logo.svg' alt="logo" width={98} height={1} />
             </div>
             <div className="mb-4 lg:mb-0">
-                <p className="text-[#A1A1A1] text-[14px] text-center max-md:text-[10px]">
+                <p className="text-[#A1A1A1] text-[14px] text-center max-md:text-[10px]" style={{ fontFamily: "'Ek Mukta', sans-serif", fontWeight: 100 }}>
                     Copyright (c) 2024 Fyne Inc. All rights reserved.
                 </p>
             </div>
