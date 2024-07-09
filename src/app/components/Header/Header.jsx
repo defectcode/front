@@ -53,7 +53,7 @@ export default function Header() {
       <div className={`absolute bottom-0 w-full h-3/6 bg-gradient-to-t from-black/70 via-black/70 to-transparent ${isModalOpen ? 'bg-opacity-50 blur-sm' : ''}`}></div>
       <div className="relative z-10 h-full overflow-auto">
         <Navbar/>
-        <div className="max-w-screen-2xl mx-auto h-full flex flex-col text-white max-2xl:p-4">
+        <div className="max-w-[1300px] mx-auto h-full flex flex-col text-white max-2xl:p-4">
           <div className="flex-grow flex flex-col justify-end max-2xl:p-2">
             <div className={`flex flex-col md:flex-row justify-between max-lg:flex-col max-lg:justify-center customStyles`}>
               <div className="flex flex-col mb-10 max-md:mb-0 items-center md:flex-row gap-3 max-lg:flex-col max-lg:justify-center">
@@ -69,12 +69,12 @@ export default function Header() {
                   </div>
                 )}
                 <div className="space-y-1 md:flex md:flex-col md:items-start">
-                  <p className="text-[16px] max-lg:text-lg max-md:text-[14px] max-md:leading-5 max-lg:text-center max-md:mb-4 text-[#CDCDCD] mx-0 font-ekMukta tracking-neg-3percent">
+                  <p className="text-[16px] max-lg:text-lg max-lg:text-[14px] max-lg:leading-5 max-md:text-center max-md:mb-4 text-[#CDCDCD] mx-0 font-ekMukta tracking-neg-3percent">
                     In an ideal city without money, people face real human problems. Your support makes the series possible.
                   </p>
-                  <div className="flex items-center gap-5 text-[#979797] max-lg:flex-col max-lg:space-y-[12px]">
+                  <div className="flex items-center gap-5 text-[#979797] max-md:flex-col max-md:space-y-[12px]">
                     <h3 className="text-[16px] max-md:text-base hidden md:block font-avenirRoman">Drama • Sci-Fi • 2024</h3>
-                    <div className="flex gap-5 max-md:gap-2">
+                    <div className="flex gap-5 max-lg:gap-2">
                       <Image src="/imgs/sony.svg" width={64} height={1} alt="sony" className="w-[46px] max-md:w-10 max-sm:w-9" />
                       <Image src="/imgs/netflix.svg" width={64} height={1} alt="netflix" className="w-[46px] max-md:w-10 max-sm:w-9" />
                     </div>

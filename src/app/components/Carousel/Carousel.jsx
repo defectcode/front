@@ -90,7 +90,7 @@ const Carousel = () => {
       <div
         className="flex transition-transform duration-500 ease-in-out my-5 max-md:mt-36"
         ref={containerRef}
-        style={{ width: `${(totalImages + 2) * (isMobile ? 283 : 1317)}px`, transform: `translateX(-${currentIndex * (isMobile ? 283 : 1317) - (carouselWidth - (isMobile ? 295 : 1317)) / 2}px)` }}
+        style={{ width: `${(totalImages + 2) * (isMobile ? 283 : 1317)}px`, transform: `translateX(-${currentIndex * (isMobile ? 286 : 1335) - (carouselWidth - (isMobile ? 295 : 1325)) / 2}px)` }}
       >
         <div className={`w-[${isMobile ? 283 : 1317}px] flex-shrink-0 mx-[9px]`}>
           <img
@@ -107,7 +107,7 @@ const Carousel = () => {
               className={`${isMobile ? 'w-[268px] h-[453px] rounded-lg' : 'w-[1317px] h-[656px]'} object-cover`}
             />
             {index === currentIndex - 1 && (
-              <div className={`absolute inset-0 ${isMobile ? 'w-full h-full bg-gradient-to-t from-black/60 to-transparent p-4' : 'w-3/5 h-full bg-gradient-to-r from-black/85 to-transparent pl-10'} flex flex-col justify-around text-white`}>
+              <div className={`absolute inset-0 ${isMobile ? 'w-full h-full bg-gradient-to-t from-black/60 to-transparent p-3' : 'w-3/5 h-full bg-gradient-to-r from-black/85 to-transparent pl-10'} flex flex-col justify-around text-white`}>
                 {!isMobile && <Title contentIndex={index} isMobile={isMobile} />}
                 <FundraisingProgress raisedAmount={image.raisedAmount} goalAmount={image.goalAmount} contentIndex={index} />
               </div>
