@@ -98,7 +98,7 @@ const Carousel = () => {
         </div>
       )}
       <div
-        className="flex transition-transform duration-500 ease-in-out max-lg:my-16 max-md:mt-36"
+        className="flex transition-transform duration-500 ease-in-out my-5 max-lg:my-16 max-md:mt-36"
         ref={containerRef}
         style={{ width: `${(totalImages + 2) * (isMobile ? 283 : isTablet ? 600 : 1317)}px`, transform: `translateX(-${currentIndex * (isMobile ? 286 : isTablet ? 620 : 1335) - (carouselWidth - (isMobile ? 295 : isTablet ? 620 : 1325)) / 2}px)` }}
       >
