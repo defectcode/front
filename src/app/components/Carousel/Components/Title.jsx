@@ -1,16 +1,15 @@
 import React from "react";
 import { images } from './constants/carouselData';
 
-const Title = ({ contentIndex = 0, isMobile }) => {
+const Title = ({ contentIndex = 0, isMobile, isTablet }) => {
   const content = images[contentIndex];
 
   if (!content) {
     return null; // Sau un fallback UI
   }
 
-
   return (
-    <div className={`space-y-1 ${isMobile ? 'p-0 text-center' : 'mt-14'} max-lg:-mt-16`}>
+    <div className={`space-y-1 ${isMobile ? 'p-0 text-center' : isTablet ? 'mt-14 flex items-center justify-center' : 'mt-14'} max-lg:-mt-16`}>
       <h1 className={`text-white font-semibold max-md:text-2xl ${isMobile ? 'text-lg' : 'text-4xl'}`} style={{ fontFamily: 'Roboto, sans-serif', fontWeight: 600 }}>
         {content.title}
       </h1>

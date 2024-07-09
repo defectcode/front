@@ -18,7 +18,6 @@ const FundraisingProgress = ({ raisedAmount, goalAmount, contentIndex = 0 }) => 
           <p className="text-[#C1C1C1] text-[16px]">{content.stageLabel}</p>
           <p className='font-bold text-[16px]' style={{ fontFamily: 'Avenir Heavy, sans-serif' }}>{content.stageNumber}</p>
         </div>
-
       </div>
       <div className="relative w-2/3 max-md:w-full">
         <div className="h-1.5 bg-gray-600 rounded-full max-md:-mt-3">
@@ -30,16 +29,14 @@ const FundraisingProgress = ({ raisedAmount, goalAmount, contentIndex = 0 }) => 
       </div>
       {content.status === 'Process' ? (
         <p className='flex flex-wrap items-end text-xl lg:text-md mb-3 md:mb-0 gap-1 whitespace-nowrap max-md:-space-y-2' style={{ fontFamily: 'Ek Mukta, sans-serif' }}>
-        <span className="font-semibold max-md:font-semibold max-md:text-[12px]">${raisedAmount}</span>
-        <span className="text-[#C1C1C1] text-[15px] max-md:text-[12px] -mb-[1px]">raised of</span>
-        <span className="text-[#C1C1C1] text-[15px] max-md:text-[12px]">${goalAmount}</span>
-        <span className="text-[#C1C1C1] text-[15px] max-md:text-[12px]">goal</span>
-        <span className="text-xl text-[#C1C1C1] max-md:text-[12px]">•</span>
-        <span className="font-semibold max-md:font-semibold max-md:text-[12px]">{content.supportersCount}</span>
-        <span className='text-[#C1C1C1] text-[15px] max-md:text-[12px]'>{content.supportersLabel}</span>
-      </p>
-      
-      
+          <span className="font-semibold max-md:font-semibold max-md:text-[12px]">${raisedAmount}</span>
+          <span className="text-[#C1C1C1] text-[15px] max-md:text-[12px] -mb-[1px]">raised of</span>
+          <span className="text-[#C1C1C1] text-[15px] max-md:text-[12px]">${goalAmount}</span>
+          <span className="text-[#C1C1C1] text-[15px] max-md:text-[12px]">goal</span>
+          <span className="text-xl text-[#C1C1C1] max-md:text-[12px]">•</span>
+          <span className="font-semibold max-md:font-semibold max-md:text-[12px]">{content.supportersCount}</span>
+          <span className='text-[#C1C1C1] text-[15px] max-md:text-[12px]'>{content.supportersLabel}</span>
+        </p>
       ) : (
         <p className='text-[#C1C1C1] text-[15px] max-lg:text-md mb-3 max-sm:text-[11px]' style={{ fontFamily: 'Ek Mukta, sans-serif' }}>
           This stage is now closed

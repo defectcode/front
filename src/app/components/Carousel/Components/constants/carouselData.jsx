@@ -4,6 +4,7 @@ export const images = [
     {
       src: {
           desktop: '/imgs/carousel.svg',
+          tablet: '/imgs/tablet.png',
           mobile: '/imgs/mobileCarousel.svg'
         },
       alt: 'Slide 1',
@@ -22,6 +23,7 @@ export const images = [
     {
       src: {
           desktop: '/imgs/CloseStage.svg',
+          tablet: '/imgs/tablet.png',
           mobile: '/imgs/mobileCarousel.svg'
         },
       alt: 'Slide 2',
@@ -40,6 +42,7 @@ export const images = [
     {
       src: {
           desktop: '/imgs/CloseStage.svg',
+          tablet: '/imgs/tablet.png',
           mobile: '/imgs/mobileCarousel.svg'
         },
       alt: 'Slide 3',
@@ -58,6 +61,7 @@ export const images = [
     {
       src: {
           desktop: '/imgs/CloseStage.svg',
+          tablet: '/imgs/tablet.png',
           mobile: '/imgs/mobileCarousel.svg'
         },
       alt: 'Slide 4',
@@ -76,6 +80,7 @@ export const images = [
     {
       src: {
           desktop: '/imgs/CloseStage.svg',
+          tablet: '/imgs/tablet.png',
           mobile: '/imgs/mobileCarousel.svg'
         },
       alt: 'Slide 5',
@@ -94,6 +99,7 @@ export const images = [
     {
       src: {
           desktop: '/imgs/CloseStage.svg',
+          tablet: '/imgs/tablet.png',
           mobile: '/imgs/mobileCarousel.svg'
         },
       alt: 'Slide 6',
@@ -112,6 +118,7 @@ export const images = [
     {
       src: {
           desktop: '/imgs/CloseStage.svg',
+          tablet: '/imgs/tablet.png',
           mobile: '/imgs/mobileCarousel.svg'
         },
       alt: 'Slide 7',
@@ -130,6 +137,7 @@ export const images = [
     {
         src: {
             desktop: '/imgs/CloseStage.svg',
+            tablet: '/imgs/tablet.png',
             mobile: '/imgs/mobileCarousel.svg'
           },
         alt: 'Slide 8',
@@ -148,6 +156,7 @@ export const images = [
       {
         src: {
             desktop: '/imgs/CloseStage.svg',
+            tablet: '/imgs/tablet.png',
             mobile: '/imgs/mobileCarousel.svg'
           },
         alt: 'Slide 8',
@@ -166,6 +175,7 @@ export const images = [
       {
         src: {
             desktop: '/imgs/CloseStage.svg',
+            tablet: '/imgs/tablet.png',
             mobile: '/imgs/mobileCarousel.svg'
           },
         alt: 'Slide 8',
