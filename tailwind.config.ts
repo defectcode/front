@@ -20,7 +20,8 @@ const config: Config = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       fontFamily: {
-        ekMukta: ['var(--font-family-ek-mukta)', 'sans-serif'],
+        ekMukta: ['"Ek Mukta"', 'sans-serif'],
+        interLight: ['"Inter"', 'sans-serif'],
         avenirRoman: ['Avenir', 'sans-serif'],
         avenirHeavy: ['Avenir', 'sans-serif'],
       },

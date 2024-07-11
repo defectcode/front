@@ -37,14 +37,14 @@ const Carousel = () => {
   const goToNextSlide = () => {
     if (!isTransitioning) {
       setIsTransitioning(true);
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % (totalImages + 2)); // include imaginile fantomă
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % (totalImages + 2)); // include phantom images
     }
   };
 
   const goToPreviousSlide = () => {
     if (!isTransitioning) {
       setIsTransitioning(true);
-      setCurrentIndex((prevIndex) => (prevIndex - 1 + totalImages + 2) % (totalImages + 2)); // include imaginile fantomă
+      setCurrentIndex((prevIndex) => (prevIndex - 1 + totalImages + 2) % (totalImages + 2)); // include phantom images
     }
   };
 
@@ -84,7 +84,7 @@ const Carousel = () => {
       containerRef.current.style.transition = 'none';
     }
     const imageWidth = isMobile ? 268 : isTablet ? 600 : 1317; // Use actual width of the image
-    const padding = 9; // Adjust padding as needed
+    const padding = 5; // Adjust padding as needed
     const translateXValue = currentIndex < 1 ? totalImages : currentIndex > totalImages ? 1 : currentIndex;
     const offsetX = (carouselWidth - imageWidth) / 2;
     containerRef.current.style.transform = `translateX(-${translateXValue * (imageWidth + padding * 2) - offsetX}px)`;
@@ -100,22 +100,26 @@ const Carousel = () => {
       <div
         className="flex transition-transform duration-500 ease-in-out my-5 max-lg:my-16 max-md:mt-36"
         ref={containerRef}
-        style={{ width: `${(totalImages + 2) * (isMobile ? 283 : isTablet ? 600 : 1317)}px`, transform: `translateX(-${currentIndex * (isMobile ? 286 : isTablet ? 620 : 1335) - (carouselWidth - (isMobile ? 295 : isTablet ? 620 : 1325)) / 2}px)` }}
+        style={{ width: `${(totalImages + 2) * (isMobile ? 283 : isTablet ? 600 : 1350)}px`, transform: `translateX(-${currentIndex * (isMobile ? 315 : isTablet ? 620 : 1350) - (carouselWidth - (isMobile ? 305 : isTablet ? 620 : 1350)) / 2}px)` }}
       >
-        <div className={`w-[${isMobile ? 283 : isTablet ? 600 : 1317}px] flex-shrink-0 mx-[9px]`}>
-          <img
-            src={isMobile ? images[totalImages - 1].src.mobile : isTablet ? images[totalImages - 1].src.tablet : images[totalImages - 1].src.desktop}
-            alt={images[totalImages - 1].alt}
-            className={`${isMobile ? 'w-[268px] h-[453px] rounded-lg' : isTablet ? 'w-[600px] h-[400px] rounded-lg' : 'w-[1317px] h-[656px]'} object-cover`}
-          />
-        </div>
-        {images.map((image, index) => (
-          <div key={index} className="relative flex-shrink-0 mx-[9px]" style={{ width: isMobile ? '268px' : isTablet ? '600px' : '1317px' }}>
+        <div className={`w-[${isMobile ? 283 : isTablet ? 600 : 1317}px] flex-shrink-0 mx-[9px] max-md:mx-[5px]`} onClick={goToPreviousSlide}>
+          <div className="w-full h-full">
             <img
-              src={isMobile ? image.src.mobile : isTablet ? image.src.tablet : image.src.desktop}
-              alt={image.alt}
+              src={isMobile ? images[totalImages - 1].src.mobile : isTablet ? images[totalImages - 1].src.tablet : images[totalImages - 1].src.desktop}
+              alt={images[totalImages - 1].alt}
               className={`${isMobile ? 'w-[268px] h-[453px] rounded-lg' : isTablet ? 'w-[600px] h-[400px] rounded-lg' : 'w-[1317px] h-[656px]'} object-cover`}
             />
+          </div>
+        </div>
+        {images.map((image, index) => (
+          <div key={index} className="relative flex-shrink-0 mx-[9px] max-md:mx-[5px]" style={{ width: isMobile ? '268px' : isTablet ? '600px' : '1317px' }}>
+            <div className="w-full h-full" onClick={index < currentIndex - 1 ? goToPreviousSlide : index > currentIndex - 1 ? goToNextSlide : null}>
+              <img
+                src={isMobile ? image.src.mobile : isTablet ? image.src.tablet : image.src.desktop}
+                alt={image.alt}
+                className={`${isMobile ? 'w-[268px] h-[453px] rounded-lg' : isTablet ? 'w-[600px] h-[400px] rounded-lg' : 'w-[1317px] h-[656px]'} object-cover`}
+              />
+            </div>
             {index === currentIndex - 1 && (
               <div className={`absolute inset-0 ${isMobile ? 'w-full h-full bg-gradient-to-t from-black/60 to-transparent p-2' : isTablet ? 'w-full h-full bg-gradient-to-r from-black/60 to-transparent p-3' : 'w-3/5 h-full bg-gradient-to-r from-black/85 to-transparent pl-10'} flex flex-col justify-around text-white`}>
                 {!isMobile && !isTablet && <Title contentIndex={index} isMobile={isMobile} />}
@@ -124,12 +128,14 @@ const Carousel = () => {
             )}
           </div>
         ))}
-        <div className={'flex-shrink-0 mx-[9px]'} style={{ width: isMobile ? '268px' : isTablet ? '600px' : '1317px' }}>
-          <img
-            src={isMobile ? images[0].src.mobile : isTablet ? images[0].src.tablet : images[0].src.desktop}
-            alt={images[0].alt}
-            className={`${isMobile ? 'w-[268px] h-[453px] rounded-lg' : isTablet ? 'w-[600px] h-[400px] rounded-lg' : 'w-[1317px] h-[656px]'} object-cover`}
-          />
+        <div className={'flex-shrink-0 mx-[9px] max-md:mx-[5px]'} style={{ width: isMobile ? '268px mx-[5px]' : isTablet ? '600px' : '1317px' }} onClick={goToNextSlide}>
+          <div className="w-full h-full">
+            <img
+              src={isMobile ? images[0].src.mobile : isTablet ? images[0].src.tablet : images[0].src.desktop}
+              alt={images[0].alt}
+              className={`${isMobile ? 'w-[268px] h-[453px] rounded-lg' : isTablet ? 'w-[600px] h-[400px] rounded-lg' : 'w-[1317px] h-[656px]'} object-cover`}
+            />
+          </div>
         </div>
       </div>
       <PrevButton onClick={goToPreviousSlide} />
