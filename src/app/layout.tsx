@@ -21,7 +21,7 @@ export default function RootLayout({
         <link rel="icon" href="/icons/faviconpng.png" />
       </head>
       <body className={inter.className}>
-        <Navbar />
+        <Navbar showSupportInNavbar={undefined} openModal={undefined} />
         {children}
       </body>
     </html>
