@@ -4,11 +4,11 @@ const Dots = ({ totalImages, currentIndex, isMobile, isTablet, onDotClick }) => 
   let positionClass;
 
   if (isMobile) {
-    positionClass = 'bottom-28';
+    positionClass = 'bottom-24';
   } else if (isTablet) {
     positionClass = 'bottom'; // Ajustează această valoare conform nevoilor tale
   } else {
-    positionClass = 'top-[690px]';
+    positionClass = 'top-[790px]';
   }
 
   return (
@@ -16,8 +16,8 @@ const Dots = ({ totalImages, currentIndex, isMobile, isTablet, onDotClick }) => 
       {Array.from({ length: totalImages }).map((_, index) => (
         <div
           key={index}
-          className={`h-2 w-2 rounded-full ${currentIndex === index + 1 ? 'bg-white' : 'bg-gray-400'}`}
-          onClick={() => onDotClick(index + 1)} // Adaugă handler pentru onClick
+          className={`h-2 w-2 rounded-full ${currentIndex === index ? 'bg-white' : 'bg-gray-400'}`}
+          onClick={() => onDotClick(index)} // Adaugă handler pentru onClick
           style={{ cursor: 'pointer' }} // Adaugă stil pentru cursor
         ></div>
       ))}

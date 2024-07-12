@@ -94,29 +94,16 @@ const SupportForm = () => {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center min-h-[439px] h-auto w-[380px] max-lg:w-[350px] max-sm:w-[300px] px-20">
-      {isPaymentSuccessful ? (
-        <div className="flex flex-col items-center justify-center h-full">
-          <div className="flex items-center justify-center bg-white rounded-full h-16 w-16 mb-4">
-            <span className="text-2xl text-green-500">❤️</span>
-          </div>
-          <h2 className="text-2xl font-bold mb-2">Thank You, Name!</h2>
-          <p className="mb-4 text-[#B7B7B7]">Your payment has been successfully processed. You will soon receive a receipt via email.</p>
-          <button className="px-4 py-2 bg-black text-white rounded-lg font-bold flex items-center">
-            Share
-            <span className="ml-2">🔗</span>
-          </button>
-        </div>
-      ) : (
-        <div className=''>
+    <div className="flex flex-col justify-center items-center min-h-[439px] h-auto w-[344px] max-lg:w-[350px] max-sm:w-[300px]">
+          <div className=''>
           <h2 className="text-[20px] font-ek-mukta font-extrabold mt-[2px] mb-10 flex items-center justify-center">Support Your Series</h2>
           <p className="mb-5 text-[#B7B7B7] text-[12px] font-inter">Select the support amount:</p>
-          <div className="flex justify-between gap-2 mb-5 max-lg:gap-2 max-sm:gap-1 text-sm ">
+          <div className="flex justify-between gap-2 mb-5 max-lg:gap-2 max-sm:gap-[1px] text-sm ">
             {[1, 10, 500].map((amt) => (
               <button
                 key={amt}
                 onClick={() => handleAmountChange(amt)}
-                className={`px-6 max-md:px-5 max-md:mx-1 py-3 rounded-xl w-20 ${amount === amt && !isCustomAmount ? 'bg-white text-black font-bold' : 'bg-[#252525] border-2 border-[#3e3d3d]'}`}
+                className={`px-6 max-md:px-3 max-md:mx-[2px] py-3 rounded-xl w-[70px] ${amount === amt && !isCustomAmount ? 'bg-white text-black font-bold' : 'bg-[#252525] border-2 border-[#3e3d3d]'}`}
               >
                 ${amt}
               </button>
@@ -127,7 +114,7 @@ const SupportForm = () => {
                 type="number"
                 value={isCustomAmount ? customAmount : ''}
                 onChange={handleCustomAmountChange}
-                className={`pl-5 pr-2 py-3 rounded-xl font-normal w-20 ${isCustomAmount ? 'bg-white text-black font-bold' : 'bg-[#252525] border-2 border-[#3e3d3d]'}`}
+                className={`pl-5 pr-2 py-3 rounded-xl font-normal w-[70px] ${isCustomAmount ? 'bg-white text-black font-bold' : 'bg-[#252525] border-2 border-[#3e3d3d]'}`}
                 placeholder="Other"
                 style={{ appearance: 'textfield', height: 'auto', scrollbarWidth:'none', overflow: 'hidden' }}
               />
@@ -138,15 +125,15 @@ const SupportForm = () => {
             <div className="flex-grow border-t border-dotted border-gray-600 mx-2"></div>
             <p className="text-white font-ek-mukta">${amount}</p>
           </div>
-          <p className="mt-10 mb-4 text-[#B7B7B7] text-[12px] font-inter">Select a payment method:</p>
-          <div className="flex justify-between mb-4 ga-">
+          <p className="mt-10 mb-4 text-[#B7B7B7] text-[12px] font-inter flex justify-start">Select a payment method:</p>
+          <div className="flex justify-between mb-4 gap-4">
             {['stripe', 'paypal'].map((method) => (
               <button
                 key={method}
                 onClick={() => setPaymentMethod(method)}
-                className={`rounded-xl font-bold flex items-center justify-center w-[170px] h-[45px] mb-5 ${paymentMethod === method ? 'bg-black text-white mr-2' : 'bg-[#252525] border-2 border-[#3e3d3d]'}`}
+                className={`rounded-xl font-bold flex items-center justify-center w-[143px] h-[45px] mb-5 ${paymentMethod === method ? 'bg-black text-white mr-2' : 'bg-[#252525] border-2 border-[#3e3d3d]'}`}
               >
-                {method === 'paypal' ? <div className='flex items-center px-5 max-md:px-2'>PayPal</div> : <div className="flex items-center justify-center gap-2 w-[143px] h-[45px]"><CiCreditCard1 size={30} /> <div className='mt-1'>Card</div></div>}
+                {method === 'paypal' ? <div className='flex items-center px-5 max-md:px-2'>PayPal</div> : <div className="flex items-center justify-center gap-2 h-[45px]"><CiCreditCard1 size={30} /> <div className='mt-1'>Card</div></div>}
               </button>
             ))}
           </div>
@@ -165,14 +152,13 @@ const SupportForm = () => {
             <div className="flex justify-center items-end">
               <button
                 onClick={handleSupportClick}
-                className="flex items-center justify-center w-[350px] h-[45px] bg-white text-black text-[16px] rounded-lg font-avenir-heavy "
+                className="flex items-center justify-center w-[304px] h-[45px] bg-white text-black text-[16px] rounded-lg font-avenir-heavy "
               >
                 Support
               </button>
             </div>
           )}
-        </div>
-      )}
+          </div>
     </div>
   );
 };

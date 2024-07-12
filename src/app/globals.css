@@ -51,3 +51,29 @@ iframe {
       background: rgba(0, 0, 0, 0.2); /* Ajustează după necesitate */
   }
 }
+
+.custom-image-width {
+  width: 1700px;
+}
+
+.custom-bg-height-mobile {
+  height: 750px;
+}
+
+.custom-bg-height {
+  height: 830px;
+}
+
+.max-height {
+  height: 656px;
+} 
+
+.max-height-image {
+  height: 453px;
+}
+
+.max-width-image {
+  width: 269px;
+}
+
+
