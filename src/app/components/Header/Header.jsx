@@ -69,12 +69,12 @@ export default function Header() {
       <div className={`absolute bottom-0 w-full h-3/6 bg-gradient-to-t from-black/70 via-black/70 to-transparent ${isModalOpen ? 'bg-opacity-50 blur-sm' : ''}`}></div>
       <div className={`relative z-10 h-full overflow-auto ${isModalOpen ? 'blur-sm' : ''}`}>
         <Navbar showSupportInNavbar={showSupportInNavbar} openModal={openModal} />
-        <div className="max-w-[1300px] mx-auto h-full flex flex-col text-white max-2xl:p-4">
+        <div className="max-w-screen-2xl w-auto mx-auto h-full flex flex-col text-white max-2xl:p-4">
           <div className="flex-grow flex flex-col justify-end max-2xl:p-2 header-content">
             <div className={`flex flex-col md:flex-row justify-between max-lg:flex-col max-lg:justify-center customStyles`}>
               <div className="flex flex-col mb-10 max-md:mb-0 items-center md:flex-row gap-3 max-lg:flex-col max-lg:justify-center">
                 <div className="md:hidden flex flex-col items-center justify-center mt-8">
-                  <Image src="/imgs/logo.svg" alt='logo' className='w-48 h-auto max-md:mb-4' width={128} height={128} />
+                  <Image src="/imgs/logo.svg" alt='logo' className='w-[188px] h-auto max-md:mb-4' width={188} height={1} />
                   <h3 className="text-lg max-md:text-[14px] text-[#979797] font-avenirRoman">
                     Drama <span style={{ display: 'inline-block', width: '3px', height: '3px', backgroundColor: '#979797', borderRadius: '50%', margin: '0 5px', verticalAlign: 'middle' }}></span> Sci-Fi
                   </h3>
@@ -84,10 +84,15 @@ export default function Header() {
                     <Support onClick={openModal} />
                   </div>
                 )}
-                <div className="space-y-1 md:flex md:flex-col md:items-start">
+                <div className=" md:flex md:flex-col md:items-start">
                   <p className="text-lg max-lg:text-lg max-md:text-[15px] max-md:leading-5 max-lg:text-center max-md:mb-4 text-[#CDCDCD] mx-0 font-ekMukta tracking-neg-3percent">
                     In an ideal city without money, people face real human problems. Your support makes the series possible.
                   </p>
+                   {!showSupportInNavbar && (
+                    <div className="md:hidden flex justify-center">
+                      <Support onClick={openModal} />
+                    </div>
+                  )} 
                   <div className="flex items-center gap-5 text-[#979797] max-lg:flex-col max-lg:space-y-[12px]">
                     <h3 className="text-lg max-md:text-base hidden md:block font-avenirRoman">Drama • Sci-Fi • 2024</h3>
                     <div className="flex gap-4 max-md:gap-1 mb-1">

@@ -28,14 +28,14 @@ const FundraisingProgress = ({ raisedAmount, goalAmount, contentIndex = 0 }) => 
         </div>
       </div>
       {content.status === 'Process' ? (
-        <p className='flex items-end text-xl lg:text-md mb-3 md:mb-0 gap-1 max-lg:gap-[2px] whitespace-nowrap' style={{ fontFamily: 'Ek Mukta, sans-serif' }}>
+        <p className='flex items-end text-xl lg:text-md mb-3 md:mb-0 gap-1 max-lg:gap-[2px] max-md:flex-wrap max-md:items-center max-md:justify-center' style={{ fontFamily: 'Ek Mukta, sans-serif' }}>
           <span className="font-semibold max-md:font-semibold max-md:text-[12px]">${raisedAmount}</span>
           <span className="text-[#C1C1C1] text-[15px] max-md:text-[12px]">raised of</span>
           <span className="text-[#C1C1C1] text-[15px] max-md:text-[12px]">${goalAmount}</span>
           <span className="text-[#C1C1C1] text-[15px] max-md:text-[12px]">goal</span>
           <span className="text-xl text-[#C1C1C1] max-md:text-[12px] max-md:ml-[1px] max-md:mr-[1px]">•</span>
-          <span className="font-semibold max-md:font-semibold max-md:text-[11px]">{content.supportersCount}</span>
-          <span className='text-[#C1C1C1] text-[15px] max-md:text-[12px]'>{content.supportersLabel}</span>
+          <span className="font-semibold max-md:font-semibold max-md:text-[12px]">{content.supportersCount}</span>
+          <span className='text-[#C1C1C1] text-[15px] max-md:text-[12px] max-md:-mt-3'>{content.supportersLabel}</span>
         </p>
       
       

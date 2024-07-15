@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { useState, useEffect, useRef } from 'react';
 import { useKeenSlider } from 'keen-slider/react';
 import 'keen-slider/keen-slider.min.css';
@@ -23,14 +23,14 @@ const Carousel = () => {
       setIsLaptop(width >= 1024 && width <= 1920);
 
       if (width <= 768) {
-        setSpacing(2);
+        setSpacing(7);
         setPerView(1.55);
       } else if (width > 768 && width <= 1024) {
         setSpacing(1);
         setPerView(1.25);
       } else if (width > 1024 && width <= 1920) {
         setSpacing(20);
-        setPerView(1.15);
+        setPerView(1.25);
       } else {
         setSpacing(0.4);
         setPerView(1.25);
@@ -70,7 +70,13 @@ const Carousel = () => {
     slider.current?.moveToIdx(index);
   };
 
-  const handleImageClick = (e) => {
+  const handleImageClick = (e, index) => {
+    if (index === currentIndex) {
+      // Clicked on the central image, do nothing
+      return;
+    }
+
+    // Determine whether to go to the next or previous slide
     const x = e.clientX;
     const screenWidth = window.innerWidth;
 
@@ -86,8 +92,8 @@ const Carousel = () => {
       {images.map((image, index) => (
         <div
           key={index}
-          className="keen-slider__slide relative flex justify-center text-white text-2xl font-semibold w-full h-[453px] sm:h-[600px] md:h-[500px] lg:w-[1100px] max-height"
-          onClick={handleImageClick}
+          className={`keen-slider__slide relative flex justify-center text-white text-2xl font-semibold w-full h-[453px] sm:h-[600px] md:h-[500px] lg:w-[1100px] max-height ${index !== currentIndex ? 'cursor-pointer' : ''}`}
+          onClick={(e) => handleImageClick(e, index)}
         >
           <div className={`absolute inset-0 ${isMobile ? 'w-full h-full bg-gradient-to-t from-black/60 to-transparent p-2 -mt-[105px]' : isTablet ? 'w-full h-full bg-gradient-to-r from-black/60 to-transparent p-3' : 'w-full h-full bg-gradient-to-r from-black/85 to-transparent px-10'} flex flex-col justify-around text-white ${currentIndex === index ? 'opacity-100' : 'opacity-0'} transition-opacity duration-200`}>
             <Title contentIndex={index} isMobile={isMobile} isTablet={isTablet} />

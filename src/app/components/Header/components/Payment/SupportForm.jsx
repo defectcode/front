@@ -95,70 +95,70 @@ const SupportForm = () => {
 
   return (
     <div className="flex flex-col justify-center items-center min-h-[439px] h-auto w-[344px] max-lg:w-[350px] max-sm:w-[300px]">
-          <div className=''>
-          <h2 className="text-[20px] font-ek-mukta font-extrabold mt-[2px] mb-10 flex items-center justify-center">Support Your Series</h2>
-          <p className="mb-5 text-[#B7B7B7] text-[12px] font-inter">Select the support amount:</p>
-          <div className="flex justify-between gap-2 mb-5 max-lg:gap-2 max-sm:gap-[1px] text-sm ">
-            {[1, 10, 500].map((amt) => (
-              <button
-                key={amt}
-                onClick={() => handleAmountChange(amt)}
-                className={`px-6 max-md:px-3 max-md:mx-[2px] py-3 rounded-xl w-[70px] ${amount === amt && !isCustomAmount ? 'bg-white text-black font-bold' : 'bg-[#252525] border-2 border-[#3e3d3d]'}`}
-              >
-                ${amt}
-              </button>
-            ))}
-            <div className="relative flex items-center">
-              <span className={`absolute left-3 ${isCustomAmount ? 'text-black' : 'text-white'}`}>$</span>
-              <input
-                type="number"
-                value={isCustomAmount ? customAmount : ''}
-                onChange={handleCustomAmountChange}
-                className={`pl-5 pr-2 py-3 rounded-xl font-normal w-[70px] ${isCustomAmount ? 'bg-white text-black font-bold' : 'bg-[#252525] border-2 border-[#3e3d3d]'}`}
-                placeholder="Other"
-                style={{ appearance: 'textfield', height: 'auto', scrollbarWidth:'none', overflow: 'hidden' }}
-              />
-            </div>
-          </div>
-          <div className="my-5 mt-10 flex justify-between items-center w-full max-w-md mx-auto">
-            <p className="text-white font-ek-mukta text-[14px]">Total:</p>
-            <div className="flex-grow border-t border-dotted border-gray-600 mx-2"></div>
-            <p className="text-white font-ek-mukta">${amount}</p>
-          </div>
-          <p className="mt-10 mb-4 text-[#B7B7B7] text-[12px] font-inter flex justify-start">Select a payment method:</p>
-          <div className="flex justify-between mb-4 gap-4">
-            {['stripe', 'paypal'].map((method) => (
-              <button
-                key={method}
-                onClick={() => setPaymentMethod(method)}
-                className={`rounded-xl font-bold flex items-center justify-center w-[143px] h-[45px] mb-5 ${paymentMethod === method ? 'bg-black text-white mr-2' : 'bg-[#252525] border-2 border-[#3e3d3d]'}`}
-              >
-                {method === 'paypal' ? <div className='flex items-center px-5 max-md:px-2'>PayPal</div> : <div className="flex items-center justify-center gap-2 h-[45px]"><CiCreditCard1 size={30} /> <div className='mt-1'>Card</div></div>}
-              </button>
-            ))}
-          </div>
-          {paymentMethod === 'paypal' && (
-            <div className="paypal-button-container">
-              <PayPalButton amount={amount} onSuccess={handlePaymentSuccess} />
-            </div>
-          )}
-          {paymentRequest && paymentMethod === 'stripe' && (
-            <PaymentRequestButtonElement
-              options={{ paymentRequest }}
-              className="PaymentRequestButton"
+      <div className=''>
+        <h2 className="text-[20px] font-ek-mukta font-extrabold mt-[2px] mb-10 flex items-center justify-center">Support Your Series</h2>
+        <p className="mb-5 text-[#B7B7B7] text-[12px] font-inter">Select the support amount:</p>
+        <div className="flex justify-between gap-2 mb-5 max-lg:gap-2 max-sm:gap-[1px] text-sm ">
+          {[1, 10, 500].map((amt) => (
+            <button
+              key={amt}
+              onClick={() => handleAmountChange(amt)}
+              className={`px-6 max-md:px-3 max-md:mx-[2px] py-3 rounded-xl w-[70px] ${amount === amt && !isCustomAmount ? 'bg-white text-black font-bold' : 'bg-[#252525] border-2 border-[#3e3d3d]'}`}
+            >
+              ${amt}
+            </button>
+          ))}
+          <div className="relative flex items-center">
+            <span className={`absolute left-3 ${isCustomAmount ? 'text-black' : 'text-white'}`}>$</span>
+            <input
+              type="number"
+              value={isCustomAmount ? customAmount : ''}
+              onChange={handleCustomAmountChange}
+              className={`pl-5 pr-2 py-3 rounded-xl font-normal w-[70px] ${isCustomAmount ? 'bg-white text-black font-bold' : 'bg-[#252525] border-2 border-[#3e3d3d]'}`}
+              placeholder="Other"
+              style={{ appearance: 'textfield', height: 'auto', scrollbarWidth:'none', overflow: 'hidden', fontSize: '16px' }}
             />
-          )}
-          {paymentMethod !== 'paypal' && (
-            <div className="flex justify-center items-end">
-              <button
-                onClick={handleSupportClick}
-                className="flex items-center justify-center w-[304px] h-[45px] bg-white text-black text-[16px] rounded-lg font-avenir-heavy "
-              >
-                Support
-              </button>
-            </div>
-          )}
           </div>
+        </div>
+        <div className="my-5 mt-10 flex justify-between items-center w-full max-w-md mx-auto">
+          <p className="text-white font-ek-mukta text-[14px]">Total:</p>
+          <div className="flex-grow border-t border-dotted border-gray-600 mx-2"></div>
+          <p className="text-white font-ek-mukta">${amount}</p>
+        </div>
+        <p className="mt-10 mb-4 text-[#B7B7B7] text-[12px] font-inter flex justify-start">Select a payment method:</p>
+        <div className="flex justify-between mb-4 gap-4">
+          {['stripe', 'paypal'].map((method) => (
+            <button
+              key={method}
+              onClick={() => setPaymentMethod(method)}
+              className={`rounded-xl font-bold flex items-center justify-center w-[143px] h-[45px] mb-5 ${paymentMethod === method ? 'bg-black text-white mr-2' : 'bg-[#252525] border-2 border-[#3e3d3d]'}`}
+            >
+              {method === 'paypal' ? <div className='flex items-center px-5 max-md:px-2'>PayPal</div> : <div className="flex items-center justify-center gap-2 h-[45px]"><CiCreditCard1 size={30} /> <div className='mt-1'>Card</div></div>}
+            </button>
+          ))}
+        </div>
+        {paymentMethod === 'paypal' && (
+          <div className="paypal-button-container">
+            <PayPalButton amount={amount} onSuccess={handlePaymentSuccess} />
+          </div>
+        )}
+        {paymentRequest && paymentMethod === 'stripe' && (
+          <PaymentRequestButtonElement
+            options={{ paymentRequest }}
+            className="PaymentRequestButton"
+          />
+        )}
+        {paymentMethod !== 'paypal' && (
+          <div className="flex justify-center items-end">
+            <button
+              onClick={handleSupportClick}
+              className="flex items-center justify-center w-[304px] h-[45px] bg-white text-black text-[16px] rounded-lg font-avenir-heavy"
+            >
+              Support
+            </button>
+          </div>
+        )}
+      </div>
     </div>
   );
 };
