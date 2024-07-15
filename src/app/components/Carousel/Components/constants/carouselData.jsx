@@ -36,7 +36,7 @@ export const images = [
       stageNumber: '2',
       supportersLabel: '',
       supportersCount: '',
-      description: 'Join us in every stage of series creation. Your support is crucial to our mission’s success.',
+      description: 'Be part of every stage of our series production. View more details now',
       status: 'Next'
     },
     {
@@ -55,7 +55,7 @@ export const images = [
       stageNumber: '3',
       supportersLabel: '',
       supportersCount: '',
-      description: 'Join us in every stage of series creation. Your support is crucial to our mission’s success.',
+      description: 'Be part of every stage of our series production. View more details now',
       status: 'Next'
     },
     {
@@ -74,7 +74,7 @@ export const images = [
       stageNumber: '4',
       supportersLabel: '',
       supportersCount: '',
-      description: 'Join us in every stage of series creation. Your support is crucial to our mission’s success.',
+      description: 'Be part of every stage of our series production. View more details now',
       status: 'Next'
     },
     {
@@ -93,7 +93,7 @@ export const images = [
       stageNumber: '5',
       supportersLabel: '',
       supportersCount: '',
-      description: 'Join us in every stage of series creation. Your support is crucial to our mission’s success.',
+      description: 'Be part of every stage of our series production. View more details now',
       status: 'Next'
     },
     {
@@ -112,7 +112,7 @@ export const images = [
       stageNumber: '6',
       supportersLabel: '',
       supportersCount: '',
-      description: 'Join us in every stage of series creation. Your support is crucial to our mission’s success.',
+      description: 'Be part of every stage of our series production. View more details now',
       status: 'Next'
     },
     {
@@ -131,7 +131,7 @@ export const images = [
       stageNumber: '7',
       supportersLabel: '',
       supportersCount: '',
-      description: 'Join us in every stage of series creation. Your support is crucial to our mission’s success.',
+      description: 'Be part of every stage of our series production. View more details now',
       status: 'Next'
     },
     {
@@ -150,7 +150,7 @@ export const images = [
         stageNumber: '8',
         supportersLabel: '',
         supportersCount: '',
-        description: 'Join us in every stage of series creation. Your support is crucial to our mission’s success.',
+        description: 'Be part of every stage of our series production. View more details now',
         status: 'Next'
       },
       {
@@ -169,7 +169,7 @@ export const images = [
         stageNumber: '8',
         supportersLabel: '',
         supportersCount: '',
-        description: 'Join us in every stage of series creation. Your support is crucial to our mission’s success.',
+        description: 'Be part of every stage of our series production. View more details now',
         status: 'Next'
       },
       {
@@ -188,7 +188,7 @@ export const images = [
         stageNumber: '8',
         supportersLabel: '',
         supportersCount: '',
-        description: 'Join us in every stage of series creation. Your support is crucial to our mission’s success.',
+        description: 'Be part of every stage of our series production. View more details now',
         status: 'Next'
       },
   ];

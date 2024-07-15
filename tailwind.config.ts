@@ -8,6 +8,10 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      spacing: {
+        '120px': '120px',
+        '20px': '20px',
+      },
       letterSpacing: {
         'neg-2percent': '-0.03em',
       },

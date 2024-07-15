@@ -6,7 +6,7 @@ const Information = () => {
   return (
     <div className="flex flex-row justify-between items-start max-w-[1300px] mx-auto w-full text-white px-4 max-lg:flex-col max-lg:justify-around max-md:lg:items-start max-lg:items-center">
       <Description />
-      <div className="flex flex-col gap-3 mb-10 lg:mb-0 text-start max-lg:text-center max-md:gap-6">
+      <div className="flex flex-col gap-3 mb-10 lg:mb-0 text-start max-lg:text-center max-md:gap-4">
         <h1 className="text-[18px] text-[#FFFFFF] font-semibold" style={{ fontFamily: "'Ek Mukta', sans-serif" }}>Support And Donations</h1>
         <div className="flex flex-col text-[#949494] gap-4 text-sm md:text-base max-md:gap-3" style={{ fontFamily: "'Ek Mukta', sans-serif", fontWeight: 400 }}>
           <Link className="text-[14px]" href="/">Donation Link</Link>
@@ -15,7 +15,7 @@ const Information = () => {
           <Link className="text-[14px]" href="/">Help Center</Link>
         </div>
       </div>
-      <div className="flex flex-col gap-3 mb-10 lg:mb-0 text-start max-lg:text-center max-md:gap-6">
+      <div className="flex flex-col gap-3 mb-10 lg:mb-0 text-start max-lg:text-center max-md:gap-4">
         <h1 className="text-[18px] text-[#FFFFFF] font-semibold" style={{ fontFamily: "'Ek Mukta', sans-serif" }}>Legal Information</h1>
         <div className="flex flex-col text-[#949494] gap-4 text-sm md:text-base max-md:gap-3" style={{ fontFamily: "'Ek Mukta', sans-serif", fontWeight: 400 }}>
           <Link className="text-[14px]" href="/">Privacy Policy</Link>

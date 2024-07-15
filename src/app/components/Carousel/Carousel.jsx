@@ -1,7 +1,7 @@
 "use client"
-import React, { useState, useEffect } from 'react'
-import { useKeenSlider } from 'keen-slider/react'
-import 'keen-slider/keen-slider.min.css'
+import React, { useState, useEffect, useRef } from 'react';
+import { useKeenSlider } from 'keen-slider/react';
+import 'keen-slider/keen-slider.min.css';
 import { images } from './Components/constants/carouselData';
 import Title from './Components/Title';
 import FundraisingProgress from './Components/Progres';
@@ -21,9 +21,9 @@ const Carousel = () => {
       setIsMobile(width <= 768);
       setIsTablet(width > 768 && width <= 1024);
       setIsLaptop(width >= 1024 && width <= 1920);
-      
+
       if (width <= 768) {
-        setSpacing(10);
+        setSpacing(2);
         setPerView(1.55);
       } else if (width > 768 && width <= 1024) {
         setSpacing(1);
@@ -52,7 +52,8 @@ const Carousel = () => {
     },
     slideChanged(s) {
       setCurrentIndex(s.track.details.rel);
-    }
+    },
+    duration: 800, // Adjusting transition duration to make it smoother
   });
 
   useEffect(() => {
@@ -69,6 +70,16 @@ const Carousel = () => {
     slider.current?.moveToIdx(index);
   };
 
+  const handleImageClick = (e) => {
+    const x = e.clientX;
+    const screenWidth = window.innerWidth;
+
+    if (x > screenWidth / 2) {
+      slider.current?.next();
+    } else {
+      slider.current?.prev();
+    }
+  };
 
   return (
     <div ref={sliderRef} className={`keen-slider bg-black py-6 ${isMobile ? "custom-bg-height-mobile" : "custom-bg-height"} relative`}>
@@ -76,8 +87,9 @@ const Carousel = () => {
         <div
           key={index}
           className="keen-slider__slide relative flex justify-center text-white text-2xl font-semibold w-full h-[453px] sm:h-[600px] md:h-[500px] lg:w-[1100px] max-height"
+          onClick={handleImageClick}
         >
-          <div className={`absolute inset-0 ${isMobile ? 'w-full h-full bg-gradient-to-t from-black/60 to-transparent p-2 -mt-[105px]' : isTablet ? 'w-full h-full bg-gradient-to-r from-black/60 to-transparent p-3' : 'w-full h-full bg-gradient-to-r from-black/85 to-transparent px-10'} flex flex-col justify-around text-white  ${currentIndex === index ? 'opacity-100' : 'opacity-0'} transition-opacity duration-200`}>
+          <div className={`absolute inset-0 ${isMobile ? 'w-full h-full bg-gradient-to-t from-black/60 to-transparent p-2 -mt-[105px]' : isTablet ? 'w-full h-full bg-gradient-to-r from-black/60 to-transparent p-3' : 'w-full h-full bg-gradient-to-r from-black/85 to-transparent px-10'} flex flex-col justify-around text-white ${currentIndex === index ? 'opacity-100' : 'opacity-0'} transition-opacity duration-200`}>
             <Title contentIndex={index} isMobile={isMobile} isTablet={isTablet} />
             <FundraisingProgress raisedAmount={image.raisedAmount} goalAmount={image.goalAmount} contentIndex={index} />
           </div>
