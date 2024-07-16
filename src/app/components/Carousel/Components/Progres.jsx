@@ -8,7 +8,7 @@ const FundraisingProgress = ({ raisedAmount, goalAmount, contentIndex = 0 }) => 
   const circleLeftPosition = `${progressPercent}%`;
 
   return (
-    <div className="flex flex-col space-y-2 w-5/6 max-md:w-full max-lg:p-0 max-lg:space-y-2 max-md:-mb-32">
+    <div className="flex flex-col space-y-2 w-5/6 max-md:w-full max-lg:p-0 max-lg:space-y-2 max-md:mt-[500px]">
       <h1 className="text-[#E50815] text-[32px] font-extrabold max-lg:text-3xl max-md:text-2xl" style={{ fontFamily: 'Ek Mukta, sans-serif', fontWeight: 800 }}>
         {content.titleConcept}
       </h1>

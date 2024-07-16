@@ -30,6 +30,9 @@ const config: Config = {
         avenirHeavy: ['Avenir', 'sans-serif'],
         inter: ['Inter', 'sans-serif'],
       },
+      screens: {
+        xs: '650px',
+      },
     },
   },
   plugins: [],
