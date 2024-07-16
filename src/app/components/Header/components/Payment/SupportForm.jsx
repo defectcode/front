@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { useStripe, useElements, PaymentRequestButtonElement } from '@stripe/react-stripe-js';
 import PayPalButton from './PayPal/PayPalButton';
@@ -100,8 +101,8 @@ const SupportForm = () => {
   return (
     <div className="flex flex-col justify-center items-center min-h-[439px] h-auto w-[344px] ">
       <div className=''>
-        <h2 className="text-[20px] font-ek-mukta font-extrabold -mt-[30px] mb-10 flex items-center justify-center">Support Your Series</h2>
-        <p className="mb-4 text-[#B7B7B7] text-[12px] font-inter ml-1">Select the support amount:</p>
+      <h2 className="text-[20px] font-ek-mukta font-extrabold mb-10 flex items-center justify-center">Support Your Series</h2>
+      <p className="mb-4 text-[#B7B7B7] text-[12px] font-inter ml-1">Select the support amount:</p>
         <div className="flex justify-between gap-2 mb-5 max-lg:gap-2 max-sm:gap-[1px] text-sm ">
           {[1, 10, 500].map((amt) => (
             <button
