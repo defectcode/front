@@ -93,7 +93,7 @@ export default function Header() {
                       <Support onClick={openModal} />
                     </div>
                   )} 
-                  <div className="flex items-center gap-5 text-[#979797] max-lg:flex-col max-lg:space-y-[12px]">
+                  <div className="flex items-center gap-5 text-[#979797] max-lg:flex-col max-lg:space-y-[20px]">
                     <h3 className="text-lg max-md:text-base hidden md:block font-avenirRoman">Drama • Sci-Fi • 2024</h3>
                     <div className="flex gap-4 max-md:gap-1 mb-1">
                       <Image src="/imgs/sony.svg" width={64} height={1} alt="sony" className="w-[46px] max-md:w-10 max-sm:w-9" />

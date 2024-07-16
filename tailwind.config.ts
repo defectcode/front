@@ -28,6 +28,7 @@ const config: Config = {
         interLight: ['"Inter"', 'sans-serif'],
         avenirRoman: ['Avenir', 'sans-serif'],
         avenirHeavy: ['Avenir', 'sans-serif'],
+        inter: ['Inter', 'sans-serif'],
       },
     },
   },
