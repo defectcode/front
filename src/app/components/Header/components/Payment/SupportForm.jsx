@@ -98,7 +98,7 @@ const SupportForm = () => {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center min-h-[350px] h-auto w-full sm:px-6">
+    <div className="flex flex-col justify-center items-center min-h-[350px] h-auto w-full ">
       <div className='w-full max-w-md'>
         <p className="mb-4 text-[#B7B7B7] text-[13px] font-inter ml-1">Select your support amount:</p>
         <div className="flex justify-between gap-2 mb-5 text-sm">
@@ -106,51 +106,61 @@ const SupportForm = () => {
             <button
               key={amt}
               onClick={() => handleAmountChange(amt)}
-              className={`flex items-center justify-center py-3 rounded-xl w-[80px] ${amount === amt && !isCustomAmount ? 'bg-white text-black font-bold' : 'bg-[#252525] border-2 border-[#3e3d3d]'}`}
+              className={`flex items-center justify-center rounded-xl min-w-[70px] w-full h-[45px] ${amount === amt && !isCustomAmount ? 'bg-white text-black font-bold' : 'bg-[#252525] border-2 border-[#3e3d3d] flex flex-row gap-[1px]'}`}
             >
               <Image 
                 src={amount === amt && !isCustomAmount ? "/icons/symbol-black.svg" : "/icons/symbol-white.svg"} 
                 alt='symbol' 
                 width={6} 
                 height={3}  
+                className='w-[7px]'
               />
               {amt}
             </button>
           ))}
-          <div className="relative flex items-center w-[80px] ">
-          <Image 
-            src={isCustomAmount ? "/icons/symbol-black.svg" : "/icons/symbol-white.svg"} 
-            alt='symbol' 
-            width={6} 
-            height={3} 
-            className="absolute left-3 top-1/2 transform -translate-y-1/2" 
-          />
-          <input
-            type="number"
-            value={customAmount}
-            onClick={handleCustomAmountClick}
-            onChange={handleCustomAmountChange}
-            className={`pl-5 pr-2 py-3 rounded-xl font-normal ${isCustomAmount ? 'bg-white text-black font-bold' : 'bg-[#252525] border-2 border-[#3e3d3d]'}`}
-            placeholder="Other"
-            style={{
-              appearance: 'textfield',
-              height: 'auto',
-              scrollbarWidth: 'none',
-              overflow: 'hidden'
-            }}
-          />
-          <style jsx>{`
-            input::placeholder {
-              color: #5B5B5B;
-            }
-          `}</style>
-        </div>
+          <div className="relative flex items-center w-[70px]">
+            <Image 
+              src={isCustomAmount ? "/icons/symbol-black.svg" : "/icons/symbol-white.svg"} 
+              alt='symbol' 
+              width={6} 
+              height={3} 
+              className="absolute left-[12px] top-1/2 transform -translate-y-1/2 w-[7px] mb-[2px]" 
+            />
+            <input
+              type="number"
+              value={customAmount}
+              onClick={handleCustomAmountClick}
+              onChange={handleCustomAmountChange}
+              className={`pl-5 pr-2 py-3 rounded-xl font-normal min-w-[70px] w-full h-[45px] ${isCustomAmount ? 'bg-white text-black font-bold' : 'bg-[#252525] border-2 border-[#3e3d3d]'}`}
+              placeholder="Other"
+              style={{
+                appearance: 'textfield',
+                height: 'auto',
+                scrollbarWidth: 'none',
+                overflow: 'hidden'
+              }}
+            />
+            <style jsx>{`
+              input::-webkit-outer-spin-button,
+              input::-webkit-inner-spin-button {
+                -webkit-appearance: none;
+                margin: 0;
+              }
 
+              input[type='number'] {
+                -moz-appearance: textfield;
+              }
+
+              input::placeholder {
+                color: #5B5B5B;
+              }
+            `}</style>
+          </div>
         </div>
         <div className="my-5 mt-10 flex justify-between items-center w-full mx-auto">
           <p className="text-white font-ek-mukta text-[14px]">Total:</p>
           <div className="flex-grow border-t border-dotted border-gray-600 mx-6"></div>
-          <p className="text-white font-ek-mukta mr-1 flex gap-[2px]"><Image src="/icons/symbol-white.svg" className='mb-[3px]' alt='symbol' width={6} height={3}/>{amount}</p>
+          <p className="text-white font-ek-mukta mr-1 flex gap-[3px]"><Image src="/icons/symbol-white.svg" alt='symbol' width={6} height={3}/>{amount}</p>
         </div>
         <p className="mt-10 mb-4 text-[#B7B7B7] text-[13px] font-inter flex justify-start ml-1">Select a Payment Method:</p>
         <div className="flex justify-between mb-4 gap-4">

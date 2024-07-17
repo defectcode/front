@@ -30,7 +30,7 @@ export default function Navbar({ showSupportInNavbar, openModal }) {
 
   return (
     <nav className="bg-black bg-opacity-25 fixed top-0 w-full h-11 max-md:h-10 z-50 font-avenirRoman backdrop-blur-lg ios-blur">
-      <div className="max-w-screen-2xl mx-auto flex justify-between items-center px-2 py-2 max-lg:mx-5 relative z-50">
+      <div className="max-w-screen-2xl mx-auto flex justify-between items-center px-2 max-md:px-0 py-2 max-lg:mx-5 relative z-50">
         <div>
           <Link href="/"><Image src="/imgs/logo.svg" alt='logo' className='w-20 h-auto' width={11} height={1} /></Link>
         </div>

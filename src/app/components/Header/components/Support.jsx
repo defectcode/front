@@ -6,7 +6,7 @@ const SupportNavBar = ({ onClick }) => {
     <div>
       <button
         onClick={onClick}
-        className="w-[235px] flex items-center justify-center h-[48px] bg-white text-black rounded-lg gap-1 max-md:gap-1 text-[16px] font-bold font-avenir-heavy"
+        className="w-[317px] max-md:w-[156px] flex items-center justify-center h-[55px] max-md:h-[38px] bg-white text-black rounded-lg max-md:rounded-md gap-1 max-md:gap-[5px] text-[18px] max-md:text-[15px] font-bold font-avenir-heavy"
         style={{ fontFamily: 'Avenir Heavy, sans-serif' }}
       >
         <FaRegHeart className="w-[14px] h-auto" />
