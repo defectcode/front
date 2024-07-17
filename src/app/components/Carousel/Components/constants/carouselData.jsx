@@ -24,7 +24,7 @@ export const images = [
       src: {
           desktop: '/imgs/CloseStage.svg',
           tablet: '/imgs/tablet.png',
-          mobile: '/imgs/mobileCarousel.svg'
+          mobile: '/imgs/mobileCarousel2.svg'
         },
       alt: 'Slide 2',
       raisedAmount: 0,

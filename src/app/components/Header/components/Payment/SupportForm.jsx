@@ -102,23 +102,49 @@ const SupportForm = () => {
       <div className='w-full max-w-md'>
         <p className="mb-4 text-[#B7B7B7] text-[13px] font-inter ml-1">Select your support amount:</p>
         <div className="flex justify-between gap-2 mb-5 text-sm">
-          {[1, 10, 500].map((amt) => (
-            <button
-              key={amt}
-              onClick={() => handleAmountChange(amt)}
-              className={`flex items-center justify-center rounded-xl min-w-[70px] w-full h-[45px] ${amount === amt && !isCustomAmount ? 'bg-white text-black font-bold' : 'bg-[#252525] border-2 border-[#3e3d3d] flex flex-row gap-[1px]'}`}
-            >
-              <Image 
-                src={amount === amt && !isCustomAmount ? "/icons/symbol-black.svg" : "/icons/symbol-white.svg"} 
-                alt='symbol' 
-                width={6} 
-                height={3}  
-                className='w-[7px]'
-              />
-              {amt}
-            </button>
-          ))}
-          <div className="relative flex items-center w-[70px]">
+        <button
+          onClick={() => handleAmountChange(1)}
+          className={`flex items-center justify-center rounded-xl max-w-[80px] w-full max-sm:w-[75px] flex-grow h-[45px] ${amount === 1 && !isCustomAmount ? 'bg-white text-black font-bold' : 'bg-[#252525] border-2 border-[#3e3d3d] flex flex-row gap-[1px]'}`}
+        >
+          <Image 
+            src={amount === 1 && !isCustomAmount ? "/icons/symbol-black.svg" : "/icons/symbol-white.svg"} 
+            alt='symbol' 
+            width={6} 
+            height={3}  
+            className='w-[7px]'
+          />
+          <span style={{ fontFamily: 'Ek Mukta, sans-serif', fontWeight: amount === 1 && !isCustomAmount ? 700 : 400 }}>1</span>
+        </button>
+
+        <button
+          onClick={() => handleAmountChange(10)}
+          className={`flex items-center justify-center rounded-xl max-w-[80px] w-full max-sm:w-[75px] flex-grow h-[45px] ${amount === 10 && !isCustomAmount ? 'bg-white text-black font-extrabold' : 'bg-[#252525] border-2 border-[#3e3d3d] flex flex-row gap-[1px]'}`}
+        >
+          <Image 
+            src={amount === 10 && !isCustomAmount ? "/icons/symbol-black.svg" : "/icons/symbol-white.svg"} 
+            alt='symbol' 
+            width={6} 
+            height={3}  
+            className='w-[7px]'
+          />
+          <span style={{ fontFamily: 'Ek Mukta, sans-serif', fontWeight: amount === 10 && !isCustomAmount ? 700 : 400 }}>10</span>
+        </button>
+
+        <button
+          onClick={() => handleAmountChange(500)}
+          className={`flex items-center justify-center rounded-xl max-w-[80px] w-full max-sm:w-[70px] flex-grow h-[45px] ${amount === 500 && !isCustomAmount ? 'bg-white text-black font-bold' : 'bg-[#252525] border-2 border-[#3e3d3d] flex flex-row gap-[1px]'}`}
+        >
+          <Image 
+            src={amount === 500 && !isCustomAmount ? "/icons/symbol-black.svg" : "/icons/symbol-white.svg"} 
+            alt='symbol' 
+            width={6} 
+            height={3}  
+            className='w-[7px]'
+          />
+          <span style={{ fontFamily: 'Ek Mukta, sans-serif', fontWeight: amount === 500 && !isCustomAmount ? 700 : 400 }}>500</span>
+        </button>
+
+          <div className="relative flex items-center flex-grow">
             <Image 
               src={isCustomAmount ? "/icons/symbol-black.svg" : "/icons/symbol-white.svg"} 
               alt='symbol' 
@@ -131,13 +157,13 @@ const SupportForm = () => {
               value={customAmount}
               onClick={handleCustomAmountClick}
               onChange={handleCustomAmountChange}
-              className={`pl-5 pr-2 py-3 rounded-xl font-normal min-w-[70px] w-full h-[45px] ${isCustomAmount ? 'bg-white text-black font-bold' : 'bg-[#252525] border-2 border-[#3e3d3d]'}`}
+              className={`pl-5 pr-2 py-[10px] rounded-xl font-normal max-w-[80px] w-full max-sm:w-[70px] flex-grow h-[45px]  ${isCustomAmount ? 'bg-white text-black font-bold' : 'bg-[#252525] border-2 border-[#3e3d3d]'}`}
               placeholder="Other"
               style={{
                 appearance: 'textfield',
                 height: 'auto',
                 scrollbarWidth: 'none',
-                overflow: 'hidden'
+                overflow: 'hidden',
               }}
             />
             <style jsx>{`
@@ -160,20 +186,29 @@ const SupportForm = () => {
         <div className="my-5 mt-10 flex justify-between items-center w-full mx-auto">
           <p className="text-white font-ek-mukta text-[14px]">Total:</p>
           <div className="flex-grow border-t border-dotted border-gray-600 mx-6"></div>
-          <p className="text-white font-ek-mukta mr-1 flex gap-[3px]"><Image src="/icons/symbol-white.svg" alt='symbol' width={6} height={3}/>{amount}</p>
+          <p className="text-white font-ek-mukta mr-1 flex gap-[3px]"><Image src="/icons/symbol-white.svg" alt='symbol' width={6} height={3} style={{ fontFamily: 'Ek Mukta, sans-serif', fontWeight: 400 }}/>{amount}</p>
         </div>
         <p className="mt-10 mb-4 text-[#B7B7B7] text-[13px] font-inter flex justify-start ml-1">Select a Payment Method:</p>
-        <div className="flex justify-between mb-4 gap-4">
+        <div className="flex items-center justify-between mb-4 gap-4"> {/* Modificat gap la 4 (16px) */}
           {['stripe', 'paypal'].map((method) => (
             <button
               key={method}
               onClick={() => setPaymentMethod(method)}
-              className={`rounded-xl font-bold flex items-center justify-center w-[143px] h-[45px] mb-5 ${paymentMethod === method ? 'bg-black text-white mr-2' : 'bg-[#252525] border-2 border-[#3e3d3d]'}`}
+              className={`rounded-xl font-bold flex items-center justify-center flex-grow h-[45px] mb-5 ${paymentMethod === method ? 'bg-black text-white ' : 'bg-[#252525] border-2 border-[#3e3d3d]'}`}
             >
-              {method === 'paypal' ? <div className='flex items-center px-5 max-md:px-2'><Image src="/icons/paypal.svg" width={48} height={1} alt="paypal" className="w-[48px]" /></div> : <div className="flex items-center justify-center gap-2 h-[45px]"><Image src="/icons/card.svg" width={64} height={1} alt="card" className="w-[63px]" /></div>}
+              {method === 'paypal' ? (
+                <div className='flex items-center px-5 max-md:px-2'>
+                  <Image src="/icons/paypal.svg" width={48} height={1} alt="paypal" className="w-[48px]" />
+                </div>
+              ) : (
+                <div className="flex items-center justify-center gap-2 h-[45px]">
+                  <Image src="/icons/card.svg" width={64} height={1} alt="card"/>
+                </div>
+              )}
             </button>
           ))}
         </div>
+
         {paymentMethod === 'paypal' && (
           <div className="paypal-button-container">
             <PayPalButton amount={amount} onSuccess={handlePaymentSuccess} />

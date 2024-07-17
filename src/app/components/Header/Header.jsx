@@ -68,7 +68,7 @@ export default function Header() {
                   </div>
                 )}
                 <div className=" md:flex md:flex-col md:items-start">
-                  <p className="text-lg max-lg:text-lg max-md:text-[15px] max-md:leading-5 max-lg:text-start max-md:text-center max-md:mb-4 text-[#CDCDCD] mx-0 max-md:mx-2 font-ekMukta tracking-neg-3percent">
+                  <p className="text-[16px] max-lg:text-lg max-md:text-[15px] max-md:leading-5 max-lg:text-start max-md:text-center max-md:mb-4 text-[#CDCDCD] mx-0 max-md:mx-2 font-ekMukta tracking-neg-3percent">
                     In an ideal city without money, people face real human problems. Your support makes the series possible.
                   </p>
                    {!showSupportInNavbar && (
@@ -78,14 +78,13 @@ export default function Header() {
                   )} 
                   <div className="flex items-center gap-5 max-lg:gap-1 text-[#979797] max-lg:flex-col max-md:space-y-0 max-md:mb-4">
                     <h3 className="text-lg max-md:text-base hidden md:block font-avenirRoman">Drama • Sci-Fi • 2024</h3>
-                    <div className="flex gap-4 max-md:gap-1 mb-1 max-lg:mr-16 max-md:mr-0">
-                      <Image src="/imgs/sony.svg" width={64} height={1} alt="sony" className="w-[46px] max-md:w-10 max-sm:w-[30px] max-sm:h-[7px]" />
-                      <Image src="/imgs/netflix.svg" width={64} height={1} alt="netflix" className="w-[46px] max-md:w-10 max-sm:w-[30px] max-sm:h-[7px]" />
+                    <div className="flex gap-4 max-md:gap-1  max-lg:mr-16 max-md:mr-0">
+                      <Image src="/imgs/sony.svg" width={64} height={1} alt="sony" className="w-[46px] h-auto max-md:w-10 max-sm:w-[30px] max-sm:h-[7px]" />
+                      <Image src="/imgs/netflix.svg" width={64} height={1} alt="netflix" className="w-[46px] h-auto max-md:w-10 max-sm:w-[30px] max-sm:h-[7px]" />
                     </div>
                   </div>
                 </div>
               </div>
-              {/* <Icons /> */}
             </div>
           </div>
         </div>

@@ -54,6 +54,7 @@ const Carousel = () => {
       setCurrentIndex(s.track.details.rel);
     },
     duration: 800, // Adjusting transition duration to make it smoother
+    dragSpeed: 1, // Ensuring dragging speed is controlled
   });
 
   useEffect(() => {
@@ -76,15 +77,8 @@ const Carousel = () => {
       return;
     }
 
-    // Determine whether to go to the next or previous slide
-    const x = e.clientX;
-    const screenWidth = window.innerWidth;
-
-    if (x > screenWidth / 2) {
-      slider.current?.next();
-    } else {
-      slider.current?.prev();
-    }
+    // Move to the clicked slide
+    slider.current?.moveToIdx(index);
   };
 
   return (
@@ -100,17 +94,24 @@ const Carousel = () => {
           className={`keen-slider__slide relative flex justify-center text-white text-2xl font-semibold w-full h-[453px] sm:h-[600px] md:h-[500px] lg:w-[1100px] max-height cursor-pointer`}
           onClick={(e) => handleImageClick(e, index)}
         >
-          <div className={`absolute inset-0 ${isMobile ? 'w-full h-full bg-gradient-to-t from-black/60 to-transparent p-2 -mt-[105px]' : isTablet ? 'w-full h-full bg-gradient-to-r from-black/60 to-transparent p-3' : 'w-full h-full bg-gradient-to-r from-black/85 to-transparent px-10'} flex flex-col justify-around text-white transition-opacity duration-200`}>
-          {!isMobile && (
-            <Title contentIndex={index} isMobile={isMobile} isTablet={isTablet} />
-          )}
-            <FundraisingProgress raisedAmount={image.raisedAmount} goalAmount={image.goalAmount} contentIndex={index} />
+          <div className="relative w-full h-full">
+            <img
+              src={isMobile ? image.src.mobile : isTablet ? image.src.tablet : image.src.desktop}
+              alt={image.alt}
+              className={`w-full h-full object-cover max-h-[750px] custom-image-width ${isMobile ? "max-width-image max-height-image mt-36 rounded-[8px]" : "rounded-none"} ${index !== currentIndex ? 'blur-[1px] transition-filter duration-300' : 'transition-filter duration-300'}`}
+            />
+            {index !== currentIndex && (
+              <div className="absolute inset-0 max-md:max-h-[453px] max-md:w-[269px] bg-[#363636]/60 max-md:mt-36"></div>
+            )}
+            {index === currentIndex && (
+              <div className={`absolute inset-0 ${isMobile ? 'w-full h-full bg-gradient-to-t from-black/60 to-transparent p-2 -mt-[105px]' : isTablet ? 'w-full h-full bg-gradient-to-r from-black/60 to-transparent p-3' : 'w-full h-full bg-gradient-to-r from-black/85 to-transparent px-10'} flex flex-col justify-around text-white transition-opacity duration-200`}>
+                {!isMobile && (
+                  <Title contentIndex={index} isMobile={isMobile} isTablet={isTablet} />
+                )}
+                <FundraisingProgress raisedAmount={image.raisedAmount} goalAmount={image.goalAmount} contentIndex={index} />
+              </div>
+            )}
           </div>
-          <img
-            src={isMobile ? image.src.mobile : isTablet ? image.src.tablet : image.src.desktop}
-            alt={image.alt}
-            className={`w-full h-full object-cover max-h-[750px] custom-image-width ${isMobile ? "max-width-image max-height-image mt-36 rounded-lg" : "rounded-none"} ${index !== currentIndex ? 'blur-sm transition-filter duration-300' : 'transition-filter duration-300'}`}
-          />
         </div>
       ))}
       <Dots
@@ -125,4 +126,3 @@ const Carousel = () => {
 };
 
 export default Carousel;
-

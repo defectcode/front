@@ -14,6 +14,7 @@ const config: Config = {
       },
       letterSpacing: {
         'neg-2percent': '-0.03em',
+        '-1p': '-0.01em',
       },
       colors: {
         'dark-gray': '#1a1a1a',
