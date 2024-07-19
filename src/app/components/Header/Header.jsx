@@ -68,7 +68,7 @@ export default function Header() {
                   </div>
                 )}
                 <div className=" md:flex md:flex-col md:items-start">
-                  <p className="text-[16px] max-lg:text-lg max-md:text-[15px] max-md:leading-5 max-lg:text-start max-md:text-center max-md:mb-4 text-[#CDCDCD] mx-0 max-md:mx-2 font-ekMukta tracking-neg-3percent">
+                  <p className="text-[16px] max-lg:text-lg max-md:text-[15px] max-[390px]:text-[14px] max-md:leading-5 max-lg:text-start max-md:text-center max-md:mb-4 text-[#CDCDCD] mx-0 max-md:mx-2 font-ekMukta tracking-neg-3percent">
                     In an ideal city without money, people face real human problems. Your support makes the series possible.
                   </p>
                    {!showSupportInNavbar && (

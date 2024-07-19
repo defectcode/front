@@ -45,10 +45,9 @@ iframe {
   }
 }
 
-/* Ajustări opționale: Modificarea culorii și opacității fundalului dacă este necesar */
 @media screen and (max-width: 768px) {
   .ios-blur {
-      background: rgba(0, 0, 0, 0.2); /* Ajustează după necesitate */
+      background: rgba(0, 0, 0, 0.2); 
   }
 }
 
@@ -73,7 +72,14 @@ iframe {
 }
 
 .max-width-image {
-  width: 269px;
+  width: 500px;
+}
+
+
+@media (max-width: 834px) {
+  .text-auto-small {
+    font-size: 12px;
+  }
 }
 
 

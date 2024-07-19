@@ -24,13 +24,13 @@ export const images = [
       src: {
           desktop: '/imgs/CloseStage.svg',
           tablet: '/imgs/tablet.png',
-          mobile: '/imgs/mobileCarousel2.svg'
+          mobile: '/imgs/mobile-close.svg'
         },
       alt: 'Slide 2',
       raisedAmount: 0,
       goalAmount: 74000,
       title: 'Production Stages',
-      titleConcept: 'Series Concept',
+      titleConcept: 'Season One',
       subtitle: 'Next Fundraising',
       stageLabel: 'Stage',
       stageNumber: '2',
@@ -43,13 +43,13 @@ export const images = [
       src: {
           desktop: '/imgs/CloseStage.svg',
           tablet: '/imgs/tablet.png',
-          mobile: '/imgs/mobileCarousel.svg'
+          mobile: '/imgs/mobile-close.svg'
         },
       alt: 'Slide 3',
       raisedAmount: 0,
       goalAmount: 74000,
       title: 'Production Stages',
-      titleConcept: 'Series Concept',
+      titleConcept: 'Season One',
       subtitle: 'Next Fundraising',
       stageLabel: 'Stage',
       stageNumber: '3',
@@ -62,13 +62,13 @@ export const images = [
       src: {
           desktop: '/imgs/CloseStage.svg',
           tablet: '/imgs/tablet.png',
-          mobile: '/imgs/mobileCarousel.svg'
+          mobile: '/imgs/mobile-close.svg'
         },
       alt: 'Slide 4',
       raisedAmount: 0,
       goalAmount: 74000,
       title: 'Production Stages',
-      titleConcept: 'Series Concept',
+      titleConcept: 'Season One',
       subtitle: 'Next Fundraising',
       stageLabel: 'Stage',
       stageNumber: '4',
@@ -81,13 +81,13 @@ export const images = [
       src: {
           desktop: '/imgs/CloseStage.svg',
           tablet: '/imgs/tablet.png',
-          mobile: '/imgs/mobileCarousel.svg'
+          mobile: '/imgs/mobile-close.svg'
         },
       alt: 'Slide 5',
       raisedAmount: 0,
       goalAmount: 74000,
       title: 'Production Stages',
-      titleConcept: 'Series Concept',
+      titleConcept: 'Season One',
       subtitle: 'Next Fundraising',
       stageLabel: 'Stage',
       stageNumber: '5',
@@ -100,13 +100,13 @@ export const images = [
       src: {
           desktop: '/imgs/CloseStage.svg',
           tablet: '/imgs/tablet.png',
-          mobile: '/imgs/mobileCarousel.svg'
+          mobile: '/imgs/mobile-close.svg'
         },
       alt: 'Slide 6',
       raisedAmount: 0,
       goalAmount: 74000,
       title: 'Production Stages',
-      titleConcept: 'Series Concept',
+      titleConcept: 'Season One',
       subtitle: 'Next Fundraising',
       stageLabel: 'Stage',
       stageNumber: '6',
@@ -119,13 +119,13 @@ export const images = [
       src: {
           desktop: '/imgs/CloseStage.svg',
           tablet: '/imgs/tablet.png',
-          mobile: '/imgs/mobileCarousel.svg'
+          mobile: '/imgs/mobile-close.svg'
         },
       alt: 'Slide 7',
       raisedAmount: 0,
       goalAmount: 74000,
       title: 'Production Stages',
-      titleConcept: 'Series Concept',
+      titleConcept: 'Season One',
       subtitle: 'Next Fundraising',
       stageLabel: 'Stage',
       stageNumber: '7',
@@ -138,13 +138,13 @@ export const images = [
         src: {
             desktop: '/imgs/CloseStage.svg',
             tablet: '/imgs/tablet.png',
-            mobile: '/imgs/mobileCarousel.svg'
+            mobile: '/imgs/mobile-close.svg'
           },
         alt: 'Slide 8',
         raisedAmount: 0,
         goalAmount: 74000,
         title: 'Production Stages',
-        titleConcept: 'Series Concept',
+        titleConcept: 'Season One',
         subtitle: 'Next Fundraising',
         stageLabel: 'Stage',
         stageNumber: '8',
@@ -157,16 +157,16 @@ export const images = [
         src: {
             desktop: '/imgs/CloseStage.svg',
             tablet: '/imgs/tablet.png',
-            mobile: '/imgs/mobileCarousel.svg'
+            mobile: '/imgs/mobile-close.svg'
           },
         alt: 'Slide 8',
         raisedAmount: 0,
         goalAmount: 74000,
         title: 'Production Stages',
-        titleConcept: 'Series Concept',
+        titleConcept: 'Season One',
         subtitle: 'Next Fundraising',
         stageLabel: 'Stage',
-        stageNumber: '8',
+        stageNumber: '9',
         supportersLabel: '',
         supportersCount: '',
         description: 'Be part of every stage of our series production. View more details now',
@@ -176,16 +176,16 @@ export const images = [
         src: {
             desktop: '/imgs/CloseStage.svg',
             tablet: '/imgs/tablet.png',
-            mobile: '/imgs/mobileCarousel.svg'
+            mobile: '/imgs/mobile-close.svg'
           },
         alt: 'Slide 8',
         raisedAmount: 0,
         goalAmount: 74000,
         title: 'Production Stages',
-        titleConcept: 'Series Concept',
+        titleConcept: 'Season One',
         subtitle: 'Next Fundraising',
         stageLabel: 'Stage',
-        stageNumber: '8',
+        stageNumber: '10',
         supportersLabel: '',
         supportersCount: '',
         description: 'Be part of every stage of our series production. View more details now',

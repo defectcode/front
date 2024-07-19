@@ -6,6 +6,7 @@ import { images } from './Components/constants/carouselData';
 import Title from './Components/Title';
 import FundraisingProgress from './Components/Progres';
 import Dots from './Components/Dots';
+import { IoIosArrowForward, IoIosArrowBack } from 'react-icons/io';
 
 const Carousel = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -18,15 +19,18 @@ const Carousel = () => {
   useEffect(() => {
     const handleResize = () => {
       const width = window.innerWidth;
-      setIsMobile(width <= 768);
-      setIsTablet(width > 768 && width <= 1024);
-      setIsLaptop(width >= 1024 && width <= 1920);
+      setIsMobile(width <= 834); 
+      setIsTablet(width > 834 && width <= 1024);
+      setIsLaptop(width > 1024 && width <= 1920);
 
-      if (width <= 768) {
-        setSpacing(7);
+      if (width <= 415) { 
+        setSpacing(13); 
+        setPerView(1.4);
+      } else if (width <= 834) { 
+        setSpacing(13); 
         setPerView(1.55);
-      } else if (width > 768 && width <= 1024) {
-        setSpacing(1);
+      } else if (width > 834 && width <= 1024) {
+        setSpacing(3);
         setPerView(1.25);
       } else if (width > 1024 && width <= 1920) {
         setSpacing(20);
@@ -44,7 +48,7 @@ const Carousel = () => {
 
   const [sliderRef, slider] = useKeenSlider({
     loop: true,
-    mode: 'free-snap',
+    mode: 'snap',
     slides: {
       origin: 'center',
       perView: perView,
@@ -53,8 +57,7 @@ const Carousel = () => {
     slideChanged(s) {
       setCurrentIndex(s.track.details.rel);
     },
-    duration: 800, // Adjusting transition duration to make it smoother
-    dragSpeed: 1, // Ensuring dragging speed is controlled
+    duration: 800,
   });
 
   useEffect(() => {
@@ -73,12 +76,25 @@ const Carousel = () => {
 
   const handleImageClick = (e, index) => {
     if (index === currentIndex) {
-      // Clicked on the central image, do nothing
       return;
     }
 
-    // Move to the clicked slide
-    slider.current?.moveToIdx(index);
+    const x = e.clientX;
+    const screenWidth = window.innerWidth;
+
+    if (x > screenWidth / 2) {
+      slider.current?.next();
+    } else {
+      slider.current?.prev();
+    }
+  };
+
+  const handlePrev = () => {
+    slider.current?.prev();
+  };
+
+  const handleNext = () => {
+    slider.current?.next();
   };
 
   return (
@@ -91,29 +107,26 @@ const Carousel = () => {
       {images.map((image, index) => (
         <div
           key={index}
-          className={`keen-slider__slide relative flex justify-center text-white text-2xl font-semibold w-full h-[453px] sm:h-[600px] md:h-[500px] lg:w-[1100px] max-height cursor-pointer`}
+          className={`keen-slider__slide relative flex justify-center text-white text-2xl font-semibold w-full h-[453px] sm:h-[600px] md:h-[500px] lg:w-[1100px] max-height ${index !== currentIndex ? 'cursor-pointer' : ''} ${isMobile ? 'mobile-slide' : ''} ${index === currentIndex ? 'current-slide' : ''}`}
           onClick={(e) => handleImageClick(e, index)}
         >
-          <div className="relative w-full h-full">
-            <img
-              src={isMobile ? image.src.mobile : isTablet ? image.src.tablet : image.src.desktop}
-              alt={image.alt}
-              className={`w-full h-full object-cover max-h-[750px] custom-image-width ${isMobile ? "max-width-image max-height-image mt-36 rounded-[8px]" : "rounded-none"} ${index !== currentIndex ? 'blur-[1px] transition-filter duration-300' : 'transition-filter duration-300'}`}
-            />
-            {index !== currentIndex && (
-              <div className="absolute inset-0 max-md:max-h-[453px] max-md:w-[269px] bg-[#363636]/60 max-md:mt-36"></div>
+          {index !== currentIndex && (
+            <div className={`absolute inset-0 ${isMobile ? 'mobile-overlay' : 'h-[750px] max-md:max-h-[453px] max-md:w-[269px] rounded-lg bg-[#363636]/60 max-md:mt-36'}`}></div>
+          )}
+          <div className={`absolute inset-0 ${isMobile ? 'w-full h-[453px] mt-36 bg-gradient-to-t from-black/70 to-transparent p-3 ' : isTablet ? 'w-full h-full bg-gradient-to-r from-black/60 to-transparent p-3' : 'w-[55%] h-[750px] bg-gradient-to-r from-[#000000]/80 via-[#282828]/85 to-transparent px-10'} flex flex-col justify-around text-white ${currentIndex === index ? 'opacity-100' : 'opacity-0'} transition-opacity duration-200`}>
+            {!isMobile && (
+              <Title contentIndex={index} isMobile={isMobile} isTablet={isTablet} />
             )}
-            {index === currentIndex && (
-              <div className={`absolute inset-0 ${isMobile ? 'w-full h-full bg-gradient-to-t from-black/60 to-transparent p-2 -mt-[105px]' : isTablet ? 'w-full h-full bg-gradient-to-r from-black/60 to-transparent p-3' : 'w-full h-full bg-gradient-to-r from-black/85 to-transparent px-10'} flex flex-col justify-around text-white transition-opacity duration-200`}>
-                {!isMobile && (
-                  <Title contentIndex={index} isMobile={isMobile} isTablet={isTablet} />
-                )}
-                <FundraisingProgress raisedAmount={image.raisedAmount} goalAmount={image.goalAmount} contentIndex={index} />
-              </div>
-            )}
+            <FundraisingProgress raisedAmount={image.raisedAmount} goalAmount={image.goalAmount} contentIndex={index} />
           </div>
+          <img
+            src={isMobile ? image.src.mobile : isTablet ? image.src.tablet : image.src.desktop}
+            alt={image.alt}
+            className={`w-full h-full object-cover max-h-[750px] custom-image-width ${isMobile ? "max-width-image w-full min-w-[240px] max-height-image mt-36 rounded-lg" : "rounded-lg"} ${index !== currentIndex && isMobile ? 'mobile-side-image' : ''}`}
+          />
         </div>
       ))}
+
       <Dots
         totalImages={images.length}
         currentIndex={currentIndex}
@@ -121,6 +134,17 @@ const Carousel = () => {
         isTablet={isTablet}
         onDotClick={handleDotClick}
       />
+      
+      {isMobile && (
+        <>
+          <button className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-transparent ml-1 p-3 rounded-full text-white" onClick={handlePrev}>
+            <IoIosArrowBack size={30} />
+          </button>
+          <button className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-transparent mr-1 p-3 rounded-full text-white" onClick={handleNext}>
+            <IoIosArrowForward size={30} />
+          </button>
+        </>
+      )}
     </div>
   );
 };

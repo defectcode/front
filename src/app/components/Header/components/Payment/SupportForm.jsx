@@ -14,6 +14,9 @@ const SupportForm = () => {
   const stripe = useStripe();
   const elements = useElements();
 
+  // Valoare hardcodată pentru CLIENT_SECRET (Numai pentru testare)
+  const CLIENT_SECRET = 'sk_test_4eC39HqLyjWDarjtT1zdp7dc'; // Înlocuiește cu cheia ta de test
+
   useEffect(() => {
     if (stripe && amount > 0) {
       const pr = stripe.paymentRequest({
@@ -35,7 +38,7 @@ const SupportForm = () => {
 
       pr.on('paymentmethod', async (event) => {
         const { error } = await stripe.confirmCardPayment(
-          '{CLIENT_SECRET}', // Replace with actual client secret
+          CLIENT_SECRET, // Înlocuiește cu valoarea hardcodată sau obținută din backend
           {
             payment_method: event.paymentMethod.id,
           },
@@ -47,7 +50,7 @@ const SupportForm = () => {
           event.complete('fail');
         } else {
           event.complete('success');
-          const { error: confirmError } = await stripe.confirmCardPayment('{CLIENT_SECRET}');
+          const { error: confirmError } = await stripe.confirmCardPayment(CLIENT_SECRET);
           if (confirmError) {
             console.log('Payment failed', confirmError);
           } else {
@@ -84,9 +87,9 @@ const SupportForm = () => {
       const height = 800;
       const left = (window.screen.width / 2) - (width / 2);
       const top = (window.screen.height / 2) - (height / 2);
-  
-      const stripeDonateUrl = `https://donate.stripe.com/14kaFlb407Nu76weUV?amount=${amount}`;
-  
+
+      const stripeDonateUrl = `https://donate.stripe.com/14kaFlb407Nu76weUV?amount=`;
+
       window.open(
         stripeDonateUrl,
         'Stripe Donation',
