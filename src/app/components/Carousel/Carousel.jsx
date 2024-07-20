@@ -24,7 +24,7 @@ const Carousel = () => {
       setIsLaptop(width > 1024 && width <= 1920);
 
       if (width <= 415) { 
-        setSpacing(13); 
+        setSpacing(12); 
         setPerView(1.4);
       } else if (width <= 834) { 
         setSpacing(13); 
@@ -126,7 +126,6 @@ const Carousel = () => {
           />
         </div>
       ))}
-
       <Dots
         totalImages={images.length}
         currentIndex={currentIndex}
@@ -134,7 +133,6 @@ const Carousel = () => {
         isTablet={isTablet}
         onDotClick={handleDotClick}
       />
-      
       {isMobile && (
         <>
           <button className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-transparent ml-1 p-3 max-[395px]:p-0 rounded-full text-white" onClick={handlePrev}>

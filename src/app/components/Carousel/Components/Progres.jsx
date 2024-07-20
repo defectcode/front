@@ -27,8 +27,8 @@ const FundraisingProgress = ({ raisedAmount, goalAmount, contentIndex = 0 }) => 
           className="flex gap-1 text-lg max-sm:text-md ml-[150px] max-md:ml-0 max-md:mr-0 max-md:text-[16px] max-md:-mb-1"
           style={{ fontFamily: 'Avenir, sans-serif' }}
         >
-          <p className="text-[#C1C1C1] text-[16px]">{content.stageLabel}</p>
-          <p className="font-bold text-[16px]">{content.stageNumber}</p>
+          <p className="text-[#C1C1C1] text-[16px] max-md:text-[14px]">{content.stageLabel}</p>
+          <p className="font-bold text-[16px] max-md:text-[14px]">{content.stageNumber}</p>
         </div>
       </div>
       <div className="relative w-[380px] max-md:w-full">
@@ -47,7 +47,7 @@ const FundraisingProgress = ({ raisedAmount, goalAmount, contentIndex = 0 }) => 
       </div>
       {content.status === 'Process' ? (
         <p
-          className="flex items-end text-xl lg:text-md mb-3 md:mb-0 gap-1 max-lg:gap-[2px]  max-md:tracking--1p"
+          className="flex items-end text-xl lg:text-md mb-3 md:mb-0 gap-1 max-lg:gap-[2px] max-md:tracking--1p"
           style={{
             fontFamily: 'Ek Mukta, sans-serif',
             fontWeight: 400,
@@ -76,15 +76,6 @@ const FundraisingProgress = ({ raisedAmount, goalAmount, contentIndex = 0 }) => 
             {goalAmount}
           </span>
           <span className="text-[#C1C1C1] text-[15px] max-md:text-[14px] ">goal</span>
-          {/* <span className="text-xl text-[#C1C1C1] max-md:text-[12px]  max-md:ml-[1px] max-md:mr-[1px]">
-            •
-          </span> */}
-          {/* <span className="font-semibold max-md:font-semibold text-[14px] lg:text-[20px] md:text-[16px] sm:text-[14px] ">
-            {content.supportersCount}
-          </span>
-          <span className="text-[#C1C1C1] text-[15px] max-md:text-[12px]  max-lg:-mt-3">
-            {content.supportersLabel}
-          </span> */}
         </p>
       ) : (
         <div>
