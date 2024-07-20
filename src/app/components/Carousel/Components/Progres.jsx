@@ -47,35 +47,35 @@ const FundraisingProgress = ({ raisedAmount, goalAmount, contentIndex = 0 }) => 
       </div>
       {content.status === 'Process' ? (
         <p
-          className="flex items-end text-xl lg:text-md mb-3 md:mb-0 gap-1 max-lg:gap-[2px] max-md:flex-wrap max-md:tracking--1p"
+          className="flex items-end text-xl lg:text-md mb-3 md:mb-0 gap-1 max-lg:gap-[2px]  max-md:tracking--1p"
           style={{
             fontFamily: 'Ek Mukta, sans-serif',
             fontWeight: 400,
             letterSpacing: '-0.008rem',
           }}
         >
-          <span className="font-semibold max-md:font-semibold max-md:text-[13px] flex">
+          <span className="font-semibold max-md:font-semibold max-md:text-[16px] flex">
             <Image
               src="/icons/symbol-white.svg"
               alt="$"
               width={6.5}
               height={1}
-              className="w-[8px] max-md:w-[5px]"
+              className="w-[8px] max-md:w-[6px] max-md:mb-[2px] max-md:font-semibold"
             />
             {raisedAmount}
           </span>
-          <span className="text-[#C1C1C1] text-[15px] max-md:text-[12px] ">raised of</span>
-          <span className="text-[#C1C1C1] text-[15px] max-md:text-[12px]  flex">
+          <span className="text-[#C1C1C1] text-[15px] max-md:text-[14px]">raised of</span>
+          <span className="text-[#C1C1C1] text-[15px] max-md:text-[14px] flex">
             <Image
               src="/icons/symbol-gray.svg"
               alt="$"
               width={5.5}
               height={1}
-              className="text-[#C1C1C1] w-[6px] max-md:w-[5px]"
+              className="text-[#C1C1C1] w-[6px] max-md:w-[6px] max-md:ml-1"
             />
             {goalAmount}
           </span>
-          <span className="text-[#C1C1C1] text-[15px] max-md:text-[12px] ">goal</span>
+          <span className="text-[#C1C1C1] text-[15px] max-md:text-[14px] ">goal</span>
           {/* <span className="text-xl text-[#C1C1C1] max-md:text-[12px]  max-md:ml-[1px] max-md:mr-[1px]">
             •
           </span> */}
