@@ -37,3 +37,49 @@ iframe {
   }
 }
 
+
+@supports (-webkit-backdrop-filter: blur(10px)) or (backdrop-filter: blur(10px)) {
+  .ios-blur {
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .ios-blur {
+      background: rgba(0, 0, 0, 0.2); 
+  }
+}
+
+.custom-image-width {
+  width: 1536px;
+}
+
+.custom-bg-height-mobile {
+  height: 750px;
+}
+
+.custom-bg-height {
+  height: 830px;
+}
+
+.max-height {
+  height: 656px;
+} 
+
+.max-height-image {
+  height: 453px;
+}
+
+.max-width-image {
+  width: 500px;
+}
+
+
+@media (max-width: 834px) {
+  .text-auto-small {
+    font-size: 12px;
+  }
+}
+
+
