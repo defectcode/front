@@ -32,14 +32,26 @@ export default function Header() {
       document.documentElement.style.setProperty('--viewport-height', `${viewportHeight}px`);
     };
 
-    
+    const updateBackground = () => {
+      if (window.innerWidth < 768) {
+        headerRef.current.style.backgroundImage = "url('/imgs/mobile.svg')";
+        headerRef.current.style.backgroundSize = 'cover';
+      } else {
+        headerRef.current.style.backgroundImage = "url('/imgs/background.png')";
+        headerRef.current.style.backgroundSize = 'cover';
+      }
+    };
+
     updateHeight();
+    updateBackground();
     window.addEventListener('resize', updateHeight);
+    window.addEventListener('resize', updateBackground);
 
     effectRan.current = true;
 
     return () => {
       window.removeEventListener('resize', updateHeight);
+      window.removeEventListener('resize', updateBackground);
     };
   }, []);
 
@@ -47,7 +59,7 @@ export default function Header() {
     <div className="relative h-screen max-md:h-[var(--viewport-height)] w-auto text-white font-ekMukta overflow-hidden">
       <div
         ref={headerRef}
-        className={`absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat max-md:w-auto ${isModalOpen ? 'bg-opacity-50 blur-sm' : ''} md:bg-[url('/imgs/background.png')] bg-[url('/imgs/mobile.svg')] max-md:background-fixed`}
+        className={`absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat max-md:w-auto ${isModalOpen ? 'bg-opacity-50 blur-sm' : ''}`}
       ></div>
       <div className={`absolute bottom-0 w-full h-3/6 bg-gradient-to-t from-black/70 via-black/70 to-transparent ${isModalOpen ? 'bg-opacity-50 blur-sm' : ''}`}></div>
       <div className={`relative z-10 h-full overflow-auto ${isModalOpen ? 'blur-sm' : ''}`}>
