@@ -69,7 +69,7 @@ export default function Header() {
                   </div>
                 )}
                 <div className="space-y-1 md:flex md:flex-col md:items-start">
-                  <p className="text-[16px] max-lg:text-[14px] max-lg:leading-5 max-md:text-center max-md:mb-4 text-[#CDCDCD] mx-0 font-ekMukta tracking-neg-3percent">
+                  <p className="text-[16px] max-lg:text-lg max-lg:text-[14px] max-lg:leading-5 max-md:text-center max-md:mb-4 text-[#CDCDCD] mx-0 font-ekMukta tracking-neg-3percent">
                     In an ideal city without money, people face real human problems. Your support makes the series possible.
                   </p>
                   <div className="flex items-center gap-5 text-[#979797] max-md:flex-col max-md:space-y-[12px]">
