@@ -14,6 +14,7 @@ export default function Header() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [showSupportInNavbar, setShowSupportInNavbar] = useState(false);
   const headerRef = useRef(null);
+  const effectRan = useRef(false);
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -24,6 +25,8 @@ export default function Header() {
   };
 
   useEffect(() => {
+    if (effectRan.current) return;
+
     const updateHeight = () => {
       const viewportHeight = window.innerHeight;
       document.documentElement.style.setProperty('--viewport-height', `${viewportHeight}px`);
@@ -40,26 +43,11 @@ export default function Header() {
     window.addEventListener('resize', updateHeight);
     window.addEventListener('scroll', handleScroll);
 
+    effectRan.current = true;
+
     return () => {
       window.removeEventListener('resize', updateHeight);
       window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
-  // Custom hook to handle iOS resize issues
-  useEffect(() => {
-    const handleIOSResize = () => {
-      if (/iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream) {
-        const viewportHeight = window.innerHeight;
-        document.documentElement.style.setProperty('--viewport-height', `${viewportHeight}px`);
-      }
-    };
-
-    window.addEventListener('resize', handleIOSResize);
-    handleIOSResize(); // Call initially to set the value
-
-    return () => {
-      window.removeEventListener('resize', handleIOSResize);
     };
   }, []);
 
@@ -67,7 +55,8 @@ export default function Header() {
     <div className="relative h-screen max-md:h-[var(--viewport-height)] w-auto text-white font-ekMukta overflow-hidden">
       <div
         ref={headerRef}
-        className={`absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat max-md:w-auto ${isModalOpen ? 'bg-opacity-50 blur-sm' : ''} md:bg-[url('/imgs/background.png')] bg-[url('/imgs/mobile.svg')] max-md:background-fixed`}
+        className={`absolute inset-0 w-full h-full bg-cover bg-center max-md:w-auto ${isModalOpen ? 'bg-opacity-50 blur-sm' : ''} md:bg-[url('/imgs/background.png')] bg-[url('/imgs/mobile.svg')]`}
+        style={{ backgroundSize: 'cover', backgroundAttachment: 'scroll' }}
       ></div>
       <div className={`absolute bottom-0 w-full h-3/6 bg-gradient-to-t from-black/70 via-black/70 to-transparent ${isModalOpen ? 'bg-opacity-50 blur-sm' : ''}`}></div>
       <div className={`relative z-10 h-full overflow-auto ${isModalOpen ? 'blur-sm' : ''}`}>
