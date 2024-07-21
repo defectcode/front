@@ -14,7 +14,6 @@ export default function Header() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [showSupportInNavbar, setShowSupportInNavbar] = useState(false);
   const headerRef = useRef(null);
-  const effectRan = useRef(false);
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -25,20 +24,25 @@ export default function Header() {
   };
 
   useEffect(() => {
-    if (effectRan.current) return;
-
     const updateHeight = () => {
       const viewportHeight = window.innerHeight;
       document.documentElement.style.setProperty('--viewport-height', `${viewportHeight}px`);
     };
 
-    effectRan.current = true;    
+    const handleScroll = () => {
+      if (headerRef.current) {
+        const headerHeight = headerRef.current.getBoundingClientRect().height;
+        setShowSupportInNavbar(window.scrollY > headerHeight);
+      }
+    };
+
     updateHeight();
     window.addEventListener('resize', updateHeight);
-
+    window.addEventListener('scroll', handleScroll);
 
     return () => {
       window.removeEventListener('resize', updateHeight);
+      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
