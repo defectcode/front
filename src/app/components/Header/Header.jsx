@@ -64,13 +64,13 @@ export default function Header() {
       <div className={`relative z-10 h-full overflow-auto ${isModalOpen ? 'blur-sm' : ''}`}>
         <Navbar showSupportInNavbar={showSupportInNavbar} openModal={openModal} />
         <div className="max-w-screen-2xl w-auto mx-auto h-full flex flex-col text-white max-2xl:p-4 max-md:p-0">
-          <div className="flex-grow flex flex-col justify-end max-2xl:p-2 header-content max-md:p-0">
-            <div className={`flex flex-col md:flex-row justify-between max-lg:flex-col max-lg:justify-center`}>
+          <div className="flex-grow flex flex-col justify-end max-2xl:p-2 max-md:p-0">
+            <div className="flex flex-col md:flex-row justify-between max-lg:flex-col max-lg:justify-center">
               <div className="flex flex-col mb-10 max-md:mb-0 items-center md:flex-row gap-3 max-md:gap-0 max-lg:flex-col max-lg:justify-center">
                 <div className="md:hidden flex flex-col items-center justify-center mt-8">
                   <Image src="/imgs/logo.svg" alt='logo' className='w-[188px] h-auto max-md:mb-4' width={188} height={1} />
-                  <h3 className="text-lg max-md:text-[14px] text-[#979797] font-avenirRoman max-md:mb-4" style={{ fontFamily: 'Avenir Roman, sans-serif' }}>
-                    Drama <span style={{ display: 'inline-block', width: '3px', height: '3px', backgroundColor: '#979797', borderRadius: '50%', margin: '0 5px', verticalAlign: 'middle' }}></span> Sci-Fi
+                  <h3 className="text-lg max-md:text-[14px] text-[#979797] font-avenirRoman max-md:mb-4">
+                    Drama <span className="inline-block w-[3px] h-[3px] bg-[#979797] rounded-full mx-[5px] align-middle"></span> Sci-Fi
                   </h3>
                 </div>
                 {!showSupportInNavbar && (
@@ -78,18 +78,18 @@ export default function Header() {
                     <Support onClick={openModal} />
                   </div>
                 )}
-                <div className=" md:flex md:flex-col md:items-start">
+                <div className="md:flex md:flex-col md:items-start">
                   <p className="text-[16px] max-lg:text-lg max-md:text-[15px] max-[390px]:text-[14px] max-md:leading-5 max-lg:text-start max-md:text-center max-md:mb-4 text-[#CDCDCD] mx-0 max-md:mx-2 font-ekMukta tracking-neg-3percent">
                     In an ideal city without money, people face real human problems. Your support makes the series possible.
                   </p>
-                   {!showSupportInNavbar && (
+                  {!showSupportInNavbar && (
                     <div className="md:hidden flex justify-center max-md:mb-4">
                       <Support onClick={openModal} />
                     </div>
-                  )} 
+                  )}
                   <div className="flex items-center gap-5 max-lg:gap-1 text-[#979797] max-lg:flex-col max-md:space-y-0 max-md:mb-4">
                     <h3 className="text-lg max-md:text-base hidden md:block font-avenirRoman">Drama • Sci-Fi • 2024</h3>
-                    <div className="flex gap-4 max-md:gap-1  max-lg:mr-16 max-md:mr-0">
+                    <div className="flex gap-4 max-md:gap-1 max-lg:mr-16 max-md:mr-0">
                       <Image src="/imgs/sony.svg" width={64} height={1} alt="sony" className="w-[46px] h-auto max-md:w-10 max-sm:w-[30px] max-sm:h-[7px]" />
                       <Image src="/imgs/netflix.svg" width={64} height={1} alt="netflix" className="w-[46px] h-auto max-md:w-10 max-sm:w-[30px] max-sm:h-[7px]" />
                     </div>
