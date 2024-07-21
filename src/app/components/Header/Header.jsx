@@ -58,12 +58,12 @@ export default function Header() {
         className={`absolute inset-0 w-full h-full bg-cover bg-center max-md:w-auto ${isModalOpen ? 'bg-opacity-50 blur-sm' : ''} md:bg-[url('/imgs/background.png')] bg-[url('/imgs/mobile.svg')]`}
         style={{ backgroundSize: 'cover', backgroundAttachment: 'scroll' }}
       ></div>
-      <div className={`absolute bottom-0 w-full h-3/6 bg-gradient-to-t from-black/70 via-black/70 to-transparent ${isModalOpen ? 'bg-opacity-50 blur-sm' : ''}`}></div>
+      <div className={`absolute bottom-0 w-full h-1/2 bg-gradient-to-t from-black/70 via-black/70 to-transparent ${isModalOpen ? 'bg-opacity-50 blur-sm' : ''}`}></div>
       <div className={`relative z-10 h-full overflow-auto ${isModalOpen ? 'blur-sm' : ''}`}>
         <Navbar showSupportInNavbar={showSupportInNavbar} openModal={openModal} />
         <div className="max-w-screen-2xl w-auto mx-auto h-full flex flex-col text-white max-2xl:p-4 max-md:p-0">
           <div className="flex-grow flex flex-col justify-end max-2xl:p-2 header-content max-md:p-0">
-            <div className={`flex flex-col md:flex-row justify-between max-lg:flex-col max-lg:justify-center customStyles`}>
+            <div className={`flex flex-col md:flex-row justify-between max-lg:flex-col max-lg:justify-center`}>
               <div className="flex flex-col mb-10 max-md:mb-0 items-center md:flex-row gap-3 max-md:gap-0 max-lg:flex-col max-lg:justify-center">
                 <div className="md:hidden flex flex-col items-center justify-center mt-8">
                   <Image src="/imgs/logo.svg" alt='logo' className='w-[188px] h-auto max-md:mb-4' width={188} height={1} />
