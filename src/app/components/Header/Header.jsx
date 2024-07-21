@@ -30,11 +30,13 @@ export default function Header() {
     const updateHeight = () => {
       const viewportHeight = window.innerHeight;
       document.documentElement.style.setProperty('--viewport-height', `${viewportHeight}px`);
+      console.log(`Viewport height set to: ${viewportHeight}`);
     };
 
     const handleScroll = () => {
       if (headerRef.current) {
         const headerHeight = headerRef.current.getBoundingClientRect().height;
+        console.log(`Scroll position: ${window.scrollY}, Header height: ${headerHeight}`);
         setShowSupportInNavbar(window.scrollY > headerHeight);
       }
     };
