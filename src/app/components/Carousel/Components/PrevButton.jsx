@@ -14,3 +14,4 @@ const PrevButton = ({ onClick }) => {
 };
 
 export default PrevButton;
+

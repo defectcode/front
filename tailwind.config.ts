@@ -8,13 +8,8 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      spacing: {
-        '120px': '120px',
-        '20px': '20px',
-      },
       letterSpacing: {
         'neg-2percent': '-0.03em',
-        '-1p': '-0.01em',
       },
       colors: {
         'dark-gray': '#1a1a1a',
@@ -25,14 +20,9 @@ const config: Config = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       fontFamily: {
-        ekMukta: ['"Ek Mukta"', 'sans-serif'],
-        interLight: ['"Inter"', 'sans-serif'],
+        ekMukta: ['var(--font-family-ek-mukta)', 'sans-serif'],
         avenirRoman: ['Avenir', 'sans-serif'],
         avenirHeavy: ['Avenir', 'sans-serif'],
-        inter: ['Inter', 'sans-serif'],
-      },
-      screens: {
-        xs: '650px',
       },
     },
   },

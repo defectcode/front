@@ -1,19 +1,12 @@
 import { FaRegHeart } from "react-icons/fa";
 import React from 'react';
 
-const SupportNavBar = ({ onClick }) => {
-  return (
-    <div>
-      <button
-        onClick={onClick}
-        className="w-[235px] max-md:w-[156px] flex items-center justify-center h-[48px] max-md:h-[38px] bg-white text-black rounded-lg max-md:rounded-md gap-1 max-md:gap-[5px] text-[16px] max-md:text-[15px] font-bold font-avenir-heavy"
-        style={{ fontFamily: 'Avenir Heavy, sans-serif' }}
-      >
-        <FaRegHeart className="w-[14px] h-auto" />
-        Support
-      </button>
-    </div>
-  );
+const Support = ({ onClick }) => {
+    return (
+        <button onClick={onClick} className="px-28 max-md:px-10 py-4 max-md:py-2 bg-white text-black rounded-lg flex gap-2 max-md:gap-1 font-bold text-xl max-md:text-[15px] max-md:font-semibold">
+           <FaRegHeart className="mt-[6px]" />Support
+        </button>
+    );
 };
 
-export default SupportNavBar;
+export default Support;
