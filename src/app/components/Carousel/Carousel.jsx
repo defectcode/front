@@ -1,130 +1,148 @@
-'use client';
-import { useState, useEffect, useRef } from 'react';
-import Dots from './Components/Dots';
+"use client";
+import React, { useState, useEffect, useRef } from 'react';
+import { useKeenSlider } from 'keen-slider/react';
+import 'keen-slider/keen-slider.min.css';
+import { images } from './Components/constants/carouselData';
 import Title from './Components/Title';
 import FundraisingProgress from './Components/Progres';
-import { images } from './Components/constants/carouselData';
-import PrevButton from './Components/PrevButton';
-import NextButton from './Components/NextButton';
+import Dots from './Components/Dots';
+import { IoIosArrowForward, IoIosArrowBack } from 'react-icons/io';
 
 const Carousel = () => {
-  const totalImages = images.length;
-  const [currentIndex, setCurrentIndex] = useState(1);
-  const [isTransitioning, setIsTransitioning] = useState(false);
-  const containerRef = useRef(null);
-  const [carouselWidth, setCarouselWidth] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
+  const [isTablet, setIsTablet] = useState(false);
+  const [isLaptop, setIsLaptop] = useState(false);
+  const [spacing, setSpacing] = useState(0.4);
+  const [perView, setPerView] = useState(1.25);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
-    const updateCarouselWidth = () => {
-      setCarouselWidth(window.innerWidth);
-      setIsMobile(window.innerWidth <= 768);
-    };
+    const handleResize = () => {
+      const width = window.innerWidth;
+      setIsMobile(width <= 834); 
+      setIsTablet(width > 834 && width <= 1024);
+      setIsLaptop(width > 1024 && width <= 1920);
 
-    if (typeof window !== 'undefined') {
-      updateCarouselWidth();
-      window.addEventListener('resize', updateCarouselWidth);
-
-      return () => {
-        window.removeEventListener('resize', updateCarouselWidth);
-      };
-    }
-  }, []);
-
-  const goToNextSlide = () => {
-    if (!isTransitioning) {
-      setIsTransitioning(true);
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % (totalImages + 2)); // include imaginile fantomă
-    }
-  };
-
-  const goToPreviousSlide = () => {
-    if (!isTransitioning) {
-      setIsTransitioning(true);
-      setCurrentIndex((prevIndex) => (prevIndex - 1 + totalImages + 2) % (totalImages + 2)); // include imaginile fantomă
-    }
-  };
-
-  useEffect(() => {
-    const handleTransitionEnd = () => {
-      setIsTransitioning(false);
-      if (currentIndex === 0) {
-        setCurrentIndex(totalImages);
-        containerRef.current.style.transition = 'none';
-        containerRef.current.style.transform = `translateX(-${totalImages * (isMobile ? 283 : 1317)}px)`;
-      } else if (currentIndex === totalImages + 1) {
-        setCurrentIndex(1);
-        containerRef.current.style.transition = 'none';
-        containerRef.current.style.transform = `translateX(-${isMobile ? 283 : 1317}px)`;
+      if (width <= 415) { 
+        setSpacing(12); 
+        setPerView(1.4);
+      } else if (width <= 834) { 
+        setSpacing(13); 
+        setPerView(1.55);
+      } else if (width > 834 && width <= 1024) {
+        setSpacing(3);
+        setPerView(1.25);
+      } else if (width > 1024 && width <= 1920) {
+        setSpacing(20);
+        setPerView(1.25);
+      } else {
+        setSpacing(0.4);
+        setPerView(1.25);
       }
     };
 
-    const container = containerRef.current;
-    container.addEventListener('transitionend', handleTransitionEnd);
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
-    return () => {
-      container.removeEventListener('transitionend', handleTransitionEnd);
-    };
-  }, [currentIndex, totalImages, isMobile]);
+  const [sliderRef, slider] = useKeenSlider({
+    loop: true,
+    mode: 'snap',
+    slides: {
+      origin: 'center',
+      perView: perView,
+      spacing: spacing,
+    },
+    slideChanged(s) {
+      setCurrentIndex(s.track.details.rel);
+    },
+    duration: 800,
+  });
 
   useEffect(() => {
-    if (isTransitioning) {
-      containerRef.current.style.transition = 'transform 0.5s ease-in-out';
-    } else {
-      containerRef.current.style.transition = 'none';
+    sliderRef.current?.update({
+      slides: {
+        origin: 'center',
+        perView: perView,
+        spacing: spacing,
+      },
+    });
+  }, [spacing, perView, sliderRef]);
+
+  const handleDotClick = (index) => {
+    slider.current?.moveToIdx(index);
+  };
+
+  const handleImageClick = (e, index) => {
+    if (index === currentIndex) {
+      return;
     }
-    const imageWidth = isMobile ? 268 : 1317; // Use actual width of the image
-    const padding = 9; // Adjust padding as needed
-    const translateXValue = currentIndex < 1 ? totalImages : currentIndex > totalImages ? 1 : currentIndex;
-    const offsetX = (carouselWidth - imageWidth) / 2;
-    containerRef.current.style.transform = `translateX(-${translateXValue * (imageWidth + padding * 2) - offsetX}px)`;
-  }, [currentIndex, isTransitioning, carouselWidth, isMobile]);
+
+    const x = e.clientX;
+    const screenWidth = window.innerWidth;
+
+    if (x > screenWidth / 2) {
+      slider.current?.next();
+    } else {
+      slider.current?.prev();
+    }
+  };
+
+  const handlePrev = () => {
+    slider.current?.prev();
+  };
+
+  const handleNext = () => {
+    slider.current?.next();
+  };
 
   return (
-    <div className="relative w-full mx-auto overflow-hidden bg-black" style={{ height: isMobile ? '731px' : '800px' }}>
+    <div ref={sliderRef} className={`keen-slider bg-black py-6 ${isMobile ? "custom-bg-height-mobile" : "custom-bg-height"} relative`}>
       {isMobile && (
-        <div className="absolute w-full top-0 left-0 z-10 text-center mt-28">
-          <Title contentIndex={currentIndex - 1} isMobile={isMobile} />
+        <div className="absolute mt-10">
+          <Title contentIndex={currentIndex} isMobile={isMobile} isTablet={isTablet} />
         </div>
       )}
-      <div
-        className="flex transition-transform duration-500 ease-in-out my-5 max-md:mt-36"
-        ref={containerRef}
-        style={{ width: `${(totalImages + 2) * (isMobile ? 283 : 1317)}px`, transform: `translateX(-${currentIndex * (isMobile ? 283 : 1317) - (carouselWidth - (isMobile ? 295 : 1317)) / 2}px)` }}
-      >
-        <div className={`w-[${isMobile ? 283 : 1317}px] flex-shrink-0 mx-[9px]`}>
-          <img
-            src={isMobile ? images[totalImages - 1].src.mobile : images[totalImages - 1].src.desktop}
-            alt={images[totalImages - 1].alt}
-            className={`${isMobile ? 'w-[268px] h-[453px] rounded-lg' : 'w-[1317px] h-[656px]'} object-cover`}
-          />
-        </div>
-        {images.map((image, index) => (
-          <div key={index} className="relative flex-shrink-0 mx-[9px]" style={{ width: isMobile ? '268px' : '1317px' }}>
-            <img
-              src={isMobile ? image.src.mobile : image.src.desktop}
-              alt={image.alt}
-              className={`${isMobile ? 'w-[268px] h-[453px] rounded-lg' : 'w-[1317px] h-[656px]'} object-cover`}
-            />
-            {index === currentIndex - 1 && (
-              <div className={`absolute inset-0 ${isMobile ? 'w-full h-full bg-gradient-to-t from-black/60 to-transparent p-4' : 'w-3/5 h-full bg-gradient-to-r from-black/85 to-transparent pl-10'} flex flex-col justify-around text-white`}>
-                {!isMobile && <Title contentIndex={index} isMobile={isMobile} />}
-                <FundraisingProgress raisedAmount={image.raisedAmount} goalAmount={image.goalAmount} contentIndex={index} />
-              </div>
+      {images.map((image, index) => (
+        <div
+          key={index}
+          className={`keen-slider__slide relative flex justify-center text-white text-2xl font-semibold w-full h-[453px] sm:h-[600px] md:h-[500px] lg:w-[1100px] max-height ${index !== currentIndex ? 'cursor-pointer' : ''} ${isMobile ? 'mobile-slide' : ''} ${index === currentIndex ? 'current-slide' : ''}`}
+          onClick={(e) => handleImageClick(e, index)}
+        >
+          {index !== currentIndex && (
+            <div className={`absolute inset-0 ${isMobile ? 'mobile-overlay bg-[#363636]/40 rounded-lg max-h-[453px] mt-36' : 'h-[750px] max-md:max-h-[453px] max-md:w-[269px] rounded-lg bg-[#363636]/40 max-md:mt-36'}`}></div>
+          )}
+          <div className={`absolute inset-0 ${isMobile ? 'w-full h-[453px] mt-36 bg-gradient-to-t from-black/70 to-transparent p-3 ' : isTablet ? 'w-full h-full bg-gradient-to-r from-black/60 to-transparent p-3' : 'w-[55%] h-[750px] bg-gradient-to-r from-[#000000]/80 via-[#282828]/85 to-transparent px-10'} flex flex-col justify-around text-white ${currentIndex === index ? 'opacity-100' : 'opacity-0'} transition-opacity duration-200`}>
+            {!isMobile && (
+              <Title contentIndex={index} isMobile={isMobile} isTablet={isTablet} />
             )}
+            <FundraisingProgress raisedAmount={image.raisedAmount} goalAmount={image.goalAmount} contentIndex={index} />
           </div>
-        ))}
-        <div className={'flex-shrink-0 mx-[9px]'} style={{ width: isMobile ? '268px' : '1317px' }}>
           <img
-            src={isMobile ? images[0].src.mobile : images[0].src.desktop}
-            alt={images[0].alt}
-            className={`${isMobile ? 'w-[268px] h-[453px] rounded-lg' : 'w-[1317px] h-[656px]'} object-cover`}
+            src={isMobile ? image.src.mobile : isTablet ? image.src.tablet : image.src.desktop}
+            alt={image.alt}
+            className={`w-full h-full object-cover max-h-[750px] custom-image-width ${isMobile ? "max-width-image w-full min-w-[240px] max-height-image mt-36 rounded-lg" : "rounded-lg"} ${index !== currentIndex && isMobile ? 'mobile-side-image' : ''}`}
           />
         </div>
-      </div>
-      <PrevButton onClick={goToPreviousSlide} />
-      <NextButton onClick={goToNextSlide} />
-      <Dots totalImages={totalImages} currentIndex={currentIndex} isMobile={isMobile} />
+      ))}
+      <Dots
+        totalImages={images.length}
+        currentIndex={currentIndex}
+        isMobile={isMobile}
+        isTablet={isTablet}
+        onDotClick={handleDotClick}
+      />
+      {isMobile && (
+        <>
+          <button className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-transparent ml-1 p-3 max-[395px]:p-0 rounded-full text-white" onClick={handlePrev}>
+            <IoIosArrowBack size={30} />
+          </button>
+          <button className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-transparent mr-1 p-3 max-[395px]:p-0 rounded-full text-white" onClick={handleNext}>
+            <IoIosArrowForward size={30} />
+          </button>
+        </>
+      )}
     </div>
   );
 };

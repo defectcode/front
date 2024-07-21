@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Navbar from "./components/Header/components/Navbar";
+// import Navbar from "./components/Header/components/Navbar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,7 +21,7 @@ export default function RootLayout({
         <link rel="icon" href="/icons/faviconpng.png" />
       </head>
       <body className={inter.className}>
-        <Navbar />
+        {/* <Navbar showSupportInNavbar={undefined} openModal={undefined} /> */}
         {children}
       </body>
     </html>
