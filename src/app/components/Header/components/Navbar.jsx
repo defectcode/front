@@ -11,7 +11,7 @@ import { loadStripe } from '@stripe/stripe-js';
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
 
-export default function Navbar({ showSupportInNavbar, openModal }) {
+export default function Navbar({ openModal }) {
   const [isOpen, setIsOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -35,11 +35,7 @@ export default function Navbar({ showSupportInNavbar, openModal }) {
           <Link href="/"><Image src="/imgs/logo.svg" alt='logo' className='w-20 h-auto' width={11} height={1} /></Link>
         </div>
         <div className="md:hidden flex items-center relative z-50">
-          {showSupportInNavbar && (
-            <div className='relative z-60 flex items-center'>
-              <SupportNavBar onClick={handleOpenModal} className="md:hidden" />
-            </div>
-          )}
+
           <button onClick={() => setIsOpen(!isOpen)} className="transition-opacity">
             {isOpen ? <AiOutlineClose className="text-white w-8 h-8 max-md:w-5 max-md:h-5" /> : <Image src="/imgs/burgher.svg" alt='burgher' width={40} height={1} className="text-white w-8 h-8 max-md:w-[20px] max-md:h-[12px]" />}
           </button>
