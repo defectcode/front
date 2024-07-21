@@ -46,6 +46,23 @@ export default function Header() {
     };
   }, []);
 
+  // Custom hook to handle iOS resize issues
+  useEffect(() => {
+    const handleIOSResize = () => {
+      if (/iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream) {
+        const viewportHeight = window.innerHeight;
+        document.documentElement.style.setProperty('--viewport-height', `${viewportHeight}px`);
+      }
+    };
+
+    window.addEventListener('resize', handleIOSResize);
+    handleIOSResize(); // Call initially to set the value
+
+    return () => {
+      window.removeEventListener('resize', handleIOSResize);
+    };
+  }, []);
+
   return (
     <div className="relative h-screen max-md:h-[var(--viewport-height)] w-auto text-white font-ekMukta overflow-hidden">
       <div
