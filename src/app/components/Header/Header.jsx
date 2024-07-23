@@ -46,7 +46,7 @@ export default function Header() {
       ></div>
       <div className={`absolute bottom-0 w-full h-3/6 bg-gradient-to-t from-black/70 via-black/70 to-transparent ${isModalOpen ? 'bg-opacity-50 blur-sm' : ''}`}></div>
       <div className={`relative z-10 h-full overflow-auto ${isModalOpen ? 'blur-sm' : ''}`}>
-        <Navbar openModal={openModal} showSupportButton={showSupportInNavbar} />
+        <Navbar openModal={openModal} />
         <div className="max-w-screen-2xl w-auto mx-auto h-full flex flex-col text-white max-2xl:p-4 max-md:p-0">
           <div className="flex-grow flex flex-col justify-end header-content max-md:p-0">
             <div className="content-wrapper">

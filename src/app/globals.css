@@ -101,7 +101,7 @@ iframe {
 }
 
 .header {
-  height: 100vh; /* Default for desktop */
+  height: 100vh; 
   position: relative;
 }
 
@@ -132,7 +132,6 @@ iframe {
   }
 }
 
-
 /* Adaptation Header for all version phone*/
 @media only screen and (device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) {
   .header {
@@ -154,11 +153,10 @@ iframe {
 
 @media only screen and (max-width: 430px) {
   .header {
-    height: 96vh; 
+    height: 932px; 
   }
 }
 
-/* Poco X3 NFC */
 @media only screen and (max-width: 420px) {
   .header {
     height: 93vh; 
@@ -168,12 +166,6 @@ iframe {
 @media only screen and (max-width: 380px) {
   .header {
     height: 89vh; 
-  }
-}
-
-@media only screen and (max-width: 360px) {
-  .header {
-    height: 45vh;
   }
 }
 
