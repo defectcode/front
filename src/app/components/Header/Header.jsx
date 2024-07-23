@@ -1,5 +1,5 @@
-'use client';
-import React, { useState, useRef } from 'react';
+'use client'
+import React, { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import Navbar from './components/Navbar';
 import Support from './components/Support';
@@ -14,6 +14,21 @@ export default function Header() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [showSupportInNavbar, setShowSupportInNavbar] = useState(false);
   const headerRef = useRef(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 100) {
+        setShowSupportInNavbar(true);
+      } else {
+        setShowSupportInNavbar(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -31,7 +46,7 @@ export default function Header() {
       ></div>
       <div className={`absolute bottom-0 w-full h-3/6 bg-gradient-to-t from-black/70 via-black/70 to-transparent ${isModalOpen ? 'bg-opacity-50 blur-sm' : ''}`}></div>
       <div className={`relative z-10 h-full overflow-auto ${isModalOpen ? 'blur-sm' : ''}`}>
-        <Navbar openModal={openModal} />
+        <Navbar openModal={openModal} showSupportButton={showSupportInNavbar} />
         <div className="max-w-screen-2xl w-auto mx-auto h-full flex flex-col text-white max-2xl:p-4 max-md:p-0">
           <div className="flex-grow flex flex-col justify-end header-content max-md:p-0">
             <div className="content-wrapper">
