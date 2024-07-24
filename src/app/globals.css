@@ -55,7 +55,7 @@ iframe {
 }
 
 .custom-bg-height-mobile {
-  height: 750px;
+  height: 700px;
 }
 
 .custom-bg-height {
@@ -151,13 +151,13 @@ iframe {
   }
 }
 
-@media only screen and (max-width: 430px) {
+/* @media only screen and (max-width: 428px) {
   .header {
-    height: 932px; 
+    height: 92vh; 
   }
-}
+} */
 
-@media only screen and (max-width: 420px) {
+@media only screen and (max-width: 416px) {
   .header {
     height: 93vh; 
   }
@@ -175,7 +175,13 @@ iframe {
 
 @media only screen and (min-width: 415px) and (max-width: 768px) {
   .header {
-    height: 87vh;
+    height: 90vh;
+  }
+}
+
+@media only screen and (width: 428px) {
+  .header {
+    height: 88vh;
   }
 }
 
@@ -183,4 +189,35 @@ iframe {
   .header {
     height: 100vh;
   }
+}
+
+@keyframes fadeOutLeft {
+  0% {
+      opacity: 1;
+      transform: translateX(0);
+  }
+  100% {
+      opacity: 0;
+      transform: translateX(-20px);
+  }
+}
+
+.hover\\:animate-fadeOutLeft:hover {
+  animation: fadeOutLeft 1s forwards;
+}
+
+.ourMissionBackground {
+  background-image: url('/imgs/OurMission/Earth.png'); 
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.fixed {
+  position: fixed;
+  width: 100%;
+  z-index: 10; 
+}
+
+.mt-[-20px] {
+  margin-top: -20px;
 }
