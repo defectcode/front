@@ -1,5 +1,5 @@
 import React from "react";
-import './OurMission.css'; 
+import './OurMission.model.css'; 
 import GoalsSection from './components/GoalsSection'
 import Earth from './components/Earth'
 

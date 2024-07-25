@@ -1,0 +1,5 @@
+.ourMissionBackground {
+    background-image: url('/imgs/OurMission/Earth.png'); 
+    background-size: cover;
+    background-attachment: fixed;
+}

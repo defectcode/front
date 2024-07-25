@@ -151,12 +151,6 @@ iframe {
   }
 }
 
-/* @media only screen and (max-width: 428px) {
-  .header {
-    height: 92vh; 
-  }
-} */
-
 @media only screen and (max-width: 416px) {
   .header {
     height: 93vh; 
@@ -204,20 +198,4 @@ iframe {
 
 .hover\\:animate-fadeOutLeft:hover {
   animation: fadeOutLeft 1s forwards;
-}
-
-.ourMissionBackground {
-  background-image: url('/imgs/OurMission/Earth.png'); 
-  background-size: cover;
-  background-attachment: fixed;
-}
-
-.fixed {
-  position: fixed;
-  width: 100%;
-  z-index: 10; 
-}
-
-.mt-[-20px] {
-  margin-top: -20px;
 }
