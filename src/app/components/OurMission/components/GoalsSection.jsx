@@ -84,6 +84,7 @@ const GoalsSection = () => {
             }
         };
     }, []);
+    
 
     useEffect(() => {
         let timer;
