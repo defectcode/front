@@ -14,14 +14,14 @@ const Earth = () => {
             setIsMobile(window.innerWidth < 768);
         };
 
-        handleResize(); // Initial check
+        handleResize();
         window.addEventListener("resize", handleResize);
 
         return () => window.removeEventListener("resize", handleResize);
     }, []);
 
     useEffect(() => {
-        if (isMobile) return; // Disable scroll effects for mobile devices
+        if (isMobile) return; 
 
         const handleScroll = () => {
             if (entry) {
@@ -29,25 +29,24 @@ const Earth = () => {
                 setFixed(isFixed);
                 if (isFixed) {
                     controls.start({
-                        y: -370,
-                        transition: { duration: 2, ease: "easeInOut" }
+                        y: -360,
+                        transition: { duration: 1.5, ease: "easeInOut" }
                     });
                 } else {
                     controls.start({
                         y: 0,
-                        transition: { duration: 2, ease: "easeInOut" }
+                        transition: { duration: 3, ease: "easeInOut" }
                     });
                 }
             }
         };
-
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
     }, [entry, controls, isMobile]);
 
     return (
         <div 
-            className={`relative w-auto lg:w-full ${isMobile ? 'h-[100px] bg-black' : 'h-screen ourMissionBackground'}`} 
+            className={`relative h-screen w-auto lg:w-full ${isMobile ? 'h-[150px] bg-black' : 'h-screen ourMissionBackground'}`} 
             ref={ref}
             style={{ backgroundImage: isMobile ? 'none' : "url('/imgs/OurMission/Earth.png')" }}
         >

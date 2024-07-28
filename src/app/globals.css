@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Ek+Mukta:wght@400&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -151,12 +153,6 @@ iframe {
   }
 }
 
-/* @media only screen and (max-width: 428px) {
-  .header {
-    height: 92vh; 
-  }
-} */
-
 @media only screen and (max-width: 416px) {
   .header {
     height: 93vh; 
@@ -206,18 +202,22 @@ iframe {
   animation: fadeOutLeft 1s forwards;
 }
 
-.ourMissionBackground {
-  background-image: url('/imgs/OurMission/Earth.png'); 
-  background-size: cover;
-  background-attachment: fixed;
+
+
+.font-roboto {
+  font-family: 'Roboto', sans-serif;
 }
 
-.fixed {
-  position: fixed;
-  width: 100%;
-  z-index: 10; 
+.font-ekmukta {
+  font-family: 'Ek Mukta', sans-serif;
 }
 
-.mt-[-20px] {
-  margin-top: -20px;
+.font-ekmukta-extrabold {
+  font-family: 'Ek Mukta', sans-serif;
+  font-weight: 800;
+}
+
+.font-ekmukta-extralight {
+  font-family: 'Ek Mukta', sans-serif;
+  font-weight: 200;
 }
