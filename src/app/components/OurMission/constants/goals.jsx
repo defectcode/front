@@ -1,3 +1,5 @@
+
+
 export const goals = [
     {
         id: 1,
@@ -19,7 +21,7 @@ export const goals = [
     },
 ];
 
-export const componentsAnimation = {
+export const componentsAnimation = {  
     hidden: {
         y: 0,
         opacity: 0,
@@ -45,7 +47,21 @@ export const componentsAnimation = {
         opacity: 1,
     },
     visibleMobile3: {
-        y: -1300,
+        y: -1325,
         opacity: 1,
     },
+    visibleIphone14: {
+        y: 0,
+        opacity: 1
+    },
+    visibleIphone14_2: {
+        y: -730,
+        opacity: 1,
+    },
+    visibleIphone14_3: {
+        y: -1400,
+        opacity: 1,
+    },
+    
+
 };

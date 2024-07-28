@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Ek+Mukta:wght@400&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -198,4 +200,24 @@ iframe {
 
 .hover\\:animate-fadeOutLeft:hover {
   animation: fadeOutLeft 1s forwards;
+}
+
+
+
+.font-roboto {
+  font-family: 'Roboto', sans-serif;
+}
+
+.font-ekmukta {
+  font-family: 'Ek Mukta', sans-serif;
+}
+
+.font-ekmukta-extrabold {
+  font-family: 'Ek Mukta', sans-serif;
+  font-weight: 800;
+}
+
+.font-ekmukta-extralight {
+  font-family: 'Ek Mukta', sans-serif;
+  font-weight: 200;
 }
