@@ -21,7 +21,7 @@ const Earth = () => {
     }, []);
 
     useEffect(() => {
-        if (isMobile) return; 
+        if (isMobile) return;
 
         const handleScroll = () => {
             if (entry) {
@@ -46,9 +46,9 @@ const Earth = () => {
 
     return (
         <div 
-            className={`relative h-screen w-auto lg:w-full ${isMobile ? 'h-[100px] bg-black' : 'h-screen ourMissionBackground'}`} 
+            className={`relative ${isMobile ? 'h-[100px] bg-black' : 'h-screen'} w-full`} 
             ref={ref}
-            style={{ backgroundImage: isMobile ? 'none' : "url('/imgs/OurMission/Earth.png')" }}
+            style={{ backgroundImage: isMobile ? 'none' : "url('/imgs/OurMission/Earth.png')", backgroundSize: 'cover', backgroundPosition: 'center' }}
         >
             <motion.div 
                 className={`absolute ${isMobile ? 'static flex flex-col items-center justify-center h-full' : 'bottom-[174px] right-0 left-0 p-5 flex flex-col items-end lg:mb-10'}`}
