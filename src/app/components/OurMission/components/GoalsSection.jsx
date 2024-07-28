@@ -14,7 +14,7 @@ const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY)
 const GoalsSection = () => {
     const { width } = useWindowDimensions();
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [bgHeight, setBgHeight] = useState(window.innerHeight);
+    const [bgHeight, setBgHeight] = useState(0);
     const [currentSection, setCurrentSection] = useState(0); 
     const [firstSectionInView, setFirstSectionInView] = useState(false);
     const [resetSections, setResetSections] = useState(false);
@@ -43,15 +43,14 @@ const GoalsSection = () => {
             const newHeight = Math.max(minHeight, window.innerHeight - reduction);
             setBgHeight(newHeight);
 
-            // Reset sections if scrolling away from the first section
+            // Reset secțiunile dacă derulăm în sus și ieșim din prima secțiune
             if (sectionRefs.current[0]) {
                 const firstSectionTop = sectionRefs.current[0].getBoundingClientRect().top;
                 if (firstSectionTop > window.innerHeight || firstSectionTop < 0) {
                     setFirstSectionInView(false);
-                    setResetSections(true);
+                    setCurrentSection(0); // Resetăm secțiunile
                 } else {
                     setFirstSectionInView(true);
-                    setResetSections(false);
                 }
             }
         }
@@ -96,18 +95,12 @@ const GoalsSection = () => {
         return () => clearTimeout(timer);
     }, [currentSection, firstSectionInView]);
 
-    useEffect(() => {
-        if (resetSections) {
-            setCurrentSection(0);
-        }
-    }, [resetSections]);
-
     const getAnimationVariant = (index) => {
         if (width <= 415 && width >= 370) {
             return index === 0 ? 'visibleMobile' : index === 1 ? 'visibleMobile2' : 'visibleMobile3';
         } else if (width <= 430 && width >= 416) {
             return index === 0 ? 'visibleIphone14' : index === 1 ? 'visibleIphone14_2' : 'visibleIphone14_3';
-        } else if ( width <= 500 && width >= 420) {
+        } else if (width <= 500 && width >= 420) {
             return index === 0 ? 'visibleIphone14' : index === 1 ? 'visibleIphone14_2' : 'visibleIphone14_3';
         } else {
             return index === 0 ? 'visible' : index === 1 ? 'visible2' : 'visible3';

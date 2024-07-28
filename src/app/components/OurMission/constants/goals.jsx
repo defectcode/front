@@ -55,7 +55,7 @@ export const componentsAnimation = {
         opacity: 1
     },
     visibleIphone14_2: {
-        y: -730,
+        y: -700,
         opacity: 1,
     },
     visibleIphone14_3: {

@@ -46,7 +46,7 @@ const Earth = () => {
 
     return (
         <div 
-            className={`relative h-screen w-auto lg:w-full ${isMobile ? 'h-[100px] bg-black' : 'h-screen ourMissionBackground'}`} 
+            className={`relative h-screen w-auto lg:w-full ${isMobile ? 'h-[150px] bg-black' : 'h-screen ourMissionBackground'}`} 
             ref={ref}
             style={{ backgroundImage: isMobile ? 'none' : "url('/imgs/OurMission/Earth.png')" }}
         >
