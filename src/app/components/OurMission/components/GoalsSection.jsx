@@ -84,7 +84,7 @@ const GoalsSection = () => {
             }
         };
     }, []);
-    
+
 
     useEffect(() => {
         let timer;
@@ -95,6 +95,7 @@ const GoalsSection = () => {
         }
         return () => clearTimeout(timer);
     }, [currentSection, firstSectionInView]);
+
 
     const getAnimationVariant = (index) => {
         if (width <= 415 && width >= 370) {
@@ -107,6 +108,7 @@ const GoalsSection = () => {
             return index === 0 ? 'visible' : index === 1 ? 'visible2' : 'visible3';
         }
     };
+    
 
     return (
         <motion.div
