@@ -14,18 +14,14 @@ const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY)
 const GoalsSection = () => {
     const { width } = useWindowDimensions();
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [bgHeight, setBgHeight] = useState(0);
-    const [currentSection, setCurrentSection] = useState(0); 
-    const [firstSectionInView, setFirstSectionInView] = useState(false);
-    const [resetSections, setResetSections] = useState(false);
+    const [currentSection, setCurrentSection] = useState(width < 768 ? 0 : -1);
+    const [lastScrollTop, setLastScrollTop] = useState(0);
+    const [shouldReset, setShouldReset] = useState(false);
     const sectionRefs = useRef([]);
     const minHeight = width < 768 ? 700 : 20;
 
-    useEffect(() => {
-        if (typeof window !== 'undefined') {
-            setBgHeight(window.innerHeight);
-        }
-    }, []);
+    // const [bgHeight, setBgHeight] = useState(width > 768 ? '100px' : window.innerHeight);
+    const [bgHeight, setBgHeight] = useState(0);
 
     const openModal = () => {
         setIsModalOpen(true);
@@ -34,8 +30,8 @@ const GoalsSection = () => {
     const closeModal = () => {
         setIsModalOpen(false);
     };
-
-    const handleScroll = () => {
+    
+    const handleScroll = () => {    
         if (typeof window !== 'undefined') {
             const scrollTop = window.scrollY;
             const elementHeight = 540;
@@ -43,16 +39,13 @@ const GoalsSection = () => {
             const newHeight = Math.max(minHeight, window.innerHeight - reduction);
             setBgHeight(newHeight);
 
-            // Reset secțiunile dacă derulăm în sus și ieșim din prima secțiune
-            if (sectionRefs.current[0]) {
-                const firstSectionTop = sectionRefs.current[0].getBoundingClientRect().top;
-                if (firstSectionTop > window.innerHeight || firstSectionTop < 0) {
-                    setFirstSectionInView(false);
-                    setCurrentSection(0); // Resetăm secțiunile
-                } else {
-                    setFirstSectionInView(true);
-                }
+            if (scrollTop < lastScrollTop && sectionRefs.current[0] && sectionRefs.current[0].getBoundingClientRect().top > window.innerHeight) {
+                setCurrentSection(-1);
+                setShouldReset(true);
+            } else {
+                setShouldReset(false);
             }
+            setLastScrollTop(scrollTop);
         }
     };
 
@@ -61,58 +54,34 @@ const GoalsSection = () => {
             window.addEventListener('scroll', handleScroll);
             return () => window.removeEventListener('scroll', handleScroll);
         }
-    }, []);
-
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            (entries) => {
-                if (entries[0].isIntersecting) {
-                    setFirstSectionInView(true);
-                    observer.disconnect();
-                }
-            },
-            { threshold: 0.1 }
-        );
-
-        if (sectionRefs.current[0]) {
-            observer.observe(sectionRefs.current[0]);
-        }
-
-        return () => {
-            if (sectionRefs.current[0]) {
-                observer.unobserve(sectionRefs.current[0]);
-            }
-        };
-    }, []);
-
+    }, [lastScrollTop]);
 
     useEffect(() => {
         let timer;
-        if (firstSectionInView && currentSection < goals.length) {
+        if (currentSection < goals.length && !shouldReset) {
+            const delay = currentSection === -1 ? 2000 : 5000; 
             timer = setTimeout(() => {
                 setCurrentSection(currentSection + 1);
-            }, 5000); 
+            }, delay);
         }
         return () => clearTimeout(timer);
-    }, [currentSection, firstSectionInView]);
-
+    }, [currentSection, shouldReset]);
 
     const getAnimationVariant = (index) => {
         if (width <= 415 && width >= 370) {
             return index === 0 ? 'visibleMobile' : index === 1 ? 'visibleMobile2' : 'visibleMobile3';
         } else if (width <= 430 && width >= 416) {
             return index === 0 ? 'visibleIphone14' : index === 1 ? 'visibleIphone14_2' : 'visibleIphone14_3';
-        } else if (width <= 500 && width >= 420) {
+        } else if ( width <= 500 && width >= 420) {
             return index === 0 ? 'visibleIphone14' : index === 1 ? 'visibleIphone14_2' : 'visibleIphone14_3';
         } else {
             return index === 0 ? 'visible' : index === 1 ? 'visible2' : 'visible3';
         }
     };
-    
 
     return (
         <motion.div
-            className="bg-black text-white pt-6 pb-6 px-4 lg:px-0"
+            className="bg-black h-auto lg:h-[100px] text-white pt-6 pb-6 px-4 lg:px-0"
             style={{ minHeight: `${minHeight}px`, height: `${bgHeight}px`, transition: 'height 0.2s ease' }}
         >
             {goals.map((goal, index) => (

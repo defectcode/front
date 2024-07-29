@@ -105,47 +105,47 @@ const SupportForm = () => {
       <div className='w-full max-w-md'>
         <p className="mb-4 text-[#B7B7B7] text-[13px] font-inter ml-1">Select your support amount:</p>
         <div className="flex justify-between gap-2 mb-5 text-sm">
-        <button
-          onClick={() => handleAmountChange(1)}
-          className={`flex items-center justify-center rounded-xl max-w-[80px] w-full max-sm:w-[75px] flex-grow h-[45px] ${amount === 1 && !isCustomAmount ? 'bg-white text-black font-bold' : 'bg-[#252525] border-2 border-[#3e3d3d] flex flex-row gap-[1px]'}`}
-        >
-          <Image 
-            src={amount === 1 && !isCustomAmount ? "/icons/symbol-black.svg" : "/icons/symbol-white.svg"} 
-            alt='symbol' 
-            width={6} 
-            height={3}  
-            className='w-[7px]'
-          />
-          <span style={{ fontFamily: 'Ek Mukta, sans-serif', fontWeight: amount === 1 && !isCustomAmount ? 700 : 400 }}>1</span>
-        </button>
+          <button
+            onClick={() => handleAmountChange(1)}
+            className={`flex items-center justify-center rounded-xl max-w-[80px] w-full max-sm:w-[75px] flex-grow h-[45px] ${amount === 1 && !isCustomAmount ? 'bg-white text-black font-bold' : 'bg-[#252525] border-2 border-[#3e3d3d] flex flex-row gap-[1px]'}`}
+          >
+            <Image 
+              src={amount === 1 && !isCustomAmount ? "/icons/symbol-black.svg" : "/icons/symbol-white.svg"} 
+              alt='symbol' 
+              width={6} 
+              height={3}  
+              className='w-[7px]'
+            />
+            <span style={{ fontFamily: 'Ek Mukta, sans-serif', fontWeight: amount === 1 && !isCustomAmount ? 700 : 400 }}>1</span>
+          </button>
 
-        <button
-          onClick={() => handleAmountChange(10)}
-          className={`flex items-center justify-center rounded-xl max-w-[80px] w-full max-sm:w-[75px] flex-grow h-[45px] ${amount === 10 && !isCustomAmount ? 'bg-white text-black font-extrabold' : 'bg-[#252525] border-2 border-[#3e3d3d] flex flex-row gap-[1px]'}`}
-        >
-          <Image 
-            src={amount === 10 && !isCustomAmount ? "/icons/symbol-black.svg" : "/icons/symbol-white.svg"} 
-            alt='symbol' 
-            width={6} 
-            height={3}  
-            className='w-[7px]'
-          />
-          <span style={{ fontFamily: 'Ek Mukta, sans-serif', fontWeight: amount === 10 && !isCustomAmount ? 700 : 400 }}>10</span>
-        </button>
+          <button
+            onClick={() => handleAmountChange(10)}
+            className={`flex items-center justify-center rounded-xl max-w-[80px] w-full max-sm:w-[75px] flex-grow h-[45px] ${amount === 10 && !isCustomAmount ? 'bg-white text-black font-extrabold' : 'bg-[#252525] border-2 border-[#3e3d3d] flex flex-row gap-[1px]'}`}
+          >
+            <Image 
+              src={amount === 10 && !isCustomAmount ? "/icons/symbol-black.svg" : "/icons/symbol-white.svg"} 
+              alt='symbol' 
+              width={6} 
+              height={3}  
+              className='w-[7px]'
+            />
+            <span style={{ fontFamily: 'Ek Mukta, sans-serif', fontWeight: amount === 10 && !isCustomAmount ? 700 : 400 }}>10</span>
+          </button>
 
-        <button
-          onClick={() => handleAmountChange(500)}
-          className={`flex items-center justify-center rounded-xl max-w-[80px] w-full max-sm:w-[70px] flex-grow h-[45px] ${amount === 500 && !isCustomAmount ? 'bg-white text-black font-bold' : 'bg-[#252525] border-2 border-[#3e3d3d] flex flex-row gap-[1px]'}`}
-        >
-          <Image 
-            src={amount === 500 && !isCustomAmount ? "/icons/symbol-black.svg" : "/icons/symbol-white.svg"} 
-            alt='symbol' 
-            width={6} 
-            height={3}  
-            className='w-[7px]'
-          />
-          <span style={{ fontFamily: 'Ek Mukta, sans-serif', fontWeight: amount === 500 && !isCustomAmount ? 700 : 400 }}>500</span>
-        </button>
+          <button
+            onClick={() => handleAmountChange(500)}
+            className={`flex items-center justify-center rounded-xl max-w-[80px] w-full max-sm:w-[70px] flex-grow h-[45px] ${amount === 500 && !isCustomAmount ? 'bg-white text-black font-bold' : 'bg-[#252525] border-2 border-[#3e3d3d] flex flex-row gap-[1px]'}`}
+          >
+            <Image 
+              src={amount === 500 && !isCustomAmount ? "/icons/symbol-black.svg" : "/icons/symbol-white.svg"} 
+              alt='symbol' 
+              width={6} 
+              height={3}  
+              className='w-[7px]'
+            />
+            <span style={{ fontFamily: 'Ek Mukta, sans-serif', fontWeight: amount === 500 && !isCustomAmount ? 700 : 400 }}>500</span>
+          </button>
 
           <div className="relative flex items-center flex-grow">
             <Image 
@@ -157,14 +157,16 @@ const SupportForm = () => {
             />
             <input
               type="number"
+              pattern="\d*"
               value={customAmount}
               onClick={handleCustomAmountClick}
               onChange={handleCustomAmountChange}
-              className={`pl-5 pr-2 py-[10px] rounded-xl font-normal max-w-[80px] w-full max-sm:w-[70px] flex-grow h-[45px]  ${isCustomAmount ? 'bg-white text-black font-bold' : 'bg-[#252525] border-2 border-[#3e3d3d]'}`}
+              className={`pl-5 pr-2 py-[10px] rounded-xl font-normal max-w-[80px] w-full max-sm:w-[70px] flex-grow h-[45px] ${isCustomAmount ? 'bg-white text-black font-bold' : 'bg-[#252525] border-2 border-[#3e3d3d]'}`}
               placeholder="Other"
               style={{
                 appearance: 'textfield',
                 height: 'auto',
+                fontSize: '16px', // Adăugat pentru a preveni zoom-ul pe iOS
                 scrollbarWidth: 'none',
                 overflow: 'hidden',
               }}
@@ -182,6 +184,20 @@ const SupportForm = () => {
 
               input::placeholder {
                 color: #5B5B5B;
+              }
+
+              @media screen and (max-width: 380px) {
+                input[type='number'] {
+                  padding-top: 7px;
+                  padding-bottom: 7px;
+                }
+              }
+
+              @media screen and (min-width: 381px) {
+                input[type='number'] {
+                  padding-top: 10px;
+                  padding-bottom: 10px;
+                }
               }
             `}</style>
           </div>

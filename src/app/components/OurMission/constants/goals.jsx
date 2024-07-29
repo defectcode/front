@@ -27,15 +27,15 @@ export const componentsAnimation = {
         opacity: 0,
     },
     visible: {
-        y: -590,
+        y: -560,
         opacity: 1,
     },
     visible2: {
-        y: -1140,
+        y: -1130,
         opacity: 1,
     },
     visible3: {
-        y: -1700,
+        y: -1690,
         opacity: 1,
     },
     visibleMobile: {
