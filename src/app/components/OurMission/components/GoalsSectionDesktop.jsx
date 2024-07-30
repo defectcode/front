@@ -81,7 +81,7 @@ const GoalsSectionDesktop = () => {
 
     return (
         <motion.div
-            className="bg-black h-auto lg:h-[100px] text-white pt-6 pb-6 px-4 lg:px-0"
+            className="bg-black h-auto text-white pt-6 pb-6 px-4 lg:px-0"
             style={{ minHeight: `${minHeight}px`, height: `${bgHeight}px`, transition: 'height 0.2s ease' }}
         >
             {goals.map((goal, index) => (

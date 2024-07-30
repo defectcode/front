@@ -1,6 +1,7 @@
 import React from "react";
 import Carousel from './components/Carousel';
 
+
 const OurTeam = () => {
     return (
         <div className="h-auto">

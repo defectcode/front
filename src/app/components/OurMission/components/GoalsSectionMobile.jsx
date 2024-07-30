@@ -45,7 +45,7 @@ const GoalsSectionMobile = () => {
                 <motion.div
                     ref={el => sectionRefs.current[index] = el}
                     key={goal.id}
-                    className={`goal-section w-full lg:h-[540px] flex items-center bg-[#0D0D0D] rounded-lg mx-auto ${currentSection >= index ? 'visible' : 'hidden'} ${index === 0 ? 'mt-200-mobile' : ''}`}
+                    className={`goal-section w-full lg:h-[540px] flex items-center bg-[#0D0D0D] rounded-lg mx-auto ${currentSection >= index ? 'visible' : 'hidden'} ${index === 0 ? 'mt-200-mobile' : ''} ${index !== 0 ? 'mt-10' : ''}`}
                     initial="hidden"
                     animate={currentSection >= index ? 'visible' : 'hidden'}
                     transition={{ duration: 2 }}
