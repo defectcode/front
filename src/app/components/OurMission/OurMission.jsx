@@ -1,15 +1,25 @@
-import React from "react";
+'use client'
+import React, { useState, useEffect } from "react";
 import './OurMission.model.css'; 
-import GoalsSection from './components/GoalsSection'
-import Earth from './components/Earth'
+import GoalsSectionMobile from './components/GoalsSectionMobile';
+import GoalsSectionDesktop from './components/GoalsSectionDesktop';
+import Earth from './components/Earth';
+import useWindowDimensions from './components/useWindowDimensions';
 
 const OurMission = () => {
+    const { width } = useWindowDimensions();
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        setIsMobile(width < 768);
+    }, [width]);
+
     return (
         <div>
-            <Earth/>
-            <GoalsSection/>
+            <Earth />
+            {isMobile ? <GoalsSectionMobile /> : <GoalsSectionDesktop />}
         </div>
-    )
+    );
 }
 
 export default OurMission;

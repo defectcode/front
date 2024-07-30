@@ -11,7 +11,7 @@ import { goals, componentsAnimation } from '../constants/goals';
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
 
-const GoalsSection = () => {
+const GoalsSectionDesktop = () => {
     const { width } = useWindowDimensions();
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [currentSection, setCurrentSection] = useState(width < 768 ? 0 : -1);
@@ -116,4 +116,4 @@ const GoalsSection = () => {
     );
 }
 
-export default GoalsSection;
+export default GoalsSectionDesktop;
