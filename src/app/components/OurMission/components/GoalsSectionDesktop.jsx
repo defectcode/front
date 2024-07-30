@@ -11,17 +11,22 @@ import { goals, componentsAnimation } from '../constants/goals';
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
 
-const GoalsSectionDesktop = () => {
+const GoalsSection = () => {
     const { width } = useWindowDimensions();
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [currentSection, setCurrentSection] = useState(width < 768 ? 0 : -1);
     const [lastScrollTop, setLastScrollTop] = useState(0);
     const [shouldReset, setShouldReset] = useState(false);
     const sectionRefs = useRef([]);
-    const minHeight = width < 768 ? 700 : 20;
+    const minHeight = width < 768 ? 10 : 10;
 
-    // const [bgHeight, setBgHeight] = useState(width > 768 ? '100px' : window.innerHeight);
     const [bgHeight, setBgHeight] = useState(0);
+
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+            setBgHeight(window.innerHeight);
+        }
+    }, []);
 
     const openModal = () => {
         setIsModalOpen(true);
@@ -46,6 +51,10 @@ const GoalsSectionDesktop = () => {
                 setShouldReset(false);
             }
             setLastScrollTop(scrollTop);
+
+            if (currentSection === goals.length - 1) {
+                setBgHeight(prevHeight => Math.max(prevHeight - 300, minHeight));  // Ajustează valoarea după cum este necesar
+            }
         }
     };
 
@@ -54,7 +63,7 @@ const GoalsSectionDesktop = () => {
             window.addEventListener('scroll', handleScroll);
             return () => window.removeEventListener('scroll', handleScroll);
         }
-    }, [lastScrollTop]);
+    }, [lastScrollTop, currentSection]);
 
     useEffect(() => {
         let timer;
@@ -68,13 +77,7 @@ const GoalsSectionDesktop = () => {
     }, [currentSection, shouldReset]);
 
     const getAnimationVariant = (index) => {
-        if (width <= 415 && width >= 370) {
-            return index === 0 ? 'visibleMobile' : index === 1 ? 'visibleMobile2' : 'visibleMobile3';
-        } else if (width <= 430 && width >= 416) {
-            return index === 0 ? 'visibleIphone14' : index === 1 ? 'visibleIphone14_2' : 'visibleIphone14_3';
-        } else if ( width <= 500 && width >= 420) {
-            return index === 0 ? 'visibleIphone14' : index === 1 ? 'visibleIphone14_2' : 'visibleIphone14_3';
-        } else {
+        if (width > 768) {
             return index === 0 ? 'visible' : index === 1 ? 'visible2' : 'visible3';
         }
     };
@@ -116,4 +119,4 @@ const GoalsSectionDesktop = () => {
     );
 }
 
-export default GoalsSectionDesktop;
+export default GoalsSection;
