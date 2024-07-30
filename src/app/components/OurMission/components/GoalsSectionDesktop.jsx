@@ -53,7 +53,7 @@ const GoalsSection = () => {
             setLastScrollTop(scrollTop);
 
             if (currentSection === goals.length - 1) {
-                setBgHeight(prevHeight => Math.max(prevHeight - 300, minHeight));  // Ajustează valoarea după cum este necesar
+                setBgHeight(prevHeight => Math.max(prevHeight - 300, minHeight));  
             }
         }
     };
@@ -68,7 +68,7 @@ const GoalsSection = () => {
     useEffect(() => {
         let timer;
         if (currentSection < goals.length && !shouldReset) {
-            const delay = currentSection === -1 ? 2000 : 5000; 
+            const delay = currentSection === -1 ? 3000 : 5000; 
             timer = setTimeout(() => {
                 setCurrentSection(currentSection + 1);
             }, delay);
