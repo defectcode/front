@@ -226,3 +226,36 @@ iframe {
   width: calc(100% + 400px);
 }
 
+
+/* Adăugați acest cod în fișierul CSS al proiectului */
+
+.goal-section {
+  position: sticky;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+  transition: opacity 0.2s ease, z-index 0.2s ease;
+}
+
+.goal-section.hidden {
+  opacity: 0;
+  z-index: 0;
+}
+
+.goal-section.visible {
+  opacity: 1;
+  z-index: 1;
+}
+
+@media (min-width: 768px) {
+  .goal-section + .goal-section {
+      margin-top: -540px; /* Ajustează pentru a se ridica peste secțiunea precedentă */
+  }
+}
+
+
+@media (max-width: 768px) {
+  .mt-200-mobile {
+      margin-top: 350px;
+  }
+}
