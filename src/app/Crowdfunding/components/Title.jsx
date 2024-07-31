@@ -10,7 +10,7 @@ const Title = ({ contentIndex = 0, isMobile, isTablet }) => {
 
   return (
     <div className={`space-y-3 w-full text-center lg:text-start`}>
-      <h1 className={`text-white font-semibold font-roboto ${isMobile ? 'text-2xl' : 'text-4xl'} max-md:text-2xl`}>
+      <h1 className={`text-white text-[36px] font-semibold font-roboto max-md:text-2xl`}>
         {content.title}
       </h1>
       <p className={`text-[#B7B7B7] lg:text-[#FFFFFF] text-[16px] font-ekmukta-extralight lg:font-ekmukta w-full lg:w-[71%] `} >

@@ -1,9 +1,26 @@
-import React from "react";
+import React, { useState } from 'react';
 import Support from './Support';
 import { IoIosArrowForward } from "react-icons/io";
+import Modal from '/src/app/components/Header/components/Modal.jsx';
+import SupportForm from '/src/app/components/Header/components/Payment/SupportForm.jsx';
+import { Elements } from '@stripe/react-stripe-js';
+import { loadStripe } from '@stripe/stripe-js';
+
+const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
 
 const FundraisingProgress = ({ data }) => {
     const progressPercentage = (data.raisedAmount / data.goalAmount) * 100 || 0;
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+
+    const openModal = () => {
+        setIsModalOpen(true);
+    };
+
+    const closeModal = () => {
+        setIsModalOpen(false);
+    };
+
 
     return (
         <div className="text-white ">
@@ -37,8 +54,13 @@ const FundraisingProgress = ({ data }) => {
                 </span>
             </div>
             <div className="hidden md:block mt-2">
-                <Support />
+                <Support onClick={openModal}/>
             </div>
+            <Modal isOpen={isModalOpen} onClose={closeModal}>
+                <Elements stripe={stripePromise}>
+                    <SupportForm />
+                </Elements>
+            </Modal>
         </div>
     );
 }
