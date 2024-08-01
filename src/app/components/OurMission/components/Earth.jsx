@@ -30,7 +30,7 @@ const Earth = () => {
                 if (isFixed) {
                     controls.start({
                         y: -320,
-                        transition: { duration: 1, ease: "easeInOut" }
+                        transition: { duration: 0.8, ease: "easeInOut" }
                     });
                 } else {
                     controls.start({

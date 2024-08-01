@@ -227,6 +227,15 @@ iframe {
 }
 
 
+.font-avenir {
+  font-family: 'Avenir', sans-serif;
+}
+
+.font-avenir-roman {
+  font-family: 'Avenir Roman', sans-serif;
+}
+
+
 /* Adăugați acest cod în fișierul CSS al proiectului */
 
 .goal-section {
@@ -258,4 +267,26 @@ iframe {
   .mt-200-mobile {
       margin-top: 320px;
   }
+}
+
+
+
+@layer utilities {
+  .bg-mobile {
+    background-image: url('/imgs/Crowdfunding/mobileCarousel.svg');
+  }
+  @media (min-width: 640px) {
+    .bg-desktop {
+      background-image: url('/imgs/Crowdfunding/background2.png');
+    }
+  }
+}
+
+.custom-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  display: none;  /* Safari and Chrome */
 }
