@@ -21,15 +21,15 @@ const DoughnutChart = ({ data }) => {
         datasets: [
             {
                 data: data.map(item => item.cost),
-                backgroundColor: ['#E50815', '#F25C5C', '#F27C7C', '#F29C9C', '#F2BCBC'],
-                borderWidth: 0 // Elimină border-ul
+                backgroundColor: ['#E60716', '#BA1520', '#EB3F4A', '#EA757C', '#EF9DA2'],
+                borderWidth: 0 
             }
         ]
     };
 
     const options = {
         responsive: true,
-        cutout: '80%', // Face graficul mai subțire
+        cutout: '80%', 
         plugins: {
             legend: {
                 display: false,
@@ -48,8 +48,8 @@ const FundingBreakdown = () => {
     }, []);
 
     return (
-        <div className="bg-black flex flex-col items-center text-white w-1/2">
-            <h2 className="text-3xl font-semibold mb-4 mt-10">Where Your Money Goes</h2>
+        <div className="bg-black h-screen sticky top-0 flex flex-col items-center text-white pr-20">
+            <h2 className="text-3xl font-semibold mb-8 mt-14">Where Your Money Goes</h2>
             <div className="relative">
                 <DoughnutChart data={costData} />
                 <div className="absolute inset-0 flex items-center justify-center">
@@ -74,7 +74,7 @@ const FundingBreakdown = () => {
                                             initial={{ scale: 0 }}
                                             animate={{ scale: 1 }}
                                             transition={{ delay: index * 0.2, duration: 0.5 }}
-                                            className="w-[10px] h-[10px] rounded-full"
+                                            className="w-[13px] h-[13px] rounded-full"
                                             style={{ backgroundColor: ['#E50815', '#F25C5C', '#F27C7C', '#F29C9C', '#F2BCBC'][index] }}
                                         />
                                     </div>

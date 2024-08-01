@@ -4,12 +4,12 @@ import DetailedSteps from "./DetailedSteps";
 
 const StageDescription = () => {
     return (
-        <div id="overview" className="bg-black px-[122px] w-[73%]">
+        <div id="overview" className="bg-black px-[122px] w-full flex flex-col items-start lg:items-center">
             <div>
                 <h2 className="text-3xl text-[#FFFFFF] mt-10 mb-4 font-ekMukta font-semibold">
                     {stageDescriptionData.stageTitle}
                 </h2>
-                <p className="text-[#CDCDCD] w-[764px] font-ekMukta">
+                <p className="text-[#CDCDCD] max-w-[764px] w-auto font-ekMukta">
                     {stageDescriptionData.stageHistory}
                 </p>
                 <img src={stageDescriptionData.imageUrl_1} alt="Stage Description" className="mt-10 ml-[70px]"/>

@@ -9,6 +9,10 @@ import Rewards from '../app/Crowdfunding/components/components/Rewards/Rewards';
 import Community from '../app/Crowdfunding/components/components/Community/Community';
 import Extras from '../app/Crowdfunding/components/components/Extras/Extras';
 import Overview from '../app/Crowdfunding/components/components/Overview/Overview';
+import OverviewMobile from "../app/Crowdfunding/components/components/Overview/OverviewMobile";
+import RewardsMobile from "../app/Crowdfunding/components/components/Rewards/RewardsMobile";
+import CommunityMobile from "../app/Crowdfunding/components/components/Community/CommunityMobile";
+import ExtrasMobile from "../app/Crowdfunding/components/components/Extras/ExtrasMobile";
 
 const Crowdfunding = () => {
     const isMobile = useDeviceType();
@@ -32,23 +36,23 @@ const Crowdfunding = () => {
     const renderSection = () => {
         switch (activeSection) {
             case 'overview':
-                return <Overview />;
+                return isMobile ? <OverviewMobile /> : <Overview />;
             case 'rewards':
-                return <Rewards />;
+                return isMobile ? <RewardsMobile /> : <Rewards />;
             case 'community':
-                return <Community />;
+                return isMobile ? <CommunityMobile /> : <Community />;
             case 'extras':
-                return <Extras />;
+                return isMobile ? <ExtrasMobile /> : <Extras />;
             default:
-                return <Overview />;
+                return isMobile ? <OverviewMobile /> : <Overview />;
         }
     };
 
     return (
         <div>
-            {isMobile ? <NavBarCrowdfundingMobile setActiveSection={setActiveSection} /> : <Navbar />}
+            <Navbar />
             <HeaderCrowdfunding />
-            {isMobile ? <ButonShere /> : <NavBarCrowdfunding setActiveSection={setActiveSection} />}
+            {isMobile ? <NavBarCrowdfundingMobile setActiveSection={setActiveSection} /> : <NavBarCrowdfunding setActiveSection={setActiveSection} />}
             <div>
                 {renderSection()}
             </div>

@@ -1,6 +1,7 @@
 export const stageDescriptionData = {
     stageTitle: "Stage Description",
     stageHistory: "Project History: The idea of creating an atelier arose to provide high-quality costumes for the \"Paradise Problems\" series. We also plan to create exclusive apparel for our fans and ensure international shipping and online orders.",
+    stageHistory2: 'The idea for "Paradise Problems" is to show life in a perfect city without money, where people still face real human problems. We aim to demonstrate how love, loyalty, and kindness can solve these problems.',
     fundingTitle: "Funding And Support",
     fundingProgress: "Current Progress: The team has rented a space of 370 sq.m. for $5,000 per month.",
     requiredAmount: "Required Amount: $227,000 to establish the atelier.",
@@ -17,17 +18,17 @@ export const stageDescriptionData = {
     imageUrl_3: "/imgs/Crowdfunding/Overview/element3.svg"
 };
 
-
-
 export const stageDescription = {
     stageTitle: "Stage Description",
     stageHistory: "Project History: The idea of creating an atelier arose to provide high-quality costumes for the \"Paradise Problems\" series. We also plan to create exclusive apparel for our fans and ensure international shipping and online orders.",
     fundingTitle: "Funding And Support",
+    fundingSubtitle: "Initially, we needed $790,700 to create the series concept, including marketing and research. Our team has already invested over $200,000 in this project, including building this website and presentation, showing our strong belief in its success.Our audience has actively helped us with surveys and marketing research, making the project better and cheaper. Their volunteer work has saved us significant funds while maintaining high quality. Thanks to this, we only need to raise $74,000 to complete the concept creation stage. Volunteers from our audience have made a substantial contribution, allowing us to significantly reduce the budget.",
     fundingProgress: "Current Progress: The team has rented a space of 370 sq.m. for $5,000 per month.",
     requiredAmount: "Required Amount: $227,000 to establish the atelier.",
     monthlyCostsTitle: "Monthly Costs:",
     helpTitle: "How You Can Help",
     helpInfo: 'Support our project and help create a unique atelier. Financial support will grant you exclusive apparel and other rewards',
+    helpInfo2: 'With your help, we can complete this important stage and bring "Paradise Problems" to life. Your support is crucial to continue this journey of creating a meaningful and engaging series.',
     monthlyCosts: [
         { item: "Rent", cost: "$5,000" },
         { item: "Staff", cost: "$17,000" },
@@ -73,4 +74,54 @@ export const stageDescription = {
             ]
         }
     ]
+};
+
+
+export const detailedStepsData = {
+    title: "Detailed Steps",
+    steps: [
+        {
+            title: "Research And Analysis",
+            items: [
+                { item: "Technical Leadership", cost: "Oversee the technical strategy and direction of the project, ensuring alignment with the overall vision and goals." }
+            ]
+        },
+        {
+            title: "Creating The Main Idea",
+            items: [
+                { item: "Developing the main concept and storyline", cost: "Using feedback from potential viewers." }
+            ]
+        },
+        {
+            title: "Describing The Series World",
+            items: [
+                { item: "Detailing key locations and technology in the series", cost: "Based on audience suggestions to create a realistic and rich world." }
+            ]
+        },
+        {
+            title: "Character Development",
+            items: [
+                { item: "Creating detailed descriptions of main characters", cost: "Their stories, and motivations with input from the audience." }
+            ]
+        },
+        {
+            title: "Defining Themes",
+            items: [
+                { item: "Choosing the main themes and conflicts in the series", cost: "Based on what the audience cares about." }
+            ]
+        },
+        {
+            title: "Team Coordination",
+            items: [
+                { item: "Organizing the team's work", cost: "Including audience feedback to keep everything on track." }
+            ]
+        },
+        {
+            title: "Expert Consultations",
+            items: [
+                { item: "Getting advice from top industry experts", cost: "To improve our ideas and ensure high quality." }
+            ]
+        }
+    ],
+    helpInfo2: "Getting advice from top industry experts to improve our ideas and ensure high quality."
 };

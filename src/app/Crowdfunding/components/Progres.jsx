@@ -39,7 +39,7 @@ const FundraisingProgress = ({ data }) => {
                     className="absolute top-0 -translate-y-1/2 transform mt-[2px]"
                     style={{ left: `${progressPercentage}%` }}
                 >
-                    <div className={`w-[6px] h-[6px] rounded-full bg-white border-2`}></div>
+                    <div className={`w-[6px] h-[6px] lg:-ml-1 rounded-full bg-white border-2`}></div>
                 </div>
             </div>
             <div className="flex flex-row sm:gap-1 mt-1 lg:mt-3 items-center sm:items-start">
@@ -53,7 +53,7 @@ const FundraisingProgress = ({ data }) => {
                     </span>
                 </span>
             </div>
-            <div className="hidden md:block mt-2">
+            <div className="hidden md:block mt-2 lg:mt-5">
                 <Support onClick={openModal}/>
             </div>
             <Modal isOpen={isModalOpen} onClose={closeModal}>
