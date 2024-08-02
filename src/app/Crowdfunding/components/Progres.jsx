@@ -49,7 +49,7 @@ const FundraisingProgress = ({ data }) => {
                     <span className="font-semibold text-[20px]">{data.supportersCount}</span>
                     <span className="flex items-center text-[#E50815] font-ekMukta text-[14px]">
                         {data.supportersLabel}
-                        <IoIosArrowForward className="w-[25px] h-[20px] ml-1 inline-block sm:hidden" />
+                        {/* <IoIosArrowForward className="w-[25px] h-[20px] ml-1 inline-block sm:hidden" /> */}
                     </span>
                 </span>
             </div>

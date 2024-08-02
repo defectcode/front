@@ -48,40 +48,20 @@ const FundraisingProgress = ({ raisedAmount, goalAmount, contentIndex = 0 }) => 
       {content.status === 'Process' ? (
         <p
           className="flex items-end text-xl lg:text-md mb-3 md:mb-0 gap-1 max-lg:gap-[2px] max-md:tracking--1p"
-          style={{
-            fontFamily: 'Ek Mukta, sans-serif',
-            fontWeight: 400,
-            letterSpacing: '-0.008rem',
-          }}
         >
-          <span className="font-semibold max-md:font-semibold max-md:text-[16px] flex">
-            <Image
-              src="/icons/symbol-white.svg"
-              alt="$"
-              width={6.5}
-              height={1}
-              className="w-[8px] max-md:w-[6px] max-md:mb-[2px] max-md:font-semibold"
-            />
-            {raisedAmount}
+          <span className="font-semibold max-md:font-semibold max-md:text-[16px] flex font-ekMukta">
+            ${raisedAmount}
           </span>
           <span className="text-[#C1C1C1] text-[15px] max-md:text-[14px]">raised of</span>
-          <span className="text-[#C1C1C1] text-[15px] max-md:text-[14px] flex">
-            <Image
-              src="/icons/symbol-gray.svg"
-              alt="$"
-              width={5.5}
-              height={1}
-              className="text-[#C1C1C1] w-[6px] max-md:w-[6px] max-md:ml-1"
-            />
-            {goalAmount}
+          <span className="text-[#C1C1C1] text-[15px] max-md:text-[14px] flex font-ekMukta">
+            ${goalAmount}
           </span>
           <span className="text-[#C1C1C1] text-[15px] max-md:text-[14px] ">goal</span>
         </p>
       ) : (
         <div>
           <p
-            className="text-[#C1C1C1] text-[15px] max-lg:text-md max-sm:text-[12px]  max-md:p-0 max-md:-mt-2"
-            style={{ fontFamily: 'Ek Mukta, sans-serif' }}>
+            className="text-[#C1C1C1] text-[15px] max-lg:text-md max-sm:text-[12px]  max-md:p-0 max-md:-mt-2 font-ekMukta">
             This stage is now closed
           </p>
         </div>

@@ -21,15 +21,15 @@ const DoughnutChart = ({ data }) => {
         datasets: [
             {
                 data: data.map(item => item.cost),
-                backgroundColor: ['#E60716', '#BA1520', '#EB3F4A', '#EA757C', '#EF9DA2'],
-                borderWidth: 0 
+                backgroundColor: ['#E60716', '#FF3333', '#FF6666', '#FF9999', '#FFFFFF'],
+                borderWidth: 0
             }
         ]
     };
 
     const options = {
         responsive: true,
-        cutout: '80%', 
+        cutout: '80%',
         plugins: {
             legend: {
                 display: false,
@@ -75,7 +75,7 @@ const FundingBreakdown = () => {
                                             animate={{ scale: 1 }}
                                             transition={{ delay: index * 0.2, duration: 0.5 }}
                                             className="w-[13px] h-[13px] rounded-full"
-                                            style={{ backgroundColor: ['#E50815', '#F25C5C', '#F27C7C', '#F29C9C', '#F2BCBC'][index] }}
+                                            style={{ backgroundColor: ['#E60716', '#FF3333', '#FF6666', '#FF9999', '#F0F0F0'][index] }}
                                         />
                                     </div>
                                     <span className="ml-2 text-[#C4C4C4] text-[14px] font-roboto w-[70%]">{item.category}</span>
