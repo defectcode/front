@@ -273,7 +273,7 @@ iframe {
 
 @layer utilities {
   .bg-mobile {
-    background-image: url('/imgs/Crowdfunding/mobileCarousel.svg');
+    background-image: url('/imgs/Crowdfunding/background2.png');
   }
   @media (min-width: 640px) {
     .bg-desktop {
