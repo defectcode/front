@@ -6,14 +6,12 @@ import Modal from '/src/app/components/Header/components/Modal.jsx';
 import SupportForm from '/src/app/components/Header/components/Payment/SupportForm.jsx';
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
-import { useRouter } from "next/router";
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
 
 const NavBarCrowdfunding = ({ setActiveSection }) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [activeHash, setActiveHash] = useState('#overview');
-    const router = useRouter();
 
     const openModal = () => {
         setIsModalOpen(true);
