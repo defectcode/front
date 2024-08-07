@@ -31,7 +31,7 @@ const FundraisingProgress = ({ raisedAmount, goalAmount, contentIndex = 0 }) => 
           <p className="font-bold text-[16px] max-md:text-[14px]">{content.stageNumber}</p>
         </div>
       </div>
-      <div className="relative w-[380px] max-md:w-full">
+      <div className="relative w-[380px] max-md:w-full ml-1 lg:ml-0">
         <div className="h-1 bg-gray-600 rounded-full">
           <div
             className="h-full rounded-full bg-gradient-to-r from-[#E50815] via-[#E50815] to-white"

@@ -8,7 +8,7 @@ const Dots = ({ totalImages, currentIndex, isMobile, isTablet, onDotClick }) => 
   } else if (isTablet) {
     positionClass = 'bottom';
   } else {
-    positionClass = 'top-[790px]';
+    positionClass = 'top-[690px]';
   }
 
   return (

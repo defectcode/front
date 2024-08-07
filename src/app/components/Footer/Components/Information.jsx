@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const Information = () => {
   return (
-    <div className="flex flex-row justify-between items-start max-w-[1300px] mx-auto w-full text-white px-4 max-lg:flex-col max-lg:justify-around max-md:lg:items-start max-lg:items-center">
+    <div className="flex flex-row justify-between items-start max-w-[1200px] mx-auto w-full text-white px-4 max-lg:flex-col max-lg:justify-around max-md:lg:items-start max-lg:items-center">
       <Description />
       <div className="flex flex-col gap-3 mb-10 lg:mb-0 text-start max-lg:text-center max-md:gap-4">
         <h1 className="text-[18px] text-[#FFFFFF] font-semibold" style={{ fontFamily: "'Ek Mukta', sans-serif" }}>Support And Donations</h1>

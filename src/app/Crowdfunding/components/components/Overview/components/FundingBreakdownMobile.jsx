@@ -22,7 +22,7 @@ const DoughnutChart = ({ data }) => {
         datasets: [
             {
                 data: data.map(item => item.cost),
-                backgroundColor: ['#E60716', '#EB3F4A', '#EA757C', '#EF9DA2', '#F0F0F0'],
+                backgroundColor: ['#E60716', '#E81B29', '#EF9DA2', '#F1C5C7', '#F0F0F0'],
                 borderWidth: 0
             }
         ]
@@ -30,6 +30,7 @@ const DoughnutChart = ({ data }) => {
 
     const options = {
         responsive: true,
+        maintainAspectRatio: false,
         cutout: '75%',
         plugins: {
             legend: {
@@ -45,7 +46,7 @@ const DoughnutChart = ({ data }) => {
     );
 };
 
-const FundingBreakdown = () => {
+const FundingBreakdownMobile = () => {
     const [totalCost, setTotalCost] = useState(calculateTotalCost());
 
     useEffect(() => {
@@ -53,8 +54,8 @@ const FundingBreakdown = () => {
     }, []);
 
     return (
-        <div className="bg-black h-screen sticky top-0 flex flex-col items-center text-white ">
-            <h2 className="text-3xl font-semibold mb-8 mt-24">Where Your Money Goes</h2>
+        <div className="bg-black h-full sticky top-0 flex flex-col items-center text-white px-5 pb-20">
+            <h2 className="text-3xl font-semibold mb-8 mt-14">Where Your Money Goes</h2>
             <div className="relative">
                 <DoughnutChart data={costData} />
                 <div className="absolute inset-0 flex items-center justify-center">
@@ -66,16 +67,16 @@ const FundingBreakdown = () => {
                     <thead>
                         <tr className='font-bold text-[14px] font-roboto text-[#F5F5F7]'>
                             <th className="py-2">Category</th>
-                            <th className="py-2">
-                                <div className="relative flex items-center gap-1">
+                            <th className="py-2 text-center">
+                                <div className="relative flex items-center justify-center gap-1">
                                     <span style={{ display: 'inline-block' }}>Cost</span>
                                     <span style={{ display: 'inline-block', transform: 'translateY(-7px)' }} title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque varius enim non bibendum tincidunt. Aenean condimentum ligula at felis interdum, nec tempor libero tristique. Sed tincidunt purus at dapibus blandit. Donec fringilla fringilla dolor, ac dictum tortor convallis eget.">
                                         <Image src="/icons/question.svg" alt='question' width={15} height={15} />
                                     </span>
                                 </div>
                             </th>
-                            <th className="py-2">
-                                <div className="relative flex items-center gap-1">
+                            <th className="py-2 text-center">
+                                <div className="relative flex items-center justify-center gap-1">
                                     <span style={{ display: 'inline-block' }}>Week</span>
                                     <span style={{ display: 'inline-block', transform: 'translateY(-7px)' }} title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque varius enim non bibendum tincidunt. Aenean condimentum ligula at felis interdum, nec tempor libero tristique. Sed tincidunt purus at dapibus blandit. Donec fringilla fringilla dolor, ac dictum tortor convallis eget.">
                                         <Image src="/icons/question.svg" alt='question' width={15} height={15} />
@@ -87,14 +88,14 @@ const FundingBreakdown = () => {
                     <tbody className='space-y-[20px]'>
                         {costData.map((item, index) => (
                             <tr key={index} className='align-middle'>
-                                <td className="py-4 flex items-center relative align-middle" style={{ paddingBottom: index < costData.length - 1 ? '20px' : '0' }}>
+                                <td className="py-5 flex items-center relative align-middle" style={{ paddingBottom: index < costData.length - 1 ? '20px' : '0' }}>
                                     <div className="relative flex flex-col items-center point-container align-middle">
                                         <motion.div
                                             initial={{ scale: 0 }}
                                             animate={{ scale: 1 }}
                                             transition={{ delay: index * 0.4, duration: 0.5 }}
-                                            className="w-[16px] h-[16px] rounded-full point align-middle"
-                                            style={{ backgroundColor: ['#E60716', '#EB3F4A', '#EA757C', '#EF9DA2', '#F0F0F0'][index] }}
+                                            className="w-[13px] h-[13px] rounded-full point align-middle"
+                                            style={{ backgroundColor: ['#E60716', '#E81B29', '#EF9DA2', '#F1C5C7', '#F0F0F0'][index] }}
                                         />
                                         {index < costData.length - 1 && (
                                             <motion.div
@@ -102,13 +103,13 @@ const FundingBreakdown = () => {
                                                 animate={{ height: '95px' }}
                                                 transition={{ delay: (index + 1) * 0.4, duration: 0.5 }}
                                                 className="absolute left-1/2 transform -translate-x-1/2 w-[2px] align-middle gap-1"
-                                                style={{ backgroundColor: ['#E60716', '#EB3F4A', '#EA757C', '#EF9DA2', '#F0F0F0'][index] }}
+                                                style={{ backgroundColor: ['#E60716', '#E81B29', '#EF9DA2', '#F1C5C7', '#F0F0F0'][index] }}
                                             />
                                         )}
                                     </div>
-                                    <span className="ml-2 text-[#C4C4C4] text-[14px] font-roboto w-[80%] align-middle">{item.category}</span>
+                                    <span className="ml-2 text-[#C4C4C4] text-[14px] font-roboto w-[70%] align-middle">{item.category}</span>
                                 </td>
-                                <td className="py-2 text-[#C4C4C4] text-[14px] font-roboto font-semibold w-[100px] align-middle">${item.cost.toLocaleString()}</td>
+                                <td className="py-2 text-[#C4C4C4] text-[14px] font-roboto font-semibold w-[100px] align-middle text-center">${item.cost.toLocaleString()}</td>
                                 <td className="py-2 text-[#C4C4C4] text-[14px] font-roboto font-semibold w-[60px] text-center align-middle">{item.week}</td>
                             </tr>
                         ))}
@@ -138,7 +139,7 @@ const FundingBreakdown = () => {
                     top: 0;
                 }
                 .point-container:not(:last-child)::after {
-                    height: 100% + 1px;
+                    height: calc(100% + 1px);
                 }
                 .point-container:last-child::after {
                     display: none;
@@ -148,4 +149,4 @@ const FundingBreakdown = () => {
     );
 };
 
-export default FundingBreakdown;
+export default FundingBreakdownMobile;
