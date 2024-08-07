@@ -33,8 +33,8 @@ const Carousel = () => {
         setSpacing(3);
         setPerView(1.25);
       } else if (width > 1024 && width <= 1920) {
-        setSpacing(20);
-        setPerView(1);
+        setSpacing(22);
+        setPerView(1.2);
       } else {
         setSpacing(0.4);
         setPerView(1.25);
