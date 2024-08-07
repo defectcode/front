@@ -4,7 +4,7 @@ import DetailedSteps from "./DetailedSteps";
 
 const StageDescription = () => {
     return (
-        <div id="overview" className="bg-black px-[122px] w-full flex flex-col items-start lg:items-center">
+        <div id="overview" className="bg-black w-full flex flex-col items-start">
             <div>
                 <h2 className="text-3xl text-[#FFFFFF] mt-10 mb-4 font-ekMukta font-semibold">
                     {stageDescriptionData.stageTitle}

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Support from '../components/Support';
 import { RiShare2Line } from "react-icons/ri";
 import Modal from '/src/app/components/Header/components/Modal.jsx';
@@ -12,6 +12,9 @@ const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY)
 const NavBarCrowdfunding = ({ setActiveSection }) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [activeHash, setActiveHash] = useState('#overview');
+    const [isSticky, setIsSticky] = useState(false);
+    const navbarRef = useRef(null);
+    const placeholderRef = useRef(null);
 
     const openModal = () => {
         setIsModalOpen(true);
@@ -37,47 +40,75 @@ const NavBarCrowdfunding = ({ setActiveSection }) => {
     }, [setActiveSection]);
 
     useEffect(() => {
-        console.log('activeHash:', activeHash);
-    }, [activeHash]);
+        const handleScroll = () => {
+            const navbar = navbarRef.current;
+            const placeholder = placeholderRef.current;
+
+            if (navbar && placeholder) {
+                const offsetTop = placeholder.getBoundingClientRect().top;
+
+                if (offsetTop <= 0) {
+                    setIsSticky(true);
+                    placeholder.style.height = `${navbar.offsetHeight}px`;
+                } else {
+                    setIsSticky(false);
+                    placeholder.style.height = '0px';
+                }
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        handleScroll(); // Call initially to set the correct state on load
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
 
     const handleLinkClick = (hash) => {
         setActiveHash(hash);
         setActiveSection(hash.substring(1));
     };
 
-    const linkClasses = (path) => `px-3 py-1 border-2 rounded-xl font-ekmukta ${activeHash === path ? 'bg-white text-black border-white' : 'bg-[#272727] text-[#F1F1F1] border-transparent'}`;
+    const linkClasses = (hash) => `px-3 py-[6px] text-[16px] flex justify-center items-center font-ekmukta mt-2 ${activeHash === hash ? 'text-[#F1F1F1] border-b-[0.5px] border-[#F1F1F1]' : 'text-[#F1F1F1] border-b-1 border-transparent'}`;
 
     return (
-        <div className="flex items-center justify-between px-5 lg:px-[122px] w-full h-[60px] bg-[#1B1B1B]">
-            <div className="flex items-center gap-5">
-                <Link href="#overview" passHref legacyBehavior>
-                    <a className={linkClasses('#overview')} onClick={() => handleLinkClick('#overview')}>Overview</a>
-                </Link>
-                <Link href="#rewards" passHref legacyBehavior>
-                    <a className={linkClasses('#rewards')} onClick={() => handleLinkClick('#rewards')}>Rewards</a>
-                </Link>
-                <Link href="#community" passHref legacyBehavior>
-                    <a className={linkClasses('#community')} onClick={() => handleLinkClick('#community')}>Community</a>
-                </Link>
-                <Link href="#extras" passHref legacyBehavior>
-                    <a className={linkClasses('#extras')} onClick={() => handleLinkClick('#extras')}>Extras</a>
-                </Link>
-            </div>
-            
-            <div className="flex items-center gap-4">
-                <div className="flex items-center h-full">
-                    <Support onClick={openModal}/>
+        <div className="w-full bg-[#1B1B1B]">
+            <div ref={placeholderRef} className=""></div>
+            <div ref={navbarRef} id="navbar-crowdfunding" className={`flex items-center justify-center w-full h-[60px] ${isSticky ? 'fixed top-0 left-0 right-0 z-50 bg-[#1B1B1B] transition-all duration-300 ease-in-out' : 'bg-black'}`}>
+                <div className="max-w-[1200px] w-full flex items-center justify-between px-5 lg:px-0">
+                    <div className="flex items-center gap-10 font-ekMukta">
+                        <Link href="#overview" passHref legacyBehavior>
+                            <a className={linkClasses('#overview')} onClick={() => handleLinkClick('#overview')}>Overview</a>
+                        </Link>
+                        <Link href="#rewards" passHref legacyBehavior>
+                            <a className={linkClasses('#rewards')} onClick={() => handleLinkClick('#rewards')}>Rewards</a>
+                        </Link>
+                        <Link href="#community" passHref legacyBehavior>
+                            <a className={linkClasses('#community')} onClick={() => handleLinkClick('#community')}>Community</a>
+                        </Link>
+                        <Link href="#extras" passHref legacyBehavior>
+                            <a className={linkClasses('#extras')} onClick={() => handleLinkClick('#extras')}>Extras</a>
+                        </Link>
+                    </div>
+                    {isSticky && (
+                        <div className="flex items-center gap-4 transition-opacity duration-300 ease-in-out">
+                            <div className="flex items-center h-full">
+                                <Support onClick={openModal} />
+                            </div>
+                            <button className="flex items-center gap-2 text-white border border-white px-6 py-2 rounded-xl font-avenirHeavy hover:bg-white hover:text-black">
+                                Share
+                                <RiShare2Line />
+                            </button>
+                        </div>
+                    )}
+                    <Modal isOpen={isModalOpen} onClose={closeModal}>
+                        <Elements stripe={stripePromise}>
+                            <SupportForm />
+                        </Elements>
+                    </Modal>
                 </div>
-                <button className="flex items-center gap-2 text-white border border-white px-6 py-2 rounded-xl font-avenirHeavy hover:bg-white hover:text-black">
-                    Share
-                    <RiShare2Line />
-                </button>
             </div>
-            <Modal isOpen={isModalOpen} onClose={closeModal}>
-                <Elements stripe={stripePromise}>
-                    <SupportForm />
-                </Elements>
-            </Modal>
         </div>
     );
 }

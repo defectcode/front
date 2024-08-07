@@ -61,7 +61,7 @@ iframe {
 }
 
 .custom-bg-height {
-  height: 830px;
+  height: 730px;
 }
 
 .max-height {
@@ -236,8 +236,6 @@ iframe {
 }
 
 
-/* Adăugați acest cod în fișierul CSS al proiectului */
-
 .goal-section {
   position: sticky;
   top: 50%;
@@ -290,3 +288,6 @@ iframe {
 .custom-scrollbar::-webkit-scrollbar {
   display: none;  /* Safari and Chrome */
 }
+
+
+

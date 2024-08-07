@@ -26,10 +26,10 @@ const FundraisingProgress = ({ data }) => {
         <div className="text-white ">
             <div className="flex justify-between mb-2 lg:mb-4 w-full lg:w-[346px]">
                 <span className="text-2xl font-avenir-roman text-[#FFFFFF]">{data.subtitle}</span>
-                <span className="text-xl block mt-1 font-avenir text-[#C1C1C1]">{data.stageLabel} <span className="text-[#FFFFFF]">{data.stageNumber}</span></span>
+                <span className="text-md block mt-1 font-avenir text-[#C1C1C1]">{data.stageLabel} <span className="text-[#FFFFFF] font-extrabold">{data.stageNumber}</span></span>
             </div>
-            <div className="relative w-[380px] max-md:w-full">
-                <div className="h-1 bg-gray-600 rounded-full w-full lg:w-[346px]">
+            <div className="relative w-auto lg:w-[380px]">
+                <div className="h-1 bg-[#545454] rounded-full w-full lg:w-[346px] ml-1 lg:ml-0">
                     <div
                         className="h-full rounded-full bg-gradient-to-r from-[#E50815] via-[#E50815] to-white"
                         style={{ width: `${progressPercentage}%` }}
