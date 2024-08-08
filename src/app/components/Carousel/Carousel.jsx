@@ -40,6 +40,7 @@ const Carousel = () => {
         setPerView(1.25);
       }
     };
+    
 
     handleResize();
     window.addEventListener('resize', handleResize);
