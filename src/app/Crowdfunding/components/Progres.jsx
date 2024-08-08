@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Support from './Support';
-import { IoIosArrowForward } from "react-icons/io";
 import Modal from '/src/app/components/Header/components/Modal.jsx';
 import SupportForm from '/src/app/components/Header/components/Payment/SupportForm.jsx';
 import { Elements } from '@stripe/react-stripe-js';
@@ -9,9 +8,24 @@ import { loadStripe } from '@stripe/stripe-js';
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
 
 const FundraisingProgress = ({ data }) => {
-    const progressPercentage = (data.raisedAmount / data.goalAmount) * 100 || 0;
+    const raisedAmount = parseInt(data.raisedAmount.replace(/,/g, ''), 10);
+    const goalAmount = parseInt(data.goalAmount.replace(/,/g, ''), 10);
+    const progressPercentage = (raisedAmount / goalAmount) * 100 || 0;
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isMobile, setIsMobile] = useState(false);
 
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth <= 768);
+        };
+
+        handleResize();
+        window.addEventListener('resize', handleResize);
+
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
 
     const openModal = () => {
         setIsModalOpen(true);
@@ -21,37 +35,49 @@ const FundraisingProgress = ({ data }) => {
         setIsModalOpen(false);
     };
 
-
     return (
-        <div className="text-white ">
+        <div className="text-white">
             <div className="flex justify-between mb-2 lg:mb-4 w-full lg:w-[346px]">
-                <span className="text-2xl font-avenir-roman text-[#FFFFFF]">{data.subtitle}</span>
-                <span className="text-md block mt-1 font-avenir text-[#C1C1C1]">{data.stageLabel} <span className="text-[#FFFFFF] font-extrabold">{data.stageNumber}</span></span>
+                <span className="text-[16px] lg:text-2xl font-avenir-roman text-[#FFFFFF]">{data.subtitle}</span>
+                <span className="text-md block  font-avenir text-[#C1C1C1]">{data.stageLabel} <span className="text-[#FFFFFF] font-extrabold">{data.stageNumber}</span></span>
             </div>
             <div className="relative w-auto lg:w-[380px]">
-                <div className="h-1 bg-[#545454] rounded-full w-full lg:w-[346px] ml-1 lg:ml-0">
+                <div className="h-1 bg-[#6F6F6F] rounded-full w-full lg:w-[346px] ml-1 lg:ml-0">
                     <div
                         className="h-full rounded-full bg-gradient-to-r from-[#E50815] via-[#E50815] to-white"
                         style={{ width: `${progressPercentage}%` }}
                     ></div>
                 </div>
                 <div
-                    className="absolute top-0 -translate-y-1/2 transform mt-[2px]"
-                    style={{ left: `${progressPercentage}%` }}
+                    className="absolute top-0 -translate-y-1/2 transform mt-[2px] ml-[1px] lg:ml-3"
+                    style={{ left: `calc(${progressPercentage}% - ${isMobile ? '3px' : '6px'})` }}
                 >
-                    <div className={`w-[6px] h-[6px] lg:-ml-1 rounded-full bg-white border-2`}></div>
+                    <div className={`w-[6px] h-[6px] lg:w-[10px] lg:h-[10px] rounded-full bg-white border-2 shadow-circle ${isMobile ? '' : '-ml-7'}`}></div>
                 </div>
             </div>
             <div className="flex flex-row sm:gap-1 mt-1 lg:mt-3 items-center sm:items-start">
+                {isMobile  ? 
+                <div className="flex flex-row sm:gap-1 mt-1 lg:mt-3 items-center sm:items-start">
+                    <span className="font-semibold text-[20px]">${data.raisedAmount} <span className="text-[#C1C1C1] font-ekmukta text-[14px]">raised of ${data.goalAmount} goal</span></span>
+                    <span className="w-[6px] h-[6px] rounded-full bg-[#C1C1C1] mx-[6px]"></span>
+                        <span className="font-semibold text-[20px]">{data.supportersCount}</span>
+                        <span className="flex items-center text-[#C1C1C1] font-ekMukta text-[14px] ml-2">
+                            {data.supportersLabel}
+                        </span>
+                </div>
+                : 
+                <div className="flex flex-row sm:gap-1 mt-1 lg:mt-3 items-center sm:items-start">
                 <span className="font-semibold text-[20px]">${data.raisedAmount} <span className="text-[#C1C1C1] font-ekmukta text-[14px]">raised of ${data.goalAmount} goal</span></span>
                 <span className="flex items-center gap-[6px] mt-1 sm:mt-0">
                     <span className="w-[6px] h-[6px] rounded-full bg-[#C1C1C1] mx-1"></span>
                     <span className="font-semibold text-[20px]">{data.supportersCount}</span>
                     <span className="flex items-center text-[#E50815] font-ekMukta text-[14px]">
                         {data.supportersLabel}
-                        {/* <IoIosArrowForward className="w-[25px] h-[20px] ml-1 inline-block sm:hidden" /> */}
                     </span>
                 </span>
+            </div>
+
+                }
             </div>
             <div className="hidden md:block mt-2 lg:mt-5">
                 <Support onClick={openModal}/>

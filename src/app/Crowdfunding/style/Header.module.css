@@ -1,0 +1,100 @@
+.header {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* Adaptation Header for all version phone */
+@media only screen and (device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) {
+  .header {
+    height: 70vh;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .header {
+    height: 80vh; 
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .header {
+    height: 93vh; 
+  }
+}
+
+@media only screen and (max-width: 416px) {
+  .header {
+    height: 93vh; 
+  }
+}
+
+@media only screen and (max-width: 380px) {
+  .header {
+    height: 89vh; 
+  }
+}
+
+.header {
+  width: 100%; 
+}
+
+/* Background styles */
+.bgMobile {
+  background-image: url('/imgs/Crowdfunding/phone.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.bgDesktop {
+  background-image: url('/imgs/Crowdfunding/phone.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.gradientOverlay {
+  background: linear-gradient(to top, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.75) 25%, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0.25) 75%, transparent 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 30%;
+}
+
+/* Flexbox utility classes */
+.flex {
+  display: flex;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-end {
+  justify-content: flex-end;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.relative {
+  position: relative;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.inset-0 {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.min-h-screen {
+  min-height: 100vh;
+}

@@ -51,12 +51,11 @@ const Crowdfunding = () => {
     };
 
     return (
-        <div className="">
-            {/* <Navbar /> */}
-            <Static/>
+        <div>
+            <Static />
             {isMobile ? <HeaderCrowdfundingMobile /> : <HeaderCrowdfunding />}
             {isMobile ? <NavBarCrowdfundingMobile setActiveSection={setActiveSection} /> : <NavBarCrowdfunding setActiveSection={setActiveSection} />}
-            {isMobile ? <ButonShere/> : ''}
+            {isMobile ? <ButonShere /> : ''}
             <div>
                 {renderSection()}
             </div>

@@ -271,11 +271,11 @@ iframe {
 
 @layer utilities {
   .bg-mobile {
-    background-image: url('/imgs/Crowdfunding/background2.png');
+    background-image: url('/imgs/Crowdfunding/phone.png');
   }
   @media (min-width: 640px) {
     .bg-desktop {
-      background-image: url('/imgs/Crowdfunding/background2.png');
+      background-image: url('/imgs/Crowdfunding/background3.png');
     }
   }
 }
@@ -290,4 +290,11 @@ iframe {
 }
 
 
-
+.fixedHeader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: white; /* asigură că fundalul este vizibil */
+}
