@@ -59,7 +59,13 @@ const NavBarCrowdfundingMobile = ({ setActiveSection }) => {
         setActiveSection(hash.substring(1));
     };
 
-    const linkClasses = (hash) => `px-1 py-[6px] text-[14px] flex justify-center items-center font-ekmukta mt-2 w-full ${activeHash === hash ? 'text-[#F1F1F1] border-b-2 border-[#F1F1F1]' : 'text-[#979797] border-b-4 border-transparent'}`;
+    const linkClasses = (hash) => {
+        const baseClasses = 'px-1 py-[6px] text-[14px] flex justify-center items-center mt-2 w-full';
+        const activeClasses = 'text-[#F1F1F1] border-b-2 border-[#F1F1F1] font-avenir-heavy';
+        const inactiveClasses = 'text-[#979797] border-b-4 border-transparent font-avenir';
+
+        return `${baseClasses} ${activeHash === hash ? activeClasses : inactiveClasses}`;
+    };
 
     return (
         <div id="navbar-mobile" className={`transition-all duration-300 ease-in-out ${isSticky ? 'fixed top-0 left-0 right-0 z-50 bg-[#1B1B1B]' : 'relative bg-black'}`}>

@@ -98,3 +98,56 @@
 .min-h-screen {
   min-height: 100vh;
 }
+
+/* Adaptation Header for all version phone*/
+@media only screen and (device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) {
+  .headerCrowdfunding {
+    height: 70vh;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .headerCrowdfunding {
+    height: 80vh; 
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .headerCrowdfunding {
+    height: 93vh; 
+  }
+}
+
+@media only screen and (max-width: 416px) {
+  .headerCrowdfunding {
+    height: 93vh; 
+  }
+}
+
+@media only screen and (max-width: 390px) {
+  .headerCrowdfunding {
+    height: 80vh + 40px; 
+  }
+}
+
+.headerCrowdfunding {
+  width: 100%; 
+}
+
+@media only screen and (min-width: 415px) and (max-width: 768px) {
+  .headerCrowdfunding {
+    height: 90vh;
+  }
+}
+
+@media only screen and (width: 428px) {
+  .headerCrowdfunding {
+    height: 88vh;
+  }
+}
+
+@media only screen and (min-width: 769px) {
+  .headerCrowdfunding {
+    height: 100vh;
+  }
+}

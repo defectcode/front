@@ -231,6 +231,11 @@ iframe {
   font-family: 'Avenir', sans-serif;
 }
 
+.font-avenir-heavy {
+  font-family: 'Avenir Heavy', sans-serif;
+  font-weight: 800; /* Asigură-te că greutatea este corect setată */
+}
+
 .font-avenir-roman {
   font-family: 'Avenir Roman', sans-serif;
 }
@@ -297,4 +302,14 @@ iframe {
   width: 100%;
   z-index: 1000;
   background-color: white; /* asigură că fundalul este vizibil */
+}
+
+
+
+.custom-padding {
+    padding: 20px;
+}
+
+.custom-margin {
+    margin-bottom: 20px;
 }

@@ -9,23 +9,34 @@ const HeaderCrowdfundingMobile = () => {
     const [isMobile, setIsMobile] = useState(false);
     const [viewportHeight, setViewportHeight] = useState(window.innerHeight);
     const headerRef = useRef(null);
+    const [showSupportInNavbar, setShowSupportInNavbar] = useState(false);
+
 
     useEffect(() => {
-        const handleResize = () => {
-            setIsMobile(window.innerWidth <= 768);
-            setViewportHeight(window.innerHeight);
-        };
+      const handleScroll = () => {
+        if (window.scrollY > 100) {
+          setShowSupportInNavbar(true);
+        } else {
+          setShowSupportInNavbar(false);
+        }
+      };
 
-        handleResize();
-        window.addEventListener('resize', handleResize);
-
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        };
+      window.addEventListener('scroll', handleScroll);
+      return () => {
+        window.removeEventListener('scroll', handleScroll);
+      };
     }, []);
 
+    const openModal = () => {
+      setIsModalOpen(true);
+    };
+
+    const closeModal = () => {
+      setIsModalOpen(false);
+    };
+
     return (
-        <div ref={headerRef} className={`${styles.header} flex flex-col`} style={{ height: `${viewportHeight}px` }}>
+        <div ref={headerRef} className={`header headerCrowdfunding flex flex-col`}>
             <div className="relative" style={{ height: '70%' }}>
                 <div className={`${isMobile ? styles.bgMobile : styles.bgDesktop}`} style={{ height: '100%' }}>
                     <div className={`${styles.gradientOverlay} absolute bottom-0 left-0 right-0`} style={{ height: '5%' }}></div>

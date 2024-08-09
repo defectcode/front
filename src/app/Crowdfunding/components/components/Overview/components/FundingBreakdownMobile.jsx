@@ -55,7 +55,7 @@ const FundingBreakdownMobile = () => {
 
     return (
         <div className="bg-black h-full sticky top-0 flex flex-col items-center text-white px-5 pb-20">
-            <h2 className="text-3xl font-semibold mb-8 mt-14">Where Your Money Goes</h2>
+            <h2 className="text-2xl font-semibold mb-8 mt-14">Where Your Money Goes</h2>
             <div className="relative">
                 <DoughnutChart data={costData} />
                 <div className="absolute inset-0 flex items-center justify-center">
@@ -107,7 +107,7 @@ const FundingBreakdownMobile = () => {
                                             />
                                         )}
                                     </div>
-                                    <span className="ml-2 text-[#C4C4C4] text-[14px] font-roboto w-[70%] align-middle">{item.category}</span>
+                                    <span className="ml-3 text-[#C4C4C4] text-[14px] font-roboto align-middle">{item.category}</span>
                                 </td>
                                 <td className="py-2 text-[#C4C4C4] text-[14px] font-roboto font-semibold w-[100px] align-middle text-center">${item.cost.toLocaleString()}</td>
                                 <td className="py-2 text-[#C4C4C4] text-[14px] font-roboto font-semibold w-[60px] text-center align-middle">{item.week}</td>

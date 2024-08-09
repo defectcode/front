@@ -84,9 +84,9 @@ export default function Static({ openModal }) {
             <Link href="/"><Image src="/imgs/logo.svg" alt='logo' className='w-20 h-auto' width={11} height={1} /></Link>
           </div>
           <div className="md:hidden flex items-center relative z-50">
-            <button onClick={() => setIsOpen(!isOpen)} className="transition-opacity">
-              {isOpen ? <AiOutlineClose className="text-white w-8 h-8 max-md:w-5 max-md:h-5" /> : <AiOutlineMenu className="text-white w-8 h-8 max-md:w-5 max-md:h-5" />}
-            </button>
+          <button onClick={() => setIsOpen(!isOpen)} className="transition-opacity">
+            {isOpen ? <AiOutlineClose className="text-white w-8 h-8 max-md:w-5 max-md:h-5" /> : <Image src="/imgs/burgher.svg" alt='burgher' width={40} height={1} className="text-white w-8 h-8 max-md:w-[20px] max-md:h-[12px]" />}
+          </button>
           </div>
           <ul className={`flex-col md:flex md:flex-row gap-10 text-lg md:text-[#D9D9D9] fixed md:static top-0 right-0 h-screen md:h-auto transition-transform transform ${isOpen ? 'translate-x-0 max-md:bg-gradient-to-r from-black to-dark-gray max-md:bg-opacity-100 text-white' : 'translate-x-full bg-opacity-50'} md:translate-x-0 md:w-auto w-2/3 pt-20 md:pt-0 z-50`}>
             <button className="absolute top-6 right-4 md:hidden z-60" onClick={closeMenu}>

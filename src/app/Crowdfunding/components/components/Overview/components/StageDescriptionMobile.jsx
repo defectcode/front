@@ -37,7 +37,7 @@ const StageDescription = () => {
                 </div>
                 <img src={stageDescriptionData.imageUrl_2} alt="Stage Description" className="mt-10"/>
             </div>
-            {/* <DetailedSteps/> */}
+            <DetailedStepsMobile/>
             <style jsx>{`
                 ul.list-small li::marker {
                     font-size: 0.7em; /* Ajustează dimensiunea după cum este necesar */

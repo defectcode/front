@@ -15,6 +15,7 @@ import OverviewMobile from "../app/Crowdfunding/components/components/Overview/O
 import RewardsMobile from "../app/Crowdfunding/components/components/Rewards/RewardsMobile";
 import CommunityMobile from "../app/Crowdfunding/components/components/Community/CommunityMobile";
 import ExtrasMobile from "../app/Crowdfunding/components/components/Extras/ExtrasMobile";
+import Footer from '../app/components/Footer/Footer'
 
 const Crowdfunding = () => {
     const isMobile = useDeviceType();
@@ -51,7 +52,7 @@ const Crowdfunding = () => {
     };
 
     return (
-        <div>
+        <div className="mb-10">
             <Static />
             {isMobile ? <HeaderCrowdfundingMobile /> : <HeaderCrowdfunding />}
             {isMobile ? <NavBarCrowdfundingMobile setActiveSection={setActiveSection} /> : <NavBarCrowdfunding setActiveSection={setActiveSection} />}
@@ -59,6 +60,7 @@ const Crowdfunding = () => {
             <div>
                 {renderSection()}
             </div>
+            <Footer/>
         </div>
     );
 }

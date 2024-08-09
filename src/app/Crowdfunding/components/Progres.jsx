@@ -42,7 +42,7 @@ const FundraisingProgress = ({ data }) => {
                 <span className="text-md block  font-avenir text-[#C1C1C1]">{data.stageLabel} <span className="text-[#FFFFFF] font-extrabold">{data.stageNumber}</span></span>
             </div>
             <div className="relative w-auto lg:w-[380px]">
-                <div className="h-1 bg-[#6F6F6F] rounded-full w-full lg:w-[346px] ml-1 lg:ml-0">
+                <div className="h-1 bg-[#6F6F6F] rounded-full w-full lg:w-[346px] lg:ml-0">
                     <div
                         className="h-full rounded-full bg-gradient-to-r from-[#E50815] via-[#E50815] to-white"
                         style={{ width: `${progressPercentage}%` }}
@@ -57,25 +57,25 @@ const FundraisingProgress = ({ data }) => {
             </div>
             <div className="flex flex-row sm:gap-1 mt-1 lg:mt-3 items-center sm:items-start">
                 {isMobile  ? 
-                <div className="flex flex-row sm:gap-1 mt-1 lg:mt-3 items-center sm:items-start">
+                <div className="flex flex-row flex-wrap sm:gap-1 mt-1 lg:mt-3 items-center sm:items-start">
                     <span className="font-semibold text-[20px]">${data.raisedAmount} <span className="text-[#C1C1C1] font-ekmukta text-[14px]">raised of ${data.goalAmount} goal</span></span>
                     <span className="w-[6px] h-[6px] rounded-full bg-[#C1C1C1] mx-[6px]"></span>
-                        <span className="font-semibold text-[20px]">{data.supportersCount}</span>
-                        <span className="flex items-center text-[#C1C1C1] font-ekMukta text-[14px] ml-2">
-                            {data.supportersLabel}
-                        </span>
+                    <span className="font-semibold text-[20px] mr-2">{data.supportersCount}</span>
+                    <span className="flex items-center text-[#C1C1C1] font-ekMukta text-[14px]">
+                        {data.supportersLabel}
+                    </span>
                 </div>
                 : 
                 <div className="flex flex-row sm:gap-1 mt-1 lg:mt-3 items-center sm:items-start">
-                <span className="font-semibold text-[20px]">${data.raisedAmount} <span className="text-[#C1C1C1] font-ekmukta text-[14px]">raised of ${data.goalAmount} goal</span></span>
-                <span className="flex items-center gap-[6px] mt-1 sm:mt-0">
-                    <span className="w-[6px] h-[6px] rounded-full bg-[#C1C1C1] mx-1"></span>
-                    <span className="font-semibold text-[20px]">{data.supportersCount}</span>
-                    <span className="flex items-center text-[#E50815] font-ekMukta text-[14px]">
-                        {data.supportersLabel}
+                    <span className="font-semibold text-[20px]">${data.raisedAmount} <span className="text-[#C1C1C1] font-ekmukta text-[14px]">raised of ${data.goalAmount} goal</span></span>
+                    <span className="flex items-center gap-[6px] mt-1 sm:mt-0">
+                        <span className="w-[6px] h-[6px] rounded-full bg-[#C1C1C1] mx-1"></span>
+                        <span className="font-semibold text-[20px]">{data.supportersCount}</span>
+                        <span className="flex items-center text-[#E50815] font-ekMukta text-[14px]">
+                            {data.supportersLabel}
                     </span>
-                </span>
-            </div>
+                    </span>
+                </div>
 
                 }
             </div>
