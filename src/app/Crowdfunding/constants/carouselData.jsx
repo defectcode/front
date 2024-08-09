@@ -4,7 +4,7 @@ export const images = [
     {
       alt: 'Slide 1',
       title: 'Costume Atelier',
-      raisedAmount: '100000',
+      raisedAmount: '700',
       goalAmount: '227,000',
       subtitle: 'Current Fundraising',
       stageLabel: 'Stage',
