@@ -14,9 +14,9 @@ const HeaderCrowdfundingMobile = () => {
 
     useEffect(() => {
       const handleResize = () => {
-        if (window.innerWidth <= 440 && window.innerWidth > 400) {
-          setImageHeight('60%');
-          setBgHeight('40%');
+        if (window.innerWidth <= 430 && window.innerWidth > 400) {
+          setImageHeight('65%');
+          setBgHeight('35%');
         } else if(window.innerWidth <= 380){
           setImageHeight('60%');
           setBgHeight('30%');
@@ -52,17 +52,38 @@ const HeaderCrowdfundingMobile = () => {
 
     return (
         <div ref={headerRef} className={`header headerCrowdfunding flex flex-col bg-black`}>
-            <div className="relative" style={{ height: imageHeight }}>
-                <div className={`${isMobile ? styles.bgMobile : styles.bgDesktop}`} style={{ height: '100%' }}>
-                    <div className={`${styles.gradientOverlay} absolute bottom-0 left-0 right-0`} style={{ height: '5%' }}></div>
-                </div>
-            </div>
-            <div className="flex-grow bg-black flex flex-col justify-start px-5" style={{ height: bgHeight }}>
-                <div className="max-w-screen-lg w-full flex flex-col gap-4 sm:gap-8  lg:px-[50px] mb-2 z-0">
+          <div className="relative" style={{ height: imageHeight }}>
+              <div className={`${isMobile ? styles.bgMobile : styles.bgDesktop}`} style={{ height: '100%' }}>
+                  <div 
+                    className="absolute bottom-0 left-0 right-0"
+                    style={{
+                        height: '3%',
+                        background: 'linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, black 70%)'
+                    }}
+                  ></div>
+              </div>
+          </div>
+
+          <div className="flex-grow bg-black flex flex-col justify-start px-5 relative" style={{ height: bgHeight }}>
+                {/* Layer for blur effect */}
+                <div style={{ 
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    bottom: 0,
+                    filter: 'blur(40px)',
+                    zIndex: 1,
+                    background: 'radial-gradient(circle at 80% 80%, rgba(40, 40, 40, 0.7), black 50%)'
+                }}></div>
+                
+                {/* Content layer */}
+                <div className="max-w-screen-lg w-full flex flex-col gap-4 sm:gap-8 lg:px-[50px] mb-2 relative z-10">
                     <Title title={currentData.title} description={currentData.description} />
                     <FundraisingProgress data={currentData} />
                 </div>
             </div>
+
         </div>
     );
 }

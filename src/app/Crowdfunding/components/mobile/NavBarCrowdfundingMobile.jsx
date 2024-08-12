@@ -15,6 +15,7 @@ const NavBarCrowdfundingMobile = ({ setActiveSection }) => {
         const handleScroll = () => {
             const currentScrollPos = window.pageYOffset;
 
+            // Check if the current scroll position is greater than the initial offset
             if (currentScrollPos >= initialOffsetTop) {
                 setIsSticky(true);
             } else {
