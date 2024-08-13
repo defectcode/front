@@ -78,7 +78,7 @@ export default function Static({ openModal }) {
 
   return (
     <>
-      <nav className={`bg-black bg-opacity-25 top-0 w-full h-11 max-md:h-10 z-50 font-avenirRoman backdrop-blur-lg ios-blur transition-transform fixed ${!isVisible && 'transform -translate-y-full'}`}>
+      <nav className={`bg-transparent top-0 w-full h-11 max-md:h-10 z-50 font-avenirRoman backdrop-blur-lg ios-blur transition-transform fixed`}>
         <div className="max-w-[1200px] mx-auto flex justify-between items-center px-2 max-md:px-0 py-2 max-lg:mx-5 relative z-50">
           <div>
             <Link href="/"><Image src="/imgs/logo.svg" alt='logo' className='w-20 h-auto' width={11} height={1} /></Link>
