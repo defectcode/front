@@ -6,7 +6,7 @@ const StageDescription = () => {
     return (
         <div id="overview" className="bg-black w-full flex flex-col items-start">
             <div>
-                <h2 className="text-3xl text-[#FFFFFF] mt-10 mb-4 font-ekMukta font-semibold">
+                <h2 className="text-2xl text-[#FFFFFF] mt-10 mb-4 font-ekMukta font-semibold">
                     {stageDescriptionData.stageTitle}
                 </h2>
                 <p className="text-[#CDCDCD] max-w-[764px] w-auto font-ekMukta">

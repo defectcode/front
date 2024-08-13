@@ -77,7 +77,7 @@ export default function Static({ openModal }) {
   };
 
   return (
-    <>
+    <div className=''>
       <nav className={`bg-transparent top-0 w-full h-11 max-md:h-10 z-50 font-avenirRoman backdrop-blur-lg ios-blur transition-transform fixed`}>
         <div className="max-w-[1200px] mx-auto flex justify-between items-center px-2 max-md:px-0 py-2 max-lg:mx-5 relative z-50">
           <div>
@@ -111,6 +111,6 @@ export default function Static({ openModal }) {
           </Elements>
         </ModalNavBar>
       </nav>
-    </>
+    </div>
   );
 }

@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 const NavBarCrowdfundingMobile = ({ setActiveSection }) => {
     const [activeHash, setActiveHash] = useState('');
     const [isSticky, setIsSticky] = useState(false);
-    const [initialOffsetTop, setInitialOffsetTop] = useState(0);
+    const navbarRef = useRef(null);
+    const placeholderRef = useRef(null);
 
     useEffect(() => {
         const handleHashChange = () => {
@@ -13,20 +14,24 @@ const NavBarCrowdfundingMobile = ({ setActiveSection }) => {
         };
 
         const handleScroll = () => {
+            const navbar = navbarRef.current;
+            const placeholder = placeholderRef.current;
             const currentScrollPos = window.pageYOffset;
 
-            // Check if the current scroll position is greater than the initial offset
-            if (currentScrollPos >= initialOffsetTop) {
-                setIsSticky(true);
-            } else {
-                setIsSticky(false);
+            if (navbar && placeholder) {
+                const navbarTop = placeholder.offsetTop;
+
+                if (currentScrollPos > navbarTop && !isSticky) {
+                    placeholder.style.height = `${navbar.offsetHeight}px`;
+                    placeholder.style.backgroundColor = '#1B1B1B'; // Set background color when sticky
+                    setIsSticky(true);
+                } else if (currentScrollPos <= navbarTop && isSticky) {
+                    setIsSticky(false);
+                    placeholder.style.height = '0px';
+                    placeholder.style.backgroundColor = 'transparent'; // Remove background color when not sticky
+                }
             }
         };
-
-        const navbar = document.getElementById('navbar-mobile');
-        if (navbar) {
-            setInitialOffsetTop(navbar.offsetTop);
-        }
 
         window.addEventListener('hashchange', handleHashChange);
         window.addEventListener('scroll', handleScroll);
@@ -37,22 +42,7 @@ const NavBarCrowdfundingMobile = ({ setActiveSection }) => {
             window.removeEventListener('hashchange', handleHashChange);
             window.removeEventListener('scroll', handleScroll);
         };
-    }, [initialOffsetTop, setActiveSection]);
-
-    useEffect(() => {
-        const handleResize = () => {
-            const navbar = document.getElementById('navbar-mobile');
-            if (navbar) {
-                setInitialOffsetTop(navbar.offsetTop);
-            }
-        };
-
-        window.addEventListener('resize', handleResize);
-
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        };
-    }, []);
+    }, [isSticky, setActiveSection]);
 
     const handleClick = (hash) => {
         window.location.hash = hash;
@@ -69,21 +59,28 @@ const NavBarCrowdfundingMobile = ({ setActiveSection }) => {
     };
 
     return (
-        <div 
-            id="navbar-mobile" 
-            className={`transition-all duration-300 ease-in-out ${isSticky ? 'fixed top-0 left-0 right-0 z-50 bg-[#1B1B1B]' : 'relative bg-black'}`}
-            style={!isSticky ? { marginTop: '-60px', paddingBottom: '60px' } : {}}
-        >
-            <div className="flex items-center justify-center h-[60px]">
-                <div className="flex items-center justify-center gap-[30px] w-full px-5">
-                    <a className={linkClasses('#overview')} onClick={() => handleClick('#overview')}>Overview</a>
-                    <a className={linkClasses('#rewards')} onClick={() => handleClick('#rewards')}>Rewards</a>
-                    <a className={linkClasses('#community')} onClick={() => handleClick('#community')}>Community</a>
-                    <a className={linkClasses('#extras')} onClick={() => handleClick('#extras')}>Extras</a>
+        <>
+            <div ref={placeholderRef} className="w-full transition-all duration-500 ease-in-out" />
+            <div 
+                ref={navbarRef}
+                id="navbar-mobile" 
+                className={`transition-all duration-300 ease-in-out ${
+                    isSticky ? `fixed top-0 left-0 right-0 z-50 bg-[#1B1B1B]`
+                             : 'relative bg-black'
+                }`}
+                style={{ transition: 'transform 0.2s ease-in-out, background-color 0.2s ease-in-out' }}
+            >
+                <div className="flex items-center justify-center h-[60px]">
+                    <div className="flex items-center justify-center gap-[30px] w-full px-5">
+                        <a className={linkClasses('#overview')} onClick={() => handleClick('#overview')}>Overview</a>
+                        <a className={linkClasses('#rewards')} onClick={() => handleClick('#rewards')}>Rewards</a>
+                        <a className={linkClasses('#community')} onClick={() => handleClick('#community')}>Community</a>
+                        <a className={linkClasses('#extras')} onClick={() => handleClick('#extras')}>Extras</a>
+                    </div>
                 </div>
             </div>
-        </div>
+        </>
     );
-}
+};
 
 export default NavBarCrowdfundingMobile;

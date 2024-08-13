@@ -4,6 +4,7 @@ import FundraisingProgress from './components/Progres';
 import Title from "./components/Title";
 import { images } from './constants/carouselData';
 import styles from './style/Header.module.css';
+import Static from "../components/Header/components/Static";
 
 const HeaderCrowdfundingMobile = () => {
     const currentData = images[0];
@@ -11,19 +12,16 @@ const HeaderCrowdfundingMobile = () => {
     const headerRef = useRef(null);
     const [showSupportInNavbar, setShowSupportInNavbar] = useState(false);
     const [imageHeight, setImageHeight] = useState('70%');
-    const [bgHeight, setBgHeight] = useState('30%');
+    const headerContainerRef = useRef(null);
 
     useEffect(() => {
         const handleResize = () => {
             if (window.innerWidth <= 430 && window.innerWidth > 400) {
                 setImageHeight('70%');
-                setBgHeight('30%');
             } else if (window.innerWidth <= 380) {
                 setImageHeight('70%');
-                setBgHeight('30%');
             } else {
                 setImageHeight('70%');
-                setBgHeight('30%');
             }
             setIsMobile(window.innerWidth < 768);
         };
@@ -38,22 +36,7 @@ const HeaderCrowdfundingMobile = () => {
 
     useEffect(() => {
         const handleScroll = () => {
-            if (window.scrollY > 100) {
-                setShowSupportInNavbar(true);
-            } else {
-                setShowSupportInNavbar(false);
-            }
-        };
-
-        window.addEventListener('scroll', handleScroll);
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
-    }, []);
-
-    useEffect(() => {
-        const handleScroll = () => {
-            const headerPosition = headerRef.current?.getBoundingClientRect().top;
+            const headerPosition = headerContainerRef.current?.getBoundingClientRect().top;
             if (headerPosition && headerPosition < 100) {
                 setShowSupportInNavbar(true);
             } else {
@@ -68,7 +51,9 @@ const HeaderCrowdfundingMobile = () => {
     }, []);
 
     return (
-        <div ref={headerRef} className={`header headerCrowdfunding flex flex-col bg-black`}>
+
+
+            <div ref={headerContainerRef} className={`header headerCrowdfunding flex flex-col bg-black`}>
             <div
                 className={`${isMobile ? styles.bgMobile : styles.bgDesktop} relative`}
                 style={{ height: imageHeight }}

@@ -69,7 +69,7 @@ const FundraisingProgress = ({ data }) => {
                     <div className={`w-[6px] h-[6px] lg:w-[10px] lg:h-[10px] rounded-full bg-white ${isMobile ? '' : '-ml-1'}`}></div>
                 </div>
             </div>
-            <div className="flex justify-between items-center mt-2 lg:mt-4">
+            <div className="flex justify-between items-center mt-2 lg:mt-4 lg:w-[346px]">
                 <div className="flex flex-col">
                     <span className="font-semibold text-[15px] lg:text-[20px]">
                         <span className='font-semibold font-ekMukta text-[15px]'>

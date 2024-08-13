@@ -22,7 +22,7 @@ const DoughnutChart = ({ data }) => {
         datasets: [
             {
                 data: data.map(item => item.cost),
-                backgroundColor: ['#E60716', '#E81B29', '#EF9DA2', '#F1C5C7', '#F0F0F0'],
+                backgroundColor: ['#E60716', '#BA1520', '#EB3F4A', '#EA757C', '#EF9DA2'],
                 borderWidth: 0
             }
         ]
@@ -95,7 +95,7 @@ const FundingBreakdownMobile = () => {
                                             animate={{ scale: 1 }}
                                             transition={{ delay: index * 0.4, duration: 0.5 }}
                                             className="w-[13px] h-[13px] rounded-full point align-middle"
-                                            style={{ backgroundColor: ['#E60716', '#E81B29', '#EF9DA2', '#F1C5C7', '#F0F0F0'][index] }}
+                                            style={{ backgroundColor: ['#E60716', '#BA1520', '#EB3F4A', '#EA757C', '#EF9DA2'][index] }}
                                         />
                                         {index < costData.length - 1 && (
                                             <motion.div
@@ -103,7 +103,7 @@ const FundingBreakdownMobile = () => {
                                                 animate={{ height: '95px' }}
                                                 transition={{ delay: (index + 1) * 0.4, duration: 0.5 }}
                                                 className="absolute left-1/2 transform -translate-x-1/2 w-[2px] align-middle gap-1"
-                                                style={{ backgroundColor: ['#E60716', '#E81B29', '#EF9DA2', '#F1C5C7', '#F0F0F0'][index] }}
+                                                style={{ backgroundColor: ['#E60716', '#BA1520', '#EB3F4A', '#EA757C', '#EF9DA2'][index] }}
                                             />
                                         )}
                                     </div>
