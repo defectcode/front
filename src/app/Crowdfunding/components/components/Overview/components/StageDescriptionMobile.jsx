@@ -4,9 +4,10 @@ import DetailedStepsMobile from './DetailedStepsMobile';
 
 const StageDescription = () => {
     return (
-        <div id="overview" className="bg-black px-[20px] w-full flex flex-col items-start lg:items-center">
+        <div id="overview" className="bg-black px-[20px] w-full flex flex-col items-start lg:items-center"
+        >
             <div>
-                <h2 className="text-3xl text-[#FFFFFF] mt-10 mb-4 font-ekMukta font-semibold">
+                <h2 className="text-3xl text-[#FFFFFF] mb-4 font-ekMukta font-semibold">
                     {stageDescriptionData.stageTitle}
                 </h2>
                 <p className="text-[#CDCDCD] max-w-[764px] w-auto font-ekMukta">

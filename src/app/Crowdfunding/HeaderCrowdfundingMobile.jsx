@@ -52,33 +52,44 @@ const HeaderCrowdfundingMobile = () => {
 
     return (
         <div ref={headerRef} className={`header headerCrowdfunding flex flex-col bg-black`}>
-          <div className="relative" style={{ height: imageHeight }}>
-              <div className={`${isMobile ? styles.bgMobile : styles.bgDesktop}`} style={{ height: '100%' }}>
-                  <div 
-                    className="absolute bottom-0 left-0 right-0"
-                    style={{
-                        height: '3%',
-                        background: 'linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, black 70%)'
-                    }}
-                  ></div>
+          <div 
+            className={`${isMobile ? styles.bgMobile : styles.bgDesktop} relative`} 
+            style={{ height: imageHeight }}
+          >
+              <div 
+                style={{ 
+                  height: '100%', 
+                  backgroundImage: `linear-gradient(to top, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 20%), url(${currentData.imageUrl})`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                }}
+              >
               </div>
           </div>
 
-          <div className="flex-grow bg-black flex flex-col justify-start px-5 relative" style={{ height: bgHeight }}>
-                {/* Layer for blur effect */}
-                <div style={{ 
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    right: 0,
-                    bottom: 0,
-                    filter: 'blur(40px)',
-                    zIndex: 1,
-                    background: 'radial-gradient(circle at 80% 80%, rgba(40, 40, 40, 0.7), black 50%)'
-                }}></div>
-                
-                {/* Content layer */}
-                <div className="max-w-screen-lg w-full flex flex-col gap-4 sm:gap-8 lg:px-[50px] mb-2 relative z-10">
+          <div 
+            className="flex-grow bg-black flex flex-col justify-start px-5 relative" 
+          >
+            <div 
+              style={{ 
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                filter: 'blur(40px)',
+                zIndex: 1,
+                background: 'linear-gradient(to top left, rgba(40, 40, 40, 0.4), rgba(0, 0, 0, 0))'
+              }}
+            ></div>
+
+                <div 
+                  className="max-w-screen-lg w-full flex flex-col gap-4 sm:gap-8 lg:px-[50px] relative z-10"
+                  style={{
+                    marginTop: '-50px',  // Move the content upward
+                    paddingBottom: '50px'  // Adjust the spacing as needed
+                  }}
+                >
                     <Title title={currentData.title} description={currentData.description} />
                     <FundraisingProgress data={currentData} />
                 </div>

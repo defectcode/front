@@ -69,7 +69,11 @@ const NavBarCrowdfundingMobile = ({ setActiveSection }) => {
     };
 
     return (
-        <div id="navbar-mobile" className={`transition-all duration-300 ease-in-out ${isSticky ? 'fixed top-0 left-0 right-0 z-50 bg-[#1B1B1B]' : 'relative bg-black'}`}>
+        <div id="navbar-mobile" className={`transition-all duration-300 ease-in-out ${isSticky ? 'fixed top-0 left-0 right-0 z-50 bg-[#1B1B1B]' : 'relative bg-black'}`}
+        style={{
+            marginTop: '-50px',  // Move the content upward
+            paddingBottom: '50px'  // Adjust the spacing as needed
+          }}>
             <div className="flex items-center justify-center h-[60px]">
                 <div className="flex items-center justify-center gap-[30px] w-full px-5">
                     <a className={linkClasses('#overview')} onClick={() => handleClick('#overview')}>Overview</a>
