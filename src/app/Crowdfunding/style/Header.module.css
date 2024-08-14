@@ -40,12 +40,12 @@
   width: 100%; 
 }
 
-/* Background styles */
 .bgMobile {
   background-image: url('/imgs/Crowdfunding/phone.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  background-attachment: flex;
 }
 
 .bgDesktop {
@@ -53,7 +53,9 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  background-attachment: fixed;
 }
+
 
 .gradientOverlay {
   background: linear-gradient(to top, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.75) 25%, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0.25) 75%, transparent 100%);
@@ -159,4 +161,6 @@
   flex-direction: column;
   position: relative;
 }
+
+
 

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Doughnut } from 'react-chartjs-2';
-import Chart from 'chart.js/auto';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 
@@ -12,10 +11,10 @@ const costData = [
     { category: 'Additional Costs for International Shipping and Online Orders', cost: 50000, week: '9-10' }
 ];
 
-// Function to generate a color gradient from white to red
+// Function to generate a color gradient from red to white
 const generateColorGradient = (steps) => {
-    const startColor = [255, 0, 0]; // White in RGB
-    const endColor = [255, 255, 255]; // Red in RGB
+    const startColor = [255, 0, 0]; // Red in RGB
+    const endColor = [255, 255, 255]; // White in RGB
 
     const stepFactor = 1 / (steps - 1);
     const colorArray = [];
@@ -90,7 +89,7 @@ const FundingBreakdownMobile = () => {
                             <th className="py-2 text-center">
                                 <div className="relative flex items-center justify-center gap-1">
                                     <span style={{ display: 'inline-block' }}>Cost</span>
-                                    <span style={{ display: 'inline-block', transform: 'translateY(-7px)' }} title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque varius enim non bibendum tincidunt. Aenean condimentum ligula at felis interdum, nec tempor libero tristique. Sed tincidunt purus at dapibus blandit. Donec fringilla fringilla dolor, ac dictum tortor convallis eget.">
+                                    <span style={{ display: 'inline-block', transform: 'translateY(-7px)' }} title="Information about costs">
                                         <Image src="/icons/question.svg" alt='question' width={15} height={15} />
                                     </span>
                                 </div>
@@ -98,7 +97,7 @@ const FundingBreakdownMobile = () => {
                             <th className="py-2 text-center">
                                 <div className="relative flex items-center justify-center gap-1">
                                     <span style={{ display: 'inline-block' }}>Week</span>
-                                    <span style={{ display: 'inline-block', transform: 'translateY(-7px)' }} title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque varius enim non bibendum tincidunt. Aenean condimentum ligula at felis interdum, nec tempor libero tristique. Sed tincidunt purus at dapibus blandit. Donec fringilla fringilla dolor, ac dictum tortor convallis eget.">
+                                    <span style={{ display: 'inline-block', transform: 'translateY(-7px)' }} title="Information about weeks">
                                         <Image src="/icons/question.svg" alt='question' width={15} height={15} />
                                     </span>
                                 </div>
@@ -108,7 +107,7 @@ const FundingBreakdownMobile = () => {
                     <tbody className='space-y-[20px]'>
                         {costData.map((item, index) => (
                             <tr key={index} className='align-middle'>
-                                <td className="py-5 flex items-center relative align-middle" style={{ paddingBottom: index < costData.length - 1 ? '20px' : '0' }}>
+                                <td className="py-5 flex items-center relative align-middle" style={{ paddingBottom: index < costData.length - 1 ? '0' : '0' }}>
                                     <div className="relative flex flex-col items-center point-container align-middle">
                                         <motion.div
                                             initial={{ scale: 0 }}
@@ -120,7 +119,7 @@ const FundingBreakdownMobile = () => {
                                         {index < costData.length - 1 && (
                                             <motion.div
                                                 initial={{ height: 0 }}
-                                                animate={{ height: '95px' }}
+                                                animate={{ height: index === costData.length - 2 ? '85px' : '95px' }}
                                                 transition={{ delay: (index + 1) * 0.4, duration: 0.5 }}
                                                 className="absolute left-1/2 transform -translate-x-1/2 w-[2px] align-middle gap-1"
                                                 style={{ backgroundColor: generateColorGradient(costData.length)[index] }}
@@ -160,9 +159,6 @@ const FundingBreakdownMobile = () => {
                 }
                 .point-container:not(:last-child)::after {
                     height: calc(100% + 1px);
-                }
-                .point-container:last-child::after {
-                    display: none;
                 }
             `}</style>
         </div>

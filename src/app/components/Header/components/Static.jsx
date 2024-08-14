@@ -13,9 +13,7 @@ const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY)
 export default function Static({ openModal }) {
   const [isOpen, setIsOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [scrollY, setScrollY] = useState(0);
-  const [initialScroll, setInitialScroll] = useState(0);
-  const [isScrollingUp, setIsScrollingUp] = useState(false);
+  const [lastScrollY, setLastScrollY] = useState(0);
 
   const navbarRef = useRef(null);
 
@@ -23,28 +21,24 @@ export default function Static({ openModal }) {
     const handleScroll = () => {
       const currentScrollY = window.pageYOffset;
 
-      if (currentScrollY < initialScroll) {
-        setIsScrollingUp(true);
-      } else {
-        setIsScrollingUp(false);
+      // Bara de navigare se ascunde dacă derulezi în jos
+      if (currentScrollY > lastScrollY && currentScrollY > 50) {
+        navbarRef.current.style.transform = 'translateY(-100%)'; // Ascunde bara de navigare
+      } 
+      // Bara de navigare revine doar când ajungi aproape la începutul paginii
+      else if (currentScrollY <= 50) {
+        navbarRef.current.style.transform = 'translateY(0)'; // Afișează bara de navigare
       }
 
-      setScrollY(currentScrollY);
-
-      if (currentScrollY === 0) {
-        navbarRef.current.style.transform = 'translateY(0)';
-      } else if (!isScrollingUp) {
-        navbarRef.current.style.transform = `translateY(-${currentScrollY}px)`;
-      }
+      setLastScrollY(currentScrollY);
     };
 
-    setInitialScroll(window.pageYOffset);
     window.addEventListener('scroll', handleScroll);
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [initialScroll, isScrollingUp]);
+  }, [lastScrollY]);
 
   const closeMenu = () => {
     setIsOpen(false);
@@ -64,6 +58,7 @@ export default function Static({ openModal }) {
       <nav
         ref={navbarRef}
         className={`StaticNavbar bg-transparent w-full h-11 max-md:h-10 font-avenirRoman backdrop-blur-lg ios-blur fixed`}
+        style={{ transition: 'transform 0.3s ease-in-out' }}
       >
         <div className="max-w-[1200px] mx-auto flex justify-between items-center px-2 max-md:px-0 py-2 max-lg:mx-5 relative">
           <div>
