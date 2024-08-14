@@ -57,7 +57,7 @@ const NavBarCrowdfundingMobile = ({ setActiveSection }) => {
     };
 
     return (
-        <div className="pb-12">
+        <div className="">
             {/* Bara de navigare originală */}
             <div 
                 ref={navbarRef}

@@ -12,17 +12,37 @@ const costData = [
     { category: 'Additional Costs for International Shipping and Online Orders', cost: 50000, week: '9-10' }
 ];
 
+// Function to generate a color gradient from red to white
+const generateColorGradient = (steps) => {
+    const startColor = [255, 0, 0]; // Roșu în RGB
+    const endColor = [255, 255, 255]; // Alb în RGB
+
+    const stepFactor = 1 / (steps - 1);
+    const colorArray = [];
+
+    for (let i = 0; i < steps; i++) {
+        const r = Math.round(startColor[0] + stepFactor * i * (endColor[0] - startColor[0]));
+        const g = Math.round(startColor[1] + stepFactor * i * (endColor[1] - startColor[1]));
+        const b = Math.round(startColor[2] + stepFactor * i * (endColor[2] - startColor[2]));
+        colorArray.push(`rgb(${r},${g},${b})`);
+    }
+
+    return colorArray;
+};
+
 const calculateTotalCost = () => {
     return costData.reduce((total, item) => total + item.cost, 0);
 };
 
 const DoughnutChart = ({ data }) => {
+    const colors = generateColorGradient(data.length); // Generate colors based on the number of categories
+
     const chartData = {
         labels: data.map(item => item.category),
         datasets: [
             {
                 data: data.map(item => item.cost),
-                backgroundColor: ['#E60716', '#EB3F4A', '#EA757C', '#EF9DA2', '#F0F0F0'],
+                backgroundColor: colors,
                 borderWidth: 0
             }
         ]
@@ -53,7 +73,7 @@ const FundingBreakdown = () => {
     }, []);
 
     return (
-        <div className="bg-black h-screen sticky top-0 flex flex-col items-center text-white ">
+        <div className="bg-black h-screen sticky top-0 flex flex-col items-center text-white">
             <h2 className="text-3xl font-semibold mb-8 mt-24">Where Your Money Goes</h2>
             <div className="relative">
                 <DoughnutChart data={costData} />
@@ -94,7 +114,7 @@ const FundingBreakdown = () => {
                                             animate={{ scale: 1 }}
                                             transition={{ delay: index * 0.4, duration: 0.5 }}
                                             className="w-[16px] h-[16px] rounded-full point align-middle"
-                                            style={{ backgroundColor: ['#E60716', '#EB3F4A', '#EA757C', '#EF9DA2', '#F0F0F0'][index] }}
+                                            style={{ backgroundColor: generateColorGradient(costData.length)[index] }}
                                         />
                                         {index < costData.length - 1 && (
                                             <motion.div
@@ -102,7 +122,7 @@ const FundingBreakdown = () => {
                                                 animate={{ height: '95px' }}
                                                 transition={{ delay: (index + 1) * 0.4, duration: 0.5 }}
                                                 className="absolute left-1/2 transform -translate-x-1/2 w-[2px] align-middle gap-1"
-                                                style={{ backgroundColor: ['#E60716', '#EB3F4A', '#EA757C', '#EF9DA2', '#F0F0F0'][index] }}
+                                                style={{ backgroundColor: generateColorGradient(costData.length)[index] }}
                                             />
                                         )}
                                     </div>
@@ -138,7 +158,7 @@ const FundingBreakdown = () => {
                     top: 0;
                 }
                 .point-container:not(:last-child)::after {
-                    height: 100% + 1px;
+                    height: calc(100% + 1px);
                 }
                 .point-container:last-child::after {
                     display: none;

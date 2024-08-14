@@ -12,17 +12,37 @@ const costData = [
     { category: 'Additional Costs for International Shipping and Online Orders', cost: 50000, week: '9-10' }
 ];
 
+// Function to generate a color gradient from white to red
+const generateColorGradient = (steps) => {
+    const startColor = [255, 0, 0]; // White in RGB
+    const endColor = [255, 255, 255]; // Red in RGB
+
+    const stepFactor = 1 / (steps - 1);
+    const colorArray = [];
+
+    for (let i = 0; i < steps; i++) {
+        const r = Math.round(startColor[0] + stepFactor * i * (endColor[0] - startColor[0]));
+        const g = Math.round(startColor[1] + stepFactor * i * (endColor[1] - startColor[1]));
+        const b = Math.round(startColor[2] + stepFactor * i * (endColor[2] - startColor[2]));
+        colorArray.push(`rgb(${r},${g},${b})`);
+    }
+
+    return colorArray;
+};
+
 const calculateTotalCost = () => {
     return costData.reduce((total, item) => total + item.cost, 0);
 };
 
 const DoughnutChart = ({ data }) => {
+    const colors = generateColorGradient(data.length); // Generate colors based on the number of categories
+
     const chartData = {
         labels: data.map(item => item.category),
         datasets: [
             {
                 data: data.map(item => item.cost),
-                backgroundColor: ['#E60716', '#BA1520', '#EB3F4A', '#EA757C', '#EF9DA2'],
+                backgroundColor: colors,
                 borderWidth: 0
             }
         ]
@@ -95,7 +115,7 @@ const FundingBreakdownMobile = () => {
                                             animate={{ scale: 1 }}
                                             transition={{ delay: index * 0.4, duration: 0.5 }}
                                             className="w-[13px] h-[13px] rounded-full point align-middle"
-                                            style={{ backgroundColor: ['#E60716', '#BA1520', '#EB3F4A', '#EA757C', '#EF9DA2'][index] }}
+                                            style={{ backgroundColor: generateColorGradient(costData.length)[index] }}
                                         />
                                         {index < costData.length - 1 && (
                                             <motion.div
@@ -103,7 +123,7 @@ const FundingBreakdownMobile = () => {
                                                 animate={{ height: '95px' }}
                                                 transition={{ delay: (index + 1) * 0.4, duration: 0.5 }}
                                                 className="absolute left-1/2 transform -translate-x-1/2 w-[2px] align-middle gap-1"
-                                                style={{ backgroundColor: ['#E60716', '#BA1520', '#EB3F4A', '#EA757C', '#EF9DA2'][index] }}
+                                                style={{ backgroundColor: generateColorGradient(costData.length)[index] }}
                                             />
                                         )}
                                     </div>
