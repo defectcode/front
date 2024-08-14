@@ -16,7 +16,7 @@ const StageDescription = () => {
                 <img src={stageDescriptionData.imageUrl_1} alt="Stage Description" className="mt-10"/>
             </div>
             <div className="mt-10">
-                <h2 className="text-3xl text-[#FFFFFF] font-ekMukta font-semibold">
+                <h2 className="text-lg text-[#FFFFFF] font-ekMukta font-semibold">
                     {stageDescriptionData.fundingTitle}
                 </h2>
                 <div className="font-ekMukta text-[#CDCDCD]">

@@ -18,8 +18,8 @@ const HeaderCrowdfundingMobile = () => {
     useEffect(() => {
         const handleResize = () => {
             if (window.innerWidth <= 430 && window.innerWidth > 400) {
-              setImageHeight('75%');
-              setBgHeight('25%');
+              setImageHeight('80%');
+              setBgHeight('20%');
             } else if(window.innerWidth <= 380){
               setImageHeight('60%');
               setBgHeight('30%');
@@ -93,8 +93,8 @@ const HeaderCrowdfundingMobile = () => {
                 <div
                     className="max-w-screen-lg w-full flex flex-col gap-4 sm:gap-8 lg:px-[50px] relative z-10"
                     style={{
-                        marginTop: '-50px',  // Mută conținutul în sus
-                        paddingBottom: '50px'  // Ajustează spațiul după cum este necesar
+                        marginTop: '-50px',  
+                        paddingBottom: '50px'  
                     }}
                 >
                     <Title title={currentData.title} description={currentData.description} />

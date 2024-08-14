@@ -5,7 +5,7 @@ const DetailedStepsMobile = () => {
     return (
         <div className="">
             <div className="mt-5">
-                <h2 className="text-[26px] text-[#FFFFFF] font-ekMukta font-semibold">Detailed Steps</h2>
+                <h2 className="text-lg text-[#FFFFFF] font-ekMukta font-semibold">Detailed Steps</h2>
                 <div className="font-ekMukta text-[#CDCDCD] mt-4">
                     {stageDescription.detailedSteps.map((step, index) => (
                         <div key={index} className="mt-6">
@@ -25,7 +25,7 @@ const DetailedStepsMobile = () => {
             </div>
             <img src={stageDescriptionData.imageUrl_3} alt="Stage Description" className="mt-5"/> 
             <div className="my-5">
-                <h2 className="text-[#FFFFFF] font-ekMukta font-semibold text-[26px]">{stageDescription.helpTitle}</h2>
+                <h2 className="text-[#FFFFFF] font-ekMukta font-semibold text-lg">{stageDescription.helpTitle}</h2>
                 <p className="text-[#CDCDCD] w-full text-[16px]">{stageDescription.helpInfo}</p>
             </div>
             <style jsx>{`

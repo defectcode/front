@@ -49,15 +49,15 @@ const NavBarCrowdfundingMobile = ({ setActiveSection }) => {
     };
 
     const linkClasses = (hash) => {
-        const baseClasses = 'px-1 py-[6px] text-[14px] flex justify-center items-center mt-2 w-full';
-        const activeClasses = 'text-[#F1F1F1] border-b-2 border-[#F1F1F1] font-avenir-heavy';
+        const baseClasses = 'px-1 py-[6px] text-[14px] flex justify-center items-center mt-2 w-full relative'; // Adaugă position: relative
+        const activeClasses = 'text-[#F1F1F1] border-b-2 border-[#F1F1F1] font-avenir-heavy ';
         const inactiveClasses = 'text-[#979797] border-b-4 border-transparent font-avenir';
 
         return `${baseClasses} ${activeHash === hash ? activeClasses : inactiveClasses}`;
     };
 
     return (
-        <div className="pb-14">
+        <div className="pb-12">
             {/* Bara de navigare originală */}
             <div 
                 ref={navbarRef}
