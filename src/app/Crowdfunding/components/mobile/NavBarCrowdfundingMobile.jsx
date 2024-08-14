@@ -3,8 +3,9 @@ import React, { useState, useEffect, useRef } from "react";
 const NavBarCrowdfundingMobile = ({ setActiveSection }) => {
     const [activeHash, setActiveHash] = useState('');
     const [isSticky, setIsSticky] = useState(false);
+    const [showDuplicate, setShowDuplicate] = useState(false);
     const navbarRef = useRef(null);
-    const placeholderRef = useRef(null);
+    const duplicateNavbarRef = useRef(null);
 
     useEffect(() => {
         const handleHashChange = () => {
@@ -15,20 +16,17 @@ const NavBarCrowdfundingMobile = ({ setActiveSection }) => {
 
         const handleScroll = () => {
             const navbar = navbarRef.current;
-            const placeholder = placeholderRef.current;
             const currentScrollPos = window.pageYOffset;
 
-            if (navbar && placeholder) {
-                const navbarTop = placeholder.offsetTop;
+            if (navbar) {
+                const navbarTop = navbar.offsetTop;
 
                 if (currentScrollPos > navbarTop && !isSticky) {
-                    placeholder.style.height = `${navbar.offsetHeight}px`;
-                    placeholder.style.backgroundColor = '#1B1B1B'; // Set background color when sticky
                     setIsSticky(true);
+                    setShowDuplicate(true);
                 } else if (currentScrollPos <= navbarTop && isSticky) {
                     setIsSticky(false);
-                    placeholder.style.height = '0px';
-                    placeholder.style.backgroundColor = 'transparent'; // Remove background color when not sticky
+                    setShowDuplicate(false);
                 }
             }
         };
@@ -59,16 +57,12 @@ const NavBarCrowdfundingMobile = ({ setActiveSection }) => {
     };
 
     return (
-        <>
-            <div ref={placeholderRef} className="w-full transition-all duration-500 ease-in-out" />
+        <div className="pb-14">
+            {/* Bara de navigare originală */}
             <div 
                 ref={navbarRef}
-                id="navbar-mobile" 
-                className={`transition-all duration-300 ease-in-out ${
-                    isSticky ? `fixed top-0 left-0 right-0 z-50 bg-[#1B1B1B]`
-                             : 'relative bg-black'
-                }`}
-                style={{ transition: 'transform 0.2s ease-in-out, background-color 0.2s ease-in-out' }}
+                id="navbar-mobile-original" 
+                className="relative bg-black"
             >
                 <div className="flex items-center justify-center h-[60px]">
                     <div className="flex items-center justify-center gap-[30px] w-full px-5">
@@ -79,7 +73,25 @@ const NavBarCrowdfundingMobile = ({ setActiveSection }) => {
                     </div>
                 </div>
             </div>
-        </>
+            {showDuplicate && (
+                <div 
+                    ref={duplicateNavbarRef}
+                    id="navbar-mobile-duplicate" 
+                    className={`fixed top-0 left-0 right-0 z-50 bg-[#1B1B1B] shadow-lg transition-opacity duration-300 ${
+                        isSticky ? 'opacity-100' : 'opacity-0'
+                    }`}
+                >
+                    <div className="flex items-center justify-center h-[60px]">
+                        <div className="flex items-center justify-center gap-[30px] w-full px-5">
+                            <a className={linkClasses('#overview')} onClick={() => handleClick('#overview')}>Overview</a>
+                            <a className={linkClasses('#rewards')} onClick={() => handleClick('#rewards')}>Rewards</a>
+                            <a className={linkClasses('#community')} onClick={() => handleClick('#community')}>Community</a>
+                            <a className={linkClasses('#extras')} onClick={() => handleClick('#extras')}>Extras</a>
+                        </div>
+                    </div>
+                </div>
+            )}
+        </div>
     );
 };
 

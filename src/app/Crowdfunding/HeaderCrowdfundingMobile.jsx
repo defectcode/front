@@ -12,19 +12,24 @@ const HeaderCrowdfundingMobile = () => {
     const headerRef = useRef(null);
     const [showSupportInNavbar, setShowSupportInNavbar] = useState(false);
     const [imageHeight, setImageHeight] = useState('70%');
+    const [bgHeight, setBgHeight] = useState('30%');
     const headerContainerRef = useRef(null);
 
     useEffect(() => {
         const handleResize = () => {
             if (window.innerWidth <= 430 && window.innerWidth > 400) {
-                setImageHeight('70%');
-            } else if (window.innerWidth <= 380) {
-                setImageHeight('70%');
-            } else {
-                setImageHeight('70%');
+              setImageHeight('75%');
+              setBgHeight('25%');
+            } else if(window.innerWidth <= 380){
+              setImageHeight('60%');
+              setBgHeight('30%');
+            } else{
+              setImageHeight('70%');
+              setBgHeight('30%');
             }
             setIsMobile(window.innerWidth < 768);
-        };
+          };
+    
 
         handleResize();
         window.addEventListener('resize', handleResize);
@@ -70,7 +75,7 @@ const HeaderCrowdfundingMobile = () => {
             </div>
 
             <div
-                className="flex-grow bg-black flex flex-col justify-start px-5 relative"
+                className="flex-grow bg-black flex flex-col justify-start px-5 relative" style={{ height: bgHeight }}
             >
                 <div
                     style={{
