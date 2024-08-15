@@ -12,7 +12,7 @@ const HeaderCrowdfundingMobile = () => {
 
     useEffect(() => {
         setIsFirstVisit(false);
-    }, []); // Se va rula doar la prima montare a componentei
+    }, []);
 
     // Înălțimea imaginii și fundalului bazată pe dimensiunile ecranului și breakpoints pentru telefoane
     const imageHeight = isFirstVisit 

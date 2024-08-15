@@ -3,9 +3,11 @@ import Information from "./Components/Information";
 
 const Footer = () => {
     return (
-        <div className="relative h-[561px] max-lg:h-auto flex flex-col items-center justify-between py-10 max-md:py-0 max-md:pb-10 bg-[#191919]">
+        <div className="relative h-[561px] max-lg:h-auto flex flex-col items-center justify-between py-10 max-md:py-0 max-md:pb-10 bg-[#0D0D0D]">
             <div className="absolute top-4 w-full"></div>
-            {/* <p className="border-t-[0.1px] border-[#A1A1A1] w-[1536px] max-w-[1300px]"></p> */}
+            <div className="relative w-[1536px] max-w-[1300px]">
+                <div className="absolute inset-0 h-[1px] bg-gradient-to-r from-[#272727] to-[#8D8D8D]"></div>
+            </div>
             <div className="mt-24 w-full flex flex-col items-center max-lg:mt-10">
                 <Information />
                 <Networking />

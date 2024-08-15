@@ -154,15 +154,6 @@ const FundingBreakdown = () => {
                     top: 50%;
                     height: 50%;
                 }
-                .point-container:not(:first-child)::after {
-                    top: 0;
-                }
-                .point-container:not(:last-child)::after {
-                    height: calc(100% + 1px);
-                }
-                .point-container:last-child::after {
-                    display: none;
-                }
             `}</style>
         </div>
     );

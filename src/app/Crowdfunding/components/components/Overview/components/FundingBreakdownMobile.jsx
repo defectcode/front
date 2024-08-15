@@ -107,7 +107,7 @@ const FundingBreakdownMobile = () => {
                     <tbody className='space-y-[20px]'>
                         {costData.map((item, index) => (
                             <tr key={index} className='align-middle'>
-                                <td className="py-5 flex items-center relative align-middle" style={{ paddingBottom: index < costData.length - 1 ? '0' : '0' }}>
+                                <td className="py-5 flex items-center relative align-middle" style={{ paddingBottom: index < costData.length - 1 ? '20px' : '0' }}>
                                     <div className="relative flex flex-col items-center point-container align-middle">
                                         <motion.div
                                             initial={{ scale: 0 }}
@@ -153,12 +153,6 @@ const FundingBreakdownMobile = () => {
                 .point-container:first-child::after {
                     top: 50%;
                     height: 50%;
-                }
-                .point-container:not(:first-child)::after {
-                    top: 0;
-                }
-                .point-container:not(:last-child)::after {
-                    height: calc(100% + 1px);
                 }
             `}</style>
         </div>
