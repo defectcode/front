@@ -3,12 +3,12 @@ import FundraisingProgress from './components/Progres';
 import Title from "./components/Title";
 import { images } from './constants/carouselData';
 import styles from './style/Header.module.css';
-import { useViewport } from '../Crowdfunding/components/hooks/useViewport';  // Importăm hook-ul personalizat
+import { useViewport } from '../Crowdfunding/components/hooks/useViewport'; 
 
 const HeaderCrowdfundingMobile = () => {
     const currentData = images[0];
     const [isFirstVisit, setIsFirstVisit] = useState(true);
-    const { height: viewportHeight, width: viewportWidth } = useViewport(); // Folosim hook-ul pentru dimensiunile ecranului
+    const { height: viewportHeight, width: viewportWidth } = useViewport(); 
 
     useEffect(() => {
         setIsFirstVisit(false);
@@ -16,20 +16,20 @@ const HeaderCrowdfundingMobile = () => {
 
     // Înălțimea imaginii și fundalului bazată pe dimensiunile ecranului și breakpoints pentru telefoane
     const imageHeight = isFirstVisit 
-        ? viewportWidth < 360
-            ? `min(${viewportHeight * 0.6}px, 80vh)` // Telefoane mici
+        ? (viewportWidth <= 500
+            ? `min(${viewportHeight * 0.6}px, 65vh)` // Telefoane mici
             : viewportWidth < 768
-                ? `min(${viewportHeight * 0.7}px, 80vh)` // Telefoane medii
-                : `min(${viewportHeight * 0.75}px, 85vh)` // Telefoane mari
-        : '60vh';
+                ? `min(${viewportHeight * 0.7}px, 75vh)` // Telefoane medii
+                : `min(${viewportHeight * 0.75}px, 85vh)`) // Telefoane mari
+        : (viewportWidth <= 380 ? '63vh' : (viewportWidth <= 440 && viewportWidth >= 416 ? '70' : '65'));
 
     const bgHeight = isFirstVisit 
-        ? viewportWidth < 360
-            ? `min(${viewportHeight * 0.4}px, 20vh)` 
+        ? (viewportWidth <= 500
+            ? `min(${viewportHeight * 0.3}px, 35vh)` 
             : viewportWidth < 768
-                ? `min(${viewportHeight * 0.3}px, 20vh)` 
-                : `min(${viewportHeight * 0.25}px, 15vh)`
-        : '40vh';
+                ? `min(${viewportHeight * 0.3}px, 25vh)` 
+                : `min(${viewportHeight * 0.25}px, 15vh)`)
+        : (viewportWidth <= 380 ? '25vh' : (viewportWidth <= 430 && viewportWidth >= 416 ? '30' : '35')) ;
 
     return (
         <div className={`header flex flex-col bg-black ${styles.headerCrowdfunding}`}>
@@ -38,12 +38,12 @@ const HeaderCrowdfundingMobile = () => {
                     <div
                         style={{
                             height: '100%',
-                            backgroundImage: `-webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 1)), to(rgba(0, 0, 0, 0))), url(${currentData.imageUrl})`,
                             backgroundImage: `linear-gradient(to top, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 20%), url(${currentData.imageUrl})`,
                             backgroundSize: 'cover',
                             backgroundPosition: 'center',
                             WebkitBackgroundClip: 'padding-box',
                             backgroundClip: 'padding-box',
+                            backgroundRepeat: 'no-repeat',
                         }}
                     ></div>
                 </div>
@@ -60,16 +60,16 @@ const HeaderCrowdfundingMobile = () => {
                         filter: 'blur(40px)',
                         WebkitFilter: 'blur(40px)',  // Prefix pentru Safari
                         zIndex: 1,
-                        background: '-webkit-gradient(linear, left top, right bottom, color-stop(0.4, rgba(40, 40, 40, 0.4)), color-stop(1, rgba(0, 0, 0, 0)))',
                         background: 'linear-gradient(to top left, rgba(40, 40, 40, 0.4), rgba(0, 0, 0, 0))',
+                        backgroundRepeat: 'no-repeat',
                     }}
                 ></div>
 
                 <div className="max-w-screen-lg w-full flex flex-col gap-4 mb-2 relative z-10"
                     style={{
-                        marginTop: '-5vh',
-                        paddingBottom: '5vh',
-                        fontSize: viewportWidth < 360 ? 'calc(0.5rem + 0.5vw)' : 'calc(0.6rem + 0.5vw)', // Font size adjusts based on screen size
+                        marginTop: '-7vh',
+                        paddingBottom: '7vh',
+                        fontSize: viewportWidth < 360 ? 'calc(0.8rem + 0.5vw)' : 'calc(1rem + 0.5vw)', // Font size adjusts based on screen size
                     }}
                 >
                     <Title title={currentData.title} description={currentData.description} />
