@@ -3,37 +3,54 @@ import FundraisingProgress from './components/Progres';
 import Title from "./components/Title";
 import { images } from './constants/carouselData';
 import styles from './style/Header.module.css';
-import { useViewport } from '../Crowdfunding/components/hooks/useViewport'; 
+import { useViewport } from '../Crowdfunding/components/hooks/useViewport';
 
 const HeaderCrowdfundingMobile = () => {
     const currentData = images[0];
-    const [isFirstVisit, setIsFirstVisit] = useState(true);
-    const { height: viewportHeight, width: viewportWidth } = useViewport(); 
+    const { height: viewportHeight, width: viewportWidth } = useViewport();
 
-    useEffect(() => {
-        setIsFirstVisit(false);
-    }, []);
+    // Înălțimea imaginii și a fundalului în funcție de dimensiunile ecranului și breakpoints pentru iPhone-uri
+    const imageHeight = () => {
+        if (viewportWidth <= 320) {
+            // iPhone SE
+            return `min(${viewportHeight * 0.65}px, 65vh)`;
+        } else if (viewportWidth <= 375) {
+            // iPhone 6/7/8, iPhone X/11 Pro
+            return `min(${viewportHeight * 0.7}px, 70vh)`;
+        } else if (viewportWidth <= 390) {
+            // iPhone 12/13 Mini
+            return `min(${viewportHeight * 0.75}px, 75vh)`;
+        } else if (viewportWidth <= 414) {
+            // iPhone 11, iPhone XR, iPhone 12/13/14
+            return `min(${viewportHeight * 0.75}px, 75vh)`;
+        } else {
+            // iPhone 12/13/14 Pro Max
+            return `min(${viewportHeight * 0.8}px, 80vh)`;
+        }
+    };
 
-    // Înălțimea imaginii și fundalului bazată pe dimensiunile ecranului și breakpoints pentru telefoane
-    const imageHeight = isFirstVisit 
-        ? (viewportWidth <= 500
-            ? `min(${viewportHeight * 0.6}px, 65vh)` // Telefoane mici
-            : viewportWidth < 768
-                ? `min(${viewportHeight * 0.7}px, 75vh)` // Telefoane medii
-                : `min(${viewportHeight * 0.75}px, 85vh)`) // Telefoane mari
-        : (viewportWidth <= 380 ? '63vh' : (viewportWidth <= 440 && viewportWidth >= 416 ? '70' : '65'));
-
-    const bgHeight = isFirstVisit 
-        ? (viewportWidth <= 500
-            ? `min(${viewportHeight * 0.3}px, 35vh)` 
-            : viewportWidth < 768
-                ? `min(${viewportHeight * 0.3}px, 25vh)` 
-                : `min(${viewportHeight * 0.25}px, 15vh)`)
-        : (viewportWidth <= 380 ? '25vh' : (viewportWidth <= 430 && viewportWidth >= 416 ? '30' : '35')) ;
+    const bgHeight = () => {
+        if (viewportWidth <= 320) {
+            // iPhone SE
+            return `min(${viewportHeight * 0.35}px, 35vh)`;
+        } else if (viewportWidth <= 375) {
+            // iPhone 6/7/8, iPhone X/11 Pro
+            return `min(${viewportHeight * 0.3}px, 30vh)`;
+        } else if (viewportWidth <= 390) {
+            // iPhone 12/13 Mini
+            return `min(${viewportHeight * 0.25}px, 25vh)`;
+        } else if (viewportWidth <= 414) {
+            // iPhone 11, iPhone XR, iPhone 12/13/14
+            return `min(${viewportHeight * 0.3}px, 30vh)`;
+        } else {
+            // iPhone 12/13/14 Pro Max
+            return `min(${viewportHeight * 0.35}px, 35vh)`;
+        }
+    };
 
     return (
         <div className={`header flex flex-col bg-black ${styles.headerCrowdfunding}`}>
-            <div className="relative" style={{ height: imageHeight }}>
+            <div className="relative" style={{ height: imageHeight() }}>
                 <div className={`${styles.bgMobile}`} style={{ height: '100%' }}>
                     <div
                         style={{
@@ -49,7 +66,7 @@ const HeaderCrowdfundingMobile = () => {
                 </div>
             </div>
 
-            <div className="flex-grow bg-black flex flex-col justify-start px-5 relative" style={{ height: bgHeight }}>
+            <div className="flex-grow bg-black flex flex-col justify-start px-5 relative" style={{ height: bgHeight() }}>
                 <div
                     style={{
                         position: 'absolute',
