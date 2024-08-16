@@ -57,12 +57,11 @@ const NavBarCrowdfundingMobile = ({ setActiveSection }) => {
     };
 
     return (
-        <div className="pb-10">
+        <div className="">
             <div 
                 ref={navbarRef}
                 id="navbar-mobile-original" 
-                className="relative bg-black"
-                style={{ marginTop: '-100px' }}
+                className="relative bg-black" // Adjusting margin to ensure equal distance
             >
                 <div className="flex items-center justify-center h-[60px]">
                     <div className="flex items-center justify-center gap-[30px] w-full px-5">

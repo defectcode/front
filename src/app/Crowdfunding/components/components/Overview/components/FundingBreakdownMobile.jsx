@@ -73,7 +73,7 @@ const FundingBreakdownMobile = () => {
     }, []);
 
     return (
-        <div className="bg-black h-full sticky top-0 flex flex-col items-center text-white px-5 pb-5">
+        <div className="bg-black h-[90%] sticky top-0 flex flex-col items-center text-white px-5 pb-16">
             <h2 className="text-2xl font-semibold mb-8 mt-14">Where Your Money Goes</h2>
             <div className="relative">
                 <DoughnutChart data={costData} />

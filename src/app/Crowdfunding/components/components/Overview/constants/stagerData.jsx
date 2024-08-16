@@ -15,7 +15,12 @@ export const stageDescriptionData = {
     totalMonthlyCosts: "Total Monthly Costs: $44,000",
     imageUrl_1: "/imgs/Crowdfunding/Overview/element1.svg",
     imageUrl_2: "/imgs/Crowdfunding/Overview/element2.svg",
-    imageUrl_3: "/imgs/Crowdfunding/Overview/element3.svg"
+    imageUrl_3: "/imgs/Crowdfunding/Overview/element3.svg",
+    imageUrl_4: "/imgs/Crowdfunding/Overview/element4.svg",
+    imageUrl_5: "/imgs/Crowdfunding/Overview/element5.svg",
+    imageUrl_6: "/imgs/Crowdfunding/Overview/element6.svg",
+    imageUrl_7: "/imgs/Crowdfunding/Overview/element7.svg",
+    imageUrl_8: "/imgs/Crowdfunding/Overview/element8.svg",
 };
 
 export const stageDescription = {
@@ -45,6 +50,7 @@ export const stageDescription = {
                 { item: "Renovation and Setup", cost: "$50,000 (renovation, painting, flooring, lighting, electrical work)" },
                 { item: "Furniture and Setup", cost: "$25,000 (worktables, shelves, office furniture)" },
                 { item: "Total for Rent and Setup", cost: "$75,000" },
+                // { imageUrl: "/imgs/Crowdfunding/Overview/element3.svg" },
             ]
         },
         {
@@ -55,6 +61,7 @@ export const stageDescription = {
                 { item: "Cutting and Pattern-Making Tools", cost: "$10,000 (cutting tables, mannequins, pattern paper)" },
                 { item: "Additional Equipment", cost: "$5,000 (irons, steam generators, small tools)" },
                 { item: "Total for Equipment", cost: "$65,000" },
+                // { imageUrl: "/imgs/Crowdfunding/Overview/element4.svg" },
             ]
         },
         {
@@ -63,6 +70,7 @@ export const stageDescription = {
                 { item: "Designers and Tailors", cost: "$12,000 per month (hiring experienced costume designers, tailors, and seamstresses)" },
                 { item: "Support Staff", cost: "$5,000 per month (administrative staff and couriers)" },
                 { item: "Total for Staff (first month)", cost: "$17,000" },
+                // { imageUrl: "/imgs/Crowdfunding/Overview/element4.svg" },
             ]
         },
         {
@@ -71,6 +79,7 @@ export const stageDescription = {
                 { item: "Materials", cost: "$20,000 per month (fabrics, threads, buttons, zippers)" },
                 { item: "Utilities and Miscellaneous Expenses", cost: "$1,500 per month (electricity, water, internet)" },
                 { item: "Total for Staff (first month)", cost: "$21,500" },
+                // { imageUrl: "/imgs/Crowdfunding/Overview/element4.svg" },
             ]
         }
     ]

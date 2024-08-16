@@ -13,9 +13,9 @@ const StageDescription = () => {
                 <p className="text-[#CDCDCD] max-w-[764px] w-auto font-ekMukta">
                     {stageDescriptionData.stageHistory}
                 </p>
-                <img src={stageDescriptionData.imageUrl_1} alt="Stage Description" className="mt-10"/>
+                <img src={stageDescriptionData.imageUrl_1} alt="Stage Description" className="mt-5 mb-10 w-full h-auto"/>
             </div>
-            <div className="mt-10">
+            <div className="">
                 <h2 className="text-lg text-[#FFFFFF] font-ekMukta font-semibold">
                     {stageDescriptionData.fundingTitle}
                 </h2>
@@ -36,7 +36,7 @@ const StageDescription = () => {
                         {stageDescriptionData.totalMonthlyCosts}
                     </p>
                 </div>
-                <img src={stageDescriptionData.imageUrl_2} alt="Stage Description" className="mt-10"/>
+                <img src={stageDescriptionData.imageUrl_2} alt="Stage Description" className="mt-5 mb-10 w-full h-auto"/>
             </div>
             <DetailedStepsMobile/>
             <style jsx>{`

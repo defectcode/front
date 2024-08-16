@@ -12,7 +12,13 @@ const StageDescription = () => {
                 <p className="text-[#CDCDCD] max-w-[764px] w-auto font-ekMukta">
                     {stageDescriptionData.stageHistory}
                 </p>
-                <img src={stageDescriptionData.imageUrl_1} alt="Stage Description" className="mt-10 ml-[70px]"/>
+                {/* Setează dimensiunea imaginii */}
+                <img 
+                    src={stageDescriptionData.imageUrl_1} 
+                    alt="Stage Description" 
+                    className="mt-10 ml-5" 
+                    style={{ width: '624px', height: '624px', objectFit: 'cover' }}
+                />
             </div>
             <div className="mt-10">
                 <h2 className="text-3xl text-[#FFFFFF] font-ekMukta font-semibold">
@@ -35,7 +41,13 @@ const StageDescription = () => {
                         {stageDescriptionData.totalMonthlyCosts}
                     </p>
                 </div>
-                <img src={stageDescriptionData.imageUrl_2} alt="Stage Description" className="mt-10 ml-[70px]"/>
+                {/* Setează dimensiunea imaginii */}
+                <img 
+                    src={stageDescriptionData.imageUrl_2} 
+                    alt="Stage Description" 
+                    className="mt-10 ml-5" 
+                    style={{ width: '624px', height: '624px', objectFit: 'cover' }}
+                />
             </div>
             <DetailedSteps/>
             <style jsx>{`

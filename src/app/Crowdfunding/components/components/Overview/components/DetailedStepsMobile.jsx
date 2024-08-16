@@ -2,6 +2,15 @@ import React from "react";
 import { stageDescriptionData, stageDescription } from '../constants/stagerData';
 
 const DetailedStepsMobile = () => {
+    const images = [
+        stageDescriptionData.imageUrl_3,
+        stageDescriptionData.imageUrl_4,
+        stageDescriptionData.imageUrl_5,
+        stageDescriptionData.imageUrl_6,
+        stageDescriptionData.imageUrl_7,
+        stageDescriptionData.imageUrl_8,
+    ];
+
     return (
         <div className="">
             <div className="mt-5">
@@ -19,14 +28,18 @@ const DetailedStepsMobile = () => {
                                     </li>
                                 ))}
                             </ul>
+                            {/* Imaginea corespunzătoare fiecărui pas */}
+                            {images[index] && (
+                                <img src={images[index]} alt={`Stage Description ${index + 1}`} className="mt-5 mb-10 w-full h-auto"/>
+                            )}
                         </div>
                     ))}
                 </div>
             </div>
-            <img src={stageDescriptionData.imageUrl_3} alt="Stage Description" className="mt-5"/> 
             <div className="my-5">
                 <h2 className="text-[#FFFFFF] font-ekMukta font-semibold text-lg">{stageDescription.helpTitle}</h2>
                 <p className="text-[#CDCDCD] w-full text-[16px]">{stageDescription.helpInfo}</p>
+                <img src={stageDescriptionData.imageUrl_8} alt="Stage Description" className="mt-5 w-full h-auto"/>
             </div>
             <style jsx>{`
                 ul.list-small li::marker {
