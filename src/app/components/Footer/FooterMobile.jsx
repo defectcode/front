@@ -18,8 +18,8 @@ export default function Sidebar() {
       <div className="py-5">
         <div className="flex justify-between items-center cursor-pointer" onClick={toggleSupport}>
           <h2 className="text-[18px] text-[#FFFFFF] font-semibold font-ekMukta leading-none">Support And Donations</h2>
-          <span className="text-xl transform transition-transform duration-200 leading-none">
-            {isOpenSupport ? '⌄' : '›'}
+          <span className="text-xl transform transition-transform duration-200 leading-none" style={{ transform: isOpenSupport ? 'rotate(90deg)' : 'rotate(0deg)' }}>
+              ›
           </span>
         </div>
         {isOpenSupport && (
@@ -39,8 +39,8 @@ export default function Sidebar() {
       <div className="py-5">
         <div className="flex justify-between items-center cursor-pointer" onClick={toggleLegal}>
           <h2 className="text-[18px] text-[#FFFFFF] font-semibold font-ekMukta leading-none">Legal Information</h2>
-          <span className="text-xl transform transition-transform duration-200 leading-none">
-            {isOpenLegal ? '⌄' : '›'}
+          <span className="text-xl transform transition-transform duration-200 leading-none" style={{ transform: isOpenLegal ? 'rotate(90deg)' : 'rotate(0deg)' }}>
+              ›
           </span>
         </div>
         {isOpenLegal && (
@@ -60,17 +60,17 @@ export default function Sidebar() {
       <div className="py-5">
         <div className="flex justify-between items-center cursor-pointer" onClick={toggleContact}>
           <h2 className="text-[18px] text-[#FFFFFF] font-semibold font-ekMukta leading-none">Contact Us</h2>
-          <span className="text-xl transform transition-transform duration-200 leading-none">
-            {isOpenContact ? '⌄' : '›'}
+          <span className="text-xl transform transition-transform duration-200 leading-none" style={{ transform: isOpenContact ? 'rotate(90deg)' : 'rotate(0deg)' }}>
+              ›
           </span>
         </div>
         {isOpenContact && (
           <ul className="space-y-2 text-[#949494] text-[14px] gap-4 mb-5 font-ekMukta mt-5">
-             <li><Link legacyBehavior href="#"><a>Donation Link</a></Link></li>
-             <li><Link legacyBehavior href="#"><a>How Your Contributions Help</a></Link></li>
-             <li><Link legacyBehavior href="#"><a>FAQ</a></Link></li>
-             <li><Link legacyBehavior href="#"><a>Help Center</a></Link></li>
-          </ul>
+            <li><Link legacyBehavior href="#"><a>Donation Link</a></Link></li>
+            <li><Link legacyBehavior href="#"><a>How Your Contributions Help</a></Link></li>
+            <li><Link legacyBehavior href="#"><a>FAQ</a></Link></li>
+            <li><Link legacyBehavior href="#"><a>Help Center</a></Link></li>
+        </ul>
         )}
       </div>
 

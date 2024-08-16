@@ -1,56 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import FundraisingProgress from './components/Progres';
 import Title from "./components/Title";
 import { images } from './constants/carouselData';
 import styles from './style/Header.module.css';
-import { useViewport } from '../Crowdfunding/components/hooks/useViewport';
 
 const HeaderCrowdfundingMobile = () => {
     const currentData = images[0];
-    const { height: viewportHeight, width: viewportWidth } = useViewport();
-
-    // Înălțimea imaginii și a fundalului în funcție de dimensiunile ecranului și breakpoints pentru iPhone-uri
-    const imageHeight = () => {
-        if (viewportWidth <= 320) {
-            // iPhone SE
-            return `min(${viewportHeight * 0.65}px, 65vh)`;
-        } else if (viewportWidth <= 375) {
-            // iPhone 6/7/8, iPhone X/11 Pro
-            return `min(${viewportHeight * 0.7}px, 70vh)`;
-        } else if (viewportWidth <= 390) {
-            // iPhone 12/13 Mini
-            return `min(${viewportHeight * 0.75}px, 75vh)`;
-        } else if (viewportWidth <= 414) {
-            // iPhone 11, iPhone XR, iPhone 12/13/14
-            return `min(${viewportHeight * 0.75}px, 75vh)`;
-        } else {
-            // iPhone 12/13/14 Pro Max
-            return `min(${viewportHeight * 0.8}px, 80vh)`;
-        }
-    };
-
-    const bgHeight = () => {
-        if (viewportWidth <= 320) {
-            // iPhone SE
-            return `min(${viewportHeight * 0.35}px, 35vh)`;
-        } else if (viewportWidth <= 375) {
-            // iPhone 6/7/8, iPhone X/11 Pro
-            return `min(${viewportHeight * 0.3}px, 30vh)`;
-        } else if (viewportWidth <= 390) {
-            // iPhone 12/13 Mini
-            return `min(${viewportHeight * 0.25}px, 25vh)`;
-        } else if (viewportWidth <= 414) {
-            // iPhone 11, iPhone XR, iPhone 12/13/14
-            return `min(${viewportHeight * 0.3}px, 30vh)`;
-        } else {
-            // iPhone 12/13/14 Pro Max
-            return `min(${viewportHeight * 0.35}px, 35vh)`;
-        }
-    };
 
     return (
-        <div className={`header flex flex-col bg-black ${styles.headerCrowdfunding}`}>
-            <div className="relative" style={{ height: imageHeight() }}>
+        <div className={`header flex flex-col bg-black ${styles.headerCrowdfunding}`} style={{ height: '100vh' }}>
+            <div className="relative flex-grow" style={{ flexBasis: '67%' }}>
                 <div className={`${styles.bgMobile}`} style={{ height: '100%' }}>
                     <div
                         style={{
@@ -66,7 +25,7 @@ const HeaderCrowdfundingMobile = () => {
                 </div>
             </div>
 
-            <div className="flex-grow bg-black flex flex-col justify-start px-5 relative" style={{ height: bgHeight() }}>
+            <div className="bg-black flex flex-col justify-start px-5" style={{ flexBasis: '33%' }}>
                 <div
                     style={{
                         position: 'absolute',
@@ -75,7 +34,7 @@ const HeaderCrowdfundingMobile = () => {
                         right: 0,
                         bottom: 0,
                         filter: 'blur(40px)',
-                        WebkitFilter: 'blur(40px)',  // Prefix pentru Safari
+                        WebkitFilter: 'blur(40px)',
                         zIndex: 1,
                         background: 'linear-gradient(to top left, rgba(40, 40, 40, 0.4), rgba(0, 0, 0, 0))',
                         backgroundRepeat: 'no-repeat',
@@ -86,7 +45,7 @@ const HeaderCrowdfundingMobile = () => {
                     style={{
                         marginTop: '-7vh',
                         paddingBottom: '7vh',
-                        fontSize: viewportWidth < 360 ? 'calc(0.8rem + 0.5vw)' : 'calc(1rem + 0.5vw)', // Font size adjusts based on screen size
+                        fontSize: 'calc(1rem + 0.5vw)',
                     }}
                 >
                     <Title title={currentData.title} description={currentData.description} />
