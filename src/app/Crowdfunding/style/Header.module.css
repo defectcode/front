@@ -164,3 +164,29 @@
 
 
 
+
+
+/* Exemplu de utilizare a Tailwind pentru breakpoints iPhone */
+@screen sm {
+  .headerMobile {
+      height: calc(100vh - 30vh); /* Ajustează pentru iPhone 12/13 Mini */
+  }
+}
+
+@screen md {
+  .headerMobile {
+      height: calc(100vh - 32vh); /* Ajustează pentru iPhone 12/13 */
+  }
+}
+
+@screen lg {
+  .headerMobile {
+      height: calc(100vh - 33vh); /* Ajustează pentru iPhone 12/13 Pro */
+  }
+}
+
+@screen xl {
+  .headerMobile {
+      height: calc(100vh - 40vh); /* Ajustează pentru iPhone 12/13 Pro Max */
+  }
+}

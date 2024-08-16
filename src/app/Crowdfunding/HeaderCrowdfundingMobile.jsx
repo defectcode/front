@@ -8,8 +8,14 @@ const HeaderCrowdfundingMobile = () => {
     const currentData = images[0];
 
     return (
-        <div className={`header flex flex-col bg-black ${styles.headerCrowdfunding}`} style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
-            <div className="relative flex-grow" style={{ flexBasis: '67%', minHeight: '0' }}>
+        <div className={`headerMobile flex flex-col bg-black ${styles.headerCrowdfunding}`}>
+            <div 
+                className="relative" 
+                style={{ 
+                    height: 'calc(100vh - 33vh)', 
+                    minHeight: '0',
+                }}
+            >
                 <div className={`${styles.bgMobile}`} style={{ height: '100%', overflow: 'hidden' }}>
                     <div
                         style={{
@@ -25,7 +31,13 @@ const HeaderCrowdfundingMobile = () => {
                 </div>
             </div>
 
-            <div className="bg-black flex flex-col justify-start px-5 relative" style={{ flexBasis: '33%', minHeight: '0' }}>
+            <div 
+                className="bg-black flex flex-col justify-start px-5 relative" 
+                style={{ 
+                    height: '33vh', 
+                    minHeight: '0', 
+                }}
+            >
                 <div
                     style={{
                         position: 'absolute',
@@ -42,7 +54,8 @@ const HeaderCrowdfundingMobile = () => {
                     }}
                 ></div>
 
-                <div className="max-w-screen-lg w-full flex flex-col gap-4 mb-2 relative z-10"
+                <div 
+                    className="max-w-screen-lg w-full flex flex-col gap-4 mb-2 relative z-10"
                     style={{
                         marginTop: '-7vh',
                         paddingBottom: '7vh',
