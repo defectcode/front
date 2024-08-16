@@ -6,7 +6,7 @@ import Link from "next/link";
 
 const Networking = () => {
     return (
-        <div className="bg-[#0D0D0D] max-w-[1200px] w-[1300px] max-xl:w-auto mx-10 h-[120px] max-lg:h-auto max-md:w-auto py-4 mt-14 max-md:mt-5 rounded-xl flex flex-col lg:flex-row items-center justify-between mb-5 md:mb-0">
+        <div className="bg-transparent max-w-[1200px] w-[1300px] max-xl:w-auto mx-10 h-[120px] max-lg:h-auto max-md:w-auto py-4 mt-14 max-md:mt-5 rounded-xl flex flex-col lg:flex-row items-center justify-between mb-5 md:mb-0">
             <div className="mb-4 lg:mb-0">
                 <p className="text-[#A1A1A1] text-[16px] text-center max-md:text-[10px] font-ekmukta-extralight">
                     Copyright (c) 2024 Fyne Inc. All rights reserved.

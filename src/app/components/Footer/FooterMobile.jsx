@@ -13,7 +13,7 @@ export default function Sidebar() {
   const toggleContact = () => setIsOpenContact(!isOpenContact);
 
   return (
-    <div className="bg-[#0D0D0D] text-white p-8 w-full max-w-md mx-auto">
+    <div className="bg-black text-white p-8 w-full max-w-md mx-auto">
 
       <div className="py-5">
         <div className="flex justify-between items-center cursor-pointer" onClick={toggleSupport}>
@@ -23,7 +23,7 @@ export default function Sidebar() {
           </span>
         </div>
         {isOpenSupport && (
-          <ul className="space-y-2 text-[#949494] text-[14px] gap-4 font-ekMukta mt-5">
+          <ul className="space-y-2 text-[#949494] text-[14px] gap-4">
             <li><Link legacyBehavior href="#"><a>Donation Link</a></Link></li>
             <li><Link legacyBehavior href="#"><a>How Your Contributions Help</a></Link></li>
             <li><Link legacyBehavior href="#"><a>FAQ</a></Link></li>
@@ -44,11 +44,9 @@ export default function Sidebar() {
           </span>
         </div>
         {isOpenLegal && (
-            <ul className="space-y-2 text-[#949494] text-[14px] gap-4 mb-5 font-ekMukta mt-5">
-                <li><Link legacyBehavior href="#"><a>Donation Link</a></Link></li>
-                <li><Link legacyBehavior href="#"><a>How Your Contributions Help</a></Link></li>
-                <li><Link legacyBehavior href="#"><a>FAQ</a></Link></li>
-                <li><Link legacyBehavior href="#"><a>Help Center</a></Link></li>
+            <ul className="space-y-2 text-[#949494] text-[14px] gap-4">
+                <li><Link legacyBehavior href="#"><a>Terms of Service</a></Link></li>
+                <li><Link legacyBehavior href="#"><a>Privacy Policy</a></Link></li>
             </ul>
         )}
       </div>
@@ -65,11 +63,9 @@ export default function Sidebar() {
           </span>
         </div>
         {isOpenContact && (
-            <ul className="space-y-2 text-[#949494] text-[14px] gap-4 mb-5 font-ekMukta mt-5">
-                <li><Link legacyBehavior href="#"><a>Donation Link</a></Link></li>
-                <li><Link legacyBehavior href="#"><a>How Your Contributions Help</a></Link></li>
-                <li><Link legacyBehavior href="#"><a>FAQ</a></Link></li>
-                <li><Link legacyBehavior href="#"><a>Help Center</a></Link></li>
+            <ul className="space-y-2 text-[#949494] text-[14px] gap-4">
+                <li><Link legacyBehavior href="#"><a>Email Us</a></Link></li>
+                <li><Link legacyBehavior href="#"><a>Call Us</a></Link></li>
             </ul>
         )}
       </div>
@@ -78,7 +74,7 @@ export default function Sidebar() {
         <div className="absolute inset-0 h-[1px] bg-gradient-to-r from-[#272727] to-[#8D8D8D]"></div>
       </div>
 
-      <div className="mb-4 lg:mb-0 flex justify-center items-center mt-[54px]">
+      <div className="mb-4 lg:mb-0 flex justify-center items-center">
         <Image src='/imgs/logo.svg' alt="logo" width={98} height={1} />
       </div>
 
