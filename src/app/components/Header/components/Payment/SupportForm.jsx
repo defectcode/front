@@ -28,6 +28,7 @@ const SupportForm = () => {
           label: 'Support Amount',
           amount: amount * 100,
         },
+        
         requestPayerName: true,
         requestPayerEmail: true,
       });
