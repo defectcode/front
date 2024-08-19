@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useStripe, useElements, PaymentRequestButtonElement } from '@stripe/react-stripe-js';
 import PayPalButton from './PayPal/PayPalButton';
 import Image from 'next/image';
+import CheckoutButton from "@/components/checkout";
+
 
 const SupportForm = () => {
   const [amount, setAmount] = useState(10);
@@ -211,24 +213,12 @@ const SupportForm = () => {
             <PayPalButton amount={amount} onSuccess={handlePaymentSuccess} />
           </div>
         )}
-        {paymentRequest && paymentMethod === 'stripe' && (
-          <PaymentRequestButtonElement
-            options={{ paymentRequest }}
-            className="PaymentRequestButton"
-          />
-        )}
-        {paymentMethod !== 'paypal' && (
+        {paymentMethod === 'stripe' && (
           <div className="flex justify-center items-end">
-            <button
-              onClick={handleSupportClick}
-              className="flex items-center justify-center w-full h-[45px] bg-white text-[#1E1E1E] text-[16px] rounded-lg gap-1 font-bold"
-              style={{ fontFamily: 'Avenir Heavy, sans-serif' }}
-            >
-              <Image src="/icons/heart.svg" width={16} height={1} alt="heart" className="w-[16px] h-auto" />
-              Support
-            </button>
+            <CheckoutButton amount={amount} />
           </div>
         )}
+        
       </div>
     </div>
   );
