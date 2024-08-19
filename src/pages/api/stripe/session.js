@@ -1,4 +1,3 @@
-// /pages/api/stripe/session.js
 import Stripe from 'stripe';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
@@ -8,7 +7,7 @@ export default async function handler(req, res) {
     try {
       const { amount } = req.body;
 
-      // Create a Stripe session
+      // Crearea unei sesiuni Stripe
       const session = await stripe.checkout.sessions.create({
         payment_method_types: ['card'],
         line_items: [
@@ -18,7 +17,7 @@ export default async function handler(req, res) {
               product_data: {
                 name: 'Support Donation',
               },
-              unit_amount: amount * 100, // Amount in cents
+              unit_amount: amount * 100, // Suma în cenți
             },
             quantity: 1,
           },
@@ -30,11 +29,11 @@ export default async function handler(req, res) {
 
       res.status(200).json({ sessionId: session.id });
     } catch (error) {
-      console.error('Stripe session creation error:', error);
-      res.status(500).json({ error: 'Session creation failed' });
+      console.error('Eroare la crearea sesiunii Stripe:', error);
+      res.status(500).json({ error: 'Crearea sesiunii a eșuat' });
     }
   } else {
     res.setHeader('Allow', 'POST');
-    res.status(405).end('Method Not Allowed');
+    res.status(405).end('Metodă nepermisă');
   }
 }

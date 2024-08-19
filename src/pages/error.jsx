@@ -14,8 +14,8 @@ const Error = () => {
         <div className="flex flex-col items-center">
           <MdErrorOutline
             alt="Error"
-            width={150}
-            height={150}
+            width={300}
+            height={300}
             className="mb-8 w-32 h-auto"
           />
           <h1 className="text-white text-6xl font-bold mb-4">Oops!</h1>
