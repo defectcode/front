@@ -60,7 +60,7 @@ const HeaderCrowdfundingMobile = () => {
             <div 
                 className="relative" 
                 style={{ 
-                    height: 'calc(100vh - 20vh)', 
+                    height: 'calc(100vh - 15vh)', 
                     minHeight: '0',
                 }}
             >
@@ -106,14 +106,14 @@ const HeaderCrowdfundingMobile = () => {
                     className="max-w-screen-lg w-full flex flex-col gap-4 mb-2 relative z-10"
                     style={{
                         ...style,
-                        fontSize: 'calc(1rem + 0.5vw)',
+                        fontSize: 'calc(1rem + 0.7vw)',
                     }}
                 >
                     <Title title={currentData.title} description={currentData.description} />
                     <FundraisingProgress data={currentData} />
                 </div>
             </div>
-            <div className="my-10">
+            <div className="my-6">
             {isMobile ? <NavBarCrowdfundingMobile setActiveSection={setActiveSection} /> : <NavBarCrowdfunding setActiveSection={setActiveSection} />}
             </div>
         </div>
