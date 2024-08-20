@@ -56,9 +56,9 @@ const Crowdfunding = () => {
         <div className="mb-10 md:mb-0 bg-black h-auto">
             <Static />
             {isMobile ? <HeaderCrowdfundingMobile /> : <HeaderCrowdfunding />}
-            {/* <div className="my-10">
-            {isMobile ? <NavBarCrowdfundingMobile setActiveSection={setActiveSection} /> : <NavBarCrowdfunding setActiveSection={setActiveSection} />}
-            </div> */}
+            <div className="">
+            {isMobile ? '' : <NavBarCrowdfunding setActiveSection={setActiveSection} />}
+            </div>
             {isMobile ? <ButonShere /> : ''}
             <div>
                 {renderSection()}

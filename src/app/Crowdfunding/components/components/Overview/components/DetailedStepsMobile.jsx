@@ -18,32 +18,42 @@ const DetailedStepsMobile = () => {
                 <div className="font-ekMukta text-[#CDCDCD] mt-4">
                     {stageDescription.detailedSteps.map((step, index) => (
                         <div key={index} className="mt-6">
-                            <h3 className="text-[16px] text-[#E60716]">
-                                {index + 1}.  {step.title}
+                            <h3 className="text-[18px] text-[#E60716] font-semibold">
+                                {index + 1}. {step.title}
                             </h3>
-                            <ul className="list-disc list-inside list-small ml-2">
+                            <ul className="list-disc list-inside list-small ml-4 mt-2">
                                 {step.items.map((item, idx) => (
-                                    <li key={idx}>
-                                        <span className="text-[#CDCDCD] text-[16px] max-w-[280px] font-ekMukta">{item.item}: {item.cost}</span>
+                                    <li key={idx} className="mt-2">
+                                        <span className="font-bold text-[#FFFFFF] text-[16px]">{item.item}:</span> <span className="text-[#CDCDCD] text-[16px]">{item.cost}</span>
                                     </li>
                                 ))}
                             </ul>
-                            {/* Imaginea corespunzătoare fiecărui pas */}
+                            {/* Corresponding image for each step */}
                             {images[index] && (
-                                <img src={images[index]} alt={`Stage Description ${index + 1}`} className="mt-5 mb-10 w-full h-auto"/>
+                                <img 
+                                    src={images[index]} 
+                                    alt={`Stage Description ${index + 1}`} 
+                                    className="mt-6 w-full h-auto"
+                                    style={{ objectFit: 'cover' }}
+                                />
                             )}
                         </div>
                     ))}
                 </div>
             </div>
-            <div className="my-5">
-                <h2 className="text-[#FFFFFF] font-ekMukta font-semibold text-lg">{stageDescription.helpTitle}</h2>
-                <p className="text-[#CDCDCD] w-full text-[16px]">{stageDescription.helpInfo}</p>
-                <img src={stageDescriptionData.imageUrl_8} alt="Stage Description" className="mt-5 w-full h-auto"/>
+            <div className="my-10">
+                <h2 className="text-[#FFFFFF] font-ekMukta font-semibold text-[26px]">{stageDescription.helpTitle}</h2>
+                <p className="text-[#CDCDCD] w-full text-[16px] mt-4">{stageDescription.helpInfo}</p>
+                <img 
+                    src={stageDescriptionData.imageUrl_8} 
+                    alt="Stage Description" 
+                    className="mt-10 w-full h-auto"
+                    style={{ objectFit: 'cover' }}
+                />
             </div>
             <style jsx>{`
                 ul.list-small li::marker {
-                    font-size: 0.7em; /* Adjusted font size for list markers */
+                    font-size: 0.7em; /* Adjust the size as necessary */
                 }
             `}</style>
         </div>

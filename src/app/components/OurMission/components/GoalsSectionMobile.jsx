@@ -40,12 +40,12 @@ const GoalsSectionMobile = () => {
     }, []);
 
     return (
-        <motion.div className="bg-black text-white pt-6 pb-6 px-4 lg:px-0">
+        <motion.div className="bg-black h-auto text-white pt-6 pb-6 px-4 lg:px-0">
             {goals.map((goal, index) => (
                 <motion.div
                     ref={el => sectionRefs.current[index] = el}
                     key={goal.id}
-                    className={`goal-section w-full lg:h-[540px] flex items-center bg-[#0D0D0D] rounded-lg mx-auto ${currentSection >= index ? 'visible' : 'hidden'} ${index === 0 ? 'mt-200-mobile' : ''} ${index !== 0 ? 'mt-10' : ''}`}
+                    className={`goal-section w-full lg:h-[540px] flex items-center bg-[#0D0D0D] rounded-lg border-2 border-[#222222] mx-auto ${currentSection >= index ? 'visible' : 'hidden'} ${index === 0 ? 'mt-200-mobile' : ''} ${index !== 0 ? 'mt-10' : ''}`}
                     initial="hidden"
                     animate={currentSection >= index ? 'visible' : 'hidden'}
                     transition={{ duration: 2 }}

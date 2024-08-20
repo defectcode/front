@@ -2,6 +2,8 @@ import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import Networking from "./Components/Networking";
+import { IoIosArrowForward } from "react-icons/io";
+
 
 export default function Sidebar() {
   const [isOpenSupport, setIsOpenSupport] = useState(false);
@@ -13,13 +15,13 @@ export default function Sidebar() {
   const toggleContact = () => setIsOpenContact(!isOpenContact);
 
   return (
-    <div className="bg-[#0D0D0D] text-white p-8 w-full max-w-md mx-auto">
+    <div className="bg-[#EBEBF0] text-white p-8 w-full max-w-md mx-auto max-h-[525px]">
 
       <div className="py-5">
-        <div className="flex justify-between items-center cursor-pointer" onClick={toggleSupport}>
-          <h2 className="text-[18px] text-[#FFFFFF] font-semibold font-ekMukta leading-none">Support And Donations</h2>
+        <div className="flex justify-between items-center cursor-pointer text-[#1E1E1E]" onClick={toggleSupport}>
+          <h2 className="text-[18px] font-semibold font-ekMukta leading-none">Support And Donations</h2>
           <span className="text-xl transform transition-transform duration-200 leading-none" style={{ transform: isOpenSupport ? 'rotate(90deg)' : 'rotate(0deg)' }}>
-              ›
+            <IoIosArrowForward />
           </span>
         </div>
         {isOpenSupport && (
@@ -37,10 +39,10 @@ export default function Sidebar() {
       </div>
 
       <div className="py-5">
-        <div className="flex justify-between items-center cursor-pointer" onClick={toggleLegal}>
-          <h2 className="text-[18px] text-[#FFFFFF] font-semibold font-ekMukta leading-none">Legal Information</h2>
+        <div className="flex justify-between items-center cursor-pointer text-[#1E1E1E]" onClick={toggleLegal}>
+          <h2 className="text-[18px] font-semibold font-ekMukta leading-none">Legal Information</h2>
           <span className="text-xl transform transition-transform duration-200 leading-none" style={{ transform: isOpenLegal ? 'rotate(90deg)' : 'rotate(0deg)' }}>
-              ›
+            <IoIosArrowForward />
           </span>
         </div>
         {isOpenLegal && (
@@ -58,10 +60,10 @@ export default function Sidebar() {
       </div>
 
       <div className="py-5">
-        <div className="flex justify-between items-center cursor-pointer" onClick={toggleContact}>
-          <h2 className="text-[18px] text-[#FFFFFF] font-semibold font-ekMukta leading-none">Contact Us</h2>
+        <div className="flex justify-between items-center cursor-pointer text-[#1E1E1E]" onClick={toggleContact}>
+          <h2 className="text-[18px] font-semibold font-ekMukta leading-none">Contact Us</h2>
           <span className="text-xl transform transition-transform duration-200 leading-none" style={{ transform: isOpenContact ? 'rotate(90deg)' : 'rotate(0deg)' }}>
-              ›
+            <IoIosArrowForward />
           </span>
         </div>
         {isOpenContact && (
@@ -78,11 +80,13 @@ export default function Sidebar() {
         <div className="absolute inset-0 h-[1px] bg-gradient-to-r from-[#272727] to-[#8D8D8D]"></div>
       </div>
 
-      <div className="mb-4 lg:mb-0 flex justify-center items-center mt-[54px]">
-        <Image src='/imgs/logo.svg' alt="logo" width={98} height={32} />
-      </div>
+      <div>
+        <div className=" flex justify-center items-center mt-[54px]">
+          <Image src='/imgs/blackLogo.svg' alt="logo" width={98} height={32} />
+        </div>
 
-      <Networking />
+        <Networking />
+      </div>
     </div>
   );
 }

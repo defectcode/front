@@ -12,7 +12,6 @@ const StageDescription = () => {
                 <p className="text-[#CDCDCD] max-w-[764px] w-auto font-ekMukta">
                     {stageDescriptionData.stageHistory}
                 </p>
-                {/* Setează dimensiunea imaginii */}
                 <img 
                     src={stageDescriptionData.imageUrl_1} 
                     alt="Stage Description" 
@@ -41,7 +40,6 @@ const StageDescription = () => {
                         {stageDescriptionData.totalMonthlyCosts}
                     </p>
                 </div>
-                {/* Setează dimensiunea imaginii */}
                 <img 
                     src={stageDescriptionData.imageUrl_2} 
                     alt="Stage Description" 

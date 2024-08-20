@@ -1,6 +1,6 @@
 export const stageDescriptionData = {
     stageTitle: "Stage Description",
-    stageHistory: "Project History: The idea of creating an atelier arose to provide high-quality costumes for the \"Paradise Problems\" series. We also plan to create exclusive apparel for our fans and ensure international shipping and online orders.",
+    stageHistory: "The idea of creating an atelier arose to provide high-quality costumes for the \"Paradise Problems\" series. We also plan to create exclusive apparel for our fans and ensure international shipping and online orders.",
     stageHistory2: 'The idea for "Paradise Problems" is to show life in a perfect city without money, where people still face real human problems. We aim to demonstrate how love, loyalty, and kindness can solve these problems.',
     fundingTitle: "Funding And Support",
     fundingProgress: "Current Progress: The team has rented a space of 370 sq.m. for $5,000 per month.",
@@ -13,14 +13,14 @@ export const stageDescriptionData = {
         { item: "Utilities", cost: "$2,000" }
     ],
     totalMonthlyCosts: "Total Monthly Costs: $44,000",
-    imageUrl_1: "/imgs/Crowdfunding/Overview/element1.svg",
-    imageUrl_2: "/imgs/Crowdfunding/Overview/element2.svg",
-    imageUrl_3: "/imgs/Crowdfunding/Overview/element3.svg",
-    imageUrl_4: "/imgs/Crowdfunding/Overview/element4.svg",
-    imageUrl_5: "/imgs/Crowdfunding/Overview/element5.svg",
-    imageUrl_6: "/imgs/Crowdfunding/Overview/element6.svg",
-    imageUrl_7: "/imgs/Crowdfunding/Overview/element7.svg",
-    imageUrl_8: "/imgs/Crowdfunding/Overview/element8.svg",
+    imageUrl_1: "/imgs/Crowdfunding/Overview/element1.png",
+    imageUrl_2: "/imgs/Crowdfunding/Overview/element2.png",
+    imageUrl_3: "/imgs/Crowdfunding/Overview/element3.png",
+    imageUrl_4: "/imgs/Crowdfunding/Overview/element4.png",
+    imageUrl_5: "/imgs/Crowdfunding/Overview/element5.png",
+    imageUrl_6: "/imgs/Crowdfunding/Overview/element6.png",
+    imageUrl_8: "/imgs/Crowdfunding/Overview/element7.png",
+    // imageUrl_8: "/imgs/Crowdfunding/Overview/element.svg",
 };
 
 export const stageDescription = {

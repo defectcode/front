@@ -1,12 +1,14 @@
 import React from 'react';
+import styles from './style/Extras.module.css'; // Importăm CSS-ul specific
 
-const ExtrasMobile = () => {
+const CommunityMobile = () => {
     return (
-        <div id="extras" className="my-10 text-black">
-            <h2 className="text-3xl font-bold">Extras (Mobile)</h2>
-            <p className="">Details about extras go here...</p>
+        <div id="community" className={`${styles.communityContainer} relative pt-10`}>
+            <div className={styles.overlay}></div>
+            <div className={styles.lockIcon}>
+            </div>
         </div>
     );
 }
 
-export default ExtrasMobile;
+export default CommunityMobile;

@@ -68,7 +68,7 @@ const GoalsSection = () => {
     useEffect(() => {
         let timer;
         if (currentSection < goals.length && !shouldReset) {
-            const delay = currentSection === -1 ? 3000 : 3000; 
+            const delay = currentSection === -1 ? 2000 : 3000; 
             timer = setTimeout(() => {
                 setCurrentSection(currentSection + 1);
             }, delay);

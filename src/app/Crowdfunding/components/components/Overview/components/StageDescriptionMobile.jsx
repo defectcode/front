@@ -2,7 +2,7 @@ import React from "react";
 import { stageDescriptionData, stageDescription } from '../constants/stagerData';
 import DetailedStepsMobile from './DetailedStepsMobile';
 
-const StageDescription = () => {
+const StageDescriptionMobile = () => {
     return (
         <div id="overview" className="bg-black px-[20px] w-full flex flex-col items-start lg:items-center"
         >
@@ -48,5 +48,5 @@ const StageDescription = () => {
     )
 }
 
-export default StageDescription;
+export default StageDescriptionMobile;
 
