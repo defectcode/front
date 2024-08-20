@@ -50,18 +50,19 @@ const NavBarCrowdfundingMobile = ({ setActiveSection }) => {
 
     const linkClasses = (hash) => {
         const baseClasses = 'px-1 py-[6px] text-[14px] flex justify-center items-center mt-2 w-full relative';
-        const activeClasses = 'text-[#F1F1F1] border-b-2 border-[#F1F1F1] font-avenir-heavy ';
+        const activeClasses = 'text-[#F1F1F1] font-avenir-heavy after:absolute after:content-[""] after:bg-[#F1F1F1] after:h-[1px] after:w-full after:left-0 after:bottom-[-9px]';
         const inactiveClasses = 'text-[#979797] border-b-4 border-transparent font-avenir';
-
+    
         return `${baseClasses} ${activeHash === hash ? activeClasses : inactiveClasses}`;
     };
+    
 
     return (
         <div className="">
             <div 
                 ref={navbarRef}
                 id="navbar-mobile-original" 
-                className="relative bg-black" // Adjusting margin to ensure equal distance
+                className="relative bg-black"
             >
                 <div className="flex items-center justify-center h-[60px]">
                     <div className="flex items-center justify-center gap-[30px] w-full px-5">
