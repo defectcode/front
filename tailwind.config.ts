@@ -8,6 +8,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontWeight: {
+        extrabold: '900',
+      },
       spacing: {
         '120px': '120px',
         '20px': '20px',

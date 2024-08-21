@@ -5,18 +5,18 @@ export const images = [
       src: {
           desktop: '/imgs/carousel.svg',
           tablet: '/imgs/tablet.png',
-          mobile: '/imgs/mobileCarousel.svg'
+          mobile: '/imgs/Mobile.png'
         },
       alt: 'Slide 1',
-      raisedAmount: 15000,
+      raisedAmount: 0,
       goalAmount: 74000,
       title: 'Production Stages',
-      titleConcept: 'Series Concept',
+      titleConcept: 'Costume Atelier',
       subtitle: 'Current Fundraising',
       stageLabel: 'Stage',
       stageNumber: '1',
       supportersLabel: 'supporters',
-      supportersCount: '4.7K',
+      supportersCount: '99',
       description: 'Be part of every stage of our series production. View more details now',
       status: 'Process'
     },
@@ -24,20 +24,20 @@ export const images = [
       src: {
           desktop: '/imgs/CloseStage.svg',
           tablet: '/imgs/tablet.png',
-          mobile: '/imgs/mobile-close.svg'
+          mobile: '/imgs/SeriesConcept.svg'
         },
-      alt: 'Slide 2',
-      raisedAmount: 0,
-      goalAmount: 74000,
-      title: 'Production Stages',
-      titleConcept: 'Season One',
-      subtitle: 'Next Fundraising',
-      stageLabel: 'Stage',
-      stageNumber: '2',
-      supportersLabel: '',
-      supportersCount: '',
-      description: 'Be part of every stage of our series production. View more details now',
-      status: 'Next'
+        alt: 'Slide 2',
+        raisedAmount: 0,
+        goalAmount: 74000,
+        title: 'Production Stages',
+        titleConcept: 'Series Concept',
+        subtitle: 'Current Fundraising',
+        stageLabel: 'Stage',
+        stageNumber: '2',
+        supportersLabel: 'supporters',
+        supportersCount: '99',
+        description: 'Be part of every stage of our series production. View more details now',
+        status: 'Process'
     },
     {
       src: {

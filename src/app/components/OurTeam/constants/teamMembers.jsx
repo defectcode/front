@@ -13,7 +13,7 @@ export const teamMembers = [
     },
     {
         name: 'Victor Fyne',
-        role: 'Actor',
+        role: 'Producer',
         image: '/imgs/OurTeam/Victor.svg',
         social: {
             tiktok: '#',
@@ -21,25 +21,5 @@ export const teamMembers = [
             facebook: '#'
         }
     },
-    {
-        name: 'Jane Smith',
-        role: 'Director',
-        image: '/imgs/OurTeam/Valeria2.svg',
-        social: {
-            tiktok: '#',
-            instagram: '#',
-            facebook: '#'
-        }
-    },
-    {
-        name: 'Emily Clark',
-        role: 'Producer',
-        image: '/imgs/OurTeam/Valeria2.svg',
-        social: {
-            tiktok: '#',
-            instagram: '#',
-            facebook: '#'
-        }
-    },
-    // Adaugă mai mulți membri după necesități
+
 ];

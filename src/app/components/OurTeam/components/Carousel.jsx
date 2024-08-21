@@ -1,13 +1,15 @@
 'use client'
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { FaTiktok, FaInstagram, FaFacebook } from 'react-icons/fa';
-import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import Image from 'next/image';
+import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
+
 import { teamMembers } from '../constants/teamMembers';
 
 const Carousel = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [windowWidth, setWindowWidth] = useState(0);
+    const containerRef = useRef(null);
 
     const updateWindowWidth = () => {
         setWindowWidth(window.innerWidth);
@@ -54,8 +56,25 @@ const Carousel = () => {
     return (
         <div className="relative w-full mt-4 lg:mt-10">
             <div className="flex items-center">
-                <div className="overflow-hidden relative mx-4" style={{ width: containerWidth }}>
-                    <div className="flex transition-transform duration-300" style={{ transform: `translateX(-${currentIndex * slideWidth}px)` }}>
+                <div
+                    ref={containerRef}
+                    className="overflow-hidden relative mx-4"
+                    style={{ width: containerWidth, cursor: 'grab' }}
+                >
+                    <div
+                        className="flex transition-transform duration-300"
+                        style={{
+                            transform: `translateX(-${currentIndex * slideWidth}px)`,
+                            overflowX: windowWidth < 1024 ? 'scroll' : 'hidden',
+                            scrollbarColor: 'transparent transparent', // Mâner și pistă transparente
+                        }}
+                        onMouseDown={() => {
+                            containerRef.current.style.cursor = 'grabbing';
+                        }}
+                        onMouseUp={() => {
+                            containerRef.current.style.cursor = 'grab';
+                        }}
+                    >
                         {teamMembers.map((member, index) => (
                             <div key={index} className="relative flex-shrink-0 mx-2 group" style={{ width: slideWidth, height: slideHeight }}>
                                 <Image src={member.image} alt={member.name} className="rounded-lg w-full h-full object-cover" width={slideWidth} height={slideHeight} />
@@ -73,61 +92,33 @@ const Carousel = () => {
                                 </div>
                             </div>
                         ))}
-                        <div className="relative flex-shrink-0 mx-2 group" style={{ width: slideWidth, height: slideHeight }}>
-                            <Image src={teamMembers[0].image} alt={teamMembers[0].name} className="rounded-lg w-full h-full object-cover" width={slideWidth} height={slideHeight} />
-                            <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-opacity duration-300 rounded-lg"></div>
-                            <div className="absolute bottom-4 left-4 right-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex justify-between">
-                                <div className="">
-                                    <h3 className="text-xl" style={{ fontFamily: "'Ek Mukta', sans-serif", fontWeight: 400 }}>{teamMembers[0].name}</h3>
-                                    <p className="text-[16px]" style={{ fontFamily: "'Ek Mukta', sans-serif", fontWeight: 400 }}>{teamMembers[0].role}</p>
-                                </div>
-                                <div className="flex space-x-4 mt-2">
-                                    <a href={teamMembers[0].social.tiktok} className="text-white"><FaTiktok size={20} /></a>
-                                    <a href={teamMembers[0].social.instagram} className="text-white"><FaInstagram size={20} /></a>
-                                    <a href={teamMembers[0].social.facebook} className="text-white"><FaFacebook size={20} /></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="relative flex-shrink-0 mx-2 group" style={{ width: slideWidth, height: slideHeight }}>
-                            <Image src={teamMembers[teamMembers.length - 1].image} alt={teamMembers[teamMembers.length - 1].name} className="rounded-lg w-full h-full object-cover" width={slideWidth} height={slideHeight} />
-                            <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-opacity duration-300 rounded-lg"></div>
-                            <div className="absolute bottom-4 left-4 right-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex justify-between">
-                                <div className="">
-                                    <h3 className="text-xl" style={{ fontFamily: "'Ek Mukta', sans-serif", fontWeight: 400 }}>{teamMembers[teamMembers.length - 1].name}</h3>
-                                    <p className="text-[16px]" style={{ fontFamily: "'Ek Mukta', sans-serif', fontWeight: 400 "}}>{teamMembers[teamMembers.length - 1].role}</p>
-                                </div>
-                                <div className="flex space-x-4 mt-2">
-                                    <a href={teamMembers[teamMembers.length - 1].social.tiktok} className="text-white"><FaTiktok size={20} /></a>
-                                    <a href={teamMembers[teamMembers.length - 1].social.instagram} className="text-white"><FaInstagram size={20} /></a>
-                                    <a href={teamMembers[teamMembers.length - 1].social.facebook} className="text-white"><FaFacebook size={20} /></a>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
-            <div className="flex justify-between mt-4 px-4">
-                <div className="flex items-center">
-                    {teamMembers.map((_, index) => (
-                        <div
-                            key={index}
-                            onClick={() => goToSlide(index)}
-                            className={`w-2 h-2 rounded-full mx-2 cursor-pointer ${index === currentIndex ? 'bg-white' : 'bg-gray-500'}`}
-                        />
-                    ))}
-                </div>
-                <div className="flex items-center space-x-4 lg:mr-10">
-                    <div className="bg-[#636365] p-1 lg:p-2 rounded-full">
-                        <IoIosArrowBack className="text-white cursor-pointer" onClick={prevSlide} />
+            {/* Navigația cu puncte și săgeți ascunsă pe mobil */}
+            {windowWidth >= 1024 && (
+                <div className="flex justify-between mt-4 px-4">
+                    <div className="flex items-center">
+                        {teamMembers.map((_, index) => (
+                            <div
+                                key={index}
+                                onClick={() => goToSlide(index)}
+                                className={`w-2 h-2 rounded-full mx-2 cursor-pointer ${index === currentIndex ? 'bg-white' : 'bg-gray-500'}`}
+                            />
+                        ))}
                     </div>
-                    <div className="bg-[#636365] p-1 lg:p-2 rounded-full">
-                        <IoIosArrowForward className="text-white cursor-pointer" onClick={nextSlide} />
+                    <div className="flex items-center space-x-4 lg:mr-10">
+                        <div className="bg-[#636365] p-1 lg:p-2 rounded-full">
+                            <IoIosArrowBack className="text-white cursor-pointer" onClick={prevSlide} />
+                        </div>
+                        <div className="bg-[#636365] p-1 lg:p-2 rounded-full">
+                            <IoIosArrowForward className="text-white cursor-pointer" onClick={nextSlide} />
+                        </div>
                     </div>
                 </div>
-            </div>
+            )}
         </div>
     );
 };
 
 export default Carousel;
-

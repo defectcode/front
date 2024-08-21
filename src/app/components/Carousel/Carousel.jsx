@@ -136,10 +136,10 @@ const Carousel = () => {
       />
       {isMobile && (
         <>
-          <button className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-transparent ml-1 p-3 max-[395px]:p-0 rounded-full text-white" onClick={handlePrev}>
+          <button className="absolute left-0 top-[55%] transform -translate-y-1/2 bg-transparent ml-1 p-3 max-[395px]:p-0 rounded-full text-white" onClick={handlePrev}>
             <IoIosArrowBack size={30} />
           </button>
-          <button className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-transparent mr-1 p-3 max-[395px]:p-0 rounded-full text-white" onClick={handleNext}>
+          <button className="absolute right-0 top-[55%] transform -translate-y-1/2 bg-transparent mr-1 p-3 max-[395px]:p-0 rounded-full text-white" onClick={handleNext}>
             <IoIosArrowForward size={30} />
           </button>
         </>

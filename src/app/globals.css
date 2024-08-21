@@ -215,14 +215,13 @@ iframe {
 
 .font-ekmukta-extrabold {
   font-family: 'Ek Mukta', sans-serif;
-  font-weight: 800;
+  font-weight: 900;
 }
 
 .font-ekmukta-extralight {
   font-family: 'Ek Mukta', sans-serif;
   font-weight: 200;
 }
-
 
 .custom-image-width-laptop {
   width: calc(100% + 400px);
@@ -332,6 +331,4 @@ iframe {
   transform: translateY(-100%);
   opacity: 0;
 }
-
-
 

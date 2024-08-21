@@ -8,7 +8,9 @@ const Information = () => {
   return (
     <div className="flex flex-row justify-between items-start max-w-[1200px] mx-auto w-full text-white  max-lg:flex-col max-lg:justify-around max-md:lg:items-start max-lg:items-center">
       <div className="mb-4 lg:mb-0">
-          <Image src='/imgs/blackLogo.svg' alt="logo" width={98} height={1} />
+          <Link href="/">
+            <Image src='/imgs/blackLogo.svg' alt="logo" width={98} height={32} />
+          </Link>
       </div>
       <div className="flex flex-row justify-between items-start max-w-[800px] w-full text-white">
         <div className="flex flex-col gap-3 mb-10 lg:mb-0 text-start max-lg:text-center max-md:gap-4">
@@ -31,11 +33,9 @@ const Information = () => {
         </div>
         <div className="flex flex-col gap-3 text-start max-lg:text-center max-md:gap-6 max-md:mb-4">
           <h1 className="text-[18px] text-[#1E1E1E] font-semibold font-ekMukta">Contact Us</h1>
-          <ul className="flex flex-col text-[#949494] gap-4 max-md:gap-3 text-sm md:text-base md:gap-3 w-3/4 max-lg:w-auto font-ekMukta font-normal">
-            <li className="text-[14px]">Fyne Production</li>
-            <li className="text-[14px]">123 Main Street, Chisinau, Moldova</li>
+          <ul className="flex flex-col text-[#949494] gap-4 max-md:gap-3 text-sm md:text-base md:gap-3 max-lg:w-auto font-ekMukta font-normal">
             <li className="text-[14px]">Phone: +373 60 877 733</li>
-            <li className="text-[14px]">Email: dariarez@fyne.pro</li>
+            <li className="text-[14px]">Email: Valery@fyne.pro</li>
           </ul>
         </div>
       </div>

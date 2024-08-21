@@ -14,9 +14,12 @@ export default function Sidebar() {
   const toggleLegal = () => setIsOpenLegal(!isOpenLegal);
   const toggleContact = () => setIsOpenContact(!isOpenContact);
 
+  // max-h-[525px]
   return (
-    <div className="bg-[#EBEBF0] text-white p-8 w-full max-w-md mx-auto max-h-[525px]">
-
+    <div className="bg-[#EBEBF0] text-white p-8 w-full max-w-md mx-auto  h-auto">
+            <div className="relative w-full">
+        <div className="absolute inset-0 h-[1px] bg-gradient-to-r from-[#272727] to-[#8D8D8D] opacity-50"></div>
+      </div>
       <div className="py-5">
         <div className="flex justify-between items-center cursor-pointer text-[#1E1E1E]" onClick={toggleSupport}>
           <h2 className="text-[18px] font-semibold font-ekMukta leading-none">Support And Donations</h2>
@@ -25,7 +28,7 @@ export default function Sidebar() {
           </span>
         </div>
         {isOpenSupport && (
-          <ul className="space-y-2 text-[#949494] text-[14px] gap-4 mt-5">
+          <ul className="space-y-2 text-[#949494] text-[14px] font-ekMukta gap-4 mt-5">
             <li><Link legacyBehavior href="#"><a>Donation Link</a></Link></li>
             <li><Link legacyBehavior href="#"><a>How Your Contributions Help</a></Link></li>
             <li><Link legacyBehavior href="#"><a>FAQ</a></Link></li>
@@ -35,7 +38,7 @@ export default function Sidebar() {
       </div>
 
       <div className="relative w-full">
-        <div className="absolute inset-0 h-[1px] bg-gradient-to-r from-[#272727] to-[#8D8D8D]"></div>
+        <div className="absolute inset-0 h-[1px] bg-gradient-to-r from-[#272727] to-[#8D8D8D] opacity-50"></div>
       </div>
 
       <div className="py-5">
@@ -46,17 +49,17 @@ export default function Sidebar() {
           </span>
         </div>
         {isOpenLegal && (
-          <ul className="space-y-2 text-[#949494] text-[14px] gap-4 mb-5 font-ekMukta mt-5">
-            <li><Link legacyBehavior href="#"><a>Donation Link</a></Link></li>
-            <li><Link legacyBehavior href="#"><a>How Your Contributions Help</a></Link></li>
-            <li><Link legacyBehavior href="#"><a>FAQ</a></Link></li>
-            <li><Link legacyBehavior href="#"><a>Help Center</a></Link></li>
+          <ul className="space-y-2 text-[#949494] text-[14px] gap-4 font-ekMukta mt-5">
+            <li><Link legacyBehavior href="#"><a>Privacy Policy</a></Link></li>
+            <li><Link legacyBehavior href="#"><a>Cookie Policy</a></Link></li>
+            <li><Link legacyBehavior href="#"><a>Tearm of Use</a></Link></li>
+            <li><Link legacyBehavior href="#"><a>Copyright Information</a></Link></li>
           </ul>
         )}
       </div>
 
       <div className="relative w-full">
-        <div className="absolute inset-0 h-[1px] bg-gradient-to-r from-[#272727] to-[#8D8D8D]"></div>
+        <div className="absolute inset-0 h-[1px] bg-gradient-to-r from-[#272727] to-[#8D8D8D] opacity-50"></div>
       </div>
 
       <div className="py-5">
@@ -67,24 +70,23 @@ export default function Sidebar() {
           </span>
         </div>
         {isOpenContact && (
-          <ul className="space-y-2 text-[#949494] text-[14px] gap-4 mb-5 font-ekMukta mt-5">
-            <li><Link legacyBehavior href="#"><a>Donation Link</a></Link></li>
-            <li><Link legacyBehavior href="#"><a>How Your Contributions Help</a></Link></li>
-            <li><Link legacyBehavior href="#"><a>FAQ</a></Link></li>
-            <li><Link legacyBehavior href="#"><a>Help Center</a></Link></li>
+          <ul className="space-y-2 text-[#949494] text-[14px] gap-4 font-ekMukta mt-5">
+            <li className="text-[14px]">Phone: +373 60 877 733</li>
+            <li className="text-[14px]">Email: Valery@fyne.pro</li>
         </ul>
         )}
       </div>
 
       <div className="relative w-full">
-        <div className="absolute inset-0 h-[1px] bg-gradient-to-r from-[#272727] to-[#8D8D8D]"></div>
+        <div className="absolute inset-0 h-[1px] bg-gradient-to-r from-[#272727] to-[#8D8D8D] opacity-50"></div>
       </div>
 
       <div>
-        <div className=" flex justify-center items-center mt-[54px]">
-          <Image src='/imgs/blackLogo.svg' alt="logo" width={98} height={32} />
+        <div className="flex justify-center items-center mt-[54px]">
+          <Link href="/">
+            <Image src='/imgs/blackLogo.svg' alt="logo" width={98} height={32} />
+          </Link>
         </div>
-
         <Networking />
       </div>
     </div>

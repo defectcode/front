@@ -11,21 +11,12 @@ const Networking = () => {
                 </p>
             </div>
             <div className="flex gap-10 text-[#949494] items-center">
-                <Link href='https://www.youtube.com/'>
+                <Link href='https://instagram.com/valery.fain'>
                     <Image 
-                        src='/icons/youtube.svg' 
-                        alt="youtube" 
-                        width={25} 
-                        height={25} 
-                        className="filter brightness-0"
-                    />
-                </Link>
-                <Link href='https://facebook.com/ValreyFine'>
-                    <Image 
-                        src='/icons/facebook.svg' 
-                        alt="facebook" 
-                        width={15} 
-                        height={15} 
+                        src='/icons/instagram.svg' 
+                        alt="instagram" 
+                        width={20} 
+                        height={20} 
                         className="filter brightness-0"
                     />
                 </Link>
@@ -33,8 +24,26 @@ const Networking = () => {
                     <Image 
                         src='/icons/tiktok.svg' 
                         alt="tiktok" 
-                        width={25} 
-                        height={25} 
+                        width={20} 
+                        height={20} 
+                        className="filter brightness-0"
+                    />
+                </Link>
+                <Link href='https://www.youtube.com/'>
+                    <Image 
+                        src='/icons/youtube.svg' 
+                        alt="youtube" 
+                        width={20} 
+                        height={20} 
+                        className="filter brightness-0"
+                    />
+                </Link>
+                <Link href='https://facebook.com/ValreyFine'>
+                    <Image 
+                        src='/icons/facebook.svg' 
+                        alt="facebook" 
+                        width={13} 
+                        height={13} 
                         className="filter brightness-0"
                     />
                 </Link>
@@ -42,17 +51,8 @@ const Networking = () => {
                     <Image 
                         src='/icons/x.svg' 
                         alt="twitter" 
-                        width={25} 
-                        height={25} 
-                        className="filter brightness-0"
-                    />
-                </Link>
-                <Link href='https://instagram.com/valery.fain'>
-                    <Image 
-                        src='/icons/instagram.svg' 
-                        alt="instagram" 
-                        width={25} 
-                        height={25} 
+                        width={20} 
+                        height={20} 
                         className="filter brightness-0"
                     />
                 </Link>
