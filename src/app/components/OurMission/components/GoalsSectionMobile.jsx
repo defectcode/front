@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { throttle } from 'lodash';
 import Support from './Support';
 import { motion } from 'framer-motion';
 import Modal from '/src/app/components/Header/components/Modal.jsx';
@@ -23,14 +24,14 @@ const GoalsSectionMobile = () => {
         setIsModalOpen(false);
     };
 
-    const handleScroll = () => {
+    const handleScroll = throttle(() => {
         if (typeof window !== 'undefined') {
             const scrollY = window.scrollY;
             const sectionHeight = window.innerHeight / 2;
             const newSection = Math.min(goals.length - 1, Math.floor(scrollY / sectionHeight));
             setCurrentSection(newSection);
 
-            // Verifică dacă ultimul element este vizibil
+            // Check if the last section is visible
             const lastSection = sectionRefs.current[goals.length - 1];
             if (lastSection) {
                 const lastSectionTop = lastSection.offsetTop;
@@ -38,17 +39,17 @@ const GoalsSectionMobile = () => {
                 setIsLastSectionVisible(viewportBottom >= lastSectionTop);
             }
         }
-    };
+    }, 200);
 
     useEffect(() => {
-        window.addEventListener('scroll', handleScroll);
+        window.addEventListener('scroll', handleScroll, { passive: true }); // use passive listeners to improve performance
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
     return (
         <motion.div 
             className={`bg-black text-white pt-6 pb-6 px-4 lg:px-0`}
-            style={{ marginBottom: isLastSectionVisible ? '-310px' : '0' }} // Modifică marginea de jos când ultimul element este vizibil
+            style={{ marginBottom: isLastSectionVisible ? '-310px' : '0', willChange: 'transform' }} // using will-change for smoother animations
         >
             {goals.map((goal, index) => (
                 <motion.div
@@ -57,7 +58,8 @@ const GoalsSectionMobile = () => {
                     className={`goal-section w-full lg:h-[540px] flex items-center bg-[#0D0D0D] rounded-lg border-2 border-[#222222] mx-auto ${currentSection >= index ? 'visible' : 'hidden'} ${index === 0 ? 'mt-200-mobile' : ''} ${index !== 0 ? 'mt-10' : ''}`}
                     initial="hidden"
                     animate={currentSection >= index ? 'visible' : 'hidden'}
-                    transition={{ duration: 2 }}
+                    transition={{ duration: 0.5, ease: 'easeInOut' }} // Using ease-in-out for smoother transitions
+                    style={{ willChange: 'opacity, transform' }} // improves animation performance
                 >
                     <div className={`max-w-screen-2xl mx-auto px-0 lg:px-4 flex ${index % 2 === 0 ? 'flex-col-reverse lg:flex-row' : 'flex-col lg:flex-row-reverse'} items-center justify-around lg:gap-28`}>
                         <div className="lg:w-1/2 p-4">

@@ -50,7 +50,7 @@ export default function Sidebar() {
         </div>
         {isOpenLegal && (
           <ul className="space-y-2 text-[#949494] text-[14px] gap-4 font-ekMukta mt-5">
-            <li><Link legacyBehavior href="#"><a>Privacy Policy</a></Link></li>
+            <li><Link legacyBehavior href="/privacypolicy"><a>Privacy Policy</a></Link></li>
             <li><Link legacyBehavior href="#"><a>Cookie Policy</a></Link></li>
             <li><Link legacyBehavior href="#"><a>Tearm of Use</a></Link></li>
             <li><Link legacyBehavior href="#"><a>Copyright Information</a></Link></li>

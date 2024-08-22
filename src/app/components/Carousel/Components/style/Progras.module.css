@@ -1,0 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Ek+Mukta:wght@400;700;900&display=swap');
+
+/* Progras.module.css */
+.titleConcept {
+    font-family: 'Ek Mukta', sans-serif;
+    font-weight: 900; /* Asigură-te că fontul suportă această greutate */
+    color: #E60716;
+    font-size: 24px;
+  }
+  

@@ -25,7 +25,7 @@ const Information = () => {
         <div className="flex flex-col gap-3 mb-10 lg:mb-0 text-start max-lg:text-center max-md:gap-4">
           <h1 className="text-[18px] text-[#1E1E1E] font-semibold font-ekMukta">Legal Information</h1>
           <div className="flex flex-col text-[#949494] gap-4 text-sm md:text-base max-md:gap-3 font-ekMukta font-normal">
-            <Link className="text-[14px]" href="/">Privacy Policy</Link>
+            <Link className="text-[14px]" href="/privacypolicy">Privacy Policy</Link>
             <Link className="text-[14px]" href="/">Cookie Policy</Link>
             <Link className="text-[14px]" href="/">Terms of Use</Link>
             <Link className="text-[14px]" href="/">Copyright Information</Link>

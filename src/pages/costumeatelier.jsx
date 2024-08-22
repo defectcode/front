@@ -4,7 +4,6 @@ import Static from "../app/components/Header/components/Static";
 import HeaderCrowdfunding from '../app/Crowdfunding/HeaderCrowdfunding';
 import HeaderCrowdfundingMobile from '../app/Crowdfunding/HeaderCrowdfundingMobile';
 import NavBarCrowdfunding from '../app/Crowdfunding/components/NavBarCrowdfunding';
-import NavBarCrowdfundingMobile from '../app/Crowdfunding/components/mobile/NavBarCrowdfundingMobile';
 import useDeviceType from '../app/Crowdfunding/components/hooks/useDeviceType';
 import ButonShere from '../app/Crowdfunding/components/mobile/ButonShere';
 import Rewards from '../app/Crowdfunding/components/components/Rewards/Rewards';

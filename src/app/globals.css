@@ -209,14 +209,22 @@ iframe {
   font-family: 'Roboto', sans-serif;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Ek+Mukta:wght@700;900&display=swap');
+
+.font-ekMukta {
+  font-family: 'Ek Mukta', sans-serif;
+}
+
 .font-ekmukta {
   font-family: 'Ek Mukta', sans-serif;
 }
+
 
 .font-ekmukta-extrabold {
   font-family: 'Ek Mukta', sans-serif;
   font-weight: 900;
 }
+
 
 .font-ekmukta-extralight {
   font-family: 'Ek Mukta', sans-serif;
