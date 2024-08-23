@@ -1,4 +1,3 @@
-"use client";
 import React, { useState, useEffect, useRef } from 'react';
 import { useKeenSlider } from 'keen-slider/react';
 import 'keen-slider/keen-slider.min.css';
@@ -7,6 +6,7 @@ import Title from './Components/Title';
 import FundraisingProgress from './Components/Progres';
 import Dots from './Components/Dots';
 import { IoIosArrowForward, IoIosArrowBack } from 'react-icons/io';
+import style from '../Carousel/Components/style/Progres.module.css'; // Verifică importul stilurilor
 
 const Carousel = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -15,6 +15,20 @@ const Carousel = () => {
   const [spacing, setSpacing] = useState(0.4);
   const [perView, setPerView] = useState(1.25);
   const [currentIndex, setCurrentIndex] = useState(0);
+
+  const [sliderRef, slider] = useKeenSlider({
+    loop: true,
+    mode: 'snap',
+    slides: {
+      origin: 'center',
+      perView: perView,
+      spacing: spacing,
+    },
+    slideChanged(s) {
+      setCurrentIndex(s.track.details.rel);
+    },
+    duration: 800,
+  });
 
   useEffect(() => {
     const handleResize = () => {
@@ -40,26 +54,19 @@ const Carousel = () => {
         setPerView(1.25);
       }
     };
-    
 
     handleResize();
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const [sliderRef, slider] = useKeenSlider({
-    loop: true,
-    mode: 'snap',
-    slides: {
-      origin: 'center',
-      perView: perView,
-      spacing: spacing,
-    },
-    slideChanged(s) {
-      setCurrentIndex(s.track.details.rel);
-    },
-    duration: 800,
-  });
+  useEffect(() => {
+    if (slider.current) {
+      setTimeout(() => {
+        slider.current.moveToIdx(1); // Set the starting index to 1 (second slide)
+      }, 0); // Delay execution to ensure slider is initialized
+    }
+  }, [slider]);
 
   useEffect(() => {
     sliderRef.current?.update({
@@ -123,7 +130,7 @@ const Carousel = () => {
           <img
             src={isMobile ? image.src.mobile : isTablet ? image.src.tablet : image.src.desktop}
             alt={image.alt}
-            className={`w-full h-full object-cover max-h-[750px] custom-image-width ${isMobile ? "max-width-image w-full min-w-[240px] max-height-image mt-36 rounded-lg" : "rounded-lg"} ${index !== currentIndex && isMobile ? 'mobile-side-image' : ''}`}
+            className={`w-full h-full object-cover max-h-[750px] custom-image-width ${isMobile ? "max-width-image w-full min-w-[240px] max-height-image mt-36 rounded-lg" : "rounded-lg"} ${index !== currentIndex && isMobile ? style.blurred : ''}`} // Folosește stilul din module CSS
           />
         </div>
       ))}

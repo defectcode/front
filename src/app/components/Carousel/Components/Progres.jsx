@@ -2,7 +2,7 @@ import React from 'react';
 import Button from './Button';
 import { images } from './constants/carouselData';
 import Image from 'next/image';
-import styles from './style/Progras.module.css';
+import styles from './style/Progres.module.css';
 
 const FundraisingProgress = ({ raisedAmount, goalAmount, contentIndex = 0 }) => {
   const content = images[contentIndex];
@@ -17,11 +17,11 @@ const FundraisingProgress = ({ raisedAmount, goalAmount, contentIndex = 0 }) => 
   // Logică pentru rotunjirea procentului
   let progressPercent;
   if (rawProgressPercent > 1) {
-    progressPercent = Math.round(rawProgressPercent); // Rotunjire la cel mai apropiat număr întreg pentru procente peste 1
+    progressPercent = Math.round(rawProgressPercent);
   } else if (rawProgressPercent > 0) {
-    progressPercent = rawProgressPercent.toFixed(1); // Menține două zecimale pentru procente între 0 și 1
+    progressPercent = rawProgressPercent.toFixed(1); 
   } else {
-    progressPercent = 0; // Gestionează cazul în care progresul este 0 sau mai mic
+    progressPercent = 0; 
   }
 
   return (

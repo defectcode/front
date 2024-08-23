@@ -8,3 +8,10 @@
     font-size: 24px;
   }
   
+
+
+  .blurred {
+    filter: blur(2px); /* Ajustează valoarea blur-ului după preferință */
+    transition: filter 0.3s ease;
+  }
+  

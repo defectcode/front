@@ -16,12 +16,12 @@ export default function Sidebar() {
 
   // max-h-[525px]
   return (
-    <div className="bg-[#EBEBF0] text-white p-8 w-full max-w-md mx-auto  h-auto">
+    <div className="bg-[#EBEBF0] text-white px-5 py-10 w-full max-w-md mx-auto h-auto">
             <div className="relative w-full">
         <div className="absolute inset-0 h-[1px] bg-gradient-to-r from-[#272727] to-[#8D8D8D] opacity-50"></div>
       </div>
       <div className="py-5">
-        <div className="flex justify-between items-center cursor-pointer text-[#1E1E1E]" onClick={toggleSupport}>
+        <div className="flex justify-between items-center cursor-pointer text-[#1E1E1E] px-5" onClick={toggleSupport}>
           <h2 className="text-[18px] font-semibold font-ekMukta leading-none">Support And Donations</h2>
           <span className="text-xl transform transition-transform duration-200 leading-none" style={{ transform: isOpenSupport ? 'rotate(90deg)' : 'rotate(0deg)' }}>
             <IoIosArrowForward />
@@ -42,7 +42,7 @@ export default function Sidebar() {
       </div>
 
       <div className="py-5">
-        <div className="flex justify-between items-center cursor-pointer text-[#1E1E1E]" onClick={toggleLegal}>
+        <div className="flex justify-between items-center cursor-pointer text-[#1E1E1E] px-5" onClick={toggleLegal}>
           <h2 className="text-[18px] font-semibold font-ekMukta leading-none">Legal Information</h2>
           <span className="text-xl transform transition-transform duration-200 leading-none" style={{ transform: isOpenLegal ? 'rotate(90deg)' : 'rotate(0deg)' }}>
             <IoIosArrowForward />
@@ -51,7 +51,7 @@ export default function Sidebar() {
         {isOpenLegal && (
           <ul className="space-y-2 text-[#949494] text-[14px] gap-4 font-ekMukta mt-5">
             <li><Link legacyBehavior href="/privacypolicy"><a>Privacy Policy</a></Link></li>
-            <li><Link legacyBehavior href="#"><a>Cookie Policy</a></Link></li>
+            <li><Link legacyBehavior href="/cookiepolicy"><a>Cookie Policy</a></Link></li>
             <li><Link legacyBehavior href="#"><a>Tearm of Use</a></Link></li>
             <li><Link legacyBehavior href="#"><a>Copyright Information</a></Link></li>
           </ul>
@@ -63,7 +63,7 @@ export default function Sidebar() {
       </div>
 
       <div className="py-5">
-        <div className="flex justify-between items-center cursor-pointer text-[#1E1E1E]" onClick={toggleContact}>
+        <div className="flex justify-between items-center cursor-pointer text-[#1E1E1E] px-5" onClick={toggleContact}>
           <h2 className="text-[18px] font-semibold font-ekMukta leading-none">Contact Us</h2>
           <span className="text-xl transform transition-transform duration-200 leading-none" style={{ transform: isOpenContact ? 'rotate(90deg)' : 'rotate(0deg)' }}>
             <IoIosArrowForward />
@@ -82,7 +82,7 @@ export default function Sidebar() {
       </div>
 
       <div>
-        <div className="flex justify-center items-center mt-[54px]">
+        <div className="flex justify-center items-center mt-10 mb-5">
           <Link href="/">
             <Image src='/imgs/blackLogo.svg' alt="logo" width={98} height={32} />
           </Link>

@@ -1,9 +1,7 @@
-'use client'
 import React, { useState, useEffect, useRef } from 'react';
 import { FaTiktok, FaInstagram, FaFacebook } from 'react-icons/fa';
 import Image from 'next/image';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
-
 import { teamMembers } from '../constants/teamMembers';
 
 const Carousel = () => {
@@ -58,7 +56,7 @@ const Carousel = () => {
             <div className="flex items-center">
                 <div
                     ref={containerRef}
-                    className="overflow-hidden relative mx-4"
+                    className="overflow-hidden relative mx-5"
                     style={{ width: containerWidth, cursor: 'grab' }}
                 >
                     <div
@@ -76,20 +74,29 @@ const Carousel = () => {
                         }}
                     >
                         {teamMembers.map((member, index) => (
-                            <div key={index} className="relative flex-shrink-0 mx-2 group" style={{ width: slideWidth, height: slideHeight }}>
-                                <Image src={member.image} alt={member.name} className="rounded-lg w-full h-full object-cover" width={slideWidth} height={slideHeight} />
-                                <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-opacity duration-300 rounded-lg"></div>
-                                <div className="absolute bottom-4 left-4 right-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex justify-between">
-                                    <div className="">
-                                        <h3 className="text-xl font-ekmukta">{member.name}</h3>
-                                        <p className="text-[16px] text-[#C1C1C1] font-ekmukta">{member.role}</p>
-                                    </div>
-                                    <div className="flex space-x-4 mt-2 items-center">
-                                        <a href={member.social.tiktok} className="text-white"><FaTiktok size={20} /></a>
-                                        <a href={member.social.instagram} className="text-white"><FaInstagram size={20} /></a>
-                                        <a href={member.social.facebook} className="text-white"><FaFacebook size={20} /></a>
+                            <div key={index} className="relative flex-shrink-0 mr-[10px] group" style={{ width: slideWidth, height: slideHeight }}>
+                                <Image 
+                                    src={member.image} 
+                                    alt={member.name} 
+                                    className="rounded-xl w-full h-full object-cover" 
+                                    width={slideWidth} 
+                                    height={slideHeight} 
+                                    style={{ filter: 'none' }}
+                                />
+                                <div className="absolute inset-0 flex items-end justify-between m-5 lg:m-10"> 
+                                    <div className="flex items-center justify-between w-full"> 
+                                        <div className="text-[#FFFEFE] gap-2">
+                                            <h3 className="text-xl font-ekmukta">{member.name}</h3>
+                                            <p className="text-[16px] text-[#C1C1C1] font-ekmukta">{member.role}</p>
+                                        </div>
+                                        <div className="flex space-x-4 items-center"> {/* Align icons horizontally */}
+                                            <a href={member.social.tiktok} className="text-white"><FaTiktok size={20} /></a>
+                                            <a href={member.social.instagram} className="text-white"><FaInstagram size={20} /></a>
+                                            <a href={member.social.facebook} className="text-white"><FaFacebook size={20} /></a>
+                                        </div>
                                     </div>
                                 </div>
+
                             </div>
                         ))}
                     </div>
@@ -97,13 +104,13 @@ const Carousel = () => {
             </div>
             {/* Navigația cu puncte și săgeți ascunsă pe mobil */}
             {windowWidth >= 1024 && (
-                <div className="flex justify-between mt-4 px-4">
+                <div className="flex justify-between mt-5 px-4">
                     <div className="flex items-center">
                         {teamMembers.map((_, index) => (
                             <div
                                 key={index}
                                 onClick={() => goToSlide(index)}
-                                className={`w-2 h-2 rounded-full mx-2 cursor-pointer ${index === currentIndex ? 'bg-white' : 'bg-gray-500'}`}
+                                className={`w-2 h-2 rounded-full mx-3 cursor-pointer ${index === currentIndex ? 'bg-white' : 'bg-gray-500'}`}
                             />
                         ))}
                     </div>

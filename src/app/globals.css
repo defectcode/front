@@ -86,7 +86,7 @@ iframe {
 /* Add these styles to your CSS */
 
 .bg-image {
-  background-image: url('/imgs/background.png');
+  background-image: url('/imgs/Background.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
