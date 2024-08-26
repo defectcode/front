@@ -24,7 +24,7 @@ export const images = [
     src: {
         desktop: '/imgs/CloseStage.svg',
         tablet: '/imgs/tablet.png',
-        mobile: '/imgs/Mobile.png'
+        mobile: '/imgs/Carusel2.png'
       },
       alt: 'Slide 2',
       raisedAmount: '15000',
