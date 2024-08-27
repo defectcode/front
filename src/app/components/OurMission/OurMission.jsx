@@ -15,7 +15,7 @@ const OurMission = () => {
     }, [width]);
 
     return (
-        <div>
+        <div className="bg-black md:h-[2230px]">
             <Earth />
             {isMobile ? <GoalsSectionMobile /> : <GoalsSectionDesktop />}
         </div>

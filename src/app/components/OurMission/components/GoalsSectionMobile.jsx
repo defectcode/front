@@ -6,7 +6,7 @@ import Modal from '/src/app/components/Header/components/Modal.jsx';
 import SupportForm from '/src/app/components/Header/components/Payment/SupportForm.jsx';
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
-import { goals, componentsAnimation } from '../constants/goals';
+import { goals } from '../constants/goals';
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
 
@@ -42,35 +42,47 @@ const GoalsSectionMobile = () => {
     }, 200);
 
     useEffect(() => {
-        window.addEventListener('scroll', handleScroll, { passive: true }); // use passive listeners to improve performance
+        window.addEventListener('scroll', handleScroll, { passive: true });
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
     return (
-        <motion.div 
-            className={`bg-black text-white pt-6 pb-6 px-4 lg:px-0`}
-            style={{ marginBottom: isLastSectionVisible ? '-310px' : '0', willChange: 'transform' }} // using will-change for smoother animations
-        >
+        <motion.div className="bg-black text-white py-6 px-4">
             {goals.map((goal, index) => (
                 <motion.div
                     ref={el => sectionRefs.current[index] = el}
                     key={goal.id}
-                    className={`goal-section w-full lg:h-[540px] flex items-center bg-[#0D0D0D] rounded-lg border-2 border-[#222222] mx-auto ${currentSection >= index ? 'visible' : 'hidden'} ${index === 0 ? 'mt-200-mobile' : ''} ${index !== 0 ? 'mt-10' : ''}`}
+                    className={`goal-section relative w-full max-w-sm mx-auto bg-[#0D0D0D] rounded-lg overflow-hidden ${
+                        currentSection >= index ? 'opacity-100' : 'opacity-0'
+                    }`}
                     initial="hidden"
                     animate={currentSection >= index ? 'visible' : 'hidden'}
-                    transition={{ duration: 0.5, ease: 'easeInOut' }} // Using ease-in-out for smoother transitions
-                    style={{ willChange: 'opacity, transform' }} // improves animation performance
+                    transition={{ duration: 0.5, ease: 'easeInOut' }}
+                    style={{
+                        willChange: 'opacity, transform',
+                        marginBottom: '40px',
+                        marginTop: index === 0 ? '250px' : '150px',
+                    }}
                 >
-                    <div className={`max-w-screen-2xl mx-auto px-0 lg:px-4 flex ${index % 2 === 0 ? 'flex-col-reverse lg:flex-row' : 'flex-col lg:flex-row-reverse'} items-center justify-around lg:gap-28`}>
-                        <div className="lg:w-1/2 p-4">
-                            <h3 className="text-xl font-extrabold mb-2 flex gap-1 text-[#C1C1C1]" style={{ fontFamily: 'Avenir Heavy, sans-serif', fontWeight: 400 }}>Goal <div className='font-bold' style={{ fontFamily: 'Avenir, sans-serif' }}>{goal.id}</div></h3>
-                            <h2 className="text-[24px] lg:text-[32px] text-[#E50815] mb-4 font-ekmukta-extrabold">{goal.title}</h2>
-                            <p className={`mb-6 text-[#F1F1F1] text-[16px] lg:w-[538px] font-normal`}>{goal.description}</p>
-                            <Support onClick={openModal} />
-                        </div>
-                        <div className="lg:w-1/2 p-4 flex justify-end">
-                            <img src={goal.image} alt={goal.title} className="rounded-lg w-full h-full object-cover lg:w-[483px] lg:h-[446px]" />
-                        </div>
+                    <img src={goal.image} alt={goal.title} className="w-full h-auto object-cover" />
+                    <div
+                        className="absolute inset-x-0 bottom-0 h-[300px] bg-gradient-to-t from-black/60 via-transparent to-transparent p-6 flex flex-col justify-end"
+                        style={{
+                            backdropFilter: 'blur(2px)', // Applies the blur effect
+                            WebkitBackdropFilter: 'blur(2px)', // Ensures compatibility with WebKit browsers
+                        }}
+                    >
+                        <h3 className="text-sm font-bold text-white mb-1" style={{ fontFamily: 'Avenir Heavy, sans-serif' }}>
+                            Goal {goal.id}
+                        </h3>
+                        <h2 className="text-2xl text-white mb-4 font-ekmukta-extrabold">{goal.title}</h2>
+                        <p
+                            className="text-[16px] text-[#FFFFFF] font-extralight mb-6"
+                            // style={{ fontFamily: 'Ek Mukta, sans-serif' }}
+                        >
+                            {goal.description}
+                        </p>
+                        <Support onClick={openModal} />
                     </div>
                 </motion.div>
             ))}

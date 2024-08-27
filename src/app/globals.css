@@ -231,6 +231,11 @@ iframe {
   font-weight: 200;
 }
 
+.ekmukta-extralight {
+  font-family: 'Ek Mukta', sans-serif;
+  font-weight: 200;
+}
+
 .custom-image-width-laptop {
   width: calc(100% + 400px);
 }

@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { FaTiktok, FaInstagram, FaFacebook } from 'react-icons/fa';
 import Image from 'next/image';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
+import { motion } from 'framer-motion'; // Import Framer Motion
 import { teamMembers } from '../constants/teamMembers';
 
 const Carousel = () => {
@@ -79,19 +80,23 @@ const Carousel = () => {
                     className="overflow-hidden relative mx-5"
                     style={{ width: containerWidth, cursor: 'grab' }}
                 >
-                    <div
-                        className="flex transition-transform duration-300"
-                        style={{
-                            transform: `translateX(-${currentIndex * slideWidth}px)`,
-                        }}
+                    <motion.div
+                        className="flex"
+                        initial={false}
+                        animate={{ x: `-${currentIndex * (slideWidth - 10)}px` }} // Adjust for partial slide visibility
+                        transition={{ type: 'spring', stiffness: 100, damping: 20 }} // Smooth animation
                         onTouchStart={handleTouchStart}
                         onTouchEnd={handleTouchEnd}
                     >
                         {teamMembers.map((member, index) => (
-                            <div
+                            <motion.div
                                 key={index}
-                                className="relative flex-shrink-0 mr-[10px] group overflow-hidden rounded-b-xl" // Add rounded bottom here
-                                style={{ width: slideWidth, height: slideHeight }}
+                                className="relative flex-shrink-0 mr-[10px] group overflow-hidden rounded-b-xl"
+                                style={{
+                                    width: slideWidth,
+                                    height: slideHeight,
+                                    marginRight: index === teamMembers.length - 1 ? '0px' : '10px', // Adjust margin for last item
+                                }}
                                 onClick={() => goToSlide(index)}
                             >
                                 <Image 
@@ -101,30 +106,44 @@ const Carousel = () => {
                                     width={slideWidth} 
                                     height={slideHeight} 
                                 />
-                                {/* Multiple gradient and blur layers for smooth transition with rounded bottom */}
-                                <div className="absolute inset-x-0 bottom-0 h-[100px] bg-gradient-to-t from-black/90 via-black/50 to-transparent rounded-b-xl" style={{ backdropFilter: 'blur(120px)', maskImage: 'linear-gradient(to top, rgba(0, 0, 0, 1), transparent)' }}></div>
-                                <div className="absolute inset-x-0 bottom-0 h-[90px] bg-gradient-to-t from-black/80 to-transparent rounded-b-sm" style={{ backdropFilter: 'blur(100px)', maskImage: 'linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent)' }}></div>
-                                <div className="absolute inset-x-0 bottom-0 h-[80px] bg-gradient-to-t from-black/60 to-transparent rounded-b-sm" style={{ backdropFilter: 'blur(90px)', maskImage: 'linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent)' }}></div>
-                                <div className="absolute inset-x-0 bottom-0 h-[60px] bg-gradient-to-t from-black/40 to-transparent rounded-b-sm" style={{ backdropFilter: 'blur(80px)', maskImage: 'linear-gradient(to top, rgba(0, 0, 0, 0.5), transparent)' }}></div>
-                                <div className="absolute inset-x-0 bottom-0 h-[40px] bg-gradient-to-t from-black/30 to-transparent rounded-b-sm" style={{ backdropFilter: 'blur(70px)', maskImage: 'linear-gradient(to top, rgba(0, 0, 0, 0.4), transparent)' }}></div>
+                                {/* Improved gradient and blur layer with smooth transition */}
+                                <div
+                                    className="absolute inset-x-0 bottom-0 h-[90px] lg:h-[100px] bg-gradient-to-t from-black/60 via-black/40 to-transparent"
+                                    style={{
+                                        backdropFilter: 'blur(2px)',
+                                        WebkitBackdropFilter: 'blur(2px)',
+                                        height: '80px',
+                                    }}
+                                ></div>
                                 
-                                {/* Content layer */}
-                                <div className="absolute inset-0 flex items-end justify-center mx-5 my-5 lg:mx-10"> 
-                                    <div className="flex items-center justify-between w-full px-5"> 
+                                <div className="absolute inset-0 flex items-end justify-center px-5 py-4 lg:px-10">
+                                    <div className="flex items-center justify-between w-full">
                                         <div className="text-[#FFFEFE] gap-2">
                                             <h3 className="text-xl font-ekmukta">{member.name}</h3>
                                             <p className="text-[16px] text-[#C1C1C1] font-ekmukta">{member.role}</p>
                                         </div>
                                         <div className="flex space-x-4 items-center">
-                                            <a href={member.social.tiktok} className="text-white"><FaTiktok size={20} /></a>
-                                            <a href={member.social.instagram} className="text-white"><FaInstagram size={20} /></a>
-                                            <a href={member.social.facebook} className="text-white"><FaFacebook size={20} /></a>
+                                            {member.social.tiktok && (
+                                                <a href={member.social.tiktok} className="text-white">
+                                                    <FaTiktok size={20} />
+                                                </a>
+                                            )}
+                                            {member.social.instagram && (
+                                                <a href={member.social.instagram} className="text-white">
+                                                    <FaInstagram size={20} />
+                                                </a>
+                                            )}
+                                            {member.social.facebook && (
+                                                <a href={member.social.facebook} className="text-white">
+                                                    <FaFacebook size={20} />
+                                                </a>
+                                            )}
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </motion.div>
                         ))}
-                    </div>
+                    </motion.div>
                 </div>
             </div>
             {windowWidth >= 1024 && (

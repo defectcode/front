@@ -6,9 +6,9 @@ export const teamMembers = [
         role: 'Actress',
         image: '/imgs/OurTeam/Valeria1.png', // Adaugă calea către imagine
         social: {
-            tiktok: '#',
-            instagram: '#',
-            facebook: '#'
+            tiktok: 'https://www.tiktok.com/@valery.fain',
+            instagram: 'https://www.instagram.com/valery.fain',
+            facebook: 'https://www.facebook.com/ValreyFine'
         }
     },
     {
@@ -16,19 +16,17 @@ export const teamMembers = [
         role: 'Producer',
         image: '/imgs/OurTeam/Victor.png',
         social: {
-            tiktok: '#',
-            instagram: '#',
-            facebook: '#'
+            tiktok: 'https://www.tiktok.com/@victor.fain',
+            instagram: 'https://www.instagram.com/victor.fain7',
+            facebook: 'https://www.facebook.com/Indiwidual'
         }
     },
     {
-        name: 'Victor Fyne',
-        role: 'Producer',
-        image: '/imgs/OurTeam/Image.png',
+        name: 'Nن',
+        role: 'Top Supporter',
+        image: '/imgs/OurTeam/Image4.png',
         social: {
-            tiktok: '#',
-            instagram: '#',
-            facebook: '#'
+            tiktok: 'https://www.tiktok.com/@nnn23nn',
         }
     },
 

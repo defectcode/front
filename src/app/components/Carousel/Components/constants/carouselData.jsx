@@ -22,7 +22,7 @@ export const images = [
   },
   {
     src: {
-        desktop: '/imgs/CloseStage.svg',
+        desktop: '/imgs/carousel.png',
         tablet: '/imgs/tablet.png',
         mobile: '/imgs/Carusel2.png'
       },
@@ -41,7 +41,7 @@ export const images = [
   },
   {
     src: {
-        desktop: '/imgs/CloseStage.svg',
+        desktop: '/imgs/carousel.png',
         tablet: '/imgs/tablet.png',
         mobile: '/imgs/mobile-close.svg'
       },
@@ -60,7 +60,7 @@ export const images = [
   },
   {
     src: {
-        desktop: '/imgs/CloseStage.svg',
+        desktop: '/imgs/carousel.png',
         tablet: '/imgs/tablet.png',
         mobile: '/imgs/mobile-close.svg'
       },
@@ -79,7 +79,7 @@ export const images = [
   },
   {
     src: {
-        desktop: '/imgs/CloseStage.svg',
+        desktop: '/imgs/carousel.png',
         tablet: '/imgs/tablet.png',
         mobile: '/imgs/mobile-close.svg'
       },
@@ -98,7 +98,7 @@ export const images = [
   },
   {
     src: {
-        desktop: '/imgs/CloseStage.svg',
+        desktop: '/imgs/carousel.png',
         tablet: '/imgs/tablet.png',
         mobile: '/imgs/mobile-close.svg'
       },
@@ -117,7 +117,7 @@ export const images = [
   },
   {
     src: {
-        desktop: '/imgs/CloseStage.svg',
+        desktop: '/imgs/carousel.png',
         tablet: '/imgs/tablet.png',
         mobile: '/imgs/mobile-close.svg'
       },
@@ -136,7 +136,7 @@ export const images = [
   },
   {
     src: {
-        desktop: '/imgs/CloseStage.svg',
+        desktop: '/imgs/carousel.png',
         tablet: '/imgs/tablet.png',
         mobile: '/imgs/mobile-close.svg'
       },
@@ -155,7 +155,7 @@ export const images = [
   },
   {
       src: {
-          desktop: '/imgs/CloseStage.svg',
+          desktop: '/imgs/carousel.png',
           tablet: '/imgs/tablet.png',
           mobile: '/imgs/mobile-close.svg'
         },
@@ -174,7 +174,7 @@ export const images = [
     },
     {
       src: {
-          desktop: '/imgs/CloseStage.svg',
+          desktop: '/imgs/carousel.png',
           tablet: '/imgs/tablet.png',
           mobile: '/imgs/mobile-close.svg'
         },

@@ -5,19 +5,19 @@ export const goals = [
         id: 1,
         title: 'Social Justice',
         description: 'We work to end poverty and inequality, giving everyone equal chances. By reaching and supporting communities, we help people build a fair society where everyone has the opportunity to succeed.',
-        image: '/imgs/OurMission/module1.png',
+        image: '/imgs/OurMission/element.png',
     },
     {
         id: 2,
         title: 'Sustainable Development',
         description: 'We are dedicated to creating a green, modern city for a sustainable future. Our projects focus on urban planning, eco-friendly building, and innovative technologies to protect our environment for future generations.',
-        image: '/imgs/OurMission/module2.png',
+        image: '/imgs/OurMission/element.png',
     },
     {
         id: 3,
         title: 'Cultural Diversity',
         description: 'We honor and respect the unique cultures and traditions of everyone. By encouraging cultural exchange and mutual understanding, we aim to create an inclusive, harmonious community that values and celebrates diversity.',
-        image: '/imgs/OurMission/module3.png',
+        image: '/imgs/OurMission/element.png',
     },
 ];
 

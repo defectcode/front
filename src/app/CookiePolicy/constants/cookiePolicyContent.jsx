@@ -6,6 +6,7 @@ This Cookie Policy explains what cookies are, how we use them, and the choices y
 `;
 
 export const howWeUseCookiesTitle = "How We Use Cookies";
+export const weuseCookies = "We use cookies for various reasons, including to:";
 export const howWeUseCookiesParagraphs = [
   `Improve user experience: Cookies help us remember your preferences and settings, allowing you to navigate our Site more easily.`,
   `Analyze traffic: We use cookies to collect information about how visitors use our Site. This helps us improve our content and performance.`,
