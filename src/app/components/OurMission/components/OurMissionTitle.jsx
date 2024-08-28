@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import { motion } from "framer-motion";
 
-const Earth = () => {
+const OurMissionTitle = () => {
     const { ref, inView, entry } = useInView();
     const [isMobile, setIsMobile] = useState(false);
 
@@ -20,26 +20,19 @@ const Earth = () => {
 
     return (
         <div 
-            className={`relative h-[150px] w-full flex flex-col items-center justify-center ${isMobile ? 'bg-black' : ''}`}
+            className={`relative ${isMobile ? 'h-[100px] bg-black' : 'h-[150px]'} w-full`} 
             ref={ref}
-            style={{
-                backgroundImage: isMobile ? 'none' : "none",
-                backgroundSize: 'cover',
-                backgroundPosition: 'center'
-            }}
         >
             <motion.div 
-                className="flex flex-col items-center justify-center text-center"
+                className={`absolute lg:ml-[121px] ${isMobile ? 'static flex flex-col items-center justify-center h-full' : ''}`}
             >
                 <motion.h1
-                    className="text-[36px] text-white mb-2 lg:mb-4"
-                    style={{ fontFamily: 'Robotom, sans-serif', fontWeight: 400 }}
+                    className={`text-3xl text-white font-semibold font-roboto mb-2 ${isMobile ? 'text-center' : ''}`}
                 >
                     Our Mission
                 </motion.h1>
                 <motion.p
-                    className="lg:text-[16px] lg:w-[320px] w-full text-white px-4"
-                    style={{ fontFamily: "'Ek Mukta', sans-serif", fontWeight: 400 }}
+                    className={`w-[306px] lg:w-1/2 text-white text-[16px] font-ekmukta mt-10 lg:mt-2 max-md:relative ${isMobile ? 'text-center px-[50px]' : 'mr-[170px]'}`}
                 >
                     Uniting different cultures for a better future with love, harmony and innovation
                 </motion.p>
@@ -48,4 +41,4 @@ const Earth = () => {
     );
 }
 
-export default Earth;
+export default OurMissionTitle;

@@ -8,7 +8,7 @@ export const images = [
         mobile: '/imgs/Carusel.png'
       },
     alt: 'Slide 1',
-    raisedAmount: '700',
+    raisedAmount: '690',
     goalAmount: '74,000',
     title: 'Production Stages',
     titleConcept: 'Series Concept',
@@ -24,10 +24,10 @@ export const images = [
     src: {
         desktop: '/imgs/carousel.png',
         tablet: '/imgs/tablet.png',
-        mobile: '/imgs/Carusel2.png'
+        mobile: '/imgs/carousell.png'
       },
       alt: 'Slide 2',
-      raisedAmount: '15000',
+      raisedAmount: '7,014',
       goalAmount: '227,000',
       title: 'Production Stages',
       titleConcept: 'Costume Atelier',
@@ -43,7 +43,7 @@ export const images = [
     src: {
         desktop: '/imgs/carousel.png',
         tablet: '/imgs/tablet.png',
-        mobile: '/imgs/mobile-close.svg'
+        mobile: '/imgs/carousel2.png'
       },
       alt: 'Slide 3',
       raisedAmount: '15000',
@@ -62,7 +62,7 @@ export const images = [
     src: {
         desktop: '/imgs/carousel.png',
         tablet: '/imgs/tablet.png',
-        mobile: '/imgs/mobile-close.svg'
+        mobile: '/imgs/carousel3.png'
       },
       alt: 'Slide 4',
       raisedAmount: '15000',
@@ -81,7 +81,7 @@ export const images = [
     src: {
         desktop: '/imgs/carousel.png',
         tablet: '/imgs/tablet.png',
-        mobile: '/imgs/mobile-close.svg'
+        mobile: '/imgs/carousel4.png'
       },
     alt: 'Slide 5',
     raisedAmount: 0,

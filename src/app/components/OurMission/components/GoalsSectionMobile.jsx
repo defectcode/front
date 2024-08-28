@@ -1,7 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { throttle } from 'lodash';
+import React, { useState } from 'react';
 import Support from './Support';
-import { motion } from 'framer-motion';
 import Modal from '/src/app/components/Header/components/Modal.jsx';
 import SupportForm from '/src/app/components/Header/components/Payment/SupportForm.jsx';
 import { Elements } from '@stripe/react-stripe-js';
@@ -12,9 +10,6 @@ const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY)
 
 const GoalsSectionMobile = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [currentSection, setCurrentSection] = useState(0);
-    const [isLastSectionVisible, setIsLastSectionVisible] = useState(false);
-    const sectionRefs = useRef([]);
 
     const openModal = () => {
         setIsModalOpen(true);
@@ -24,74 +19,41 @@ const GoalsSectionMobile = () => {
         setIsModalOpen(false);
     };
 
-    const handleScroll = throttle(() => {
-        if (typeof window !== 'undefined') {
-            const scrollY = window.scrollY;
-            const sectionHeight = window.innerHeight / 2;
-            const newSection = Math.min(goals.length - 1, Math.floor(scrollY / sectionHeight));
-            setCurrentSection(newSection);
-
-            // Check if the last section is visible
-            const lastSection = sectionRefs.current[goals.length - 1];
-            if (lastSection) {
-                const lastSectionTop = lastSection.offsetTop;
-                const viewportBottom = scrollY + window.innerHeight;
-                setIsLastSectionVisible(viewportBottom >= lastSectionTop);
-            }
-        }
-    }, 200);
-
-    useEffect(() => {
-        window.addEventListener('scroll', handleScroll, { passive: true });
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
-
     return (
-        <motion.div className="bg-black text-white py-6 px-4">
-            {goals.map((goal, index) => (
-                <motion.div
-                    ref={el => sectionRefs.current[index] = el}
+        <div className="bg-black text-white pt-6 px-4 flex flex-col items-center">
+            {goals.map((goal) => (
+                <div
                     key={goal.id}
-                    className={`goal-section relative w-full max-w-sm mx-auto bg-[#0D0D0D] rounded-lg overflow-hidden ${
-                        currentSection >= index ? 'opacity-100' : 'opacity-0'
-                    }`}
-                    initial="hidden"
-                    animate={currentSection >= index ? 'visible' : 'hidden'}
-                    transition={{ duration: 0.5, ease: 'easeInOut' }}
+                    className="relative w-full max-w-sm mx-auto bg-[#0D0D0D] rounded-lg overflow-hidden mb-5 flex flex-col justify-end"
                     style={{
-                        willChange: 'opacity, transform',
-                        marginBottom: '40px',
-                        marginTop: index === 0 ? '250px' : '150px',
+                        backgroundImage: `url(${goal.Mobile})`,
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center',
+                        height: '520px',
                     }}
                 >
-                    <img src={goal.image} alt={goal.title} className="w-full h-auto object-cover" />
-                    <div
-                        className="absolute inset-x-0 bottom-0 h-[300px] bg-gradient-to-t from-black/60 via-transparent to-transparent p-6 flex flex-col justify-end"
-                        style={{
-                            backdropFilter: 'blur(2px)', // Applies the blur effect
-                            WebkitBackdropFilter: 'blur(2px)', // Ensures compatibility with WebKit browsers
-                        }}
-                    >
-                        <h3 className="text-sm font-bold text-white mb-1" style={{ fontFamily: 'Avenir Heavy, sans-serif' }}>
-                            Goal {goal.id}
+                    <div className="p-5 flex flex-col justify-end h-full">
+                        <h3 className="text-sm  text-[#CDCDCD] mb-1">
+                            <span style={{ fontFamily: 'Avenir Regular, sans-serif' }}>Goal</span> <span className='font-bold' style={{ fontFamily: 'Avenir Heavy, sans-serif' }}>{goal.id}</span>
                         </h3>
                         <h2 className="text-2xl text-white mb-4 font-ekmukta-extrabold">{goal.title}</h2>
-                        <p
-                            className="text-[16px] text-[#FFFFFF] font-extralight mb-6"
-                            // style={{ fontFamily: 'Ek Mukta, sans-serif' }}
+                        <p 
+                            className="text-[16px] text-[#FFFFFF] font-ekmukta-extralight mb-6"
+                            style={{ fontFamily: 'Ek Mukta, sans-serif', lineHeight: '120%' }}  // Aplicarea line-height
                         >
                             {goal.description}
                         </p>
                         <Support onClick={openModal} />
                     </div>
-                </motion.div>
+                </div>
             ))}
+
             <Modal isOpen={isModalOpen} onClose={closeModal}>
                 <Elements stripe={stripePromise}>
                     <SupportForm />
                 </Elements>
             </Modal>
-        </motion.div>
+        </div>
     );
 }
 

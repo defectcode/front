@@ -4,6 +4,7 @@ import './OurMission.model.css';
 import GoalsSectionMobile from './components/GoalsSectionMobile';
 import GoalsSectionDesktop from './components/GoalsSectionDesktop';
 import Earth from './components/Earth';
+import OurMissionTitle from './components/OurMissionTitle';
 import useWindowDimensions from './components/useWindowDimensions';
 
 const OurMission = () => {
@@ -15,8 +16,8 @@ const OurMission = () => {
     }, [width]);
 
     return (
-        <div className="bg-black md:h-[2230px]">
-            <Earth />
+        <div className="bg-black lg:h-[1830px]">
+            <Earth/>
             {isMobile ? <GoalsSectionMobile /> : <GoalsSectionDesktop />}
         </div>
     );

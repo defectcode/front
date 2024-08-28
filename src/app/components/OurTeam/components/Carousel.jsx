@@ -73,7 +73,7 @@ const Carousel = () => {
     };
 
     return (
-        <div className="relative w-full mt-4 lg:mt-10">
+        <div className="relative w-full mt-4 mb-10 lg:my-10">
             <div className="flex items-center">
                 <div
                     ref={containerRef}
