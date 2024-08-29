@@ -3,9 +3,9 @@
 export const images = [
   {
     src: {
-        desktop: '/imgs/carousel.svg',
-        tablet: '/imgs/tablet.png',
-        mobile: '/imgs/Carusel.png'
+        desktop: '/imgs/Carousel/Concept.png',
+        tablet: '/imgs/Carousel/tablet.png',
+        mobile: '/imgs/Carousel/proces.png'
       },
     alt: 'Slide 1',
     raisedAmount: '690',
@@ -22,9 +22,9 @@ export const images = [
   },
   {
     src: {
-        desktop: '/imgs/carousel.png',
-        tablet: '/imgs/tablet.png',
-        mobile: '/imgs/carousell.png'
+        desktop: '/imgs/Carousel/Atelier.png',
+        tablet: '/imgs/Carousel/tablet.png',
+        mobile: '/imgs/Carousel/atelier.png'
       },
       alt: 'Slide 2',
       raisedAmount: '7,014',
@@ -41,9 +41,9 @@ export const images = [
   },
   {
     src: {
-        desktop: '/imgs/carousel.png',
-        tablet: '/imgs/tablet.png',
-        mobile: '/imgs/carousel2.png'
+        desktop: '/imgs/Carousel/Episode1.png',
+        tablet: '/imgs/Carousel/tablet.png',
+        mobile: '/imgs/Carousel/episode1.png'
       },
       alt: 'Slide 3',
       raisedAmount: '15000',
@@ -60,9 +60,9 @@ export const images = [
   },
   {
     src: {
-        desktop: '/imgs/carousel.png',
-        tablet: '/imgs/tablet.png',
-        mobile: '/imgs/carousel3.png'
+        desktop: '/imgs/Carousel/Episode2.png',
+        tablet: '/imgs/Carousel/tablet.png',
+        mobile: '/imgs/Carousel/episode2.png'
       },
       alt: 'Slide 4',
       raisedAmount: '15000',
@@ -79,9 +79,9 @@ export const images = [
   },
   {
     src: {
-        desktop: '/imgs/carousel.png',
-        tablet: '/imgs/tablet.png',
-        mobile: '/imgs/carousel4.png'
+        desktop: '/imgs/Carousel/Episode3.png',
+        tablet: '/imgs/Carousel/tablet.png',
+        mobile: '/imgs/Carousel/episode3.png'
       },
     alt: 'Slide 5',
     raisedAmount: 0,
@@ -98,9 +98,9 @@ export const images = [
   },
   {
     src: {
-        desktop: '/imgs/Carousel5.png',
-        tablet: '/imgs/tablet.png',
-        mobile: '/imgs/carousel5.png'
+        desktop: '/imgs/Carousel/Episode4.png',
+        tablet: '/imgs/Carousel/tablet.png',
+        mobile: '/imgs/Carousel/episode4.png'
       },
     alt: 'Slide 6',
     raisedAmount: 0,
@@ -117,9 +117,9 @@ export const images = [
   },
   {
     src: {
-        desktop: '/imgs/Carousel6.png',
-        tablet: '/imgs/tablet.png',
-        mobile: '/imgs/carousel6.png'
+        desktop: '/imgs/Carousel/Episode5.png',
+        tablet: '/imgs/Carousel/tablet.png',
+        mobile: '/imgs/Carousel/episode5.png'
       },
     alt: 'Slide 7',
     raisedAmount: 0,
@@ -136,9 +136,9 @@ export const images = [
   },
   {
     src: {
-        desktop: '/imgs/Carousel7.png',
-        tablet: '/imgs/tablet.png',
-        mobile: '/imgs/carousel7.png'
+        desktop: '/imgs/Carousel/Episode6.png',
+        tablet: '/imgs/Carousel/tablet.png',
+        mobile: '/imgs/Carousel/episode6.png'
       },
     alt: 'Slide 8',
     raisedAmount: 0,
@@ -155,9 +155,9 @@ export const images = [
   },
   {
       src: {
-          desktop: '/imgs/Carousel8.png',
-          tablet: '/imgs/tablet.png',
-          mobile: '/imgs/carousel8.png'
+          desktop: '/imgs/Carousel/Episode7.png',
+          tablet: '/imgs/Carousel/tablet.png',
+          mobile: '/imgs/Carousel/episode7.png'
         },
       alt: 'Slide 9',
       raisedAmount: 0,
@@ -174,9 +174,9 @@ export const images = [
     },
     {
       src: {
-          desktop: '/imgs/carousel.png',
-          tablet: '/imgs/tablet.png',
-          mobile: '/imgs/mobile-close.svg'
+          desktop: '/imgs/Carousel/carousel.png',
+          tablet: '/imgs/Carousel/tablet.png',
+          mobile: '/imgs/Carousel/proces.png'
         },
       alt: 'Slide 10',
       raisedAmount: 0,
