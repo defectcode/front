@@ -98,9 +98,9 @@ export const images = [
   },
   {
     src: {
-        desktop: '/imgs/carousel.png',
+        desktop: '/imgs/Carousel5.png',
         tablet: '/imgs/tablet.png',
-        mobile: '/imgs/mobile-close.svg'
+        mobile: '/imgs/carousel5.png'
       },
     alt: 'Slide 6',
     raisedAmount: 0,
@@ -117,9 +117,9 @@ export const images = [
   },
   {
     src: {
-        desktop: '/imgs/carousel.png',
+        desktop: '/imgs/Carousel6.png',
         tablet: '/imgs/tablet.png',
-        mobile: '/imgs/mobile-close.svg'
+        mobile: '/imgs/carousel6.png'
       },
     alt: 'Slide 7',
     raisedAmount: 0,
@@ -136,9 +136,9 @@ export const images = [
   },
   {
     src: {
-        desktop: '/imgs/carousel.png',
+        desktop: '/imgs/Carousel7.png',
         tablet: '/imgs/tablet.png',
-        mobile: '/imgs/mobile-close.svg'
+        mobile: '/imgs/carousel7.png'
       },
     alt: 'Slide 8',
     raisedAmount: 0,
@@ -155,9 +155,9 @@ export const images = [
   },
   {
       src: {
-          desktop: '/imgs/carousel.png',
+          desktop: '/imgs/Carousel8.png',
           tablet: '/imgs/tablet.png',
-          mobile: '/imgs/mobile-close.svg'
+          mobile: '/imgs/carousel8.png'
         },
       alt: 'Slide 9',
       raisedAmount: 0,
