@@ -4,7 +4,7 @@ const Dots = ({ totalImages, currentIndex, isMobile, isTablet, onDotClick }) => 
   let positionClass;
 
   if (isMobile) {
-    positionClass = 'bottom-8';
+    positionClass = 'bottom-1';
   } else if (isTablet) {
     positionClass = 'bottom';
   } else {
@@ -16,7 +16,7 @@ const Dots = ({ totalImages, currentIndex, isMobile, isTablet, onDotClick }) => 
       {Array.from({ length: totalImages }).map((_, index) => (
         <div
           key={index}
-          className={`h-2 w-2 max-md:h-1.5 max-md:w-1.5 rounded-full ${currentIndex === index ? 'bg-white' : 'bg-gray-400'}`}
+          className={`h-2 w-2 rounded-full ${currentIndex === index ? 'bg-white' : 'bg-gray-400'}`}
           onClick={() => onDotClick(index)} 
           style={{ cursor: 'pointer' }}
         ></div>

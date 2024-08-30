@@ -25,21 +25,21 @@ const FundraisingProgress = ({ raisedAmount, goalAmount, contentIndex = 0 }) => 
   }
 
   return (
-    <div className="text-white flex flex-col justify-end h-full md:h-auto mb-6">
+    <div className="text-white flex flex-col justify-end h-full md:h-auto mb-[30px]">
       <div>
-        <div className={styles.titleConcept}>
+        <div className={styles.titleConcept} style={{lineHeight: '105%'}}>
           {content.titleConcept}
         </div>
       </div>
 
-      <div className="flex justify-between w-full lg:w-[346px]">
+      <div className="flex justify-between w-full lg:w-[346px] -mb-[6px] lg:mb-0">
         {content.status === 'Next' ? (
-          <span className="text-[20px] lg:text-2xl font-ekmukta font-bold text-[#FFFFFF]">Next Fundraising</span>
+          <span className="text-[20px] lg:text-2xl font-ekmukta font-bold text-[#FFFFFF]" style={{lineHeight: '105%'}}>Next Fundraising</span>
         ) : (
-          <span className="text-[20px] lg:text-2xl font-ekmukta font-bold text-[#FFFFFF]">${content.raisedAmount}</span>
+          <span className="text-[20px] lg:text-2xl font-ekmukta font-bold mb-2 md:mb-0 text-[#FFFFFF]" style={{lineHeight: '105%'}}>${content.raisedAmount}</span>
         )}
-        <span className="text-[13px] block font-avenir font-light text-[#C1C1C1]">
-          {content.stageLabel} <span className="text-[#FFFFFF] font-semibold font-ekMukta">{content.stageNumber}</span>
+        <span className="text-[13px] block font-avenir font-light text-[#C1C1C1] mb-2 md:mb-0" style={{lineHeight: '120%'}}>
+          {content.stageLabel} <span className="text-[#FFFFFF] font-semibold font-avenir">{content.stageNumber}</span>
         </span>
       </div>
       
@@ -62,9 +62,9 @@ const FundraisingProgress = ({ raisedAmount, goalAmount, contentIndex = 0 }) => 
       </div>
 
       <div className="flex justify-between items-center w-full lg:w-[346px] mt-2 mb-2 lg:mb-0">
-        <div className="flex items-center text-[14px] sm:text-[15px]">
+        <div className="flex items-center text-[14px] sm:text-[15px] mt-[-8px] md:mt-0">
           {content.status === 'Next' ? (
-            <p className="text-[#C1C1C1] text-[15px] max-lg:text-md max-sm:text-[12px] max-md:p-0 max-md:-mt-2 font-ekMukta">
+            <p className="text-[#C1C1C1] text-[15px] max-lg:text-md max-sm:text-[12px] max-md:p-0 max-md:-mt-1 font-ekMukta">
               This stage is now closed
             </p>
           ) : (

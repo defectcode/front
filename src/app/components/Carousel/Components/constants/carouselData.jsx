@@ -5,7 +5,7 @@ export const images = [
     src: {
         desktop: '/imgs/Carousel/Concept.png',
         tablet: '/imgs/Carousel/tablet.png',
-        mobile: '/imgs/Carousel/proces.png'
+        mobile: '/imgs/Carousel/section.png'
       },
     alt: 'Slide 1',
     raisedAmount: '690',
@@ -81,7 +81,7 @@ export const images = [
     src: {
         desktop: '/imgs/Carousel/Episode3.png',
         tablet: '/imgs/Carousel/tablet.png',
-        mobile: '/imgs/Carousel/episode3.png'
+        mobile: '/imgs/Carousel/episode3.jpg'
       },
     alt: 'Slide 5',
     raisedAmount: 0,
@@ -174,9 +174,9 @@ export const images = [
     },
     {
       src: {
-          desktop: '/imgs/Carousel/carousel.png',
+          desktop: '/imgs/Carousel/Episode8.png',
           tablet: '/imgs/Carousel/tablet.png',
-          mobile: '/imgs/Carousel/proces.png'
+          mobile: '/imgs/Carousel/episode8.png'
         },
       alt: 'Slide 10',
       raisedAmount: 0,

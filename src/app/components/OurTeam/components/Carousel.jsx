@@ -25,7 +25,7 @@ const Carousel = () => {
         if (windowWidth >= 1024) {
             return { width: 382, height: 547 }; // Desktop dimensions
         } else {
-            return { width: 286, height: 378 }; // Mobile dimensions
+            return { width: 268, height: 378 }; // Mobile dimensions
         }
     };
 
@@ -108,35 +108,34 @@ const Carousel = () => {
                                 />
                                 {/* Improved gradient and blur layer with smooth transition */}
                                 <div
-                                    className="absolute inset-x-0 bottom-0 h-[90px] lg:h-[100px] bg-gradient-to-t from-black/60 via-black/40 to-transparent"
+                                    className="absolute inset-x-0 bottom-0"
                                     style={{
-                                        backdropFilter: 'blur(2px)',
-                                        WebkitBackdropFilter: 'blur(2px)',
-                                        height: '80px',
+                                        background: 'linear-gradient(0deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 100%)',
+                                        height: '160px',
                                     }}
                                 ></div>
                                 
-                                <div className="absolute inset-0 flex items-end justify-center px-5 py-4 lg:px-10">
+                                <div className="absolute inset-0 flex items-end justify-center px-5 py-6 lg:px-10">
                                     <div className="flex items-center justify-between w-full">
                                         <div className="text-[#FFFEFE] gap-2">
-                                            <h3 className="text-xl font-ekmukta">{member.name}</h3>
-                                            <p className="text-[16px] text-[#C1C1C1] font-ekmukta">{member.role}</p>
+                                            <h3 className="text-[18px] font-ekmukta-medium">{member.name}</h3>
+                                            <p className="text-[14px] text-[#C1C1C1] font-ekmukta">{member.role}</p>
                                         </div>
                                         <div className="flex space-x-4 items-center">
                                             {member.social.tiktok && (
                                                 <a href={member.social.tiktok} className="text-white">
-                                                    <FaTiktok size={20} />
+                                                    <Image src='/imgs/OurTeam/tiktok.png' alt='facebook' height={22} width={19} />
                                                 </a>
                                             )}
                                             {member.social.instagram && (
                                                 <a href={member.social.instagram} className="text-white">
-                                                    <FaInstagram size={20} />
-                                                </a>
+                                                    <Image src='/imgs/OurTeam/instagram.png' alt='facebook' height={20} width={20} />
+                                                    </a>
                                             )}
                                             {member.social.facebook && (
                                                 <a href={member.social.facebook} className="text-white">
-                                                    <FaFacebook size={20} />
-                                                </a>
+                                                    <Image src='/imgs/OurTeam/facebook.png' alt='facebook' height={21} width={12} />
+                                                    </a>
                                             )}
                                         </div>
                                     </div>

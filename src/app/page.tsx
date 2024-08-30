@@ -7,6 +7,7 @@ import OurTeam from './components/OurTeam/OurTeam';
 import { useEffect, useState } from "react";
 import useDeviceType from '../app/Crowdfunding/components/hooks/useDeviceType';
 import FooterMobile from '../app/components/Footer/FooterMobile'
+import CarouselMobile from './components/Carousel/CarouselMobile'
 
 
 export default function Home() {
@@ -32,7 +33,7 @@ export default function Home() {
   return (
     <main>
       <Header/>
-      <Carousel/>
+      {isMobile ? <CarouselMobile/>  :  <Carousel/>}
       <OurMission/>
       <OurTeam/>
       {isMobile ? <FooterMobile/> : <Footer/>}

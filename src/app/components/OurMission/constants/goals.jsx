@@ -5,8 +5,8 @@ export const goals = [
         id: 1,
         title: 'Social Justice',
         description: 'We work to end poverty and inequality, giving everyone equal chances. By reaching and supporting communities, we help people build a fair society where everyone has the opportunity to succeed.',
-        Mobile: '/imgs/OurMission/element1.png',  // Mobile image path
-        imageDesktop: '/imgs/OurMission/Element1.png',  // Desktop image path
+        Mobile: '/imgs/OurMission/element1.png',
+        imageDesktop: '/imgs/OurMission/Element1.png',
     },
     {
         id: 2,
@@ -14,6 +14,7 @@ export const goals = [
         description: 'We are dedicated to creating a green, modern city for a sustainable future. Our projects focus on using clean energy, eco-friendly buildings, and technologies to protect our environment for generations',
         Mobile: '/imgs/OurMission/element2.png',
         imageDesktop: '/imgs/OurMission/Element2.png',
+        // videoMobile: '/imgs/OurMission/IMG_0867.MP4', // Am redenumit proprietatea
     },
     {
         id: 3,
@@ -23,6 +24,7 @@ export const goals = [
         imageDesktop: '/imgs/OurMission/Element3.png',
     },
 ];
+
 
 
 export const componentsAnimation = {  
