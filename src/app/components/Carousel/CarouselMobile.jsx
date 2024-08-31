@@ -127,7 +127,7 @@ const Carousel = () => {
         >
           {/* Black Overlay for side images */}
           {index !== currentIndex && (
-            <div className="absolute inset-0 bg-black opacity-50 z-10"></div> // Ensure the overlay has a higher z-index
+            <div className="absolute inset-0 bg-black opacity-50 z-10 h-[494px] mt-36"></div> // Ensure the overlay has a higher z-index
           )}
 
           {/* Blur Layer for the central image */}
