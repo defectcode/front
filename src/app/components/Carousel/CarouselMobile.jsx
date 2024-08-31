@@ -6,11 +6,8 @@ import Title from './Components/Title';
 import FundraisingProgress from './Components/Progres';
 import Dots from './Components/Dots';
 import { IoIosArrowForward, IoIosArrowBack } from 'react-icons/io';
-import style from '../Carousel/Components/style/Progres.module.css'; // Import your custom styles
+import style from '../Carousel/Components/style/Progres.module.css';
 import Image from 'next/image';
-
-// Import lock icon (adjust the path to your actual lock icon)
-// import lockIcon from '/imgs/Carousel/lock.svg';
 
 const Carousel = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -73,8 +70,8 @@ const Carousel = () => {
   useEffect(() => {
     if (slider.current) {
       setTimeout(() => {
-        slider.current.moveToIdx(1); // Set the starting index to 1 (second slide)
-      }, 0); // Delay execution to ensure slider is initialized
+        slider.current.moveToIdx(1);
+      }, 0);
     }
   }, [slider]);
 
@@ -128,12 +125,12 @@ const Carousel = () => {
           className={`keen-slider__slide relative flex justify-center text-white text-2xl w-full h-[494px] sm:h-[494px] md:h-[500px] lg:w-[1100px] max-height ${index !== currentIndex ? 'cursor-pointer' : ''} ${isMobile ? 'mobile-slide' : ''} ${index === currentIndex ? 'current-slide' : ''}`}
           onClick={(e) => handleImageClick(e, index)}
         >
-          {/* Darker black overlay for side images */}
+          {/* Black Overlay for side images */}
           {index !== currentIndex && (
-            <div className="absolute inset-0 bg-black opacity-70 max-h-[494px] mt-36"></div>  
+            <div className="absolute inset-0 bg-black opacity-50 z-10"></div> // Ensure the overlay has a higher z-index
           )}
 
-          {/* Blur Layer for the central image with status 'Next' */}
+          {/* Blur Layer for the central image */}
           {index === currentIndex && (
             <div
               className="absolute inset-x-0 bottom-0 rounded-[10px] mb-5 w-full"
@@ -156,7 +153,7 @@ const Carousel = () => {
           <div
             className={`absolute inset-x-0 bottom-0 z-20 ${isMobile ? 'w-full px-3 mb-[25px] rounded-[10px]' : isTablet ? 'w-full h-full bg-gradient-to-r from-black/60 to-transparent p-3' : 'w-[55%] h-[750px] bg-gradient-to-r px-10'} flex flex-col justify-end text-white ${currentIndex === index ? 'opacity-100' : 'opacity-0'} transition-opacity duration-200`}
             style={
-              image.status === 'Next' && index === currentIndex // Apply gradient style if status is Next and it's the current slide
+              image.status === 'Next' && index === currentIndex
                 ? {
                     paddingLeft: '12px',
                     paddingRight: '12px',
