@@ -3,12 +3,12 @@
 export const images = [
     {
       alt: 'Slide 1',
-      title: 'Costume Atelier',
-      raisedAmount: '7,014',
-      goalAmount: '227,000',
+      title: 'Series Concept',
+      raisedAmount: '690',
+      goalAmount: '74,000',
       subtitle: '200000',
       stageLabel: 'Stage',
-      stageNumber: '2',
+      stageNumber: '1',
       supportersLabel: 'supporters',
       supportersCount: '7',
       description: 'Create premium costumers and exclusive apparel for "Paradise Problems" supporters',

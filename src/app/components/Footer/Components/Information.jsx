@@ -9,7 +9,7 @@ const Information = () => {
     <div className="flex flex-row justify-between items-start max-w-[1200px] mx-auto w-full text-white  max-lg:flex-col max-lg:justify-around max-md:lg:items-start max-lg:items-center">
       <div className="mb-4 lg:mb-0">
           <Link href="/">
-            <Image src='/imgs/blackLogo.svg' alt="logo" width={98} height={32} />
+            <Image src='/imgs/Blogo.svg' alt="logo" width={102} height={24} />
           </Link>
       </div>
       <div className="flex flex-row justify-between items-start max-w-[800px] w-full text-white">

@@ -101,7 +101,7 @@ const FundraisingProgress = ({ raisedAmount, goalAmount, contentIndex = 0 }) => 
       </div>
 
       {content.status === 'Process' ? (
-        <Button style={{ fontFamily: 'Avenir, sans-serif', fontWeight: 700 }} />
+        <Button link={content.link} />  // Pass the link prop to the Button component
       ) : (
         ""
       )}

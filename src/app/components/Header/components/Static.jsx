@@ -60,9 +60,9 @@ export default function Static({ openModal }) {
         className={`StaticNavbar bg-transparent w-full h-11 max-md:h-10 font-avenirRoman backdrop-blur-lg ios-blur fixed`}
         style={{ transition: 'transform 0.3s ease-in-out' }}
       >
-        <div className="max-w-[1200px] mx-auto flex justify-between items-center px-2 max-md:px-0 py-2 max-lg:mx-5 relative">
-          <div>
-            <Link href="/"><Image src="/imgs/logo.svg" alt='logo' className='w-20 h-auto' width={11} height={1} /></Link>
+  <div className="max-w-[1200px]  flex justify-between items-center h-full mx-5 md:mx-auto relative z-50">
+  <div>
+            <Link href="/"><Image src="/imgs/Plogo.svg" alt='logo' className='w-[98px] h-[24px] text-white' width={98} height={24} /></Link>
           </div>
           <div className="md:hidden flex items-center">
             <button onClick={() => setIsOpen(!isOpen)} className="transition-opacity">

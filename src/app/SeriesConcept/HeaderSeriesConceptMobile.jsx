@@ -3,10 +3,9 @@ import FundraisingProgress from './components/Progres';
 import Title from "./components/Title";
 import { images } from './constants/carouselData';
 import styles from './style/Header.module.css';
-import useDeviceType from './components/hooks/useDeviceType';
-import NavBarCrowdfundingMobile from './components/mobile/NavBarCrowdfundingMobile';
-import NavBarCrowdfunding from './components/NavBarCrowdfunding';
-
+import useDeviceType from '../Crowdfunding/components/hooks/useDeviceType';
+import NavBarSeriesConcept from './components/NavBarSeriesConcept';
+import NavBarSeriesConceptMobile from './components/mobile/NavBarSeriesConceptMobile';
 
 
 const HeaderCrowdfundingMobile = () => {
@@ -116,7 +115,7 @@ const HeaderCrowdfundingMobile = () => {
                 </div>
             </div>
             <div className="my-6">
-            {isMobile ? <NavBarCrowdfundingMobile setActiveSection={setActiveSection} /> : <NavBarCrowdfunding setActiveSection={setActiveSection} />}
+            {isMobile ? <NavBarSeriesConceptMobile setActiveSection={setActiveSection} /> : <NavBarSeriesConcept setActiveSection={setActiveSection} />}
             </div>
         </div>
     );

@@ -29,10 +29,10 @@ export default function Navbar({ openModal }) {
   };
 
   return (
-    <nav className="bg-black bg-opacity-25 fixed top-0 w-full h-11 max-md:h-10 z-50 font-avenirRoman backdrop-blur-lg ios-blur">
-      <div className="max-w-[1200px] mx-auto flex justify-between items-center px-2 max-md:px-0 py-2 max-lg:mx-5 relative z-50">
-        <div>
-          <Link href="/"><Image src="/imgs/logo.svg" alt='logo' className='w-20 h-auto' width={11} height={1} /></Link>
+<nav className="bg-black bg-opacity-25 fixed top-0 w-full h-10 md:h-11 z-50 font-avenirRoman backdrop-blur-lg ios-blur">
+  <div className="max-w-[1200px]  flex justify-between items-center h-full mx-5 md:mx-auto relative z-50">
+    <div className="flex items-center h-full">
+          <Link href="/"><Image src="/imgs/fyne.svg" alt='logo' className='md:w-20 h-auto' width={60} height={20} /></Link>
         </div>
         <div className="md:hidden flex items-center relative z-50">
 

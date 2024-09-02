@@ -1,12 +1,10 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useKeenSlider } from 'keen-slider/react';
 import 'keen-slider/keen-slider.min.css';
 import { images } from './Components/constants/carouselData';
 import Title from './Components/Title';
 import FundraisingProgress from './Components/Progres';
 import Dots from './Components/Dots';
-import { IoIosArrowForward, IoIosArrowBack } from 'react-icons/io';
-import style from '../Carousel/Components/style/Progres.module.css';
 import Image from 'next/image';
 
 const Carousel = () => {
@@ -28,7 +26,18 @@ const Carousel = () => {
     slideChanged(s) {
       setCurrentIndex(s.track.details.rel);
     },
-    duration: 800,
+    dragStart: () => {
+      if (slider.current) {
+        slider.current.options.loop = false; // Dezactivează temporar loop-ul pentru a preveni conflictele
+      }
+    },
+    dragEnd: () => {
+      if (slider.current) {
+        slider.current.options.loop = true; // Reactivăm loop-ul după drag
+      }
+    },
+    duration: 1200, // Crește durata pentru o tranziție mai lină
+    easing: (t) => 1 - Math.pow(1 - t, 4), // Folosește 'easeOutQuart' pentru o animație mai lină
   });
 
   useEffect(() => {
@@ -85,15 +94,15 @@ const Carousel = () => {
     });
   }, [spacing, perView, sliderRef]);
 
-  const handleDotClick = (index) => {
-    slider.current?.moveToIdx(index);
-  };
-
   const handleImageClick = (e, index) => {
+    // Verificăm dacă imaginea apăsată este cea centrală
     if (index === currentIndex) {
+      // Redirecționăm către link-ul specificat
+      window.location.href = images[index].link;
       return;
     }
 
+    // Determinăm direcția de navigare pe baza poziției clicului
     const x = e.clientX;
     const screenWidth = window.innerWidth;
 
@@ -104,12 +113,22 @@ const Carousel = () => {
     }
   };
 
+  const handleDotClick = (index) => {
+    if (slider.current) {
+      slider.current.moveToIdx(index);
+    }
+  };
+
   const handlePrev = () => {
-    slider.current?.prev();
+    if (slider.current) {
+      slider.current.prev();
+    }
   };
 
   const handleNext = () => {
-    slider.current?.next();
+    if (slider.current) {
+      slider.current.next();
+    }
   };
 
   return (
@@ -125,31 +144,36 @@ const Carousel = () => {
           className={`keen-slider__slide relative flex justify-center text-white text-2xl w-full h-[494px] sm:h-[494px] md:h-[500px] lg:w-[1100px] max-height ${index !== currentIndex ? 'cursor-pointer' : ''} ${isMobile ? 'mobile-slide' : ''} ${index === currentIndex ? 'current-slide' : ''}`}
           onClick={(e) => handleImageClick(e, index)}
         >
-          {/* Black Overlay for side images */}
+          {/* Suprapunere neagră pentru imaginile laterale */}
           {index !== currentIndex && (
-            <div className="absolute inset-0 bg-black opacity-50 z-10 h-[494px] mt-36"></div> // Ensure the overlay has a higher z-index
-          )}
-
-          {/* Blur Layer for the central image */}
-          {index === currentIndex && (
-            <div
-              className="absolute inset-x-0 bottom-0 rounded-[10px] mb-5 w-full"
+            <div 
+              className="absolute inset-0 bg-black opacity-50 z-10 max-h-[500px] mt-36"
               style={{
                 width: '100%',
-                background: 'linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.7) 50%, rgba(0, 0, 0, 0) 100%)',
-                height: '350px',
+                height: '100%',
               }}
             ></div>
           )}
 
-          {/* Lock Icon for images with status 'Next' */}
-          {image.status === 'Next' && (
+          {/* Strat de blur pentru imaginea centrală */}
+          {index === currentIndex && (
+            <div
+              className="absolute inset-x-0 bottom-0 w-full mb-[28px]"
+              style={{
+                background: 'linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.7) 50%, rgba(0, 0, 0, 0) 100%)',
+                height: '279px',
+              }}
+            ></div>
+          )}
+
+          {/* Icon de lacăt pentru imaginile cu status 'Next' */}
+          {image.status === 'Next' && index === currentIndex && (
             <div className="absolute inset-0 flex items-center justify-center z-20">
-              <Image src='/imgs/Carousel/lock.svg' alt="Lock icon" width={50} height={50} className="opacity-70" />
+              <Image src='/imgs/Carousel/lock.svg' alt="Icon lacăt" width={50} height={50} className="opacity-70" />
             </div>
           )}
 
-          {/* Content Container */}
+          {/* Container de conținut */}
           <div
             className={`absolute inset-x-0 bottom-0 z-20 ${isMobile ? 'w-full px-3 mb-[25px] rounded-[10px]' : isTablet ? 'w-full h-full bg-gradient-to-r from-black/60 to-transparent p-3' : 'w-[55%] h-[750px] bg-gradient-to-r px-10'} flex flex-col justify-end text-white ${currentIndex === index ? 'opacity-100' : 'opacity-0'} transition-opacity duration-200`}
             style={
@@ -174,7 +198,10 @@ const Carousel = () => {
           <img
             src={isMobile ? image.src.mobile : isTablet ? image.src.tablet : image.src.desktop}
             alt={image.alt}
-            className={`w-full h-full object-cover max-h-[750px] custom-image-width ${isMobile ? "max-width-image w-full min-w-[270px] max-height-image mt-36 rounded-[10px]" : "rounded-lg"} ${image.status === 'Next' ? 'blur-[1px] opacity-95' : ''}`}
+            className={`w-full h-full object-cover max-h-[750px] custom-image-width ${isMobile ? "max-width-image w-full min-w-[270px] max-height-image mt-36 rounded-[10px]" : "rounded-lg"} ${image.status === 'Next' && index === currentIndex ? 'blur-[1px] opacity-90 mt-10' : ''}`}
+            style={{
+              objectFit: 'cover',
+            }}
           />
         </div>
       ))}
@@ -188,10 +215,10 @@ const Carousel = () => {
       {isMobile && (
         <>
           <button className="absolute left-0 top-[60%] transform -translate-y-1/2 bg-transparent ml-3 p-3 max-[395px]:p-0 rounded-full text-white z-30" onClick={handlePrev}>
-            <Image src='/imgs/Carousel/left.svg' alt='arrow' height={17} width={13} />
+            <Image src='/imgs/Carousel/left.svg' alt='săgeată' height={17} width={13} className="opacity-70" />
           </button>
           <button className="absolute right-0 top-[60%] transform -translate-y-1/2 bg-transparent mr-3 p-3 max-[395px]:p-0 rounded-full text-white z-30" onClick={handleNext}>
-            <Image src='/imgs/Carousel/right.svg' alt='arrow' height={17} width={13} />
+            <Image src='/imgs/Carousel/right.svg' alt='săgeată' height={17} width={13} className="opacity-70" />
           </button>
         </>
       )}

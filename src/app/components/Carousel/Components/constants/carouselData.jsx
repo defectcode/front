@@ -2,26 +2,27 @@
 
 export const images = [
   {
-    src: {
+      src: {
         desktop: '/imgs/Carousel/Concept.png',
         tablet: '/imgs/Carousel/tablet.png',
         mobile: '/imgs/Carousel/section.png'
       },
-    alt: 'Slide 1',
-    raisedAmount: '690',
-    goalAmount: '74,000',
-    title: 'Production Stages',
-    titleConcept: 'Series Concept',
-    subtitle: 'Current Fundraising',
-    stageLabel: 'Stage',
-    stageNumber: '1',
-    supportersLabel: '',
-    supportersCount: '',
-    description: 'Be part of every stage of our series production. View more details now',
-    status: 'Process'
-  },
-  {
-    src: {
+      alt: 'Slide 1',
+      raisedAmount: '690',
+      goalAmount: '74,000',
+      title: 'Production Stages',
+      titleConcept: 'Series Concept',
+      subtitle: 'Current Fundraising',
+      stageLabel: 'Stage',
+      stageNumber: '1',
+      supportersLabel: '',
+      supportersCount: '',
+      description: 'Be part of every stage of our series production. View more details now',
+      status: 'Process',
+      link: '/seriesconcept'  // Add link property here
+    },
+    {
+      src: {
         desktop: '/imgs/Carousel/Atelier.png',
         tablet: '/imgs/Carousel/tablet.png',
         mobile: '/imgs/Carousel/atelier.png'
@@ -37,8 +38,9 @@ export const images = [
       supportersLabel: '',
       supportersCount: '',
       description: 'Be part of every stage of our series production. View more details now',
-      status: 'Process'
-  },
+      status: 'Process',
+      link: '/costumeatelier'  // Add link property here
+    },
   {
     src: {
         desktop: '/imgs/Carousel/Episode1.png',
@@ -57,6 +59,7 @@ export const images = [
       supportersCount: '',
       description: 'Be part of every stage of our series production. View more details now',
       status: 'Next'
+      
   },
   {
     src: {

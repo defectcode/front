@@ -84,7 +84,7 @@ export default function Sidebar() {
       <div>
         <div className="flex justify-center items-center mt-10 mb-5">
           <Link href="/">
-            <Image src='/imgs/blackLogo.svg' alt="logo" width={98} height={32} />
+            <Image src='/imgs/Blogo.svg' alt="logo" width={90} height={21} />
           </Link>
         </div>
         <Networking />

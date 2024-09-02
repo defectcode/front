@@ -304,6 +304,21 @@ iframe {
   }
 }
 
+
+@layer utilities {
+  .bg-mobileConcept {
+    background-image: url('/imgs/SeriesConcept/SeriesConceptMobile.png');
+  }
+  @media (min-width: 640px) {
+    .bg-desktopConcept {
+      background-image: url('/imgs/SeriesConcept/SeriesConcept.png');
+    }
+  }
+}
+
+
+
+
 .custom-scrollbar {
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
