@@ -134,7 +134,7 @@ const Carousel = () => {
   return (
     <div ref={sliderRef} className={`keen-slider bg-black ${isMobile ? "custom-bg-height-mobile" : "custom-bg-height"} relative`}>
       {isMobile && (
-        <div className="absolute mt-10">
+        <div className="absolute mt-6">
           <Title contentIndex={currentIndex} isMobile={isMobile} isTablet={isTablet} />
         </div>
       )}
