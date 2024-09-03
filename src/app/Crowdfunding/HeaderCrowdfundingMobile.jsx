@@ -1,18 +1,20 @@
 import React, { useState, useEffect } from "react";
 import FundraisingProgress from './components/Progres';
 import Title from "./components/Title";
+import VideoPlayer from './components/VideoMobile/VideoPlayer';  // Asigură-te că calea către VideoPlayer este corectă
+import Icons from './components/VideoMobile/Icons';  // Asigură-te că calea către Icons este corectă
 import { images } from './constants/carouselData';
 import styles from './style/Header.module.css';
 import useDeviceType from './components/hooks/useDeviceType';
 import NavBarCrowdfundingMobile from './components/mobile/NavBarCrowdfundingMobile';
 import NavBarCrowdfunding from './components/NavBarCrowdfunding';
 
-
-
 const HeaderCrowdfundingMobile = () => {
     const currentData = images[0];
     const isMobile = useDeviceType();
     const [activeSection, setActiveSection] = useState('overview');
+    const [isVideoVisible, setIsVideoVisible] = useState(false);
+    const [isMuted, setIsMuted] = useState(false);
     const [style, setStyle] = useState({
         marginTop: '-7vh',
         paddingBottom: '7vh',
@@ -57,6 +59,16 @@ const HeaderCrowdfundingMobile = () => {
         };
     }, []);
 
+    const handleScreenClick = () => {
+        setIsVideoVisible(true);
+        document.body.classList.add('overflow-hidden'); // Previne scroll-ul în timpul redării video
+    };
+
+    const handleClose = () => {
+        setIsVideoVisible(false);
+        document.body.classList.remove('overflow-hidden');
+    };
+
     return (
         <div className={`headerMobile flex flex-col bg-black ${styles.headerCrowdfunding}`}>
             <div 
@@ -77,10 +89,28 @@ const HeaderCrowdfundingMobile = () => {
                             backgroundClip: 'padding-box',
                             backgroundRepeat: 'no-repeat',
                         }}
-                    ></div>
+                    >
+                        {/* Buton de Play pentru versiunea mobilă */}
+                        <button 
+                            onClick={handleScreenClick} 
+                            className="absolute inset-0 flex items-center justify-center z-20 bg-transparent"
+                        >
+                            <img src="/imgs/pause.svg" alt="Play Video" className="w-[40px] h-[48px]" />
+                        </button>
+                    </div>
                 </div>
             </div>
 
+            {/* Afișare VideoPlayer dacă isVideoVisible este true */}
+            {isVideoVisible && (
+                <VideoPlayer 
+                    videoId="Z5OjzFl4b-s"  // ID-ul videoclipului YouTube
+                    onClose={handleClose}
+                    isMuted={isMuted}
+                />
+            )}
+
+            {/* Container pentru conținut și fundal blur */}
             <div 
                 className="bg-black flex flex-col justify-start px-5 relative" 
                 style={{ 
@@ -115,8 +145,17 @@ const HeaderCrowdfundingMobile = () => {
                     <FundraisingProgress data={currentData} />
                 </div>
             </div>
+
+            {/* Icons pentru controlul sunetului */}
+            <Icons 
+                isMuted={isMuted} 
+                setIsMuted={setIsMuted} 
+                handleScreenClick={handleScreenClick}
+            />
+
+            {/* NavBar pentru mobil sau desktop */}
             <div className="my-6">
-            {isMobile ? <NavBarCrowdfundingMobile setActiveSection={setActiveSection} /> : <NavBarCrowdfunding setActiveSection={setActiveSection} />}
+                {isMobile ? <NavBarCrowdfundingMobile setActiveSection={setActiveSection} /> : <NavBarCrowdfunding setActiveSection={setActiveSection} />}
             </div>
         </div>
     );

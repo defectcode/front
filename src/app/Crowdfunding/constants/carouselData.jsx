@@ -13,6 +13,7 @@ export const images = [
       supportersCount: '7',
       description: 'Create premium costumers and exclusive apparel for "Paradise Problems" supporters',
       status: 'Process',
+      img: '/imgs/pause.svg'
     },
   ];
   
