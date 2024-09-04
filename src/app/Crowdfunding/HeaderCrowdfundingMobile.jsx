@@ -105,7 +105,7 @@ const HeaderCrowdfundingMobile = () => {
             {/* Afișare VideoPlayer dacă isVideoVisible este true */}
             {isVideoVisible && (
                 <VideoPlayer 
-                    videoId="Z5OjzFl4b-s"
+                    videoSrc="/video/IMG_1003.mp4"  // Înlocuiește cu calea către video-ul tău
                     onClose={handleClose}
                     isMuted={isMuted}
                     autoPlay={true} // Forțăm autoplay când este vizibil
