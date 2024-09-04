@@ -85,6 +85,7 @@ const HeaderCrowdfundingMobile = () => {
                     onClose={handleClose}
                 />
             )}
+            
 
             {/* Container pentru conținut și fundal blur */}
             <div 
