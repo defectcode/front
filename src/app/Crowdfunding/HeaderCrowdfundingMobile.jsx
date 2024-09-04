@@ -1,3 +1,4 @@
+// HeaderCrowdfundingMobile.jsx
 import React, { useState, useEffect } from "react";
 import FundraisingProgress from './components/Progres';
 import Title from "./components/Title";
@@ -14,11 +15,6 @@ const HeaderCrowdfundingMobile = () => {
     const isMobile = useDeviceType();
     const [activeSection, setActiveSection] = useState('overview');
     const [isVideoVisible, setIsVideoVisible] = useState(false);
-    const [isMuted, setIsMuted] = useState(false);
-    const [style, setStyle] = useState({
-        marginTop: '-7vh',
-        paddingBottom: '7vh',
-    });
 
     useEffect(() => {
         if (window.location.hash) {
@@ -35,47 +31,25 @@ const HeaderCrowdfundingMobile = () => {
         };
     }, []);
 
-    useEffect(() => {
-        const updateStyle = () => {
-            const screenWidth = window.innerWidth;
-            if (screenWidth > 410) {
-                setStyle({
-                    marginTop: '-4vh',
-                    paddingBottom: '4vh',
-                });
-            } else {
-                setStyle({
-                    marginTop: '-8vh',
-                    paddingBottom: '8vh',
-                });
-            }
-        };
-
-        updateStyle(); // Initialize on mount
-        window.addEventListener('resize', updateStyle);
-
-        return () => {
-            window.removeEventListener('resize', updateStyle);
-        };
-    }, []);
-
     const handleScreenClick = () => {
         setIsVideoVisible(true);
-        setIsMuted(true); // Mutăm inițial pentru a permite autoplay
         document.body.classList.add('overflow-hidden'); // Previne scroll-ul în timpul redării video
     };
 
     const handleClose = () => {
         setIsVideoVisible(false);
         document.body.classList.remove('overflow-hidden');
+        if (document.fullscreenElement) {
+            document.exitFullscreen();
+        }
     };
 
     return (
-        <div className={`headerMobile flex flex-col bg-black ${styles.headerCrowdfunding}`}>
+        <div className={`headerMobile flex flex-col bg-black ${styles.headerCrowdfunding} ${isVideoVisible ? 'hidden' : ''}`}>
             <div 
                 className="relative" 
                 style={{ 
-                    height: 'calc(100vh - 15vh)', 
+                    height: 'calc(100vh - 45vh)', 
                     minHeight: '0',
                 }}
             >
@@ -105,10 +79,10 @@ const HeaderCrowdfundingMobile = () => {
             {/* Afișare VideoPlayer dacă isVideoVisible este true */}
             {isVideoVisible && (
                 <VideoPlayer 
-                    videoSrc="/video/IMG_1003.mp4"  // Înlocuiește cu calea către video-ul tău
+                    videoSrc="https://dl.dropboxusercontent.com/scl/fi/x9aez7xufxlmei5ocs96n/IMG_0947-2-video-converter.com.mp4?rlkey=4wc8nk9mjl0nlgrmxpqi8nimz&st=lmpzzq0x"  
+                    //https://dl.dropboxusercontent.com/scl/fi/x9aez7xufxlmei5ocs96n/IMG_0947-2-video-converter.com.mp4?rlkey=4wc8nk9mjl0nlgrmxpqi8nimz&st=lmpzzq0x
+                    
                     onClose={handleClose}
-                    isMuted={isMuted}
-                    autoPlay={true} // Forțăm autoplay când este vizibil
                 />
             )}
 
@@ -139,7 +113,6 @@ const HeaderCrowdfundingMobile = () => {
                 <div 
                     className="max-w-screen-lg w-full flex flex-col gap-4 mb-2 relative z-10"
                     style={{
-                        ...style,
                         fontSize: 'calc(1rem + 0.7vw)',
                     }}
                 >
@@ -149,11 +122,7 @@ const HeaderCrowdfundingMobile = () => {
             </div>
 
             {/* Icons pentru controlul sunetului */}
-            <Icons 
-                isMuted={isMuted} 
-                setIsMuted={setIsMuted} 
-                handleScreenClick={handleScreenClick}
-            />
+            <Icons handleScreenClick={handleScreenClick} />
 
             {/* NavBar pentru mobil sau desktop */}
             <div className="my-6">

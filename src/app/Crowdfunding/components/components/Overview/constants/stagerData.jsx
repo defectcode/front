@@ -13,14 +13,14 @@ export const stageDescriptionData = {
         { item: "Utilities", cost: "$2,000" }
     ],
     totalMonthlyCosts: "Total Monthly Costs: $44,000",
-    imageUrl_1: "/imgs/Crowdfunding/Overview/element1.png",
-    imageUrl_2: "/imgs/Crowdfunding/Overview/element2.png",
-    imageUrl_3: "/imgs/Crowdfunding/Overview/element3.png",
-    imageUrl_4: "/imgs/Crowdfunding/Overview/element4.png",
-    imageUrl_5: "/imgs/Crowdfunding/Overview/element5.png",
-    imageUrl_6: "/imgs/Crowdfunding/Overview/element6.png",
-    imageUrl_8: "/imgs/Crowdfunding/Overview/element7.png",
-    // imageUrl_8: "/imgs/Crowdfunding/Overview/element.svg",
+    imageUrl_1: "/imgs/Crowdfunding/Overview/Element1.webp",
+    imageUrl_2: "/imgs/Crowdfunding/Overview/Element2.webp",
+    imageUrl_3: "/imgs/Crowdfunding/Overview/Element3.webp",
+    imageUrl_4: "/imgs/Crowdfunding/Overview/Element4.webp",
+    imageUrl_5: "/imgs/Crowdfunding/Overview/Element5.webp",
+    imageUrl_6: "/imgs/Crowdfunding/Overview/Element6.webp",
+    imageUrl_7: "/imgs/Crowdfunding/Overview/Element7.webp",
+    imageUrl_8: "/imgs/Crowdfunding/Overview/Element8.webp",
 };
 
 export const stageDescription = {

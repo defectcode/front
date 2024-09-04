@@ -311,7 +311,7 @@ iframe {
   }
   @media (min-width: 640px) {
     .bg-desktopConcept {
-      background-image: url('/imgs/SeriesConcept/SeriesConcept.png');
+      background-image: url('/imgs/Crowdfunding/background.png');
     }
   }
 }

@@ -1,64 +1,85 @@
 import React, { useRef, useEffect } from 'react';
 
-const VideoPlayer = ({ videoSrc, onClose, isMuted, autoPlay }) => {
+const VideoPlayer = ({ videoSrc, onClose }) => {
     const videoRef = useRef(null);
 
-    useEffect(() => {
-        const video = videoRef.current;
-        
-        if (autoPlay) {
-            video.play();
-        }
+    const isMobile = () => {
+        return /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    };
 
-        const handleFullscreenChange = () => {
-            if (!document.fullscreenElement) {
-                onClose();
+    useEffect(() => {
+        const handleResize = () => {
+            const isLandscape = window.innerWidth > window.innerHeight;
+            if (document.fullscreenElement || videoRef.current.webkitDisplayingFullscreen) {
+                if (isLandscape) {
+                    videoRef.current.style.width = '100vw';
+                    videoRef.current.style.height = '100vh';
+                } else {
+                    videoRef.current.style.width = '100%';
+                    videoRef.current.style.height = 'auto';
+                }
             }
         };
 
-        document.addEventListener('fullscreenchange', handleFullscreenChange);
+        const handleFullScreenChange = () => {
+            if (!document.fullscreenElement && !videoRef.current.webkitDisplayingFullscreen) {
+                // Ieșire din full-screen, revenim la setările inițiale
+                videoRef.current.style.width = '100%';
+                videoRef.current.style.height = 'auto';
+            }
+        };
+
+        // Adăugăm event listeners
+        window.addEventListener('resize', handleResize);
+        document.addEventListener('fullscreenchange', handleFullScreenChange);
+        document.addEventListener('webkitfullscreenchange', handleFullScreenChange);
+
+        // Inițializează stilurile video-ului în funcție de dimensiuni
+        handleResize();
 
         return () => {
-            document.removeEventListener('fullscreenchange', handleFullscreenChange);
+            // Eliminăm event listeners
+            window.removeEventListener('resize', handleResize);
+            document.removeEventListener('fullscreenchange', handleFullScreenChange);
+            document.removeEventListener('webkitfullscreenchange', handleFullScreenChange);
+
+            if (document.fullscreenElement) {
+                document.exitFullscreen();
+            }
         };
-    }, [onClose, autoPlay]);
+    }, []);
 
-    const handlePlayAndFullscreen = () => {
-        const video = videoRef.current;
-        video.muted = isMuted;
-        video.play();
+    const enterFullScreen = () => {
+        if (videoRef.current.requestFullscreen) {
+            videoRef.current.requestFullscreen();
+        } else if (videoRef.current.webkitRequestFullscreen) {
+            videoRef.current.webkitRequestFullscreen();
+        } else if (videoRef.current.webkitEnterFullscreen) {
+            // Pentru iOS Safari
+            videoRef.current.webkitEnterFullscreen();
+        }
+    };
 
-        if (video.requestFullscreen) {
-            video.requestFullscreen().catch((error) => console.log(error));
-        } else if (video.webkitRequestFullscreen) {
-            video.webkitRequestFullscreen().catch((error) => console.log(error));
-        } else if (video.mozRequestFullScreen) {
-            video.mozRequestFullScreen().catch((error) => console.log(error));
-        } else if (video.msRequestFullscreen) {
-            video.msRequestFullscreen().catch((error) => console.log(error));
+    // Intră automat în full-screen când video-ul e gata de redare
+    const handleLoadedData = () => {
+        if (isMobile()) {
+            enterFullScreen();
         }
     };
 
     return (
-        <div 
-            className="fixed inset-0 flex items-center justify-center bg-black z-[10000]"
-            onClick={handlePlayAndFullscreen}
-            style={{ width: '100vw', height: '100vh' }}
-        >
-            <button 
-                onClick={(e) => { e.stopPropagation(); onClose(); }} 
-                className="absolute top-4 right-4 text-white text-3xl z-[10001]"
-            >
-                &times;
-            </button>
-            <div className="relative w-full h-full flex items-center justify-center">
+        <div className="fixed inset-0 flex items-center justify-center bg-black z-[9999]">
+            <div className="relative max-w-full max-h-full flex items-center justify-center">
                 <video
                     ref={videoRef}
                     src={videoSrc}
-                    className="absolute inset-0 w-full h-full"
                     controls
+                    autoPlay
                     playsInline
-                    style={{ objectFit: 'cover' }}
+                    muted
+                    onLoadedData={handleLoadedData}  // Adăugat pentru a detecta când video-ul e gata
+                    onClick={enterFullScreen}
+                    className="max-w-full max-h-full object-contain"
                 />
             </div>
         </div>

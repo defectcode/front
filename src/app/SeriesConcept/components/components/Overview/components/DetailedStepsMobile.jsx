@@ -36,11 +36,17 @@ const DetailedStepsMobile = () => {
                     ))}
                 </div>
             </div>
+            <img 
+                src={stageDescriptionData.imageUrl_3} 
+                alt="Stage Description" 
+                className="mt-5 w-full h-auto"
+                style={{ objectFit: 'cover' }}
+            />
             <div className="my-10">
                 <h2 className="text-[#FFFFFF] font-ekMukta font-semibold text-[26px]">{stageDescription.helpTitle}</h2>
                 <p className="text-[#CDCDCD] w-full text-[16px] mt-4">{stageDescription.helpInfo}</p>
                 <img 
-                    src={stageDescriptionData.imageUrl_8} 
+                    src={stageDescriptionData.imageUrl_4} 
                     alt="Stage Description" 
                     className="mt-10 w-full h-auto"
                     style={{ objectFit: 'cover' }}

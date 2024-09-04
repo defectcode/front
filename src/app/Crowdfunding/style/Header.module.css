@@ -41,7 +41,15 @@
 }
 
 .bgMobile {
-  background-image: url('/imgs/Crowdfunding/phone.png');
+  background-image: url('/imgs/Crowdfunding/mobile.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: flex;
+}
+
+.bgMobileAtelier {
+  background-image: url('/imgs/Crowdfunding/CarouselAtelier.webp');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

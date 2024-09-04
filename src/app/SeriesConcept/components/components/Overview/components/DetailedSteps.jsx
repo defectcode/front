@@ -45,7 +45,7 @@ const DetailedSteps = () => {
                 <h2 className="text-[#FFFFFF] font-ekMukta font-semibold text-[26px]">{stageDescription.helpTitle}</h2>
                 <p className="text-[#CDCDCD] w-[764px] text-[16px]">{stageDescription.helpInfo}</p>
                 <img 
-                    src={stageDescriptionData.imageUrl_8} 
+                    src={stageDescriptionData.imageUrl_4} 
                     alt="Stage Description" 
                     className="mt-10 ml-5" 
                     style={{ width: '624px', height: '624px', objectFit: 'cover' }}

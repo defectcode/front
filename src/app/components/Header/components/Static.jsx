@@ -60,7 +60,7 @@ export default function Static({ openModal }) {
         className={`StaticNavbar bg-transparent w-full h-11 max-md:h-10 font-avenirRoman backdrop-blur-lg ios-blur fixed`}
         style={{ transition: 'transform 0.3s ease-in-out' }}
       >
-  <div className="max-w-[1200px]  flex justify-between items-center h-full mx-5 md:mx-auto relative z-50">
+  <div className="max-w-[1200px]  flex justify-between items-center h-full mx-5 lg:mx-auto relative z-50">
   <div>
             <Link href="/"><Image src="/imgs/Plogo.svg" alt='logo' className='w-[98px] h-[24px] text-white' width={98} height={24} /></Link>
           </div>

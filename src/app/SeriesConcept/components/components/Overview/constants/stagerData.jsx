@@ -4,9 +4,10 @@ export const stageDescriptionData = {
     stageHistory2: 'The idea for "Paradise Problems" is to show life in a perfect city without money, where people still face real human problems. We aim to demonstrate how love, loyalty, and kindness can solve these problems.',
     fundingTitle: "Funding and Support",
     fundingProgress: "Initially, we needed $790,700 to create the series concept, including marketing and research. Our team has already invested over $200,000 in this project, including building this website and presentation, showing our strong belief in its success.",
-    imageUrl_1: "/imgs/Crowdfunding/Overview/element1.png",
-    imageUrl_2: "/imgs/Crowdfunding/Overview/element9.png",
-    imageUrl_8: "/imgs/Crowdfunding/Overview/element10.png",
+    imageUrl_1: "/imgs/SeriesConcept/Overview/Element1.webp",
+    imageUrl_2: "/imgs/SeriesConcept/Overview/Element2.webp",
+    imageUrl_3: "/imgs/SeriesConcept/Overview/Element3.webp",
+    imageUrl_4: "/imgs/SeriesConcept/Overview/Element4.webp",
 };
 
 export const stageDescription = {
@@ -25,7 +26,7 @@ export const stageDescription = {
         { item: "Utilities", cost: "$2,000" }
     ],
     totalMonthlyCosts: "Total Monthly Costs: $44,000",
-    imageUrl: "/imgs/Crowdfunding/Overview/element1.svg",
+    imageUrl: "/imgs/SeriesConcept/Overview/Element4.webp",
     detailedSteps: [
         {
             title: "Research and Analysis",

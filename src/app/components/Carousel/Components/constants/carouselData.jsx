@@ -5,7 +5,7 @@ export const images = [
       src: {
         desktop: '/imgs/Carousel/Concept.png',
         tablet: '/imgs/Carousel/tablet.png',
-        mobile: '/imgs/Carousel/section.png'
+        mobile: '/imgs/SeriesConcept/Carousel.webp'
       },
       alt: 'Slide 1',
       raisedAmount: '690',

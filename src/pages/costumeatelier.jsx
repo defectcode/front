@@ -52,7 +52,7 @@ const Crowdfunding = () => {
     };
 
     return (
-        <div className="mb-10 md:mb-0 bg-black h-auto">
+        <div className="mb-10 lg:mb-0 bg-black h-auto">
             <Static />
             {isMobile ? <HeaderCrowdfundingMobile /> : <HeaderCrowdfunding />}
             <div className="">
