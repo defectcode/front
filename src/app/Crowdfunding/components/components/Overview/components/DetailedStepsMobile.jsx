@@ -6,7 +6,7 @@ const DetailedStepsMobile = () => {
         stageDescriptionData.imageUrl_3,
         stageDescriptionData.imageUrl_4,
         stageDescriptionData.imageUrl_5,
-        stageDescriptionData.imageUrl_6,
+        // stageDescriptionData.imageUrl_6,
         stageDescriptionData.imageUrl_7,
         stageDescriptionData.imageUrl_8,
     ];

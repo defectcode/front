@@ -18,7 +18,7 @@ export const stageDescriptionData = {
     imageUrl_3: "/imgs/Crowdfunding/Overview/Element3.webp",
     imageUrl_4: "/imgs/Crowdfunding/Overview/Element4.webp",
     imageUrl_5: "/imgs/Crowdfunding/Overview/Element5.webp",
-    imageUrl_6: "/imgs/Crowdfunding/Overview/Element6.webp",
+    // imageUrl_6: "/imgs/Crowdfunding/Overview/Element6.webp",
     imageUrl_7: "/imgs/Crowdfunding/Overview/Element7.webp",
     imageUrl_8: "/imgs/Crowdfunding/Overview/Element8.webp",
 };
