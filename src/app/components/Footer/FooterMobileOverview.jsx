@@ -16,7 +16,7 @@ export default function Sidebar() {
 
   // max-h-[525px]
   return (
-    <div className="bg-[#EBEBF0] text-white px-5 pt-10 pb-5 w-full max-w-md mx-auto h-auto">
+    <div className="bg-[#EBEBF0] text-white px-5 pt-10 pb-10 w-full max-w-md mx-auto h-auto">
             <div className="relative w-full">
         <div className="absolute inset-0 h-[1px] bg-gradient-to-r from-[#272727] to-[#8D8D8D] opacity-50"></div>
       </div>

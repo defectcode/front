@@ -53,7 +53,7 @@ export default function Header() {
               <div className={`flex flex-col md:flex-row justify-between max-lg:flex-col max-lg:justify-center customStyles`}>
                 <div className="flex flex-col mb-10 max-md:mb-0 items-center md:flex-row gap-3 max-md:gap-0 max-lg:flex-col max-lg:justify-center">
                   <div className="md:hidden flex flex-col items-center justify-center mt-8">
-                    <Image src="/imgs/Plogo.svg" alt='logo' className='w-[188px] h-auto max-md:mb-4' width={188} height={1} />
+                    <Image src="/imgs/Plogo.svg" alt='logo' className='w-[188px] h-[44px] max-md:mb-4' width={188} height={1} />
                     <h3 className="text-lg max-md:text-[14px] text-[#979797] font-avenir-roman max-md:mb-4">
                       Drama <span style={{ display: 'inline-block', width: '3px', height: '3px', backgroundColor: '#979797', borderRadius: '50%', margin: '0 5px', verticalAlign: 'middle' }}></span> Sci-Fi
                     </h3>

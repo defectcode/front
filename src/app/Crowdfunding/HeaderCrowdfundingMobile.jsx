@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import FundraisingProgress from './components/Progres';
 import Title from "./components/Title";
-import VideoPlayer from './components/VideoMobile/VideoPlayer';  // Asigură-te că calea către VideoPlayer este corectă
-import Icons from './components/VideoMobile/Icons';  // Asigură-te că calea către Icons este corectă
+import VideoPlayer from './components/VideoMobile/VideoPlayer';
+import Icons from './components/VideoMobile/Icons';
 import { images } from './constants/carouselData';
 import styles from './style/Header.module.css';
 import useDeviceType from './components/hooks/useDeviceType';
@@ -61,6 +61,7 @@ const HeaderCrowdfundingMobile = () => {
 
     const handleScreenClick = () => {
         setIsVideoVisible(true);
+        setIsMuted(true); // Mutăm inițial pentru a permite autoplay
         document.body.classList.add('overflow-hidden'); // Previne scroll-ul în timpul redării video
     };
 
@@ -95,7 +96,7 @@ const HeaderCrowdfundingMobile = () => {
                             onClick={handleScreenClick} 
                             className="absolute inset-0 flex items-center justify-center z-20 bg-transparent"
                         >
-                            <img src="/imgs/pause.svg" alt="Play Video" className="w-[40px] h-[48px]" />
+                            <img src="/imgs/pause.svg" alt="Play Video" className="w-[50px] h-[50px]" />
                         </button>
                     </div>
                 </div>
@@ -104,9 +105,10 @@ const HeaderCrowdfundingMobile = () => {
             {/* Afișare VideoPlayer dacă isVideoVisible este true */}
             {isVideoVisible && (
                 <VideoPlayer 
-                    videoId="Z5OjzFl4b-s"  // ID-ul videoclipului YouTube
+                    videoId="Z5OjzFl4b-s"
                     onClose={handleClose}
                     isMuted={isMuted}
+                    autoPlay={true} // Forțăm autoplay când este vizibil
                 />
             )}
 

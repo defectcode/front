@@ -15,7 +15,7 @@ import RewardsMobile from "../app/Crowdfunding/components/components/Rewards/Rew
 import CommunityMobile from "../app/Crowdfunding/components/components/Community/CommunityMobile";
 import ExtrasMobile from "../app/Crowdfunding/components/components/Extras/ExtrasMobile";
 import Footer from '../app/components/Footer/Footer'
-import FooterMobile from '../app/components/Footer/FooterMobile'
+import FooterMobileOverview from '../app/components/Footer/FooterMobileOverview'
 
 const Crowdfunding = () => {
     const isMobile = useDeviceType();
@@ -62,7 +62,7 @@ const Crowdfunding = () => {
             <div>
                 {renderSection()}
             </div>
-            {isMobile ? <FooterMobile/> : <Footer/>}
+            {isMobile ? <FooterMobileOverview/> : <Footer/>}
         </div>
     );
 }

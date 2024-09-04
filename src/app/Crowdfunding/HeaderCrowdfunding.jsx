@@ -37,7 +37,7 @@ const HeaderSeriesConcept = () => {
                     onClick={handleScreenClick} 
                     className="absolute inset-0 flex items-center justify-center z-20 bg-transparent"
                 >
-                    <img src="/imgs/pause.svg" alt="Play Video" className="w-[99px] h-[102px]" />
+                    <img src="/imgs/pause.svg" alt="Play Video" className="w-[100px] h-[100px]" />
                 </button>
             </div>
 
