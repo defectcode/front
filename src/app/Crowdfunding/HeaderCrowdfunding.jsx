@@ -44,7 +44,7 @@ const HeaderSeriesConcept = () => {
             {/* Afișare VideoPlayer dacă isVideoVisible este true */}
             {isVideoVisible && (
                 <VideoPlayer 
-                    videoSrc="https://dl.dropboxusercontent.com/scl/fi/x9aez7xufxlmei5ocs96n/IMG_0947-2-video-converter.com.mp4?rlkey=4wc8nk9mjl0nlgrmxpqi8nimz&st=lmpzzq0x"  // URL-ul videoclipului Dropbox
+                    videoSrc="https://www.dropbox.com/scl/fi/93yq0hsq1ptdb6dlgico4/VideoAtelier.mp4?rlkey=c2zddkgjz05b05x3pi39rkenq&st=lauvesd1&raw=1"  // URL-ul videoclipului Dropbox
                     onClose={handleClose}
                     isMuted={isMuted}
                 />

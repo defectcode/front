@@ -118,10 +118,14 @@ const VideoPlayer = ({ videoSrc, onClose }) => {
 
                 {/* Indicator de încărcare */}
                 {isLoading && (
-                    <div className="absolute inset-0 flex items-center justify-center z-20 loader">
-                        <div></div><div></div><div></div>
+                    <div className="loader">
+                        <div></div><div></div><div></div><div></div>
+                        <div></div><div></div><div></div><div></div>
+                        <div></div><div></div><div></div><div></div>
                     </div>
                 )}
+
+                
             </div>
         </div>
     );
