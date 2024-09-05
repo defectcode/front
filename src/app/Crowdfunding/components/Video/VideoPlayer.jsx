@@ -1,36 +1,7 @@
-// VideoPlayer.jsx
 import React, { useEffect, useRef } from 'react';
-import YouTube from 'react-youtube';
 
-const VideoPlayer = ({ videoId, onClose, isMuted }) => {
-    const playerRef = useRef(null);
-
-    const onReady = (event) => {
-        const player = event.target;
-        playerRef.current = player;
-
-        const iframe = player.getIframe();
-        if (iframe.requestFullscreen) {
-            iframe.requestFullscreen().catch(err => {
-                console.log("Error attempting to enable full-screen mode: ", err.message);
-            });
-        } else if (iframe.mozRequestFullScreen) {
-            iframe.mozRequestFullScreen();
-        } else if (iframe.webkitRequestFullscreen) {
-            iframe.webkitRequestFullscreen();
-        } else if (iframe.msRequestFullscreen) {
-            iframe.msRequestFullscreen();
-        }
-
-        player.playVideo();
-    };
-
-    const onStateChange = (event) => {
-        const playerState = event.data;
-        if (playerState === YouTube.PlayerState.ENDED) {
-            onClose(); // Închide fereastra când videoclipul se termină
-        }
-    };
+const VideoPlayer = ({ videoSrc, onClose, isMuted }) => {
+    const videoRef = useRef(null);
 
     useEffect(() => {
         const handleKeyDown = (event) => {
@@ -56,16 +27,27 @@ const VideoPlayer = ({ videoId, onClose, isMuted }) => {
         };
     }, [onClose]);
 
-    const handleToggleMute = () => {
-        if (playerRef.current) {
-            const player = playerRef.current;
-            if (player.isMuted()) {
-                player.unMute();
-            } else {
-                player.mute();
-            }
+    const enterFullScreen = () => {
+        if (videoRef.current.requestFullscreen) {
+            videoRef.current.requestFullscreen();
+        } else if (videoRef.current.webkitRequestFullscreen) {
+            videoRef.current.webkitRequestFullscreen();
+        } else if (videoRef.current.webkitEnterFullscreen) {
+            videoRef.current.webkitEnterFullscreen();
         }
     };
+
+    useEffect(() => {
+        if (videoRef.current) {
+            enterFullScreen();  // Intră automat în modul fullscreen
+        }
+
+        if (isMuted) {
+            videoRef.current.muted = true;
+        } else {
+            videoRef.current.muted = false;
+        }
+    }, [isMuted]);
 
     return (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-90 z-50">
@@ -73,22 +55,15 @@ const VideoPlayer = ({ videoId, onClose, isMuted }) => {
                 &times;
             </button>
             <div className="relative w-full h-full flex items-center justify-center">
-                <YouTube
-                    videoId={videoId}
-                    className="w-full h-full"
-                    opts={{
-                        playerVars: {
-                            autoplay: 1,
-                            mute: isMuted ? 1 : 0,
-                        },
-                    }}
-                    onReady={onReady}
-                    onStateChange={onStateChange}  // Adăugăm evenimentul onStateChange
+                <video
+                    ref={videoRef}
+                    src={videoSrc}
+                    controls
+                    autoPlay
+                    playsInline
+                    className="max-w-full max-h-full object-contain"
                 />
             </div>
-            <button onClick={handleToggleMute} className="absolute bottom-4 left-4 text-white">
-                {isMuted ? 'Unmute' : 'Mute'}
-            </button>
         </div>
     );
 };

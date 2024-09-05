@@ -49,11 +49,11 @@ const HeaderCrowdfundingMobile = () => {
             <div 
                 className="relative" 
                 style={{ 
-                    height: 'calc(100vh - 45vh)', 
+                    height: 'calc(100vh + 15vh)', 
                     minHeight: '0',
                 }}
             >
-                <div className={`${styles.bgMobile}`} style={{ height: '100%', overflow: 'hidden' }}>
+                <div className={`${styles.bgMobileAtelier}`} style={{ height: '100%', overflow: 'hidden' }}>
                     <div
                         style={{
                             height: '100%',
@@ -79,9 +79,7 @@ const HeaderCrowdfundingMobile = () => {
             {/* Afișare VideoPlayer dacă isVideoVisible este true */}
             {isVideoVisible && (
                 <VideoPlayer 
-                    videoSrc="https://dl.dropboxusercontent.com/scl/fi/x9aez7xufxlmei5ocs96n/IMG_0947-2-video-converter.com.mp4?rlkey=4wc8nk9mjl0nlgrmxpqi8nimz&st=lmpzzq0x"  
-                    //https://dl.dropboxusercontent.com/scl/fi/x9aez7xufxlmei5ocs96n/IMG_0947-2-video-converter.com.mp4?rlkey=4wc8nk9mjl0nlgrmxpqi8nimz&st=lmpzzq0x
-                    
+                    videoSrc="https://www.dropbox.com/scl/fi/dy33ku62mzfnzndmt9lth/video.webm?rlkey=x01bcc2g55h24c00dbpeqd2av&st=qnsv5xm1&raw=1"                      
                     onClose={handleClose}
                 />
             )}
@@ -91,7 +89,7 @@ const HeaderCrowdfundingMobile = () => {
             <div 
                 className="bg-black flex flex-col justify-start px-5 relative" 
                 style={{ 
-                    height: '20vh', 
+                    height: '25vh', 
                     minHeight: '0', 
                 }}
             >
@@ -112,9 +110,10 @@ const HeaderCrowdfundingMobile = () => {
                 ></div>
 
                 <div 
-                    className="max-w-screen-lg w-full flex flex-col gap-4 mb-2 relative z-10"
+                    className="max-w-screen-lg w-full flex flex-col gap-4 mb-10 relative z-10"
                     style={{
                         fontSize: 'calc(1rem + 0.7vw)',
+                        transform: 'translateY(-40px)' // Adăugat transform pentru a ridica conținutul
                     }}
                 >
                     <Title title={currentData.title} description={currentData.description} />

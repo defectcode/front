@@ -1,53 +1,88 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
+import './style/Video.css';  // Importă fișierul CSS
 
 const VideoPlayer = ({ videoSrc, onClose }) => {
     const videoRef = useRef(null);
+    const startY = useRef(0);
+    const currentY = useRef(0);
+    const isSwipingDown = useRef(false);
+    const [isLoading, setIsLoading] = useState(true);
 
     const isMobile = () => {
         return /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
     };
 
     useEffect(() => {
+        const video = videoRef.current;
+
         const handleResize = () => {
             const isLandscape = window.innerWidth > window.innerHeight;
-            if (document.fullscreenElement || videoRef.current.webkitDisplayingFullscreen) {
+            if (document.fullscreenElement || video.webkitDisplayingFullscreen) {
                 if (isLandscape) {
-                    videoRef.current.style.width = '100vw';
-                    videoRef.current.style.height = '100vh';
+                    video.style.width = '100vw';
+                    video.style.height = '100vh';
                 } else {
-                    videoRef.current.style.width = '100%';
-                    videoRef.current.style.height = 'auto';
+                    video.style.width = '100%';
+                    video.style.height = 'auto';
                 }
             }
         };
 
         const handleFullScreenChange = () => {
-            if (!document.fullscreenElement && !videoRef.current.webkitDisplayingFullscreen) {
-                // Ieșire din full-screen, revenim la setările inițiale
-                videoRef.current.style.width = '100%';
-                videoRef.current.style.height = 'auto';
+            if (!document.fullscreenElement && !video.webkitDisplayingFullscreen) {
+                video.style.width = '100%';
+                video.style.height = 'auto';
             }
         };
 
-        // Adăugăm event listeners
+        const handleTouchStart = (e) => {
+            startY.current = e.touches[0].clientY;
+            currentY.current = startY.current;
+            isSwipingDown.current = false;
+        };
+
+        const handleTouchMove = (e) => {
+            currentY.current = e.touches[0].clientY;
+            const diffY = currentY.current - startY.current;
+
+            if (diffY > 50) {
+                isSwipingDown.current = true;
+            }
+        };
+
+        const handleTouchEnd = () => {
+            if (isSwipingDown.current) {
+                onClose();
+            }
+        };
+
         window.addEventListener('resize', handleResize);
         document.addEventListener('fullscreenchange', handleFullScreenChange);
         document.addEventListener('webkitfullscreenchange', handleFullScreenChange);
 
-        // Inițializează stilurile video-ului în funcție de dimensiuni
+        video.addEventListener('touchstart', handleTouchStart);
+        video.addEventListener('touchmove', handleTouchMove);
+        video.addEventListener('touchend', handleTouchEnd);
+
+        video.addEventListener('canplay', () => {
+            setIsLoading(false);  // Dezactivează indicatorul de încărcare când video-ul este gata de redare
+        });
+
         handleResize();
 
         return () => {
-            // Eliminăm event listeners
             window.removeEventListener('resize', handleResize);
             document.removeEventListener('fullscreenchange', handleFullScreenChange);
             document.removeEventListener('webkitfullscreenchange', handleFullScreenChange);
+            video.removeEventListener('touchstart', handleTouchStart);
+            video.removeEventListener('touchmove', handleTouchMove);
+            video.removeEventListener('touchend', handleTouchEnd);
 
             if (document.fullscreenElement) {
                 document.exitFullscreen();
             }
         };
-    }, []);
+    }, [onClose]);
 
     const enterFullScreen = () => {
         if (videoRef.current.requestFullscreen) {
@@ -55,12 +90,10 @@ const VideoPlayer = ({ videoSrc, onClose }) => {
         } else if (videoRef.current.webkitRequestFullscreen) {
             videoRef.current.webkitRequestFullscreen();
         } else if (videoRef.current.webkitEnterFullscreen) {
-            // Pentru iOS Safari
             videoRef.current.webkitEnterFullscreen();
         }
     };
 
-    // Intră automat în full-screen când video-ul e gata de redare
     const handleLoadedData = () => {
         if (isMobile()) {
             enterFullScreen();
@@ -68,19 +101,27 @@ const VideoPlayer = ({ videoSrc, onClose }) => {
     };
 
     return (
-        <div className="fixed inset-0 flex items-center justify-center bg-black z-[9999]">
-            <div className="relative max-w-full max-h-full flex items-center justify-center">
+        <div className="video-container">
+            <div className="video-wrapper">
+                {/* Video Element */}
                 <video
                     ref={videoRef}
                     src={videoSrc}
-                    controls
+                    controls={!isLoading}
                     autoPlay
                     playsInline
                     muted
-                    onLoadedData={handleLoadedData}  // Adăugat pentru a detecta când video-ul e gata
+                    onLoadedData={handleLoadedData}
                     onClick={enterFullScreen}
                     className="max-w-full max-h-full object-contain"
                 />
+
+                {/* Indicator de încărcare */}
+                {isLoading && (
+                    <div className="absolute inset-0 flex items-center justify-center z-20 loader">
+                        <div></div><div></div><div></div>
+                    </div>
+                )}
             </div>
         </div>
     );

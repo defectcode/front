@@ -3,7 +3,7 @@
 export const images = [
   {
       src: {
-        desktop: '/imgs/Carousel/Concept.png',
+        desktop: '/imgs/SeriesConcept/CarouselDesktop.png',
         tablet: '/imgs/Carousel/tablet.png',
         mobile: '/imgs/SeriesConcept/Carousel.webp'
       },

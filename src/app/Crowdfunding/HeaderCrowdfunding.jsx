@@ -35,7 +35,7 @@ const HeaderSeriesConcept = () => {
                 {/* Buton de Play peste imaginea de fundal */}
                 <button 
                     onClick={handleScreenClick} 
-                    className="absolute inset-0 flex items-center justify-center z-20 bg-transparent"
+                    className="absolute inset-0 flex items-center justify-center z-20 bg-transparent xl:mr-[550px] lg:mr-[450px] md:mr-[350px]"
                 >
                     <img src="/imgs/pause.svg" alt="Play Video" className="w-[100px] h-[100px]" />
                 </button>
@@ -44,7 +44,7 @@ const HeaderSeriesConcept = () => {
             {/* Afișare VideoPlayer dacă isVideoVisible este true */}
             {isVideoVisible && (
                 <VideoPlayer 
-                    videoId="Z5OjzFl4b-s"  // ID-ul videoclipului YouTube
+                    videoSrc="https://dl.dropboxusercontent.com/scl/fi/x9aez7xufxlmei5ocs96n/IMG_0947-2-video-converter.com.mp4?rlkey=4wc8nk9mjl0nlgrmxpqi8nimz&st=lmpzzq0x"  // URL-ul videoclipului Dropbox
                     onClose={handleClose}
                     isMuted={isMuted}
                 />
