@@ -3,9 +3,7 @@ import './style/Video.css';  // Importă fișierul CSS
 
 const VideoPlayer = ({ videoSrc, onClose }) => {
     const videoRef = useRef(null);
-    const startY = useRef(0);
-    const currentY = useRef(0);
-    const isSwipingDown = useRef(false);
+    const startY = useRef(0); // Păstrează poziția inițială de touch pe axa Y
     const [isLoading, setIsLoading] = useState(true);
 
     const isMobile = () => {
@@ -36,22 +34,23 @@ const VideoPlayer = ({ videoSrc, onClose }) => {
         };
 
         const handleTouchStart = (e) => {
-            startY.current = e.touches[0].clientY;
-            currentY.current = startY.current;
-            isSwipingDown.current = false;
+            startY.current = e.touches[0].clientY; // Salvează poziția inițială de touch
         };
 
         const handleTouchMove = (e) => {
-            currentY.current = e.touches[0].clientY;
-            const diffY = currentY.current - startY.current;
+            const currentY = e.touches[0].clientY;
+            const diffY = currentY - startY.current;
 
+            // Verifică dacă glisarea este suficientă pentru a închide video-ul
             if (diffY > 50) {
-                isSwipingDown.current = true;
+                onClose();
             }
         };
 
-        const handleTouchEnd = () => {
-            if (isSwipingDown.current) {
+        const handleVideoEnded = () => {
+            if (document.fullscreenElement) {
+                document.exitFullscreen().then(onClose).catch(onClose);
+            } else {
                 onClose();
             }
         };
@@ -62,7 +61,7 @@ const VideoPlayer = ({ videoSrc, onClose }) => {
 
         video.addEventListener('touchstart', handleTouchStart);
         video.addEventListener('touchmove', handleTouchMove);
-        video.addEventListener('touchend', handleTouchEnd);
+        video.addEventListener('ended', handleVideoEnded);
 
         video.addEventListener('canplay', () => {
             setIsLoading(false);  // Dezactivează indicatorul de încărcare când video-ul este gata de redare
@@ -76,7 +75,7 @@ const VideoPlayer = ({ videoSrc, onClose }) => {
             document.removeEventListener('webkitfullscreenchange', handleFullScreenChange);
             video.removeEventListener('touchstart', handleTouchStart);
             video.removeEventListener('touchmove', handleTouchMove);
-            video.removeEventListener('touchend', handleTouchEnd);
+            video.removeEventListener('ended', handleVideoEnded);
 
             if (document.fullscreenElement) {
                 document.exitFullscreen();
@@ -124,8 +123,6 @@ const VideoPlayer = ({ videoSrc, onClose }) => {
                         <div></div><div></div><div></div><div></div>
                     </div>
                 )}
-
-                
             </div>
         </div>
     );

@@ -124,10 +124,10 @@ const HeaderCrowdfundingMobile = () => {
             {/* Icons pentru controlul sunetului */}
             <Icons handleScreenClick={handleScreenClick} />
 
-            {/* NavBar pentru mobil sau desktop */}
+            {/* NavBar pentru mobil sau desktop
             <div className="my-6">
                 {isMobile ? <NavBarCrowdfundingMobile setActiveSection={setActiveSection} /> : <NavBarCrowdfunding setActiveSection={setActiveSection} />}
-            </div>
+            </div> */}
         </div>
     );
 };
