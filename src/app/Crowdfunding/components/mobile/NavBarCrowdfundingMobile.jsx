@@ -58,7 +58,7 @@ const NavBarCrowdfundingMobile = ({ setActiveSection }) => {
     
 
     return (
-        <div className="py-5">
+        <div className="mb-10">
             <div 
                 ref={navbarRef}
                 id="navbar-mobile-original" 

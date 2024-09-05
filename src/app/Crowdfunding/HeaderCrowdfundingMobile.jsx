@@ -1,4 +1,3 @@
-// HeaderCrowdfundingMobile.jsx
 import React, { useState, useEffect } from "react";
 import FundraisingProgress from './components/Progres';
 import Title from "./components/Title";
@@ -49,7 +48,7 @@ const HeaderCrowdfundingMobile = () => {
             <div 
                 className="relative" 
                 style={{ 
-                    height: 'calc(100vh + 15vh)', 
+                    height: '100vh',  // Setează înălțimea să fie egală cu înălțimea ecranului
                     minHeight: '0',
                 }}
             >
@@ -83,13 +82,12 @@ const HeaderCrowdfundingMobile = () => {
                     onClose={handleClose}
                 />
             )}
-            
 
             {/* Container pentru conținut și fundal blur */}
             <div 
                 className="bg-black flex flex-col justify-start px-5 relative" 
                 style={{ 
-                    height: '25vh', 
+                    height: '15vh', 
                     minHeight: '0', 
                 }}
             >
@@ -113,7 +111,7 @@ const HeaderCrowdfundingMobile = () => {
                     className="max-w-screen-lg w-full flex flex-col gap-4 mb-10 relative z-10"
                     style={{
                         fontSize: 'calc(1rem + 0.7vw)',
-                        transform: 'translateY(-40px)' // Adăugat transform pentru a ridica conținutul
+                        transform: 'translateY(-120px)' // Adăugat transform pentru a ridica conținutul
                     }}
                 >
                     <Title title={currentData.title} description={currentData.description} />
@@ -124,8 +122,8 @@ const HeaderCrowdfundingMobile = () => {
             {/* Icons pentru controlul sunetului */}
             <Icons handleScreenClick={handleScreenClick} />
 
-            {/* NavBar pentru mobil sau desktop
-            <div className="my-6">
+            {/* NavBar pentru mobil sau desktop */}
+            {/* <div className="">
                 {isMobile ? <NavBarCrowdfundingMobile setActiveSection={setActiveSection} /> : <NavBarCrowdfunding setActiveSection={setActiveSection} />}
             </div> */}
         </div>
