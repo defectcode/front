@@ -79,7 +79,7 @@ const HeaderCrowdfundingMobile = () => {
             {/* Afișare VideoPlayer dacă isVideoVisible este true */}
             {isVideoVisible && (
                 <VideoPlayer 
-                    videoSrc="https://www.dropbox.com/scl/fi/93yq0hsq1ptdb6dlgico4/VideoAtelier.mp4?rlkey=c2zddkgjz05b05x3pi39rkenq&st=lauvesd1&raw=1"                      
+                    videoSrc="https://www.dropbox.com/scl/fi/oo8ccjiaeiahn9r1hqu53/vodeoMusic.mp4?rlkey=ghe08tlvfyqtfokf4pfppx5j7&st=e5zdm3b2&raw=1"                      
                     onClose={handleClose}
                 />
             )}
