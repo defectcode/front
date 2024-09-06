@@ -12,7 +12,7 @@ const ShareButton = ({ url }) => {
             <RWebShare
             data={{
                 text: "Paradise Problems",
-                url: "http://paradiseproblems.com",
+                url: "https://paradiseproblems.com/costumeatelier",
                 title: "Paradise Problems",
             }}
             onClick={() => console.log("shared successfully!")}
