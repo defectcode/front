@@ -13,11 +13,11 @@ const DetailedStepsMobile = () => {
 
     return (
         <div className="">
-            <div className="mt-5">
-                <h2 className="text-lg text-[#FFFFFF] font-ekMukta font-semibold">Detailed Steps</h2>
-                <div className="font-ekMukta text-[#CDCDCD] mt-4">
+            <div className="">
+                <h2 className="text-[24px] text-[#FFFFFF] font-ekMukta font-semibold">Detailed Steps</h2>
+                <div className="font-ekMukta text-[#CDCDCD] mt-5">
                     {stageDescription.detailedSteps.map((step, index) => (
-                        <div key={index} className="mt-6">
+                        <div key={index} className={index !== 0 ? 'mt-10' : ''}>
                             <h3 className="text-[18px] text-[#E60716] font-semibold">
                                 {index + 1}. {step.title}
                             </h3>

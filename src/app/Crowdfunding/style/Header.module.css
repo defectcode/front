@@ -56,6 +56,15 @@
   background-attachment: flex;
 }
 
+.bgMobileHeader {
+  background-image: url('/imgs/Crowdfunding/Header.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: flex;
+}
+
+
 .bgDesktop {
   background-image: url('/imgs/Crowdfunding/phone.png');
   background-size: cover;

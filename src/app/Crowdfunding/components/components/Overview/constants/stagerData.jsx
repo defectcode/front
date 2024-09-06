@@ -1,10 +1,10 @@
 export const stageDescriptionData = {
     stageTitle: "Stage Description",
-    stageHistory: "The idea of creating an atelier arose to provide high-quality costumes for the \"Paradise Problems\" series. We also plan to create exclusive apparel for our fans and ensure international shipping and online orders.",
+    stageHistory: 'The concept of creating a costume atelier was developed to craft high-quality costumes for the "Paradise Problems" series. Additionally, we plan to design exclusive apparel for our fans, with options for international shipping and online orders.',
     stageHistory2: 'The idea for "Paradise Problems" is to show life in a perfect city without money, where people still face real human problems. We aim to demonstrate how love, loyalty, and kindness can solve these problems.',
     fundingTitle: "Funding And Support",
-    fundingProgress: "Current Progress: The team has rented a space of 370 sq.m. for $5,000 per month.",
-    requiredAmount: "Required Amount: $227,000 to establish the atelier.",
+    fundingProgress: " We have successfully rented a 370 sq.m. space for $5,000 per month, showcasing our commitment to this project.",
+    requiredAmount: " We are seeking $227,000 to fully establish the atelier and begin production.",
     monthlyCostsTitle: "Monthly Costs:",
     monthlyCosts: [
         { item: "Rent", cost: "$5,000" },
@@ -12,7 +12,7 @@ export const stageDescriptionData = {
         { item: "Materials", cost: "$20,000" },
         { item: "Utilities", cost: "$2,000" }
     ],
-    totalMonthlyCosts: "Total Monthly Costs: $44,000",
+    totalMonthlyCosts: "$44,000",
     imageUrl_1: "/imgs/Crowdfunding/Overview/Element1.webp",
     imageUrl_2: "/imgs/Crowdfunding/Overview/Element2.webp",
     imageUrl_3: "/imgs/Crowdfunding/Overview/Element3.webp",
@@ -32,7 +32,7 @@ export const stageDescription = {
     requiredAmount: "Required Amount: $227,000 to establish the atelier.",
     monthlyCostsTitle: "Monthly Costs:",
     helpTitle: "How You Can Help",
-    helpInfo: 'Support our project and help create a unique atelier. Financial support will grant you exclusive apparel and other rewards',
+    helpInfo: 'Join us in bringing this unique atelier to life. Your financial support will not only fund this project but also grant you exclusive apparel and special rewards as a token of our appreciation.',
     helpInfo2: 'With your help, we can complete this important stage and bring "Paradise Problems" to life. Your support is crucial to continue this journey of creating a meaningful and engaging series.',
     monthlyCosts: [
         { item: "Rent", cost: "$5,000" },

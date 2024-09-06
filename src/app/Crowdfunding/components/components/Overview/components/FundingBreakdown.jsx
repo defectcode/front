@@ -5,11 +5,13 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 
 const costData = [
-    { category: 'Rent and Prepare the Space', cost: 75000, week: '1-2' },
-    { category: 'Premium Equipment', cost: 65000, week: '3-4' },
-    { category: 'Staff (first month)', cost: 17000, week: '5-6' },
-    { category: 'Materials (first month)', cost: 20000, week: '7-8' },
-    { category: 'Additional Costs for International Shipping and Online Orders', cost: 50000, week: '9-10' }
+    { category: 'Research & Analysis:', cost: 12000, week: '6-8' },
+    { category: 'Creating Main Idea', cost: 10000, week: '3-4' },
+    { category: 'Describing the Series', cost: 10000, week: '5-6' },
+    { category: 'Developing Characters:', cost: 10000, week: '7-9' },
+    { category: 'Defining Thematic Aspects: ', cost: 8000, week: '3-4' },
+    { category: 'Coordinating Team Work:', cost: 12000, week: '2-5' },
+    { category: 'Consultations with ', cost: 12000, week: '1-2' },
 ];
 
 // Function to generate a color gradient from red to white
@@ -119,7 +121,7 @@ const FundingBreakdown = () => {
                                         {index < costData.length - 1 && (
                                             <motion.div
                                                 initial={{ height: 0 }}
-                                                animate={{ height: '95px' }}
+                                                animate={{ height: '70px' }}
                                                 transition={{ delay: (index + 1) * 0.4, duration: 0.5 }}
                                                 className="absolute left-1/2 transform -translate-x-1/2 w-[2px] align-middle gap-1"
                                                 style={{ backgroundColor: generateColorGradient(costData.length)[index] }}

@@ -52,27 +52,39 @@ const HeaderCrowdfundingMobile = () => {
                     minHeight: '0',
                 }}
             >
-                <div className={`${styles.bgMobileAtelier}`} style={{ height: '100%', overflow: 'hidden' }}>
-                    <div
-                        style={{
-                            height: '100%',
-                            backgroundImage: `linear-gradient(to top, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 25%), url(${currentData.imageUrl})`,
-                            backgroundSize: 'cover',
-                            backgroundPosition: 'center',
-                            WebkitBackgroundClip: 'padding-box',
-                            backgroundClip: 'padding-box',
-                            backgroundRepeat: 'no-repeat',
-                        }}
-                    >
-                        {/* Buton de Play pentru versiunea mobilă */}
-                        <button 
-                            onClick={handleScreenClick} 
-                            className="absolute inset-0 flex items-center justify-center z-20 bg-transparent"
-                        >
-                            <img src="/imgs/pause.svg" alt="Play Video" className="w-[50px] h-[50px]" />
-                        </button>
-                    </div>
-                </div>
+<div className={`${styles.bgMobileAtelier}`} style={{ height: '100%', overflow: 'hidden' }}>
+    <div
+        style={{
+            height: '100%',
+            backgroundImage: `url(${currentData.imageUrl})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            WebkitBackgroundClip: 'padding-box',
+            backgroundClip: 'padding-box',
+            backgroundRepeat: 'no-repeat',
+            position: 'relative',
+        }}
+    >
+        <div
+            style={{
+                position: 'absolute',
+                bottom: 0,
+                width: '100%',
+                height: '40%', // Ajustează înălțimea gradientului
+                backgroundImage: 'linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 100%)',
+            }}
+        />
+        {/* Buton de Play pentru versiunea mobilă */}
+        <button 
+            onClick={handleScreenClick} 
+            className="absolute inset-0 flex items-center justify-center z-20 bg-transparent"
+        >
+            <img src="/imgs/pause.svg" alt="Play Video" className="w-[50px] h-[50px]" />
+        </button>
+    </div>
+</div>
+
+
             </div>
 
             {/* Afișare VideoPlayer dacă isVideoVisible este true */}
@@ -87,7 +99,7 @@ const HeaderCrowdfundingMobile = () => {
             <div 
                 className="bg-black flex flex-col justify-start px-5 relative" 
                 style={{ 
-                    height: '15vh', 
+                    height: '14.9vh', 
                     minHeight: '0', 
                 }}
             >

@@ -224,6 +224,11 @@ iframe {
   font-weight: 500; /* This sets the font weight to medium */
 }
 
+.font-ekmukta-semibold {
+  font-family: 'Ek Mukta', sans-serif;
+  font-weight: 700;
+}
+
 
 
 .font-ekmukta-extrabold {
