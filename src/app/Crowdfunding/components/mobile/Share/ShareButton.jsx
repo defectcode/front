@@ -11,7 +11,7 @@ const ShareButton = ({ url }) => {
             className="flex-[1] h-[40px] flex items-center justify-center gap-2 text-white border border-white rounded-xl font-avenirHeavy hover:bg-white hover:text-black">
             <RWebShare
             data={{
-                text: "Paradise Problems",
+                // text: "Paradise Problems",
                 url: "https://paradiseproblems.com/costumeatelier",
                 title: "Paradise Problems",
             }}
