@@ -81,7 +81,9 @@ const HeaderCrowdfundingMobile = () => {
                         className="max-w-screen-lg w-full flex flex-col gap-4 mb-10 relative z-10 px-5"
                         style={{
                             fontSize: 'calc(1rem + 0.7vw)',
-                            top: '69%', // Poziționare la 69% de la începutul componentei
+                            // top: '69%', // Poziționare la 69% de la începutul componentei
+                            top: `calc(69% + 20px)`, // Poziționează la 40px de jos, 70px fiind aproximativ înălțimea conținutului
+
                             transform: 'translateY(0)' // Eliminăm orice transformări suplimentare
                         }}
                     >
