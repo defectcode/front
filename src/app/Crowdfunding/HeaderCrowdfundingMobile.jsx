@@ -6,8 +6,6 @@ import Icons from './components/VideoMobile/Icons';
 import { images } from './constants/carouselData';
 import styles from './style/Header.module.css';
 import useDeviceType from './components/hooks/useDeviceType';
-import NavBarCrowdfundingMobile from './components/mobile/NavBarCrowdfundingMobile';
-import NavBarCrowdfunding from './components/NavBarCrowdfunding';
 
 const HeaderCrowdfundingMobile = () => {
     const currentData = images[0];
@@ -78,13 +76,12 @@ const HeaderCrowdfundingMobile = () => {
                     }} 
                 >
                     <div 
-                        className="max-w-screen-lg w-full flex flex-col gap-4 mb-10 relative z-10 px-5"
+                        className="max-w-screen-lg w-full flex flex-col gap-4 relative z-10 px-5"
                         style={{
                             fontSize: 'calc(1rem + 0.7vw)',
-                            // top: '69%', // Poziționare la 69% de la începutul componentei
-                            top: `calc(69% + 20px)`, // Poziționează la 40px de jos, 70px fiind aproximativ înălțimea conținutului
-
-                            transform: 'translateY(0)' // Eliminăm orice transformări suplimentare
+                            top: `69%`, // Poziționează la 69% de la începutul componentei
+                            transform: 'translateY(0)', // Eliminăm orice transformări suplimentare
+                            // marginBottom: '40px' // Asigură că între componente este 40px de spațiu
                         }}
                     >
                         <Title title={currentData.title} description={currentData.description} />

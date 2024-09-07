@@ -14,10 +14,9 @@ import OverviewMobile from "../app/Crowdfunding/components/components/Overview/O
 import RewardsMobile from "../app/Crowdfunding/components/components/Rewards/RewardsMobile";
 import CommunityMobile from "../app/Crowdfunding/components/components/Community/CommunityMobile";
 import ExtrasMobile from "../app/Crowdfunding/components/components/Extras/ExtrasMobile";
-import Footer from '../app/components/Footer/Footer'
-import FooterMobileOverview from '../app/components/Footer/FooterMobileOverview'
+import Footer from '../app/components/Footer/Footer';
+import FooterMobileOverview from '../app/components/Footer/FooterMobileOverview';
 import NavBarCrowdfundingMobile from '../app/Crowdfunding/components/mobile/NavBarCrowdfundingMobile.jsx';
-
 
 const Crowdfunding = () => {
     const isMobile = useDeviceType();
@@ -54,19 +53,30 @@ const Crowdfunding = () => {
     };
 
     return (
-        <div className="mb-10 lg:mb-0 bg-black h-auto">
+        <div className="lg:mb-0 bg-black h-auto">
             <Static />
-            {isMobile ? <HeaderCrowdfundingMobile /> : <HeaderCrowdfunding />}
-            <div className="">
-            {isMobile ? <NavBarCrowdfundingMobile setActiveSection={setActiveSection} />  : <NavBarCrowdfunding setActiveSection={setActiveSection} />}
-            </div>
-            {isMobile ? <ButonShere /> : ''}
-            <div>
-                {renderSection()}
-            </div>
-            {isMobile ? <FooterMobileOverview/> : <Footer/>}
+            {isMobile ? (
+                <>
+                    {/* HeaderCrowdfundingMobile fără modificări */}
+                    <HeaderCrowdfundingMobile />
+                    {/* Ajustare cu margin-top: -30px pentru toate componentele mobile în afară de HeaderCrowdfundingMobile */}
+                    <div style={{ marginTop: '-40px' }}>
+                        <NavBarCrowdfundingMobile setActiveSection={setActiveSection} />
+                        <ButonShere />
+                        {renderSection()}
+                        <FooterMobileOverview />
+                    </div>
+                </>
+            ) : (
+                <>
+                    <HeaderCrowdfunding />
+                    <NavBarCrowdfunding setActiveSection={setActiveSection} />
+                    {renderSection()}
+                    <Footer />
+                </>
+            )}
         </div>
     );
-}
+};
 
 export default Crowdfunding;
