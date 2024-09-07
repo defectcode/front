@@ -9,7 +9,7 @@ const StageDescriptionMobile = () => {
                 <h2 className="text-[24px] text-[#FFFFFF] mb-5 font-ekMukta font-semibold">
                     {stageDescriptionData.stageTitle}
                 </h2>
-                <p className="text-[#CDCDCD] max-w-[764px] w-full font-ekMukta text-[15px] leading-[1.6]">
+                <p className="text-[#CDCDCD] max-w-[764px] w-full font-ekMukta text-[16px] leading-[1.6]">
                     {stageDescriptionData.stageHistory}
                 </p>
                 <img 
@@ -22,7 +22,7 @@ const StageDescriptionMobile = () => {
                 <h2 className="text-[24px] text-[#FFFFFF] font-ekMukta font-semibold mb-5">
                     {stageDescriptionData.fundingTitle}
                 </h2>
-                <div className="font-ekMukta text-[#CDCDCD] text-[15px] leading-[1.6]">
+                <div className="font-ekMukta text-[#CDCDCD] text-[16px] leading-[1.6]">
                     <p className="mb-4">
                         <span className="text-[#FFFFFF] font-semibold text-[16px]">Current Progress:</span> {stageDescriptionData.fundingProgress}
                         <br />

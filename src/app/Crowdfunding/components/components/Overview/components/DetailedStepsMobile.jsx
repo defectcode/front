@@ -18,17 +18,17 @@ const DetailedStepsMobile = () => {
                 <div className="font-ekMukta text-[#CDCDCD] mt-5">
                     {stageDescription.detailedSteps.map((step, index) => (
                         <div key={index} className={index !== 0 ? 'mt-10' : ''}>
-                            <h3 className="text-[18px] text-[#E60716] font-semibold">
+                            <h3 className="text-[18px] text-[#E60716] font-semibold mb-2">
                                 {index + 1}. {step.title}
                             </h3>
-                            <ul className="list-disc list-inside list-small ml-4 mt-2">
+                            <ul className="list-disc list-inside list-small ml-4">
                                 {step.items.map((item, idx) => (
-                                    <li key={idx} className="mt-2">
+                                    <li key={idx} className="mt-2 mb-[10px]"> {/* Adăugat mb-[10px] pentru spațiu între elemente */}
                                         <span className="font-bold text-[#FFFFFF] text-[16px]">{item.item}:</span> <span className="text-[#CDCDCD] text-[16px]">{item.cost}</span>
                                     </li>
                                 ))}
                             </ul>
-                            {/* Corresponding image for each step */}
+                            {/* Imaginea corespunzătoare fiecărui pas */}
                             {images[index] && (
                                 <img 
                                     src={images[index]} 
@@ -43,17 +43,17 @@ const DetailedStepsMobile = () => {
             </div>
             <div className="my-10">
                 <h2 className="text-[#FFFFFF] font-ekMukta font-semibold text-[26px]">{stageDescription.helpTitle}</h2>
-                <p className="text-[#CDCDCD] w-full text-[16px] mt-4">{stageDescription.helpInfo}</p>
+                <p className="text-[#CDCDCD] w-full text-[16px] mt-5">{stageDescription.helpInfo}</p>
                 <img 
                     src={stageDescriptionData.imageUrl_8} 
                     alt="Stage Description" 
-                    className="mt-10 w-full h-auto"
+                    className="mt-5 w-full h-auto"
                     style={{ objectFit: 'cover' }}
                 />
             </div>
             <style jsx>{`
                 ul.list-small li::marker {
-                    font-size: 0.7em; /* Adjust the size as necessary */
+                    font-size: 0.7em; /* Ajustează dimensiunea marker-ului */
                 }
             `}</style>
         </div>

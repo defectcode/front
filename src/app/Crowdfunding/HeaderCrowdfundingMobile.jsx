@@ -77,6 +77,17 @@ const HeaderCrowdfundingMobile = () => {
                         position: 'relative',  // Necesită pentru poziționarea butonului relativ la această imagine
                     }} 
                 >
+                    <div 
+                        className="max-w-screen-lg w-full flex flex-col gap-4 mb-10 relative z-10 px-5"
+                        style={{
+                            fontSize: 'calc(1rem + 0.7vw)',
+                            top: '69%', // Poziționare la 69% de la începutul componentei
+                            transform: 'translateY(0)' // Eliminăm orice transformări suplimentare
+                        }}
+                    >
+                        <Title title={currentData.title} description={currentData.description} />
+                        <FundraisingProgress data={currentData} />
+                    </div>
                 <div
                     style={{
                         position: 'absolute',
@@ -133,16 +144,7 @@ const HeaderCrowdfundingMobile = () => {
                         pointerEvents: 'none',
                     }}
                 ></div>
-                <div 
-                    className="max-w-screen-lg w-full flex flex-col gap-4 mb-10 relative z-10"
-                    style={{
-                        fontSize: 'calc(1rem + 0.7vw)',
-                        transform: 'translateY(-130%)' // Am modificat transform pentru a ridica conținutul cu 20%
-                    }}
-                >
-                    <Title title={currentData.title} description={currentData.description} />
-                    <FundraisingProgress data={currentData} />
-                </div>
+                
             </div>
 
             {/* Icons pentru controlul sunetului */}
