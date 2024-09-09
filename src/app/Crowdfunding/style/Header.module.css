@@ -208,3 +208,24 @@
   }
 }
 
+
+/* Telefoane / mari (ex. iPhone 14 Pro Max) */
+@media (max-width: 430px) {
+  .headerContent {
+      top: 70vh;
+  }
+}
+
+/* Telefoane mari (ex. iPhone 12, 13, etc.) */
+@media (max-width: 375px) {
+  .headerContent {
+      top: 56vh;
+  }
+}
+
+/* Telefoane mici (ex. iPhone SE și alte dispozitive sub 375px) */
+@media (max-width: 320px) {
+  .headerContent {
+      top: 51vh;
+  }
+}
