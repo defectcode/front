@@ -10,10 +10,10 @@ import Image from 'next/image';
 const Carousel = () => {
   const [isMobile, setIsMobile] = useState(false);
   const [isTablet, setIsTablet] = useState(false);
-  const [isLaptop, setIsLaptop] = useState(false);
   const [spacing, setSpacing] = useState(0.4);
   const [perView, setPerView] = useState(1.25);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false); // Control pentru tranziții
 
   const [sliderRef, slider] = useKeenSlider({
     loop: true,
@@ -28,7 +28,7 @@ const Carousel = () => {
     },
     dragStart: () => {
       if (slider.current) {
-        slider.current.options.loop = false; // Dezactivează temporar loop-ul pentru a preveni conflictele
+        slider.current.options.loop = false; // Dezactivează temporar loop-ul
       }
     },
     dragEnd: () => {
@@ -36,8 +36,8 @@ const Carousel = () => {
         slider.current.options.loop = true; // Reactivăm loop-ul după drag
       }
     },
-    duration: 1200, // Crește durata pentru o tranziție mai lină
-    easing: (t) => 1 - Math.pow(1 - t, 4), // Folosește 'easeOutQuart' pentru o animație mai lină
+    duration: 1200,
+    easing: (t) => 1 - Math.pow(1 - t, 4),
   });
 
   useEffect(() => {
@@ -45,7 +45,6 @@ const Carousel = () => {
       const width = window.innerWidth;
       setIsMobile(width <= 834);
       setIsTablet(width > 834 && width <= 1024);
-      setIsLaptop(width > 1024 && width <= 1920);
 
       if (width <= 415) {
         setSpacing(14);
@@ -56,17 +55,8 @@ const Carousel = () => {
       } else if (width > 834 && width <= 1024) {
         setSpacing(3);
         setPerView(1.25);
-      } else if (width > 1024 && width <= 1920) {
-        setSpacing(20);
-        setPerView(1.25);
-      } else if (width > 1920 && width <= 2500) {
-        setSpacing(20);
-        setPerView(1.5);
-      } else if (width > 2500 && width <= 3300) {
-        setSpacing(20);
-        setPerView(1.8);
       } else {
-        setSpacing(0.4);
+        setSpacing(20);
         setPerView(1.25);
       }
     };
@@ -76,14 +66,7 @@ const Carousel = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  useEffect(() => {
-    if (slider.current) {
-      setTimeout(() => {
-        slider.current.moveToIdx(1);
-      }, 0);
-    }
-  }, [slider]);
-
+  // Actualizare slider la schimbări de dimensiuni
   useEffect(() => {
     sliderRef.current?.update({
       slides: {
@@ -94,40 +77,64 @@ const Carousel = () => {
     });
   }, [spacing, perView, sliderRef]);
 
+  // Forțează actualizarea sliderului periodic pentru a preveni blocajele
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (slider.current) {
+        slider.current.update(); // Actualizare periodică
+      }
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [slider]);
+
+  // Funcția pentru a gestiona clicurile pe imagini
   const handleImageClick = (e, index) => {
-    // Verificăm dacă imaginea apăsată este cea centrală
     if (index === currentIndex) {
-      // Redirecționăm către link-ul specificat
       window.location.href = images[index].link;
       return;
     }
 
-    // Determinăm direcția de navigare pe baza poziției clicului
     const x = e.clientX;
     const screenWidth = window.innerWidth;
 
     if (x > screenWidth / 2) {
-      slider.current?.next();
+      handleNext(); // Navighează la următoarea imagine
     } else {
-      slider.current?.prev();
+      handlePrev(); // Navighează la imaginea anterioară
     }
   };
 
-  const handleDotClick = (index) => {
-    if (slider.current) {
-      slider.current.moveToIdx(index);
-    }
-  };
-
+  // Funcția pentru butonul "Prev"
   const handlePrev = () => {
-    if (slider.current) {
+    if (slider.current && !isTransitioning) {
+      setIsTransitioning(true); // Marchează începutul tranziției
       slider.current.prev();
+      setTimeout(() => {
+        slider.current.update(); // Actualizare după tranziție
+        setIsTransitioning(false); // Marchează sfârșitul tranziției
+        setCurrentIndex(slider.current.track.details.rel);
+      }, 1200);
     }
   };
 
+  // Funcția pentru butonul "Next"
   const handleNext = () => {
-    if (slider.current) {
+    if (slider.current && !isTransitioning) {
+      setIsTransitioning(true); // Marchează începutul tranziției
       slider.current.next();
+      setTimeout(() => {
+        slider.current.update(); // Actualizare după tranziție
+        setIsTransitioning(false); // Marchează sfârșitul tranziției
+        setCurrentIndex(slider.current.track.details.rel);
+      }, 1200);
+    }
+  };
+
+  // Funcția pentru clic pe puncte
+  const handleDotClick = (index) => {
+    if (slider.current && !isTransitioning) {
+      slider.current.moveToIdx(index);
+      setCurrentIndex(index);
     }
   };
 
@@ -144,7 +151,6 @@ const Carousel = () => {
           className={`keen-slider__slide relative flex justify-center text-white text-2xl w-full h-[494px] sm:h-[494px] md:h-[500px] lg:w-[1100px] max-height ${index !== currentIndex ? 'cursor-pointer' : ''} ${isMobile ? 'mobile-slide' : ''} ${index === currentIndex ? 'current-slide' : ''}`}
           onClick={(e) => handleImageClick(e, index)}
         >
-          {/* Suprapunere neagră pentru imaginile laterale */}
           {index !== currentIndex && (
             <div 
               className="absolute inset-0 bg-black opacity-50 z-10 max-h-[500px] mt-36"
@@ -155,7 +161,6 @@ const Carousel = () => {
             ></div>
           )}
 
-          {/* Strat de blur pentru imaginea centrală */}
           {index === currentIndex && (
             <div
               className="absolute inset-x-0 bottom-0 w-full mb-[28px]"
@@ -166,14 +171,6 @@ const Carousel = () => {
             ></div>
           )}
 
-          {/* Icon de lacăt pentru imaginile cu status 'Next' */}
-          {image.status === 'Next' && index === currentIndex && (
-            <div className="absolute inset-0 flex items-center justify-center z-20">
-              <Image src='/imgs/Carousel/lock.svg' alt="Icon lacăt" width={50} height={50} className="opacity-70" />
-            </div>
-          )}
-
-          {/* Container de conținut */}
           <div
             className={`absolute inset-x-0 bottom-0 z-20 ${isMobile ? 'w-full px-3 mb-[25px] rounded-[10px]' : isTablet ? 'w-full h-full bg-gradient-to-r from-black/60 to-transparent p-3' : 'w-[55%] h-[750px] bg-gradient-to-r px-10'} flex flex-col justify-end text-white ${currentIndex === index ? 'opacity-100' : 'opacity-0'} transition-opacity duration-200`}
             style={

@@ -1,58 +1,49 @@
-.communityContainer {
+.rewardsContainer {
     position: relative;
-    background-image: url('/imgs/Crowdfunding/Community/Community.png'); /* Înlocuiește cu calea corectă pentru desktop */
-    background-size: cover;
-    background-position: center;
-    width: 944px; /* Dimensiunile imaginii pentru desktop */
-    height: calc(462px + 80px); /* Adăugăm 40px pentru partea de sus și 40px pentru partea de jos */
-    margin: 0 auto; /* Centrare pe pagină */
-    margin-top: 40px;
-    margin-bottom: 40px;
-    border-radius: 8px; /* Rotunjirea colțurilor */
-}
-
-.overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
-    height: calc(100% - 80px); /* Ajustăm înălțimea overlay-ului pentru a ține cont de padding */
-    background-color: rgba(0, 0, 0, 0.5); /* Opacitate pentru suprapunerea întunecată */
-    z-index: 1;
-    border-radius: 8px; /* Rotunjirea colțurilor */
+    height: 553px; /* Înălțime pentru desktop */
+    background-color: black; /* Fundal negru */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
-.lockIcon {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 2;
-}
-
-
-/* Stiluri pentru versiunea mobilă */
+/* Stiluri responsive pentru telefon */
 @media (max-width: 768px) {
-    .communityContainer {
-        background-image: url('/imgs/Crowdfunding/Community/CommunityMobile.png'); /* Înlocuiește cu calea corectă pentru mobil */
-        width: calc(100% - 114px); /* Lățimea scade cu dublul marginii (57px pe fiecare parte) */
-        height: calc(70vh - 114px); /* Înălțimea scade cu dublul marginii */
-        padding: 57px; /* Adăugăm marginea de 57px */
-        margin: 0 auto; /* Centrare pe pagină */
-        margin-top: 40px;
-        margin-bottom: 40px;
+    .rewardsContainer {
+        height: 279px; /* Înălțime pentru telefon */
+    }
+}
+
+.content {
+    position: relative;
+    z-index: 10; /* Asigurăm că conținutul este deasupra suprapunerii */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.iconWrapper img {
+    width: 160px; /* Dimensiune icon */
+    height: 100px;
+    opacity: 0.7; /* Opacitate redusă */
+}
+
+.textWrapper h2 {
+    color: white;
+    font-size: 1.5rem; /* Dimensiune text */
+    margin-top: 10px;
+}
+
+/* Stiluri responsive pentru telefon */
+@media (max-width: 768px) {
+    .textWrapper h2 {
+        font-size: 1.2rem; /* Text mai mic pe telefon */
     }
 
-    .overlay {
-        height: 100%; /* Overlay-ul acoperă întreaga zonă */
-        width: 100%; /* Asigurăm că acoperă și lățimea completă */
-        top: 0;
-        left: 0;
-        border-radius: 8px; /* Rotunjirea colțurilor */
-    }
-
-    .lockIcon img {
-        width: 48px; /* Dimensiunea iconiței de blocare pentru mobil */
-        height: 48px;
+    .iconWrapper img {
+        width: 160px;
+        height: 100px; /* Icon pentru telefon */
     }
 }
