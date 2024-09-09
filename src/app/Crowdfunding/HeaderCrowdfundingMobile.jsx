@@ -39,8 +39,8 @@ const HeaderCrowdfundingMobile = () => {
                     <div 
                         className={`${styles.bgMobileHeader}`} 
                         style={{ 
-                            width: '100vw', 
-                            height: '100vh',  // Folosim dynamic viewport height pentru a evita variațiile
+                            width: '100%', 
+                            height: '100%',  // Folosim dynamic viewport height pentru a evita variațiile
                             backgroundImage: `url(${currentData.imageUrl})`, 
                             backgroundSize: 'cover', // Păstrează proporțiile imaginii 
                             backgroundPosition: 'center', // Centrează imaginea
@@ -71,7 +71,6 @@ const HeaderCrowdfundingMobile = () => {
                                 bottom: 0,
                                 width: '100vw',
                                 top: '50vh', // Începem gradientul de la această înălțime
-                                bottom: '100px', // Păstrează un spațiu de 15px de la fund
                                 backgroundImage: 'linear-gradient(to top, rgba(0, 0, 0, 0.8) 60%, rgba(0, 0, 0, 0) 100%)',
                                 zIndex: 5, // Ridică gradientul deasupra fundalului
                             }}

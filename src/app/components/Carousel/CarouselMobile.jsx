@@ -12,12 +12,13 @@ const Carousel = () => {
   const [isTablet, setIsTablet] = useState(false);
   const [spacing, setSpacing] = useState(0.4);
   const [perView, setPerView] = useState(1.25);
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isTransitioning, setIsTransitioning] = useState(false); // Control pentru tranziții
+  const [currentIndex, setCurrentIndex] = useState(1); // Începem de la indexul 1
 
+  // Inițializăm sliderul pentru a începe de la indexul 1
   const [sliderRef, slider] = useKeenSlider({
     loop: true,
     mode: 'snap',
+    initial: 1, // Setăm să înceapă de la a doua imagine (index 1)
     slides: {
       origin: 'center',
       perView: perView,
@@ -28,7 +29,7 @@ const Carousel = () => {
     },
     dragStart: () => {
       if (slider.current) {
-        slider.current.options.loop = false; // Dezactivează temporar loop-ul
+        slider.current.options.loop = false; // Dezactivăm temporar loop-ul în timpul drag
       }
     },
     dragEnd: () => {
@@ -40,6 +41,7 @@ const Carousel = () => {
     easing: (t) => 1 - Math.pow(1 - t, 4),
   });
 
+  // Setăm dimensiunile și numărul de imagini vizibile în funcție de lățimea ecranului
   useEffect(() => {
     const handleResize = () => {
       const width = window.innerWidth;
@@ -66,7 +68,7 @@ const Carousel = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // Actualizare slider la schimbări de dimensiuni
+  // Actualizăm sliderul când se schimbă dimensiunile sau numărul de imagini vizibile
   useEffect(() => {
     sliderRef.current?.update({
       slides: {
@@ -76,16 +78,6 @@ const Carousel = () => {
       },
     });
   }, [spacing, perView, sliderRef]);
-
-  // Forțează actualizarea sliderului periodic pentru a preveni blocajele
-  useEffect(() => {
-    const interval = setInterval(() => {
-      if (slider.current) {
-        slider.current.update(); // Actualizare periodică
-      }
-    }, 5000);
-    return () => clearInterval(interval);
-  }, [slider]);
 
   // Funcția pentru a gestiona clicurile pe imagini
   const handleImageClick = (e, index) => {
@@ -106,33 +98,21 @@ const Carousel = () => {
 
   // Funcția pentru butonul "Prev"
   const handlePrev = () => {
-    if (slider.current && !isTransitioning) {
-      setIsTransitioning(true); // Marchează începutul tranziției
+    if (slider.current) {
       slider.current.prev();
-      setTimeout(() => {
-        slider.current.update(); // Actualizare după tranziție
-        setIsTransitioning(false); // Marchează sfârșitul tranziției
-        setCurrentIndex(slider.current.track.details.rel);
-      }, 1200);
     }
   };
 
   // Funcția pentru butonul "Next"
   const handleNext = () => {
-    if (slider.current && !isTransitioning) {
-      setIsTransitioning(true); // Marchează începutul tranziției
+    if (slider.current) {
       slider.current.next();
-      setTimeout(() => {
-        slider.current.update(); // Actualizare după tranziție
-        setIsTransitioning(false); // Marchează sfârșitul tranziției
-        setCurrentIndex(slider.current.track.details.rel);
-      }, 1200);
     }
   };
 
   // Funcția pentru clic pe puncte
   const handleDotClick = (index) => {
-    if (slider.current && !isTransitioning) {
+    if (slider.current) {
       slider.current.moveToIdx(index);
       setCurrentIndex(index);
     }
