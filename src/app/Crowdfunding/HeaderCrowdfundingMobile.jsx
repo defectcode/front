@@ -53,7 +53,7 @@ const HeaderCrowdfundingMobile = () => {
                             className="max-w-screen-lg w-full flex flex-col gap-4 relative z-10 px-5"
                             style={{
                                 fontSize: 'calc(1rem + 0.7vw)',
-                                top: `69%`, // Poziționează la 69% de la începutul componentei
+                                top: `75%`, // Poziționează la 69% de la începutul componentei
                                 transform: 'translateY(0)', // Eliminăm orice transformări suplimentare
                             }}
                         >
@@ -67,8 +67,8 @@ const HeaderCrowdfundingMobile = () => {
                                 position: 'absolute',
                                 bottom: 0,
                                 width: '100%',
-                                top: '61.76%',
-                                bottom: '15px',
+                                top: '41.76%',
+                                // bottom: '15px',
                                 backgroundImage: 'linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 100%)',
                                 zIndex: 5, // Ridică gradientul deasupra fundalului
                             }}
