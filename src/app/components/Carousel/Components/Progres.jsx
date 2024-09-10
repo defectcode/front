@@ -38,7 +38,7 @@ const FundraisingProgress = ({ raisedAmount, goalAmount, contentIndex = 0 }) => 
         ) : (
           <span className="text-[20px] lg:text-2xl font-ekmukta font-bold mb-2 md:mb-0 text-[#FFFFFF]" style={{lineHeight: '105%'}}>${content.raisedAmount}</span>
         )}
-        <span className="text-[13px] block font-avenir font-light text-[#C1C1C1] mb-2 md:mb-0" style={{lineHeight: '120%'}}>
+        <span className="text-[13px] block font-avenir font-light text-[#C1C1C1] mb-2 md:mb-0" style={{lineHeight: '105%'}}>
           {content.stageLabel} <span className="text-[#FFFFFF] font-semibold font-avenir">{content.stageNumber}</span>
         </span>
       </div>
