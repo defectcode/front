@@ -43,7 +43,10 @@ export default function Header() {
         ref={headerRef}
         className={`absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat max-md:w-auto ${isModalOpen ? 'bg-opacity-50 blur-sm' : ''} md:bg-[url('/imgs/Background.webp')] bg-[url('/imgs/mobile.webp')] max-md:background-fixed`}
       ></div>
-      <div className={`absolute bottom-0 w-full h-3/6 bg-gradient-to-t from-black/70 via-black/70 to-transparent ${isModalOpen ? 'bg-opacity-50 blur-sm' : ''}`}></div>
+      <div className={`absolute bottom-0 w-full h-3/6 -mb-2 bg-gradient-to-t from-black/70 via-black/70 to-transparent ${isModalOpen ? 'bg-opacity-50 blur-sm' : ''}`}
+      style={{
+        background: 'linear-gradient(0deg, rgba(0, 0, 0, 1) 10%, rgba(0, 0, 0, 0.7) 50%, rgba(0, 0, 0, 0) 100%)',
+      }}></div>
       <div className={`relative z-10 h-full overflow-auto ${isModalOpen ? 'blur-sm' : ''}`}>
         <Navbar showSupportInNavbar={showSupportInNavbar} openModal={openModal} />
         <div className="max-w-[1200px] w-auto mx-auto h-full flex flex-col text-white max-2xl:p-4 max-md:p-0">
@@ -62,7 +65,7 @@ export default function Header() {
                   </div>
                 )}
                 <div className=" md:flex md:flex-col md:items-start">
-                  <p className="text-[16px] max-lg:text-lg max-md:text-[15px] max-md:leading-4 max-lg:text-start max-md:text-center max-md:mb-4 text-[#CDCDCD] mx-0 max-md:mx-4 font-ekMukta tracking-neg-3percent">
+                  <p className="text-[16px] max-lg:text-lg max-md:text-[15px] max-md:leading-[1.125rem] max-lg:text-start max-md:text-center max-md:mb-4 text-[#CDCDCD] mx-0 max-md:mx-4 font-ekMukta tracking-neg-3percent">
                     In an ideal city without money, people face real human problems. Your support makes the series possible.
                   </p>
                    {!showSupportInNavbar && (
