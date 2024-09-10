@@ -26,22 +26,22 @@ export default function Header() {
 
   useEffect(() => {
     if (effectRan.current) return;
-
+  
     const updateHeight = () => {
       const viewportHeight = window.innerHeight;
       document.documentElement.style.setProperty('--viewport-height', `${viewportHeight}px`);
     };
-
-    
+  
     updateHeight();
     window.addEventListener('resize', updateHeight);
-
+  
     effectRan.current = true;
-
+  
     return () => {
       window.removeEventListener('resize', updateHeight);
     };
   }, []);
+  
 
   return (
     <div className="relative h-screen max-md:h-[var(--viewport-height)] w-auto text-white font-ekMukta overflow-hidden">
