@@ -32,14 +32,13 @@ export default function Header() {
     // Setăm înălțimea doar o singură dată la încărcare
     updateHeight();
 
-    // Eliminăm listener-ul de redimensionare pentru a permite scroll-ul fără interferențe
     return () => {
       window.removeEventListener('resize', updateHeight);
     };
   }, []);
 
   return (
-    <div className="relative h-screen max-md:h-[var(--viewport-height)] w-auto text-white font-ekMukta overflow-hidden">
+    <div className="relative h-[100dvh] max-md:h-[var(--viewport-height)] w-auto text-white font-ekMukta overflow-hidden">
       <div
         ref={headerRef}
         className={`absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat max-md:w-auto ${isModalOpen ? 'bg-opacity-50 blur-sm' : ''} md:bg-[url('/imgs/background.png')] bg-[url('/imgs/mobile.svg')] max-md:background-fixed`}
