@@ -62,6 +62,7 @@ const HeaderCrowdfundingMobile = () => {
                             <Title title={currentData.title} description={currentData.description} />
                             <FundraisingProgress data={currentData} />
                         </div>
+
                         <div
                             style={{
                                 position: 'absolute',
@@ -72,6 +73,7 @@ const HeaderCrowdfundingMobile = () => {
                                 zIndex: 5,
                             }}
                         />
+
                         <button 
                             onClick={handleScreenClick} 
                             className="absolute flex items-center justify-center z-20 bg-transparent"

@@ -14,7 +14,6 @@ export default function Header() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [showSupportInNavbar, setShowSupportInNavbar] = useState(false);
   const headerRef = useRef(null);
-  const effectRan = useRef(false);
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -25,23 +24,19 @@ export default function Header() {
   };
 
   useEffect(() => {
-    if (effectRan.current) return;
-  
     const updateHeight = () => {
       const viewportHeight = window.innerHeight;
       document.documentElement.style.setProperty('--viewport-height', `${viewportHeight}px`);
     };
-  
+
+    // Setăm înălțimea doar o singură dată la încărcare
     updateHeight();
-    window.addEventListener('resize', updateHeight);
-  
-    effectRan.current = true;
-  
+
+    // Eliminăm listener-ul de redimensionare pentru a permite scroll-ul fără interferențe
     return () => {
       window.removeEventListener('resize', updateHeight);
     };
   }, []);
-  
 
   return (
     <div className="relative h-screen max-md:h-[var(--viewport-height)] w-auto text-white font-ekMukta overflow-hidden">
@@ -68,7 +63,7 @@ export default function Header() {
                   </div>
                 )}
                 <div className=" md:flex md:flex-col md:items-start">
-                  <p className="text-[16px] max-lg:text-lg max-md:text-[15px] max-[390px]:text-[14px] max-md:leading-5 max-lg:text-start max-md:text-center max-md:mb-4 text-[#CDCDCD] mx-0 max-md:mx-2 font-ekMukta tracking-neg-3percent">
+                  <p className="text-[16px] max-lg:text-lg max-md:text-[15px] max-md:leading-5 max-lg:text-start max-md:text-center max-md:mb-4 text-[#CDCDCD] mx-0 max-md:mx-2 font-ekMukta tracking-neg-3percent">
                     In an ideal city without money, people face real human problems. Your support makes the series possible.
                   </p>
                    {!showSupportInNavbar && (
