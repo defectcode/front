@@ -88,7 +88,7 @@ iframe {
 /* Add these styles to your CSS */
 
 .bg-image {
-  background-image: url('/imgs/Background.png');
+  background-image: url('/imgs/Background.webp');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -257,13 +257,30 @@ iframe {
 
 .font-avenir-heavy {
   font-family: 'Avenir Heavy', sans-serif;
-  font-weight: 800; /* Asigură-te că greutatea este corect setată */
+  font-weight: 700; /* Greutate corectă pentru Avenir Heavy */
 }
+
 
 .font-avenir-roman {
   font-family: 'Avenir Roman', sans-serif;
 }
 
+@font-face {
+  font-family: 'Avenir';
+  src: url('/fonts/Avenir-Heavy.woff2') format('woff2'),
+       url('/fonts/Avenir-Heavy.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+}
+
+body {
+  font-family: 'Ek Mukta', sans-serif;
+}
+
+.font-avenir-heavy {
+  font-family: 'Avenir', sans-serif;
+  font-weight: 700; /* Utilizăm greutatea 700 */
+}
 
 
 

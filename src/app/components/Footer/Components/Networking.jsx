@@ -4,10 +4,10 @@ import Link from "next/link";
 
 const Networking = () => {
     return (
-        <div className="bg-transparent max-w-[1200px] w-[1300px] max-xl:w-auto mx-10 h-[120px] max-lg:h-auto max-md:w-auto mt-14 max-md:mt-5 rounded-xl flex flex-col lg:flex-row items-center justify-between  md:mb-0">
+        <div className="bg-transparent max-w-[1200px] w-[1300px] max-xl:w-auto mx-10 h-[120px] max-lg:h-auto max-md:w-auto mt-14 max-md:mt-5 rounded-xl flex flex-col lg:flex-row items-center justify-between md:mb-0">
             <div className="mb-5 lg:mb-0">
                 <p className="text-[#1E1E1E] text-[16px] text-center max-md:text-[10px] font-ekmukta-extralight">
-                    Copyright (c) 2024 Fyne Inc. All rights reserved.
+                    Copyright © 2024 Fyne S.R.L. All right reserved.
                 </p>
             </div>
             <div className="flex gap-10 text-[#949494] items-center">

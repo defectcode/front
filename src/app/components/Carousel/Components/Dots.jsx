@@ -4,7 +4,7 @@ const Dots = ({ totalImages, currentIndex, isMobile, isTablet, onDotClick }) => 
   let positionClass;
 
   if (isMobile) {
-    positionClass = 'bottom-1';
+    positionClass = 'bottom-4';
   } else if (isTablet) {
     positionClass = 'bottom';
   } else {

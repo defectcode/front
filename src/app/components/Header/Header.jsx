@@ -41,18 +41,18 @@ export default function Header() {
     <div className="relative h-[100dvh] max-md:h-[var(--viewport-height)] w-auto text-white font-ekMukta overflow-hidden">
       <div
         ref={headerRef}
-        className={`absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat max-md:w-auto ${isModalOpen ? 'bg-opacity-50 blur-sm' : ''} md:bg-[url('/imgs/background.png')] bg-[url('/imgs/mobile.svg')] max-md:background-fixed`}
+        className={`absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat max-md:w-auto ${isModalOpen ? 'bg-opacity-50 blur-sm' : ''} md:bg-[url('/imgs/Background.webp')] bg-[url('/imgs/mobile.webp')] max-md:background-fixed`}
       ></div>
       <div className={`absolute bottom-0 w-full h-3/6 bg-gradient-to-t from-black/70 via-black/70 to-transparent ${isModalOpen ? 'bg-opacity-50 blur-sm' : ''}`}></div>
       <div className={`relative z-10 h-full overflow-auto ${isModalOpen ? 'blur-sm' : ''}`}>
         <Navbar showSupportInNavbar={showSupportInNavbar} openModal={openModal} />
-        <div className="max-w-screen-2xl w-auto mx-auto h-full flex flex-col text-white max-2xl:p-4 max-md:p-0">
+        <div className="max-w-[1200px] w-auto mx-auto h-full flex flex-col text-white max-2xl:p-4 max-md:p-0">
           <div className="flex-grow flex flex-col justify-end max-2xl:p-2 header-content max-md:p-0">
             <div className={`flex flex-col md:flex-row justify-between max-lg:flex-col max-lg:justify-center customStyles`}>
               <div className="flex flex-col mb-10 max-md:mb-0 items-center md:flex-row gap-3 max-md:gap-0 max-lg:flex-col max-lg:justify-center">
                 <div className="md:hidden flex flex-col items-center justify-center mt-8">
                   <Image src="/imgs/logo.svg" alt='logo' className='w-[188px] h-auto max-md:mb-4' width={188} height={1} />
-                  <h3 className="text-lg max-md:text-[14px] text-[#979797] font-avenirRoman max-md:mb-4" style={{ fontFamily: 'Avenir Roman, sans-serif' }}>
+                  <h3 className="text-lg max-md:text-[14px] text-[#979797] font-avenirRoman max-md:mb-4 max-md:leading-4" style={{ fontFamily: 'Avenir Roman, sans-serif' }}>
                     Drama <span style={{ display: 'inline-block', width: '3px', height: '3px', backgroundColor: '#979797', borderRadius: '50%', margin: '0 5px', verticalAlign: 'middle' }}></span> Sci-Fi
                   </h3>
                 </div>
@@ -62,7 +62,7 @@ export default function Header() {
                   </div>
                 )}
                 <div className=" md:flex md:flex-col md:items-start">
-                  <p className="text-[16px] max-lg:text-lg max-md:text-[15px] max-md:leading-5 max-lg:text-start max-md:text-center max-md:mb-4 text-[#CDCDCD] mx-0 max-md:mx-2 font-ekMukta tracking-neg-3percent">
+                  <p className="text-[16px] max-lg:text-lg max-md:text-[15px] max-md:leading-4 max-lg:text-start max-md:text-center max-md:mb-4 text-[#CDCDCD] mx-0 max-md:mx-4 font-ekMukta tracking-neg-3percent">
                     In an ideal city without money, people face real human problems. Your support makes the series possible.
                   </p>
                    {!showSupportInNavbar && (

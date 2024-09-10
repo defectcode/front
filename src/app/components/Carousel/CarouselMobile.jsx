@@ -133,7 +133,7 @@ const Carousel = () => {
         >
           {index !== currentIndex && (
             <div 
-              className="absolute inset-0 bg-black opacity-50 z-10 max-h-[500px] mt-36"
+              className="absolute inset-0 bg-black opacity-50 z-10 max-h-[500px] mt-[125px]"
               style={{
                 width: '100%',
                 height: '100%',
@@ -175,7 +175,7 @@ const Carousel = () => {
           <img
             src={isMobile ? image.src.mobile : isTablet ? image.src.tablet : image.src.desktop}
             alt={image.alt}
-            className={`w-full h-full object-cover max-h-[750px] custom-image-width ${isMobile ? "max-width-image w-full min-w-[270px] max-height-image mt-36 rounded-[10px]" : "rounded-lg"} ${image.status === 'Next' && index === currentIndex ? 'blur-[1px] opacity-90 mt-10' : ''}`}
+            className={`w-full h-full object-cover max-h-[750px] custom-image-width ${isMobile ? "max-width-image w-full min-w-[270px] max-height-image mt-[125px] rounded-[10px]" : "rounded-lg"} ${image.status === 'Next' && index === currentIndex ? 'blur-[1px] opacity-90 mt-10' : ''}`}
             style={{
               objectFit: 'cover',
             }}
