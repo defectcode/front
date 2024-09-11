@@ -119,7 +119,7 @@ const HeaderCrowdfundingMobile = () => {
             <Icons handleScreenClick={handleScreenClick} />
 
             {/* Butonul Share/Support */}
-            <div ref={buttonRef} className="relative w-full mb-2">
+            <div ref={buttonRef} className="relative w-full mb-5">
                 <ButonShere />
             </div>
 
