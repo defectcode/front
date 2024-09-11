@@ -49,8 +49,8 @@ const NavBarCrowdfundingMobile = ({ setActiveSection }) => {
     };
 
     const linkClasses = (hash) => {
-        const baseClasses = 'px-1 py-[6px] text-[14px] flex justify-center items-center mt-2 w-full relative';
-        const activeClasses = 'text-[#F1F1F1] font-avenir-heavy after:absolute after:content-[""] after:bg-[#F1F1F1] after:h-[1px] after:w-full after:left-0 after:bottom-[-9px]';
+        const baseClasses = 'px-1 py-[6px] text-[14px] flex justify-center items-center mt-1 w-full relative';
+        const activeClasses = 'text-[#F1F1F1] font-avenir-heavy after:absolute after:content-[""] after:bg-[#F1F1F1] after:h-[1px] after:w-full after:left-0 after:bottom-[3px]';
         const inactiveClasses = 'text-[#979797] border-b-4 border-transparent font-avenir';
     
         return `${baseClasses} ${activeHash === hash ? activeClasses : inactiveClasses}`;
@@ -64,7 +64,7 @@ const NavBarCrowdfundingMobile = ({ setActiveSection }) => {
                 id="navbar-mobile-original" 
                 className="relative bg-black"
             >
-                <div className="flex items-center justify-center h-[60px]">
+                <div className="flex items-center justify-center h-[40px]">
                     <div className="flex items-center justify-center gap-[30px] w-full px-5">
                         <a className={linkClasses('#overview')} onClick={() => handleClick('#overview')}>Overview</a>
                         <a className={linkClasses('#rewards')} onClick={() => handleClick('#rewards')}>Rewards</a>
@@ -77,11 +77,11 @@ const NavBarCrowdfundingMobile = ({ setActiveSection }) => {
                 <div 
                     ref={duplicateNavbarRef}
                     id="navbar-mobile-duplicate" 
-                    className={`fixed top-0 left-0 right-0 z-50 bg-[#1B1B1B] shadow-lg transition-opacity duration-300 ${
+                    className={`fixed top-0 left-0 right-0 z-50 bg-black shadow-lg transition-opacity duration-300 ${
                         isSticky ? 'opacity-100' : 'opacity-0'
                     }`}
                 >
-                    <div className="flex items-center justify-center h-[60px]">
+                    <div className="flex items-center justify-center h-[40px]">
                         <div className="flex items-center justify-center gap-[30px] w-full px-5">
                             <a className={linkClasses('#overview')} onClick={() => handleClick('#overview')}>Overview</a>
                             <a className={linkClasses('#rewards')} onClick={() => handleClick('#rewards')}>Rewards</a>

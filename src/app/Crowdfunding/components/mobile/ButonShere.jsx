@@ -13,7 +13,7 @@ const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY)
 const ButonShere = () => {
     const router = useRouter();
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [isShareVisible, setIsShareVisible] = useState(true); // Controlăm vizibilitatea butonului Share
+    const [isShareFixed, setIsShareFixed] = useState(false);
 
     const openModal = () => {
         setIsModalOpen(true);
@@ -25,14 +25,14 @@ const ButonShere = () => {
 
     useEffect(() => {
         const handleScroll = () => {
-            const navbar = document.querySelector('.navbar-crowdfunding-mobile');
-            const navbarPosition = navbar ? navbar.getBoundingClientRect().top : 0;
-            
-            // Dacă bara de navigare este vizibilă în viewport, afișează butonul Share
-            if (navbarPosition < window.innerHeight) {
-                setIsShareVisible(true);
+            const shareComponent = document.querySelector('.navbar-crowdfunding-mobile');
+            const shareComponentPosition = shareComponent ? shareComponent.getBoundingClientRect().bottom : 0;
+
+            // Dacă componenta iese din partea de jos a ecranului, fixează butoanele
+            if (shareComponentPosition > window.innerHeight) {
+                setIsShareFixed(true);
             } else {
-                setIsShareVisible(false);
+                setIsShareFixed(false);
             }
         };
 
@@ -44,8 +44,11 @@ const ButonShere = () => {
     }, []);
 
     return (
-        <div className={` bottom-0 left-0 right-0 lg:static flex items-center justify-between px-5 w-full h-[40px] mb-5 bg-transparent lg:hidden z-50 ${isShareVisible ? 'visible' : 'invisible'}`}>
-            <div className="flex items-center justify-between w-full gap-4">
+        <div 
+            className={`bottom-0 left-0 right-0 flex items-center justify-center px-5 w-full h-[40px] bg-transparent lg:hidden z-50 ${isShareFixed ? '' : 'relative'}`}
+            style={{ bottom: isShareFixed ? '0' : 'auto' }}
+        >
+            <div className="flex items-center justify-center w-full gap-4">
                 <div className="flex-[2]">
                     <Support onClick={openModal} />
                 </div>

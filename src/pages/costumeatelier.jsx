@@ -63,7 +63,7 @@ const Crowdfunding = () => {
                     <div> {/* Modificat cu -40px */}
                     <NavBarCrowdfundingMobile setActiveSection={setActiveSection} />
                         {renderSection()}
-                        <ButonShere />
+                        {/* <ButonShere /> */}
                         <FooterMobileOverview />
                     </div>
                 </>

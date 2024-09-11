@@ -7,12 +7,12 @@ import { images } from './constants/carouselData';
 import styles from './style/Header.module.css';  // Importăm stilurile din modulul CSS
 import ButonShere from '../../app/Crowdfunding/components/mobile/ButonShere';
 
-
-
 const HeaderCrowdfundingMobile = () => {
     const currentData = images[0];
     const [isVideoVisible, setIsVideoVisible] = useState(false);
     const containerRef = useRef(null);
+    const buttonRef = useRef(null); // Referință pentru butonul Share
+    const [isShareFixed, setIsShareFixed] = useState(false); // Stare pentru fixarea butonului
 
     const handleScreenClick = () => {
         setIsVideoVisible(true);
@@ -41,6 +41,27 @@ const HeaderCrowdfundingMobile = () => {
         };
     }, []);
 
+    // Detectăm când butonul iese din vizor și îl fixăm
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                const entry = entries[0];
+                setIsShareFixed(!entry.isIntersecting); // Fixăm butonul doar când acesta nu mai este în vizor
+            },
+            { threshold: 0 } // Detectăm imediat ce butonul nu mai este vizibil
+        );
+
+        if (buttonRef.current) {
+            observer.observe(buttonRef.current);
+        }
+
+        return () => {
+            if (buttonRef.current) {
+                observer.unobserve(buttonRef.current);
+            }
+        };
+    }, []);
+
     return (
         <div
             ref={containerRef}
@@ -48,21 +69,20 @@ const HeaderCrowdfundingMobile = () => {
         >
             {/* Fundalul absolut, ocupă întregul ecran */}
             <div
-                className={`absolute inset-0 w-full h-full bg-center bg-white bg-no-repeat max-md:w-auto ${isVideoVisible ? 'bg-opacity-50 blur-sm' : ''}`}
+                className={`absolute inset-0 w-full h-[100vh] bg-center bg-white bg-no-repeat max-md:w-auto ${isVideoVisible ? 'bg-opacity-50 blur-sm' : ''}`}
                 style={{
                     backgroundImage: `url('/imgs/Crowdfunding/Header.webp')`,
-                    backgroundSize: 'cover',  // Asigură că imaginea acoperă tot ecranul, fără margini goale
-                    backgroundPosition: 'center',  // Imaginea este centrată
-                    // aspectRatio: '9 / 16'
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    aspectRatio: '9 / 16',
                 }}
             ></div>
+
             {/* Gradient aplicat deasupra conținutului, ocupă 40% din înălțime */}
             <div
                 className={`${styles.gradient} absolute w-full h-[272px] bottom-0 z-20 pointer-events-none`}
                 style={{
-                    // background: 'linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0))',
-                    background: 'linear-gradient(to top, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.8) 57%, rgba(0, 0, 0, 0) 100%'
-
+                    background: 'linear-gradient(to top, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.8) 57%, rgba(0, 0, 0, 0) 100%)',
                 }}
             ></div>
 
@@ -78,7 +98,7 @@ const HeaderCrowdfundingMobile = () => {
                     onClick={handleScreenClick}
                     className={`${styles.playButton} absolute flex items-center justify-center z-40 bg-transparent`}
                     style={{
-                        top: '34.42%', 
+                        top: '40%',
                         left: '50%',
                         transform: 'translate(-50%, -50%)',
                     }}
@@ -97,7 +117,18 @@ const HeaderCrowdfundingMobile = () => {
 
             {/* Icons pentru controlul sunetului */}
             <Icons handleScreenClick={handleScreenClick} />
-            <ButonShere/>
+
+            {/* Butonul Share/Support */}
+            <div ref={buttonRef} className="relative w-full">
+                <ButonShere />
+            </div>
+
+            {/* Fixăm butonul doar când dispare din vizor */}
+            {isShareFixed && (
+                <div className="fixed bottom-0 w-full z-50 h-[60px] bg-black flex  items-center justify-between">
+                    <ButonShere />
+                </div>
+            )}
         </div>
     );
 };
