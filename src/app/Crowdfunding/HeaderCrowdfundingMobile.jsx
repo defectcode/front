@@ -7,12 +7,12 @@ import { images } from './constants/carouselData';
 import styles from './style/Header.module.css';  // Importăm stilurile din modulul CSS
 import ButonShere from '../../app/Crowdfunding/components/mobile/ButonShere';
 
+
+
 const HeaderCrowdfundingMobile = () => {
     const currentData = images[0];
     const [isVideoVisible, setIsVideoVisible] = useState(false);
-    const containerRef = useRef(null); // Referință pentru container
-    const titleRef = useRef(null); // Referință pentru componenta Title
-    const [buttonTop, setButtonTop] = useState(0); // Poziționare inițială
+    const containerRef = useRef(null);
 
     const handleScreenClick = () => {
         setIsVideoVisible(true);
@@ -28,25 +28,16 @@ const HeaderCrowdfundingMobile = () => {
     };
 
     useEffect(() => {
-        const updateButtonPosition = () => {
-            if (containerRef.current && titleRef.current) {
-                // Obține poziția începutului site-ului și a componentei Title
-                const containerTop = containerRef.current.getBoundingClientRect().top;
-                const titleTop = titleRef.current.getBoundingClientRect().top;
-
-                // Calculăm distanța dintre începutul paginii și componenta Title
-                const totalHeight = titleTop - containerTop;
-
-                // Setăm butonul la mijlocul acelei distanțe
-                setButtonTop(totalHeight / 2);
-            }
+        const updateHeight = () => {
+            const viewportHeight = window.innerHeight;
+            document.documentElement.style.setProperty('--viewport-height', `${viewportHeight}px`);
         };
 
-        updateButtonPosition();
-        window.addEventListener('resize', updateButtonPosition);
+        updateHeight();
+        window.addEventListener('resize', updateHeight);
 
         return () => {
-            window.removeEventListener('resize', updateButtonPosition);
+            window.removeEventListener('resize', updateHeight);
         };
     }, []);
 
@@ -60,33 +51,34 @@ const HeaderCrowdfundingMobile = () => {
                 className={`absolute inset-0 w-full h-full bg-center bg-white bg-no-repeat max-md:w-auto ${isVideoVisible ? 'bg-opacity-50 blur-sm' : ''}`}
                 style={{
                     backgroundImage: `url('/imgs/Crowdfunding/Header.webp')`,
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
+                    backgroundSize: 'cover',  // Asigură că imaginea acoperă tot ecranul, fără margini goale
+                    backgroundPosition: 'center',  // Imaginea este centrată
+                    // aspectRatio: '9 / 16'
                 }}
             ></div>
-
             {/* Gradient aplicat deasupra conținutului, ocupă 40% din înălțime */}
             <div
                 className={`${styles.gradient} absolute w-full h-[272px] bottom-0 z-20 pointer-events-none`}
                 style={{
-                    background: 'linear-gradient(to top, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.8) 57%, rgba(0, 0, 0, 0) 100%)',
+                    // background: 'linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0))',
+                    background: 'linear-gradient(to top, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.8) 57%, rgba(0, 0, 0, 0) 100%'
+
                 }}
             ></div>
 
             {/* Conținutul componentei */}
             <div className={`${styles.contentWrapper} relative z-30 h-full flex flex-col justify-end px-5 pb-5`}>
-                {/* Referință la componenta Title */}
-                <Title ref={titleRef} title={currentData.title} description={currentData.description} />
+                <Title title={currentData.title} description={currentData.description} />
                 <FundraisingProgress data={currentData} />
             </div>
 
-            {/* Butonul de Play, poziționat dinamic */}
+            {/* Butonul de Play */}
             {!isVideoVisible && (
                 <button
                     onClick={handleScreenClick}
                     className={`${styles.playButton} absolute flex items-center justify-center z-40 bg-transparent`}
                     style={{
-                        top: `${buttonTop}px`, // Poziție calculată dinamic
+                        top: '34.42%', 
                         left: '50%',
                         transform: 'translate(-50%, -50%)',
                     }}
@@ -105,7 +97,7 @@ const HeaderCrowdfundingMobile = () => {
 
             {/* Icons pentru controlul sunetului */}
             <Icons handleScreenClick={handleScreenClick} />
-            <ButonShere />
+            <ButonShere/>
         </div>
     );
 };
