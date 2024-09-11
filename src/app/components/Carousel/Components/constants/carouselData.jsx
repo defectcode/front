@@ -28,7 +28,7 @@ export const images = [
         mobile: '/imgs/Carousel/atelier.png'
       },
       alt: 'Slide 2',
-      raisedAmount: '7,014',
+      raisedAmount: '17,015',
       goalAmount: '227,000',
       title: 'Production Stages',
       titleConcept: 'Costume Atelier',
