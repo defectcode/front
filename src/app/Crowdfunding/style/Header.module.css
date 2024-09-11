@@ -230,3 +230,101 @@
       top: 51vh;
   }
 }
+
+
+
+/* CSS pentru a acoperi 100% ecranul pe toate dispozitivele */
+.header {
+  height: 100dvh; /* Dynamic viewport height pentru a acoperi variațiile pe dispozitive mobile */
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.bg-image {
+  background-image: url('/imgs/Crowdfunding/background3.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%; /* Ocupă toată înălțimea containerului */
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* Poziționarea conținutului */
+.content-wrapper {
+  padding-bottom: 16px;
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* Asigură că conținutul crește pentru a umple înălțimea disponibilă */
+  justify-content: flex-end;
+}
+
+/* Adaptează layout-ul pentru diferite dimensiuni de ecrane */
+@media (max-width: 768px) {
+  .bg-image {
+      background-image: url('/imgs/Crowdfunding/CarouselAtelier.webp');
+  }
+
+  .content-wrapper {
+      padding-bottom: 10px; /* Micșorăm padding-ul pe ecrane mici */
+  }
+}
+
+/* Fixuri pentru diverse browsere și dispozitive */
+@supports (-webkit-touch-callout: none) {
+  /* Fix pentru Safari pe iOS */
+  .header {
+      height: calc(100vh - env(safe-area-inset-bottom));
+      min-height: -webkit-fill-available; /* Utilizează înălțimea completă disponibilă */
+  }
+
+  .content-wrapper {
+      padding-bottom: 30px; /* Împinge conținutul puțin mai sus în Safari */
+  }
+
+  .playButton {
+      bottom: 25%; /* Ajustează butonul de Play mai sus */
+  }
+}
+
+@supports not (-webkit-touch-callout: none) {
+  /* Fix pentru alte browsere (Chrome, Firefox, Edge) */
+  .header {
+      height: 100dvh;
+  }
+
+  .playButton {
+      bottom: 20%; /* Ajustează butonul de Play */
+  }
+}
+
+/* Breakpoints pentru dispozitive mici */
+@media only screen and (max-width: 834px) {
+  .header {
+      height: 90vh;
+  }
+}
+
+@media only screen and (max-width: 430px) {
+  .header {
+      height: 75vh;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .header {
+      height: 70vh;
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  .header {
+      height: 65vh;
+  }
+}

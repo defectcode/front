@@ -62,8 +62,8 @@ const Crowdfunding = () => {
                     {/* Ajustare cu margin-top: -30px pentru toate componentele mobile în afară de HeaderCrowdfundingMobile */}
                     <div> {/* Modificat cu -40px */}
                     <NavBarCrowdfundingMobile setActiveSection={setActiveSection} />
-                        <ButonShere />
                         {renderSection()}
+                        <ButonShere />
                         <FooterMobileOverview />
                     </div>
                 </>

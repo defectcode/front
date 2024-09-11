@@ -43,9 +43,9 @@ export default function Header() {
         ref={headerRef}
         className={`absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat max-md:w-auto ${isModalOpen ? 'bg-opacity-50 blur-sm' : ''} md:bg-[url('/imgs/Background.webp')] bg-[url('/imgs/mobile.webp')] max-md:background-fixed`}
       ></div>
-      <div className={`absolute bottom-0 w-full h-3/6 -mb-2 bg-gradient-to-t from-black/70 via-black/70 to-transparent ${isModalOpen ? 'bg-opacity-50 blur-sm' : ''}`}
+      <div className={`absolute bottom-0 w-full h-3/6 -mb-2 bg-gradient-to-t  ${isModalOpen ? 'bg-opacity-50 blur-sm' : ''}`}
       style={{
-        background: 'linear-gradient(0deg, rgba(0, 0, 0, 1) 10%, rgba(0, 0, 0, 0.7) 50%, rgba(0, 0, 0, 0) 100%)',
+        background: 'linear-gradient(to top, rgba(0, 0, 0, 0.8) 10%, rgba(0, 0, 0, 0.7) 50%, rgba(0, 0, 0, 0) 100%)',
       }}></div>
       <div className={`relative z-10 h-full overflow-auto ${isModalOpen ? 'blur-sm' : ''}`}>
         <Navbar showSupportInNavbar={showSupportInNavbar} openModal={openModal} />
