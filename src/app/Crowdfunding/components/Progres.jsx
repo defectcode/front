@@ -8,21 +8,21 @@ import { loadStripe } from '@stripe/stripe-js';
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
 
 const FundraisingProgress = ({ data }) => {
+    // Curățarea valorilor și transformarea în numere
     const raisedAmount = parseInt(data.raisedAmount.replace(/,/g, ''), 10);
     const goalAmount = parseInt(data.goalAmount.replace(/,/g, ''), 10);
+
+    // Calcularea procentajului brut
     let rawProgressPercentage = (raisedAmount / goalAmount) * 100 || 0;
 
-    // Handle percentage display:
-    // - Show decimals between 0 and 1%
-    // - Round down for values below 1.5%
-    // - Round up for values 1.6% and above
+    // Logica pentru afișarea procentajului:
+    // - Zecimale între 0 și 1%
+    // - Rotunjire pentru valori de la 1 în sus
     let progressPercentage;
     if (rawProgressPercentage > 0 && rawProgressPercentage < 1) {
-        progressPercentage = rawProgressPercentage.toFixed(1);  // Show one decimal place between 0 and 1%
-    } else if (rawProgressPercentage >= 1 && rawProgressPercentage < 1.6) {
-        progressPercentage = Math.floor(rawProgressPercentage); // Round down for values below 1.6%
+        progressPercentage = rawProgressPercentage.toFixed(1);  // Afișare cu o zecimală pentru valori între 0 și 1%
     } else {
-        progressPercentage = Math.ceil(rawProgressPercentage);  // Round up for 1.6% and above
+        progressPercentage = Math.round(rawProgressPercentage);  // Rotunjire pentru valori de la 1 în sus
     }
 
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -51,10 +51,15 @@ const FundraisingProgress = ({ data }) => {
 
     return (
         <div className="text-white">
+            {/* Afișarea sumei strânse și a etapei curente */}
             <div className="flex justify-between mb-2 lg:mb-4 w-full lg:w-[346px]">
                 <span className="text-[20px] lg:text-2xl font-ekmukta font-bold text-[#FFFFFF]">${data.raisedAmount}</span>
-                <span className="text-md block font-avenir text-[#C1C1C1]">{data.stageLabel} <span className="text-[#FFFFFF] font-semibold font-ekMukta">{data.stageNumber}</span></span>
+                <span className="text-md block font-avenir text-[#C1C1C1]">
+                    {data.stageLabel} <span className="text-[#FFFFFF] font-semibold font-ekMukta">{data.stageNumber}</span>
+                </span>
             </div>
+
+            {/* Bara de progres */}
             <div className="relative w-auto lg:w-[380px]">
                 <div className="h-1 bg-[#6F6F6F] rounded-full w-full lg:w-[346px]">
                     <div
@@ -69,6 +74,8 @@ const FundraisingProgress = ({ data }) => {
                     <div className={`w-[6px] h-[6px] lg:w-[10px] lg:h-[10px] rounded-full bg-white ${isMobile ? '' : '-ml-1'}`}></div>
                 </div>
             </div>
+
+            {/* Afișarea procentajului și a informațiilor suplimentare */}
             <div className="flex justify-between items-center mt-2 lg:mt-4 lg:w-[346px]">
                 <div className="flex flex-col">
                     <span className="font-semibold text-[15px] lg:text-[20px]">
@@ -89,9 +96,13 @@ const FundraisingProgress = ({ data }) => {
                     </span>
                 </div>
             </div>
+
+            {/* Buton pentru suport */}
             <div className="hidden md:block mt-2 lg:mt-5">
-                <Support onClick={openModal}/>
+                <Support onClick={openModal} />
             </div>
+
+            {/* Modal pentru formă de suport */}
             <Modal isOpen={isModalOpen} onClose={closeModal}>
                 <Elements stripe={stripePromise}>
                     <SupportForm />
