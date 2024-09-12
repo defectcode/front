@@ -1,6 +1,8 @@
 import React from "react";
 import { RiShare2Line } from "react-icons/ri";
 import { RWebShare } from "react-web-share";
+import Image from "next/image";
+
 
 
 const ShareButton = ({ url }) => {
@@ -8,7 +10,7 @@ const ShareButton = ({ url }) => {
 
     return (
         <button 
-            className="flex-[1] h-[40px] flex items-center justify-center gap-2 text-white bg-black border border-white rounded-xl font-avenirHeavy hover:bg-white hover:text-black">
+            className="flex-[1] h-[40px] flex items-center justify-center gap-2 text-white bg-black border border-white rounded-[8px] hover:bg-white hover:text-[#1E1E1E]">
             <RWebShare
             data={{
                 // text: "Paradise Problems",
@@ -17,10 +19,10 @@ const ShareButton = ({ url }) => {
             }}
             onClick={() => console.log("shared successfully!")}
         >
-            <button className="flex items-center gap-2">
+            <button className="flex items-center gap-[6px] font-avenir-heavy text-[15px]">
                 Share
-                <RiShare2Line />
-            </button>
+                <Image src='/imgs/Crowdfunding/Share.svg' width={13} height={11} alt="heart" className="w-[14px] h-[12px] mb-[2px]" />
+                </button>
             
         </RWebShare>
         </button>

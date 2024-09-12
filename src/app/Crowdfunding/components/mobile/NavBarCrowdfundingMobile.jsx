@@ -2,10 +2,10 @@ import React, { useState, useEffect, useRef } from "react";
 
 const NavBarCrowdfundingMobile = ({ setActiveSection }) => {
     const [activeHash, setActiveHash] = useState('');
-    const [isSticky, setIsSticky] = useState(false);
-    const [showDuplicate, setShowDuplicate] = useState(false);
+    const [isVisible, setIsVisible] = useState(false); // Starea pentru vizibilitatea barei
+    const [lastScrollY, setLastScrollY] = useState(window.pageYOffset); // Inițializăm cu poziția actuală a scrollului
+    const [isScrollingDown, setIsScrollingDown] = useState(false); // Detectează direcția de scroll
     const navbarRef = useRef(null);
-    const duplicateNavbarRef = useRef(null);
 
     useEffect(() => {
         const handleHashChange = () => {
@@ -15,20 +15,20 @@ const NavBarCrowdfundingMobile = ({ setActiveSection }) => {
         };
 
         const handleScroll = () => {
-            const navbar = navbarRef.current;
-            const currentScrollPos = window.pageYOffset;
+            const currentScrollY = window.pageYOffset;
 
-            if (navbar) {
-                const navbarTop = navbar.offsetTop;
-
-                if (currentScrollPos > navbarTop && !isSticky) {
-                    setIsSticky(true);
-                    setShowDuplicate(true);
-                } else if (currentScrollPos <= navbarTop && isSticky) {
-                    setIsSticky(false);
-                    setShowDuplicate(false);
-                }
+            // Verificăm dacă scrollează în jos și trece de 100px
+            if (currentScrollY > lastScrollY && currentScrollY > 100) {
+                setIsVisible(true); // Bara coboară lin când scrollezi în jos și ai trecut de 100px
+                setIsScrollingDown(true); // Direcția de scroll este în jos
             }
+            // Verificăm dacă scrollează în sus și este sub 100px
+            else if (currentScrollY < lastScrollY) {
+                setIsVisible(false); // Bara urcă lin când scrollezi în sus
+                setIsScrollingDown(false); // Direcția de scroll este în sus
+            }
+
+            setLastScrollY(currentScrollY); // Actualizăm poziția anterioară de scroll
         };
 
         window.addEventListener('hashchange', handleHashChange);
@@ -40,7 +40,7 @@ const NavBarCrowdfundingMobile = ({ setActiveSection }) => {
             window.removeEventListener('hashchange', handleHashChange);
             window.removeEventListener('scroll', handleScroll);
         };
-    }, [isSticky, setActiveSection]);
+    }, [lastScrollY, setActiveSection]);
 
     const handleClick = (hash) => {
         window.location.hash = hash;
@@ -55,14 +55,15 @@ const NavBarCrowdfundingMobile = ({ setActiveSection }) => {
     
         return `${baseClasses} ${activeHash === hash ? activeClasses : inactiveClasses}`;
     };
-    
 
     return (
         <div className="mb-10">
             <div 
                 ref={navbarRef}
                 id="navbar-mobile-original" 
-                className="relative bg-black"
+                className={`fixed top-0 left-0 right-0 bg-black transition-transform duration-500 ease-in-out ${
+                    isVisible ? 'translate-y-0' : '-translate-y-full'
+                }`} // Bara de navigare va coborî și urca lin
             >
                 <div className="flex items-center justify-center h-[40px]">
                     <div className="flex items-center justify-center gap-[30px] w-full px-5">
@@ -73,24 +74,6 @@ const NavBarCrowdfundingMobile = ({ setActiveSection }) => {
                     </div>
                 </div>
             </div>
-            {/* {showDuplicate && (
-                <div 
-                    ref={duplicateNavbarRef}
-                    id="navbar-mobile-duplicate" 
-                    className={`fixed top-0 left-0 right-0 z-50 bg-black shadow-lg transition-opacity duration-300 ${
-                        isSticky ? 'opacity-100' : 'opacity-0'
-                    }`}
-                >
-                    <div className="flex items-center justify-center h-[40px]">
-                        <div className="flex items-center justify-center gap-[30px] w-full px-5">
-                            <a className={linkClasses('#overview')} onClick={() => handleClick('#overview')}>Overview</a>
-                            <a className={linkClasses('#rewards')} onClick={() => handleClick('#rewards')}>Rewards</a>
-                            <a className={linkClasses('#community')} onClick={() => handleClick('#community')}>Community</a>
-                            <a className={linkClasses('#extras')} onClick={() => handleClick('#extras')}>Extras</a>
-                        </div>
-                    </div>
-                </div>
-            )} */}
         </div>
     );
 };

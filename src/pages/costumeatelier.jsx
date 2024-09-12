@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import Static from "../app/components/Header/components/Static";
+import StaticMobile from "../app/components/Header/components/StaticMobile";
 import HeaderCrowdfunding from '../app/Crowdfunding/HeaderCrowdfunding';
 import HeaderCrowdfundingMobile from '../app/Crowdfunding/HeaderCrowdfundingMobile';
 import NavBarCrowdfunding from '../app/Crowdfunding/components/NavBarCrowdfunding';
@@ -15,12 +16,11 @@ import ExtrasMobile from "../app/Crowdfunding/components/components/Extras/Extra
 import Footer from '../app/components/Footer/Footer';
 import FooterMobileOverview from '../app/components/Footer/FooterMobileOverview';
 import NavBarCrowdfundingMobile from '../app/Crowdfunding/components/mobile/NavBarCrowdfundingMobile.jsx';
-import ButtonShere from "../app/Crowdfunding/components/mobile/ButonShere"; // Adaugat
 
 const Crowdfunding = () => {
     const isMobile = useDeviceType();
     const [activeSection, setActiveSection] = useState('overview');
-    const staticRef = useRef(null);
+    const headerRef = useRef(null);
     const [isNavBarVisible, setIsNavBarVisible] = useState(false);
 
     useEffect(() => {
@@ -38,18 +38,25 @@ const Crowdfunding = () => {
         };
     }, []);
 
+    // Logica pentru afișarea barei de navigare după ce 100px din Header a fost ascuns
     useEffect(() => {
-        const observer = new IntersectionObserver(([entry]) => {
-            setIsNavBarVisible(!entry.isIntersecting); // Setează bara de navigare ca vizibilă doar când Static iese complet din vizor
-        }, { threshold: 0 }); // Bara de navigare va apărea când Static este complet invizibil
+        const handleScroll = () => {
+            if (headerRef.current) {
+                const headerTop = headerRef.current.getBoundingClientRect().top;
 
-        if (staticRef.current) {
-            observer.observe(staticRef.current);
-        }
-        return () => {
-            if (staticRef.current) {
-                observer.unobserve(staticRef.current);
+                // Verificăm dacă 100px din header este ascuns
+                if (headerTop <= -100) {
+                    setIsNavBarVisible(true); // Bara de navigare devine vizibilă
+                } else {
+                    setIsNavBarVisible(false); // Bara de navigare dispare
+                }
             }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
         };
     }, []);
 
@@ -70,32 +77,33 @@ const Crowdfunding = () => {
 
     return (
         <div className="lg:mb-0 bg-black h-auto">
-            {/* Ref pentru componenta Static */}
-            <div ref={staticRef}>
-                <Static />
-            </div>
-            
-            {isNavBarVisible && isMobile && (
-                <div className="fixed top-0 left-0 right-0 z-50" style={{ zIndex: 999 }}> {/* Adaugat z-index mai mare */}
-                    <NavBarCrowdfundingMobile setActiveSection={setActiveSection} />
-                </div>
-            )}
+            {/* Ref pentru componenta HeaderCrowdfundingMobile */}
             {isMobile ? (
                 <>
-                    <HeaderCrowdfundingMobile />
-                    <div> {/* Modificat cu -40px */}
+                    <div ref={headerRef}>
+                        <StaticMobile />
+                        <HeaderCrowdfundingMobile />
+                    </div>
+                    <div>
                         {renderSection()}
-                        {/* <ButtonShere /> Butonul adăugat */}
                         <FooterMobileOverview />
                     </div>
                 </>
             ) : (
                 <>
+                    <Static />
                     <HeaderCrowdfunding />
                     <NavBarCrowdfunding setActiveSection={setActiveSection} />
                     {renderSection()}
                     <Footer />
                 </>
+            )}
+            
+            {/* NavBarCrowdfundingMobile este afișată doar dacă 100px din Header este ascuns */}
+            {isNavBarVisible && isMobile && (
+                <div className="fixed top-0 left-0 right-0 z-50" style={{ zIndex: 999 }}>
+                    {/* <NavBarCrowdfundingMobile setActiveSection={setActiveSection} /> */}
+                </div>
             )}
         </div>
     );
