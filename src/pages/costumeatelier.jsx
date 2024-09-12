@@ -15,7 +15,7 @@ import ExtrasMobile from "../app/Crowdfunding/components/components/Extras/Extra
 import Footer from '../app/components/Footer/Footer';
 import FooterMobileOverview from '../app/components/Footer/FooterMobileOverview';
 import NavBarCrowdfundingMobile from '../app/Crowdfunding/components/mobile/NavBarCrowdfundingMobile.jsx';
-
+import ButtonShere from "../app/Crowdfunding/components/mobile/ButonShere"; // Adaugat
 
 const Crowdfunding = () => {
     const isMobile = useDeviceType();
@@ -75,9 +75,8 @@ const Crowdfunding = () => {
                 <Static />
             </div>
             
-            {/* NavBarCrowdfundingMobile este afișată doar dacă Static este invizibil complet */}
             {isNavBarVisible && isMobile && (
-                <div className="fixed top-0 left-0 right-0 z-50">
+                <div className="fixed top-0 left-0 right-0 z-50" style={{ zIndex: 999 }}> {/* Adaugat z-index mai mare */}
                     <NavBarCrowdfundingMobile setActiveSection={setActiveSection} />
                 </div>
             )}
@@ -86,6 +85,7 @@ const Crowdfunding = () => {
                     <HeaderCrowdfundingMobile />
                     <div> {/* Modificat cu -40px */}
                         {renderSection()}
+                        <ButtonShere /> {/* Butonul adăugat */}
                         <FooterMobileOverview />
                     </div>
                 </>
@@ -102,4 +102,3 @@ const Crowdfunding = () => {
 };
 
 export default Crowdfunding;
-
