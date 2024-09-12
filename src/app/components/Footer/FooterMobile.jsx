@@ -28,7 +28,7 @@ export default function Sidebar() {
           </span>
         </div>
         {isOpenSupport && (
-          <ul className="space-y-2 text-[#949494] text-[14px] font-ekMukta gap-4 mt-5">
+          <ul className="space-y-2 text-[#949494] text-[14px] font-ekMukta gap-4 mt-5 px-5">
             <li><Link legacyBehavior href="#"><a>Donation Link</a></Link></li>
             <li><Link legacyBehavior href="#"><a>How Your Contributions Help</a></Link></li>
             <li><Link legacyBehavior href="#"><a>FAQ</a></Link></li>
@@ -49,7 +49,7 @@ export default function Sidebar() {
           </span>
         </div>
         {isOpenLegal && (
-          <ul className="space-y-2 text-[#949494] text-[14px] gap-4 font-ekMukta mt-5">
+          <ul className="space-y-2 text-[#949494] text-[14px] gap-4 font-ekMukta mt-5 px-5">
             <li><Link legacyBehavior href="/privacypolicy"><a>Privacy Policy</a></Link></li>
             <li><Link legacyBehavior href="/cookiepolicy"><a>Cookie Policy</a></Link></li>
             <li><Link legacyBehavior href="#"><a>Tearm of Use</a></Link></li>
@@ -70,7 +70,7 @@ export default function Sidebar() {
           </span>
         </div>
         {isOpenContact && (
-          <ul className="space-y-2 text-[#949494] text-[14px] gap-4 font-ekMukta mt-5">
+          <ul className="space-y-2 text-[#949494] text-[14px] gap-4 font-ekMukta mt-5 px-5">
             <li className="text-[14px]">Phone: +373 60 877 733</li>
             <li className="text-[14px]">Email: Valery@fyne.pro</li>
         </ul>

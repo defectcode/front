@@ -45,7 +45,7 @@ const ButonShere = () => {
 
     return (
         <div 
-            className={`bottom-0 left-0 right-0 flex items-center justify-center px-5 w-full h-[40px] bg-transparent lg:hidden z-50 ${isShareFixed ? '' : 'relative'}`}
+            className={`bottom-0 left-0 right-0 flex items-center justify-center px-5 w-full h-[40px] bg-transparent lg:hidden z-50 ${isShareFixed ? 'slide-up' : 'relative'}`}
             style={{ bottom: isShareFixed ? '0' : 'auto' }}
         >
             <div className="flex items-center justify-center w-full gap-4">

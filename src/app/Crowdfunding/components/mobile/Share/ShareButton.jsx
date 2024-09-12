@@ -8,7 +8,7 @@ const ShareButton = ({ url }) => {
 
     return (
         <button 
-            className="flex-[1] h-[40px] flex items-center justify-center gap-2 text-white border border-white rounded-xl font-avenirHeavy hover:bg-white hover:text-black">
+            className="flex-[1] h-[40px] flex items-center justify-center gap-2 text-white bg-black border border-white rounded-xl font-avenirHeavy hover:bg-white hover:text-black">
             <RWebShare
             data={{
                 // text: "Paradise Problems",

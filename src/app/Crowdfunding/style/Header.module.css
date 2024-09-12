@@ -328,3 +328,31 @@
       height: 65vh;
   }
 }
+
+
+
+.slide-up {
+  position: fixed;
+  bottom: -100px; /* Ascuns sub ecran la început */
+  animation: slideUp 1.5s ease-in-out forwards; /* Timp mai lung pentru o tranziție vizibilă */
+  opacity: 0; /* Inițial invizibil */
+  z-index: 50; /* Asigură că butonul este deasupra altor elemente */
+}
+
+@keyframes slideUp {
+  0% {
+    bottom: -100px; /* Poziția inițială sub ecran */
+    opacity: 0; /* Invizibil la început */
+  }
+  30% {
+    opacity: 0.2; /* Începe să devină vizibil la 30% din animație */
+  }
+  50% {
+    bottom: -50px; /* Aproape de marginea de jos a ecranului */
+    opacity: 0.5; /* Mai vizibil pe la jumătate */
+  }
+  100% {
+    bottom: 0; /* Poziția finală vizibilă */
+    opacity: 1; /* Complet vizibil la sfârșit */
+  }
+}

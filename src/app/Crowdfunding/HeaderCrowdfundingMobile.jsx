@@ -125,7 +125,7 @@ const HeaderCrowdfundingMobile = () => {
 
             {/* Fixăm butonul doar când dispare din vizor */}
             {isShareFixed && (
-                <div className="fixed bottom-0 w-full z-50 h-[60px] bg-black flex  items-center justify-between">
+                <div className="fixed bottom-0 w-full z-50 h-[60px] bg-transparent flex items-center justify-between">
                     <ButonShere />
                 </div>
             )}

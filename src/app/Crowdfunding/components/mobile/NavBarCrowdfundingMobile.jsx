@@ -64,7 +64,7 @@ const NavBarCrowdfundingMobile = ({ setActiveSection }) => {
                 id="navbar-mobile-original" 
                 className="relative bg-black"
             >
-                <div className="flex items-center justify-center h-[60px]">
+                <div className="flex items-center justify-center h-[40px]">
                     <div className="flex items-center justify-center gap-[30px] w-full px-5">
                         <a className={linkClasses('#overview')} onClick={() => handleClick('#overview')}>Overview</a>
                         <a className={linkClasses('#rewards')} onClick={() => handleClick('#rewards')}>Rewards</a>
@@ -73,7 +73,7 @@ const NavBarCrowdfundingMobile = ({ setActiveSection }) => {
                     </div>
                 </div>
             </div>
-            {showDuplicate && (
+            {/* {showDuplicate && (
                 <div 
                     ref={duplicateNavbarRef}
                     id="navbar-mobile-duplicate" 
@@ -90,7 +90,7 @@ const NavBarCrowdfundingMobile = ({ setActiveSection }) => {
                         </div>
                     </div>
                 </div>
-            )}
+            )} */}
         </div>
     );
 };

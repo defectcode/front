@@ -1,4 +1,7 @@
-import React, { useState, useEffect } from "react";
+
+
+
+import React, { useState, useEffect, useRef } from "react";
 import SupportNavBar from "../app/components/Header/components/SupportNavBar";
 import Static from "../app/components/Header/components/Static";
 import HeaderCrowdfunding from '../app/Crowdfunding/HeaderCrowdfunding';
@@ -18,9 +21,13 @@ import Footer from '../app/components/Footer/Footer';
 import FooterMobileOverview from '../app/components/Footer/FooterMobileOverview';
 import NavBarCrowdfundingMobile from '../app/Crowdfunding/components/mobile/NavBarCrowdfundingMobile.jsx';
 
+
+
 const Crowdfunding = () => {
     const isMobile = useDeviceType();
     const [activeSection, setActiveSection] = useState('overview');
+    const staticRef = useRef(null);
+    const [isNavBarVisible, setIsNavBarVisible] = useState(false);
 
     useEffect(() => {
         if (window.location.hash) {
@@ -34,6 +41,23 @@ const Crowdfunding = () => {
         window.addEventListener('hashchange', handleHashChange);
         return () => {
             window.removeEventListener('hashchange', handleHashChange);
+        };
+    }, []);
+
+    // Logica pentru a detecta când Static dispare complet din vizor
+    useEffect(() => {
+        const observer = new IntersectionObserver(([entry]) => {
+            setIsNavBarVisible(!entry.isIntersecting); // Setează bara de navigare ca vizibilă doar când Static iese complet din vizor
+        }, { threshold: 0 }); // Bara de navigare va apărea când Static este complet invizibil
+
+        if (staticRef.current) {
+            observer.observe(staticRef.current);
+        }
+
+        return () => {
+            if (staticRef.current) {
+                observer.unobserve(staticRef.current);
+            }
         };
     }, []);
 
@@ -54,16 +78,23 @@ const Crowdfunding = () => {
 
     return (
         <div className="lg:mb-0 bg-black h-auto">
-            <Static />
+            {/* Ref pentru componenta Static */}
+            <div ref={staticRef}>
+                <Static />
+            </div>
+            
+            {/* NavBarCrowdfundingMobile este afișată doar dacă Static este invizibil complet */}
+            {isNavBarVisible && isMobile && (
+                <div className="fixed top-0 left-0 right-0 z-50">
+                    <NavBarCrowdfundingMobile setActiveSection={setActiveSection} />
+                </div>
+            )}
+
             {isMobile ? (
                 <>
-                    {/* HeaderCrowdfundingMobile fără modificări */}
                     <HeaderCrowdfundingMobile />
-                    {/* Ajustare cu margin-top: -30px pentru toate componentele mobile în afară de HeaderCrowdfundingMobile */}
                     <div> {/* Modificat cu -40px */}
-                    <NavBarCrowdfundingMobile setActiveSection={setActiveSection} />
                         {renderSection()}
-                        {/* <ButonShere /> */}
                         <FooterMobileOverview />
                     </div>
                 </>
@@ -80,3 +111,4 @@ const Crowdfunding = () => {
 };
 
 export default Crowdfunding;
+
