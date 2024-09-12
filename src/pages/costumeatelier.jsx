@@ -1,14 +1,9 @@
-
-
-
 import React, { useState, useEffect, useRef } from "react";
-import SupportNavBar from "../app/components/Header/components/SupportNavBar";
 import Static from "../app/components/Header/components/Static";
 import HeaderCrowdfunding from '../app/Crowdfunding/HeaderCrowdfunding';
 import HeaderCrowdfundingMobile from '../app/Crowdfunding/HeaderCrowdfundingMobile';
 import NavBarCrowdfunding from '../app/Crowdfunding/components/NavBarCrowdfunding';
 import useDeviceType from '../app/Crowdfunding/components/hooks/useDeviceType';
-import ButonShere from '../app/Crowdfunding/components/mobile/ButonShere';
 import Rewards from '../app/Crowdfunding/components/components/Rewards/Rewards';
 import Community from '../app/Crowdfunding/components/components/Community/Community';
 import Extras from '../app/Crowdfunding/components/components/Extras/Extras';
@@ -20,7 +15,6 @@ import ExtrasMobile from "../app/Crowdfunding/components/components/Extras/Extra
 import Footer from '../app/components/Footer/Footer';
 import FooterMobileOverview from '../app/components/Footer/FooterMobileOverview';
 import NavBarCrowdfundingMobile from '../app/Crowdfunding/components/mobile/NavBarCrowdfundingMobile.jsx';
-
 
 
 const Crowdfunding = () => {
@@ -44,7 +38,6 @@ const Crowdfunding = () => {
         };
     }, []);
 
-    // Logica pentru a detecta când Static dispare complet din vizor
     useEffect(() => {
         const observer = new IntersectionObserver(([entry]) => {
             setIsNavBarVisible(!entry.isIntersecting); // Setează bara de navigare ca vizibilă doar când Static iese complet din vizor
@@ -53,7 +46,6 @@ const Crowdfunding = () => {
         if (staticRef.current) {
             observer.observe(staticRef.current);
         }
-
         return () => {
             if (staticRef.current) {
                 observer.unobserve(staticRef.current);
@@ -89,7 +81,6 @@ const Crowdfunding = () => {
                     <NavBarCrowdfundingMobile setActiveSection={setActiveSection} />
                 </div>
             )}
-
             {isMobile ? (
                 <>
                     <HeaderCrowdfundingMobile />
