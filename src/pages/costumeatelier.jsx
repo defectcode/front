@@ -85,7 +85,7 @@ const Crowdfunding = () => {
                     <HeaderCrowdfundingMobile />
                     <div> {/* Modificat cu -40px */}
                         {renderSection()}
-                        <ButtonShere /> {/* Butonul adăugat */}
+                        {/* <ButtonShere /> Butonul adăugat */}
                         <FooterMobileOverview />
                     </div>
                 </>
