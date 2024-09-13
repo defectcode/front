@@ -18,12 +18,12 @@ const DetailedStepsMobile = () => {
                 <div className="font-ekMukta text-[#CDCDCD] mt-5">
                     {stageDescription.detailedSteps.map((step, index) => (
                         <div key={index} className={index !== 0 ? 'mt-10' : ''}>
-                            <h3 className="text-[18px] text-[#E60716] font-semibold mb-2">
+                            <h3 className="text-[18px] text-[#E60716] mb-[10px]">
                                 {index + 1}. {step.title}
                             </h3>
                             <ul className="list-disc list-inside list-small ml-4">
                                 {step.items.map((item, idx) => (
-                                    <li key={idx} className="mt-2 mb-[10px]"> {/* Adăugat mb-[10px] pentru spațiu între elemente */}
+                                    <li key={idx} className="my-2"> {/* Adăugat mb-[10px] pentru spațiu între elemente */}
                                         <span className="font-bold text-[#FFFFFF] text-[16px]">{item.item}:</span> <span className="text-[#CDCDCD] text-[16px]">{item.cost}</span>
                                     </li>
                                 ))}
@@ -33,7 +33,7 @@ const DetailedStepsMobile = () => {
                                 <img 
                                     src={images[index]} 
                                     alt={`Stage Description ${index + 1}`} 
-                                    className="mt-6 w-full h-auto"
+                                    className="mt-5 w-full h-auto"
                                     style={{ objectFit: 'cover' }}
                                 />
                             )}
@@ -41,7 +41,7 @@ const DetailedStepsMobile = () => {
                     ))}
                 </div>
             </div>
-            <div className="my-10">
+            <div className="mt-10">
                 <h2 className="text-[#FFFFFF] font-ekMukta font-semibold text-[26px]">{stageDescription.helpTitle}</h2>
                 <p className="text-[#CDCDCD] w-full text-[16px] mt-5">{stageDescription.helpInfo}</p>
                 <img 

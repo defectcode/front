@@ -75,8 +75,8 @@ const FundingBreakdownMobile = () => {
     }, []);
 
     return (
-        <div className="bg-black h-[90%] sticky top-0 flex flex-col items-center text-white px-5 pb-16">
-            <h2 className="text-2xl font-semibold font-ekMukta mb-8 mt-14">Where Your Money Goes</h2>
+        <div className="bg-black h-[90%] sticky top-0 flex flex-col items-center text-white px-5 pb-10">
+            <h2 className="text-2xl font-semibold font-ekMukta mb-8 mt-10">Where Your Money Goes</h2>
             <div className="relative">
                 <DoughnutChart data={costData} />
                 <div className="absolute inset-0 flex items-center justify-center">
@@ -109,7 +109,7 @@ const FundingBreakdownMobile = () => {
                     <tbody className='space-y-[20px]'>
                         {costData.map((item, index) => (
                             <tr key={index} className='align-middle'>
-                                <td className="py-5 flex items-center relative align-middle" style={{ paddingBottom: index < costData.length - 1 ? '20px' : '0' }}>
+                                <td className="py-5 flex items-center relative align-middle" style={{ paddingBottom: index < costData.length - 1 ? '' : '0' }}>
                                     <div className="relative flex flex-col items-center point-container align-middle">
                                         <motion.div
                                             initial={{ scale: 0 }}
@@ -130,8 +130,12 @@ const FundingBreakdownMobile = () => {
                                     </div>
                                     <span className="ml-3 text-[#C4C4C4] text-[14px] font-roboto align-middle">{item.category}</span>
                                 </td>
-                                <td className="py-2 text-[#C4C4C4] text-[14px] font-roboto font-semibold w-[100px] align-middle text-center">${item.cost.toLocaleString()}</td>
-                                <td className="py-2 text-[#C4C4C4] text-[14px] font-roboto font-semibold w-[60px] text-center align-middle">{item.week}</td>
+                                <td className={`${index < costData.length - 1 ? 'py-2' : 'pt-4'} text-[#C4C4C4] text-[14px] font-roboto font-semibold w-[100px] align-middle text-center`}>
+                                    ${item.cost.toLocaleString()}
+                                </td>
+                                <td className={`${index < costData.length - 1 ? 'py-2' : 'pt-4'} text-[#C4C4C4] text-[14px] font-roboto font-semibold w-[60px] text-center align-middle`}>
+                                    {item.week}
+                                </td>
                             </tr>
                         ))}
                     </tbody>

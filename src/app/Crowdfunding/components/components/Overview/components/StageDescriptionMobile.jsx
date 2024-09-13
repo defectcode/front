@@ -4,7 +4,7 @@ import DetailedStepsMobile from './DetailedStepsMobile';
 
 const StageDescriptionMobile = () => {
     return (
-        <div id="overview" className="bg-black px-[20px] w-full flex flex-col items-start lg:items-center">
+        <div id="overview" className="bg-black px-[20px] w-full flex flex-col items-start lg:items-center mt-5">
             <div>
                 <h2 className="text-[24px] text-[#FFFFFF] mb-5 font-ekMukta font-semibold">
                     {stageDescriptionData.stageTitle}
@@ -15,7 +15,7 @@ const StageDescriptionMobile = () => {
                 <img 
                     src={stageDescriptionData.imageUrl_1} 
                     alt="Stage Description" 
-                    className="mt-5 mb-10 w-full h-auto object-cover rounded-lg"
+                    className="mt-5 mb-10 w-full h-auto object-cover"
                 />
             </div>
             <div>
@@ -42,7 +42,7 @@ const StageDescriptionMobile = () => {
                 <img 
                     src={stageDescriptionData.imageUrl_2} 
                     alt="Stage Description" 
-                    className="mt-5 mb-10 w-full h-auto object-cover rounded-lg"
+                    className="mt-5 mb-10 w-full h-auto object-cover"
                 />
             </div>
             <DetailedStepsMobile />

@@ -17,17 +17,17 @@ export default function Sidebar() {
   return (
     <div className="bg-[#EBEBF0] text-white px-5 pt-10 pb-20 w-full max-w-md mx-auto h-auto">
             <div className="relative w-full">
-        <div className="absolute inset-0 h-[1px] bg-gradient-to-r from-[#272727] to-[#8D8D8D] opacity-50"></div>
+        <div className="absolute inset-0 h-[1px] bg-gradient-to-r from-[#272727] to-[#8D8D8D] opacity-20"></div>
       </div>
-      <div className="py-5">
-        <div className="flex justify-between items-center cursor-pointer text-[#1E1E1E] px-5" onClick={toggleSupport}>
-          <h2 className="text-[18px] font-semibold font-ekMukta leading-none">Support And Donations</h2>
-          <span className="text-xl transform transition-transform duration-200 leading-none" style={{ transform: isOpenSupport ? 'rotate(90deg)' : 'rotate(0deg)' }}>
-            <IoIosArrowForward />
+      <div className="py-3">
+        <div className="flex justify-between items-center cursor-pointer text-[#1E1E1E]" onClick={toggleSupport}>
+          <h2 className="text-[16px] font-ekMukta leading-none">Support & Donations</h2>
+          <span className="text-xl transform transition-transform duration-200 leading-none" style={{ transform: isOpenSupport ? 'rotate(180deg)' : 'rotate(0deg)' }}>
+            <Image src='/imgs/Footer/arrow.svg' alt='arrow' width={14} height={6}  className='w-[14px] h-[8px]'/>
           </span>
         </div>
         {isOpenSupport && (
-          <ul className="space-y-2 text-[#949494] text-[14px] font-ekMukta gap-4 mt-5 px-5">
+          <ul className="space-y-4 text-[#646464] text-[14px] font-ekMukta gap-4 mt-5 mb-2 px-5">
             <li><Link legacyBehavior href="#"><a>Donation Link</a></Link></li>
             <li><Link legacyBehavior href="#"><a>How Your Contributions Help</a></Link></li>
             <li><Link legacyBehavior href="#"><a>FAQ</a></Link></li>
@@ -37,18 +37,18 @@ export default function Sidebar() {
       </div>
 
       <div className="relative w-full">
-        <div className="absolute inset-0 h-[1px] bg-gradient-to-r from-[#272727] to-[#8D8D8D] opacity-50"></div>
+        <div className="absolute inset-0 h-[1px] bg-gradient-to-r from-[#272727] to-[#8D8D8D] opacity-20"></div>
       </div>
 
-      <div className="py-5">
-        <div className="flex justify-between items-center cursor-pointer text-[#1E1E1E] px-5" onClick={toggleLegal}>
-          <h2 className="text-[18px] font-semibold font-ekMukta leading-none">Legal Information</h2>
-          <span className="text-xl transform transition-transform duration-200 leading-none" style={{ transform: isOpenLegal ? 'rotate(90deg)' : 'rotate(0deg)' }}>
-            <IoIosArrowForward />
+      <div className="py-3">
+        <div className="flex justify-between items-center cursor-pointer text-[#1E1E1E]" onClick={toggleLegal}>
+          <h2 className="text-[16px] font-ekMukta leading-none">Legal Information</h2>
+          <span className="text-xl transform transition-transform duration-200 leading-none" style={{ transform: isOpenLegal ? 'rotate(180deg)' : 'rotate(0deg)' }}>
+          <Image src='/imgs/Footer/arrow.svg' alt='arrow' width={14} height={6} className='w-[14px] h-[8px]' />
           </span>
         </div>
         {isOpenLegal && (
-          <ul className="space-y-2 text-[#949494] text-[14px] gap-4 font-ekMukta mt-5 px-5">
+          <ul className="space-y-4 text-[#646464] text-[14px] gap-4 font-ekMukta mt-5 mb-2 px-5">
             <li><Link legacyBehavior href="/privacypolicy"><a>Privacy Policy</a></Link></li>
             <li><Link legacyBehavior href="/cookiepolicy"><a>Cookie Policy</a></Link></li>
             <li><Link legacyBehavior href="#"><a>Tearm of Use</a></Link></li>
@@ -58,18 +58,18 @@ export default function Sidebar() {
       </div>
 
       <div className="relative w-full">
-        <div className="absolute inset-0 h-[1px] bg-gradient-to-r from-[#272727] to-[#8D8D8D] opacity-50"></div>
+        <div className="absolute inset-0 h-[1px] bg-gradient-to-r from-[#272727] to-[#8D8D8D] opacity-20"></div>
       </div>
 
-      <div className="py-5">
-        <div className="flex justify-between items-center cursor-pointer text-[#1E1E1E] px-5" onClick={toggleContact}>
-          <h2 className="text-[18px] font-semibold font-ekMukta leading-none">Contact Us</h2>
-          <span className="text-xl transform transition-transform duration-200 leading-none" style={{ transform: isOpenContact ? 'rotate(90deg)' : 'rotate(0deg)' }}>
-            <IoIosArrowForward />
+      <div className="py-3">
+        <div className="flex justify-between items-center cursor-pointer text-[#1E1E1E]" onClick={toggleContact}>
+          <h2 className="text-[16px] font-ekMukta leading-none">Contact Us</h2>
+          <span className="text-xl transform transition-transform duration-200 leading-none" style={{ transform: isOpenContact ? 'rotate(180deg)' : 'rotate(0deg)' }}>
+          <Image src='/imgs/Footer/arrow.svg' alt='arrow' width={9} height={5} className='w-[14px] h-[8px]' />
           </span>
         </div>
         {isOpenContact && (
-          <ul className="space-y-2 text-[#949494] text-[14px] gap-4 font-ekMukta mt-5 px-5">
+          <ul className="space-y-4 text-[#646464] text-[14px] gap-4 font-ekMukta mt-5 mb-2 px-5">
             <li className="text-[14px]">Phone: +373 60 877 733</li>
             <li className="text-[14px]">Email: Valery@fyne.pro</li>
         </ul>
@@ -77,7 +77,7 @@ export default function Sidebar() {
       </div>
 
       <div className="relative w-full">
-        <div className="absolute inset-0 h-[1px] bg-gradient-to-r from-[#272727] to-[#8D8D8D] opacity-50"></div>
+        <div className="absolute inset-0 h-[1px] bg-gradient-to-r from-[#272727] to-[#8D8D8D] opacity-20"></div>
       </div>
 
       <div>
