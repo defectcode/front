@@ -1,15 +1,25 @@
 <!DOCTYPE html>
-<html lang="ro">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redirecționare în curs...</title>
-    <script defer src="/redirect.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Redirecționare în curs...</title>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+      
+      if (/instagram|fbav|fbios|tiktok/i.test(userAgent)) {
+        // Redirecționează către browserul nativ
+        window.location.href = 'https://paradiseproblems.com/'; // Înlocuiește cu URL-ul către care dorești să redirecționezi.
+      }
+    });
+  </script>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.0.3/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body class="bg-gray-100 flex items-center justify-center min-h-screen">
-    <div class="text-center">
-        <p class="text-lg font-bold text-gray-700">Redirecționare în curs...</p>
-    </div>
+<body class="flex items-center justify-center h-screen bg-gray-100">
+  <div class="text-center">
+    <h1 class="text-2xl font-semibold text-gray-800">Redirecționare în curs...</h1>
+    <p class="text-gray-600 mt-4">Vei fi redirecționat către browserul tău nativ în câteva momente.</p>
+  </div>
 </body>
 </html>
