@@ -21,7 +21,7 @@ const DetailedStepsMobile = () => {
                             <h3 className="text-[18px] text-[#E60716] mb-[10px]">
                                 {index + 1}. {step.title}
                             </h3>
-                            <ul className="list-disc list-inside list-small ml-4">
+                            <ul className="list-disc list-inside list-small">
                                 {step.items.map((item, idx) => (
                                     <li key={idx} className="my-2"> {/* Adăugat mb-[10px] pentru spațiu între elemente */}
                                         <span className="font-bold text-[#FFFFFF] text-[16px]">{item.item}:</span> <span className="text-[#CDCDCD] text-[16px]">{item.cost}</span>
@@ -53,7 +53,7 @@ const DetailedStepsMobile = () => {
             </div>
             <style jsx>{`
                 ul.list-small li::marker {
-                    font-size: 0.7em; /* Ajustează dimensiunea marker-ului */
+                    font-size: 0.5em; /* Ajustează dimensiunea marker-ului */
                 }
             `}</style>
         </div>

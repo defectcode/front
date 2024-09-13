@@ -22,7 +22,7 @@ export default function Sidebar() {
       </div>
       <div className="py-3">
         <div className="flex justify-between items-center cursor-pointer text-[#1E1E1E] " onClick={toggleSupport}>
-          <h2 className="text-[16px] font-semibold font-ekMukta leading-none">Support & Donations</h2>
+          <h2 className="text-[16px] font-ekMukta leading-none">Support & Donations</h2>
           <span className="text-xl transform transition-transform duration-200 leading-none" style={{ transform: isOpenSupport ? 'rotate(180deg)' : 'rotate(0deg)' }}>
           <Image src='/imgs/Footer/arrow.svg' alt='arrow' width={14} height={6}  className='w-[14px] h-[8px]'/>
           </span>
@@ -43,7 +43,7 @@ export default function Sidebar() {
 
       <div className="py-3">
         <div className="flex justify-between items-center cursor-pointer text-[#1E1E1E] " onClick={toggleLegal}>
-          <h2 className="text-[16px] font-semibold font-ekMukta leading-none">Legal Information</h2>
+          <h2 className="text-[16px] font-ekMukta leading-none">Legal Information</h2>
           <span className="text-xl transform transition-transform duration-200 leading-none" style={{ transform: isOpenLegal ? 'rotate(180deg)' : 'rotate(0deg)' }}>
           <Image src='/imgs/Footer/arrow.svg' alt='arrow' width={14} height={6}  className='w-[14px] h-[8px]'/>
           </span>
@@ -64,7 +64,7 @@ export default function Sidebar() {
 
       <div className="py-3">
         <div className="flex justify-between items-center cursor-pointer text-[#1E1E1E] " onClick={toggleContact}>
-          <h2 className="text-[16px] font-semibold font-ekMukta leading-none">Contact Us</h2>
+          <h2 className="text-[16px] font-ekMukta leading-none">Contact Us</h2>
           <span className="text-xl transform transition-transform duration-200 leading-none" style={{ transform: isOpenContact ? 'rotate(180deg)' : 'rotate(0deg)' }}>
           <Image src='/imgs/Footer/arrow.svg' alt='arrow' width={14} height={6}  className='w-[14px] h-[8px]'/>
           </span>
