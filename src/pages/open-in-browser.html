@@ -4,17 +4,33 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Redirecționare în curs...</title>
+  
+  <!-- Tailwind CSS pentru stilizare -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.0.3/dist/tailwind.min.css" rel="stylesheet">
+
+  <!-- Script pentru detectarea aplicației și redirecționare -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       var userAgent = navigator.userAgent || navigator.vendor || window.opera;
-      
-      if (/instagram|fbav|fbios|tiktok/i.test(userAgent)) {
-        // Redirecționează către browserul nativ
-        window.location.href = 'https://paradiseproblems.com/'; // Înlocuiește cu URL-ul către care dorești să redirecționezi.
+      var targetURL = 'https://paradiseproblems.com'; // Înlocuiește cu URL-ul dorit.
+
+      if (/instagram|fbav|fbios|tiktok|telegram/i.test(userAgent)) {
+        if (/android/i.test(userAgent)) {
+          // Redirecționare pe Android către Chrome
+          window.location.href = 'intent:' + targetURL + '#Intent;package=com.android.chrome;end;';
+        } else if (/iPhone|iPad|iPod/i.test(userAgent)) {
+          // Redirecționare pe iOS către Safari
+          window.location.href = 'applewebdata://' + targetURL;
+        } else {
+          // Alte platforme (desktop, Windows etc.)
+          window.location.href = targetURL;
+        }
+      } else {
+        // Dacă nu este detectată o aplicație de social media, continuăm cu URL-ul normal
+        window.location.href = targetURL;
       }
     });
   </script>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.0.3/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body class="flex items-center justify-center h-screen bg-gray-100">
   <div class="text-center">
