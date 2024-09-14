@@ -109,27 +109,27 @@ const SupportForm = () => {
         <p className="mb-4 text-[#B7B7B7] text-[13px] font-inter ml-1">Select your support amount:</p>
         <div className="flex justify-between gap-2 mb-5 text-sm">
           <button
-            onClick={() => handleAmountChange(50)}
-            className={`flex items-center justify-center rounded-xl max-w-[80px] w-full max-sm:w-[75px] flex-grow h-[45px] ${amount === 50 && !isCustomAmount ? 'bg-white text-black font-bold' : 'bg-[#252525] border-2 border-[#3e3d3d] flex flex-row gap-[1px] font-ekMukta'}`}
+            onClick={() => handleAmountChange(1)}
+            className={`flex items-center justify-center rounded-xl max-w-[80px] w-full max-sm:w-[75px] flex-grow h-[45px] ${amount === 1 && !isCustomAmount ? 'bg-white text-black font-bold' : 'bg-[#252525] border-2 border-[#3e3d3d] flex flex-row gap-[1px] font-ekMukta'}`}
           >
             $
-            <span style={{ fontWeight: amount === 50 && !isCustomAmount ? 700 : 400 }}>50</span>
+            <span style={{ fontWeight: amount === 1 && !isCustomAmount ? 700 : 400 }}>1</span>
+          </button>
+
+          <button
+            onClick={() => handleAmountChange(50)}
+            className={`flex items-center justify-center rounded-xl max-w-[80px] w-full max-sm:w-[75px] flex-grow h-[45px] ${amount === 50 && !isCustomAmount ? 'bg-white text-black font-extrabold' : 'bg-[#252525] border-2 border-[#3e3d3d] flex flex-row gap-[1px] font-ekMukta'}`}
+          >
+            $
+            <span style={{ fontFamily: 'Ek Mukta, sans-serif', fontWeight: amount === 50 && !isCustomAmount ? 700 : 400 }}>50</span>
           </button>
 
           <button
             onClick={() => handleAmountChange(500)}
-            className={`flex items-center justify-center rounded-xl max-w-[80px] w-full max-sm:w-[75px] flex-grow h-[45px] ${amount === 500 && !isCustomAmount ? 'bg-white text-black font-extrabold' : 'bg-[#252525] border-2 border-[#3e3d3d] flex flex-row gap-[1px] font-ekMukta'}`}
+            className={`flex items-center justify-center rounded-xl max-w-[80px] w-full max-sm:w-[70px] flex-grow h-[45px] ${amount === 500 && !isCustomAmount ? 'bg-white text-black font-bold' : 'bg-[#252525] border-2 border-[#3e3d3d] flex flex-row gap-[1px] font-ekMukta'}`}
           >
             $
             <span style={{ fontFamily: 'Ek Mukta, sans-serif', fontWeight: amount === 500 && !isCustomAmount ? 700 : 400 }}>500</span>
-          </button>
-
-          <button
-            onClick={() => handleAmountChange(1000)}
-            className={`flex items-center justify-center rounded-xl max-w-[80px] w-full max-sm:w-[70px] flex-grow h-[45px] ${amount === 1000 && !isCustomAmount ? 'bg-white text-black font-bold' : 'bg-[#252525] border-2 border-[#3e3d3d] flex flex-row gap-[1px] font-ekMukta'}`}
-          >
-            $
-            <span style={{ fontFamily: 'Ek Mukta, sans-serif', fontWeight: amount === 1000 && !isCustomAmount ? 700 : 400 }}>1000</span>
           </button>
 
           <div className="relative flex items-center flex-grow">
