@@ -12,7 +12,6 @@ const HeaderSeriesConcept = () => {
     const [isVideoVisible, setIsVideoVisible] = useState(false);
     const [isMuted, setIsMuted] = useState(false);
 
-
     const handleScreenClick = () => {
         setIsVideoVisible(true);
         document.body.classList.add('overflow-hidden'); // Previne scroll-ul în timpul redării video
@@ -22,7 +21,6 @@ const HeaderSeriesConcept = () => {
         setIsVideoVisible(false);
         document.body.classList.remove('overflow-hidden');
     };
-    
 
     return (
         <div ref={headerRef} className="relative min-h-screen">

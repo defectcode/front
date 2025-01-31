@@ -33,7 +33,6 @@ import Image from 'next/image';
 
 const PrivacyPolicy = () => {
   return (
-
     <div className="bg-black text-white flex justify-center items-center min-h-screen py-10">
       <div className="max-w-screen-md px-4 lg:px-10 text-center">
         {/* Privacy Policy title and last updated text */}
@@ -67,7 +66,6 @@ const PrivacyPolicy = () => {
         <p className="text-[16px] mb-2 leading-relaxed text-[#F1F1F1] font-ekMukta">
           <span className='text-[FFFFFF] font-bold text-[16px]'>{ useDataTitle }</span><span className='text-[#CDCDCD]'>{usageDataInformation}</span>
         </p>
-
 
         {/* Use of Data Section */}
         <h2 className="text-[26px] font-semibold mb-5 mt-10 text-[#FFFFFF] font-ekMukta">

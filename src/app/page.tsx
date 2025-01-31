@@ -33,10 +33,10 @@ export default function Home() {
   return (
     <main>
       <Header/>
-      {/* {isMobile ? <CarouselMobile/>  :  <Carousel/>}
+      {isMobile ? <CarouselMobile/>  :  <Carousel/>}
       <OurMission/>
       <OurTeam/>
-      {isMobile ? <FooterMobile/> : <Footer/>} */}
+      {isMobile ? <FooterMobile/> : <Footer/>}
     </main>
   );
 }

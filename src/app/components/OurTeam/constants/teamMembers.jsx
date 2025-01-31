@@ -4,7 +4,7 @@ export const teamMembers = [
     {
         name: 'Valery Fyne',
         role: 'Actresses',
-        image: '/imgs/OurTeam/ia.png', // Adaugă calea către imagine
+        image: '/imgs/OurTeam/Valeria.png', // Adaugă calea către imagine
         social: {
             tiktok: 'https://www.tiktok.com/@valery.fain',
             instagram: 'https://www.instagram.com/valery.fain',
